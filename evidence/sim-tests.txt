@@ -1,0 +1,14 @@
+✔ unsafe, nonfinite and stale actions leave state unchanged (10.443125ms)
+✔ empty scene fails independent finish; terminal episode cannot be modified (528.453209ms)
+✔ slack thread does not push tissue apart; needle through empty lumen makes no bridge (283.070084ms)
+✔ SCRIPTED low-level fixture completes across fixed seeds, with deterministic replay (41347.1705ms)
+✔ release without a knot loses closure and fails the terminal test (5196.555875ms)
+✔ successful closure still fails if the tools are not released (6416.344792ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53858.599875
