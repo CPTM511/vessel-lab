@@ -18,12 +18,14 @@ NCBI Bookshelf NBK482236 and the WHO 2018 manual were candidate references. Dire
 | Drape, scale and inspection lights | Authored scene geometry and configuration | MIT, source included |
 | Interface font | Godot's built-in theme font | Distributed by Godot; no copied font file |
 
+The sampled mechanical cage and protected glanular sections are generated directly from the original Godot geometry by `godot/export_physics.gd`; the exporter, source hash and data are included under MIT.
+
 There are no patient images, external textures, downloaded meshes or generative bitmap assets. Anatomical labels refer to modeled structures, not independently validated segmentation.
 
 ## Fidelity boundaries
 
 - **Visual realism:** smooth layered geometry, distinct surface finish, subtle skin detail and clinical inspection lighting. The first version is an anatomical specimen, not a complete body. Procedural regularity, a simplified meatus and attachment geometry remain limitations.
-- **Mechanical fidelity:** initially absent from the inspection morph. Subsequent tissue mechanics must be evaluated separately; a plausible image does not establish mechanical correctness.
+- **Mechanical fidelity:** the inspection morph remains nonphysical. The separate mechanics sandbox now uses a shared sampled cage, compliant constraints and barycentric grasps. It lacks material calibration and validated self-contact; a plausible image does not establish mechanical correctness.
 - **Clinical validity:** not established. There is no expert anatomical validation, patient-specific fit, living-tissue calibration, perfusion, innervation, healing or clinical outcome model.
 
 Godot's [renderer feature matrix](https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html) identifies subsurface scattering as a Forward+ feature. Compatibility remains an explicit fallback with different shading. The selected renderer and actual observed output are recorded in checkpoint evidence.

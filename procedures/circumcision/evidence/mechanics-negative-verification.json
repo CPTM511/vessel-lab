@@ -1,0 +1,13 @@
+{
+  "kind": "offline verifier corruption checks",
+  "cases": [
+    {
+      "modified": "action",
+      "rejected": true
+    },
+    {
+      "modified": "frame",
+      "rejected": true
+    }
+  ]
+}

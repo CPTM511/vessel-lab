@@ -30,6 +30,12 @@ var mode_label: Label
 var feedback_label: Label
 var show_labels = true
 var dragging = false
+var instrument_nodes: Node3D
+var mechanics_panel: VBoxContainer
+var arm_select: OptionButton
+var mechanics_label: Label
+var active_mechanics = false
+var retraction_button: Button
 var last_mode = ""
 var last_morph = -1.0
 var morph_slider: HSlider
@@ -89,7 +95,7 @@ func build_ui() -> void:
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
 	header.add_child(text_label("ADULT SPECIMEN   ·   RESEARCH PREVIEW",13,MUTED))
-	layout.add_child(text_label("Circumcision simulation   /   Anatomical geometry checkpoint",17))
+	layout.add_child(text_label("Circumcision simulation   /   Anatomy and bilateral mechanics checkpoint",17))
 	var body = HBoxContainer.new()
 	body.add_theme_constant_override("separation",20)
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -100,7 +106,7 @@ func build_ui() -> void:
 	var tools = HBoxContainer.new()
 	left.add_child(tools)
 	add_button("Overview",tools,func(): preset("covered"))
-	add_button("Retracted",tools,func(): preset("retracted"))
+	retraction_button = add_button("Retracted",tools,func(): preset("retracted"))
 	add_button("Ventral",tools,func(): preset("ventral"))
 	add_button("Close-up",tools,func(): orbit_distance=68.0;target=Vector3(2,0,0);update_camera())
 	add_button("Labels",tools,func():show_labels=!show_labels;labels.visible=show_labels)
@@ -127,6 +133,39 @@ func build_ui() -> void:
 	panel.add_theme_constant_override("separation",11)
 	scroll.add_child(panel)
 	status = note("Connecting to inspection service…",panel,ACCENT)
+	add_button("Enable mechanics sandbox",panel,func(): send_request("/api/mechanics/reset",{"source":"manual-mechanics","seed":11}))
+	add_button("Return to anatomy inspector",panel,func(): send_request("/api/inspection/reset",{"source":"manual-inspection"}))
+	mechanics_panel = VBoxContainer.new()
+	mechanics_panel.visible = false
+	mechanics_panel.add_theme_constant_override("separation",8)
+	panel.add_child(mechanics_panel)
+	mechanics_panel.add_child(text_label("Low-level manual controls",18))
+	arm_select = OptionButton.new()
+	arm_select.add_item("Left gripper")
+	arm_select.add_item("Right gripper")
+	mechanics_panel.add_child(arm_select)
+	var jog_grid = GridContainer.new()
+	jog_grid.columns = 3
+	mechanics_panel.add_child(jog_grid)
+	for sign_value in [-1,1]:
+		for axis in range(3):
+			var selected_axis = axis
+			var selected_sign = sign_value
+			add_button(["X","Y","Z"][axis]+(" -1" if sign_value<0 else " +1"),jog_grid,func():mechanical_jog(selected_axis,selected_sign,false))
+	var rotate_grid = GridContainer.new()
+	rotate_grid.columns = 3
+	mechanics_panel.add_child(rotate_grid)
+	for sign_value in [-1,1]:
+		for axis in range(3):
+			var selected_axis = axis
+			var amount = sign_value*10
+			add_button(["Rx","Ry","Rz"][axis]+(" -10" if sign_value<0 else " +10"),rotate_grid,func():mechanical_jog(selected_axis,amount,true))
+	var jaw_row = HBoxContainer.new()
+	mechanics_panel.add_child(jaw_row)
+	add_button("Grasp",jaw_row,func():mechanical_step({"jaw":0.0}))
+	add_button("Release",jaw_row,func():mechanical_step({"jaw":1.0}))
+	mechanics_label = note("",mechanics_panel,ACCENT)
+	note("Physical shell manipulation only. Cutting, closure and model control remain disabled.",mechanics_panel)
 	panel.add_child(text_label("Layer inspection",18))
 	add_button("Outer preputial skin",panel,func():preset("outer"))
 	add_button("Inner preputial mucosa",panel,func():preset("inner"))
@@ -238,6 +277,8 @@ func build_world() -> void:
 	world.add_child(specimen)
 	labels = Node3D.new()
 	world.add_child(labels)
+	instrument_nodes = Node3D.new()
+	world.add_child(instrument_nodes)
 	camera = Camera3D.new()
 	camera.near = .1
 	camera.far = 500
@@ -287,20 +328,61 @@ func view_input(event: InputEvent) -> void:
 
 func preset(mode: String) -> void:
 	var value = 1.0 if mode in ["retracted","ventral","protected","glans"] else 0.0
-	send_change({"mode":mode,"retraction":value})
+	send_change({"mode":mode} if active_mechanics else {"mode":mode,"retraction":value})
 
 func send_change(change: Dictionary) -> void:
+	change["source"] = "manual-inspection"
+	send_request("/api/inspect",change)
+
+func send_request(route: String, change: Dictionary) -> void:
 	if session.is_empty():
 		return
 	var request = HTTPRequest.new()
-	request.timeout = 3
+	request.timeout = 10
 	add_child(request)
-	change.merge({"session":session,"revision":revision,"commandId":str(Time.get_ticks_usec()),"source":"manual-inspection"})
+	change.merge({"session":session,"revision":revision,"commandId":str(Time.get_ticks_usec())})
 	request.request_completed.connect(func(_r,code,_h,body):
 		if code != 200:
-			feedback_label.text = "Inspection request rejected: " + body.get_string_from_utf8().left(120)
+			feedback_label.text = "Request rejected: " + body.get_string_from_utf8().left(150)
 		request.queue_free())
-	request.request(base+"/api/inspect",["Content-Type: application/json"],HTTPClient.METHOD_POST,JSON.stringify(change))
+	request.request(base+route,["Content-Type: application/json"],HTTPClient.METHOD_POST,JSON.stringify(change))
+
+func selected_arm() -> String:
+	return "left" if arm_select.selected == 0 else "right"
+
+func mechanical_step(change: Dictionary) -> void:
+	if not active_mechanics:
+		return
+	var action = {"revision":scene_state.mechanics.revision,"duration":.05}
+	action[selected_arm()] = change
+	send_request("/api/step",{"source":"manual-mechanics","action":action})
+
+func mechanical_jog(axis: int, amount: float, rotation_value: bool) -> void:
+	if not active_mechanics:
+		return
+	var property = "rotationDeg" if rotation_value else "position"
+	var target_value: Array = scene_state.mechanics.arms[selected_arm()][property].duplicate()
+	target_value[axis] += amount
+	if rotation_value:
+		target_value[axis] = fposmod(target_value[axis]+180.0,360.0)-180.0
+	mechanical_step({property:target_value})
+
+func draw_instruments(data: Dictionary) -> void:
+	for n in instrument_nodes.get_children():
+		instrument_nodes.remove_child(n)
+		n.queue_free()
+	for arm_name in ["left","right"]:
+		var a: Dictionary = data.arms[arm_name]
+		var p = Vector3(a.position[0],a.position[1],a.position[2])
+		var q = Quaternion(a.quaternion[0],a.quaternion[1],a.quaternion[2],a.quaternion[3])
+		var color = Color("a9cfc6") if arm_name == "left" else Color("ceb8a3")
+		line(p,p+q*Vector3(0,12,0),.25,Color("a5b3ba"),instrument_nodes)
+		for sign_value in [-1,1]:
+			var tip = p+q*Vector3(0,0,sign_value*(.22+a.jaw*.75))
+			line(tip,p+q*Vector3(0,4,0),.18,color,instrument_nodes)
+		world_label("L" if arm_name=="left" else "R",p+q*Vector3(0,14,0),instrument_nodes,color,23)
+	var m: Dictionary = data.metrics
+	mechanics_label.text = "Grasps: %s  ·  Protected hits: %s\nPeak displacement: %.2f mm\nTime: %.2f s\nL: %.1f, %.1f, %.1f\nR: %.1f, %.1f, %.1f" % [m.activeGrasps,m.protectedIntersections,m.maxDisplacementMm,m.simulationSeconds,data.arms.left.position[0],data.arms.left.position[1],data.arms.left.position[2],data.arms.right.position[0],data.arms.right.position[1],data.arms.right.position[2]]
 
 func poll() -> void:
 	if poll_busy:
@@ -333,7 +415,19 @@ func apply_state(data: Dictionary) -> void:
 	revision = data.revision
 	var mode: String = data.mode
 	var morph: float = data.retraction
-	if morph != last_morph:
+	var was_mechanical = active_mechanics
+	active_mechanics = data.get("mechanicsEnabled",false)
+	mechanics_panel.visible = active_mechanics
+	morph_slider.editable = not active_mechanics
+	retraction_button.disabled = active_mechanics
+	instrument_nodes.visible = active_mechanics
+	if active_mechanics:
+		specimen.apply_mechanics(data.mechanics)
+		draw_instruments(data.mechanics)
+		last_morph = 0.0
+		morph_slider.set_value_no_signal(0.0)
+	elif morph != last_morph or was_mechanical:
+		specimen.clear_mechanics()
 		specimen.update_prepuce(morph)
 		last_morph = morph
 		morph_slider.set_value_no_signal(morph)
@@ -347,7 +441,7 @@ func apply_state(data: Dictionary) -> void:
 		update_camera()
 		last_mode = mode
 	update_labels(mode)
-	status.text = "ANATOMY INSPECTOR  ·  CONNECTED"
+	status.text = "BILATERAL MECHANICS  ·  MANUAL" if active_mechanics else "ANATOMY INSPECTOR  ·  CONNECTED"
 	mode_label.text = "View: %s\nMorph: %.0f%%  ·  Revision: %s" % [mode,morph*100,revision]
 	geometry_label.text = "%s surfaces · %s triangles\nNominal specimen length: 97.3 mm" % [specimen.surface_count,specimen.triangle_count]
 	last_capture = 0
@@ -369,7 +463,7 @@ func capture() -> void:
 	if frame == null or frame.is_empty() or ui == null or ui.is_empty():
 		capture_busy = false
 		return
-	var body = {"session":captured_session,"revision":captured_revision,"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
+	var body = {"session":captured_session,"revision":captured_revision,"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
 	var request = HTTPRequest.new()
 	request.timeout = 3
 	add_child(request)

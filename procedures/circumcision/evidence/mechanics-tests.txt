@@ -1,0 +1,14 @@
+✔ inspection state is atomic, revisioned, idempotent and origin restricted (5246.272708ms)
+✔ invalid bilateral commands and stale revisions are atomic (13.718542ms)
+✔ rest state is stable, fixed boundaries do not drift, and grasp requires proximity (271.247791ms)
+✔ barycentric grasp moves actual tissue; releasing removes constraints without a visual morph (2266.964334ms)
+✔ protected anatomy uses independent geometry and swept instrument violations remain recorded (5644.537333ms)
+✔ the same seed and low-level sequence reproduce tissue positions (1365.0635ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9628.663708

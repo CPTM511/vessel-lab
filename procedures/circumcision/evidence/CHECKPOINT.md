@@ -1,6 +1,6 @@
 # Anatomy checkpoint: actual rendering and inspectability
 
-Status: **in development; not a completed procedure**. No live model episodes have been run for this module. Physical tissue manipulation, local cutting, independent terminal scoring and autonomous evaluation are pending.
+This report records the anatomical inspection checkpoint at commit `9390392`. It is retained as historical rendering evidence. Later [bilateral mechanical development](MECHANICS.md) adds physical grasp and deformation; cutting, final scoring and model evaluation remain pending. No live model episodes have run for this module.
 
 The original model contains eight separately organized anatomical surfaces, approximately 191,000 triangles, a double preputial surface with a distal fold, glans/corona, ventral attachment and a urethral proxy. Dimensions are authored synthetic adult-scale values. The inspection UI provides orbit, zoom, millimetre scale and layer selection. Retraction is explicitly a visual morph.
 
@@ -12,7 +12,7 @@ The original model contains eight separately organized anatomical surfaces, appr
 | Forward+ during actual macOS screen lock | `forward-plus-locked/` | 40/40 changing frames; maximum 1,292 ms; both console and user lock flags true before and after every sample |
 | Compatibility / OpenGL fallback, seven views | `compatibility-inspection/` | 7/7 fresh frames; maximum 967 ms |
 | Inspection transport regression | `transport-tests.txt` | Atomic validation, stale commands/frames, idempotency and origin checks passed |
-| Saved evidence integrity | `checkpoint.json` | 54 image hashes and corresponding current source hashes verified |
+| Saved evidence integrity | `checkpoint.json` | 54 image hashes and corresponding checkpoint source hashes verified |
 
 These are **scripted render and transport checks**. They demonstrate real Godot output, not autonomous surgery or clinical performance. The host was already locked; no lock, sleep or security settings were changed. An unlocked-background probe for this new renderer remains pending; screen-lock evidence does not establish execution during system sleep.
 

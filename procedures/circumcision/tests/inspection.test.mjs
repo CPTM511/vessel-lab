@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
 import crypto from 'node:crypto';
+import fs from 'node:fs';
 
 // Transport-only tests: no model calls and no renderer evidence are produced here.
 test('inspection state is atomic, revisioned, idempotent and origin restricted',async()=>{
@@ -28,6 +29,22 @@ test('inspection state is atomic, revisioned, idempotent and origin restricted',
   const badFrame=await fetch(base+'/api/frame',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:state.session,revision:0})});
   assert.equal(badFrame.status,409);
   assert.equal((await fetch(base+'/api/frame')).status,503);
+  const freshState=await fetch(base+'/api/state').then(r=>r.json());
+  const reset=await fetch(base+'/api/mechanics/reset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:freshState.session,revision:freshState.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',seed:11})}).then(r=>r.json());
+  const noFrame=await fetch(base+'/api/step',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:reset.session,revision:reset.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',action:{revision:0,duration:.05,left:{jaw:0}}})});
+  assert.equal(noFrame.status,409);assert.match((await noFrame.json()).error,/Fresh actual Godot frame/);
+  assert.equal((await fetch(base+'/api/state').then(r=>r.json())).mechanics.revision,0);
+  assert.equal((await post({session:reset.session,revision:reset.revision,commandId:crypto.randomUUID(),source:'scripted-inspection-test',retraction:1})).status,409);
+  // A prerecorded JPEG is a transport test fixture only, never live evidence.
+  const image='data:image/jpeg;base64,'+fs.readFileSync(new URL('../evidence/inspection-attempt-03/covered.jpg',import.meta.url)).toString('base64');
+  const frame={session:reset.session,revision:reset.revision,mechanicsRevision:0,mechanicsEnabled:true,mode:'covered',retraction:0,renderer:'forward_plus',image,uiImage:image};
+  const upload=body=>fetch(base+'/api/frame',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  assert.equal((await upload({...frame,image:'data:image/jpeg;base64,AAAA'})).status,400);
+  assert.equal((await upload(frame)).status,200);
+  await new Promise(r=>setTimeout(r,5100));
+  const stale=await fetch(base+'/api/step',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:reset.session,revision:reset.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',action:{revision:0,duration:.05,left:{jaw:0}}})});
+  assert.equal(stale.status,409);assert.match((await stale.json()).error,/Fresh actual Godot frame/);
+  assert.equal((await fetch(base+'/api/state').then(r=>r.json())).mechanics.revision,0);
  }finally{
   child.kill('SIGTERM');
   await new Promise(resolve=>{if(child.exitCode!==null)return resolve();child.once('exit',resolve);});
