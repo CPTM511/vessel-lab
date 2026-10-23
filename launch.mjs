@@ -18,7 +18,11 @@ if(!await ready()){
 }
 console.log('Vessel Lab is running. Select a controller experiment or use the manual controls.');
 const app=spawn(godot,['--path',path.join(root,'godot')],{cwd:root,stdio:'inherit'});
-const stop=()=>{app.kill();server?.kill();};
+let stopping=false;
+const stop=async()=>{if(stopping)return;stopping=true;
+ try{await fetch(base+'/api/agent/stop',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}',signal:AbortSignal.timeout(1000)});}catch{}
+ app.kill();server?.kill();
+};
 app.on('error',e=>{console.error(e.message);server?.kill();process.exitCode=1;});
-app.on('exit',()=>server?.kill());
+app.on('exit',stop);
 process.on('SIGINT',stop);process.on('SIGTERM',stop);

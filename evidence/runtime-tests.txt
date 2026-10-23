@@ -1,0 +1,20 @@
+
+> vessel-lab@0.1.1 test
+> node --test tests/*.test.mjs
+
+✔ controller quota: fail closed without actions or orphan child (256.351542ms)
+✔ controller stop: fail closed without actions or orphan child (7426.7605ms)
+✔ unsafe, nonfinite and stale actions leave state unchanged (6.089958ms)
+✔ empty scene fails independent finish; terminal episode cannot be modified (393.448792ms)
+✔ slack thread does not push tissue apart; needle through empty lumen makes no bridge (188.253958ms)
+✔ SCRIPTED low-level fixture completes across fixed seeds, with deterministic replay (31823.600458ms)
+✔ release without a knot loses closure and fails the terminal test (3937.794375ms)
+✔ successful closure still fails if the tools are not released (5028.139875ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41432.058417

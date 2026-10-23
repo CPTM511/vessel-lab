@@ -5,6 +5,6 @@
   "type": "module",
   "description": "Godot-based benchmark for autonomous robotic vessel suturing",
   "license": "MIT",
-  "scripts": {"start": "node server.mjs", "test": "node --test tests/*.test.mjs", "agent": "node agent.mjs", "verify": "node verify-evidence.mjs"},
+  "scripts": {"start": "node server.mjs", "test": "node --test tests/*.test.mjs", "agent": "node start-agent.mjs", "verify": "node verify-evidence.mjs"},
   "engines": {"node": ">=22"}
 }

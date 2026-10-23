@@ -48,7 +48,13 @@ Validated platform: macOS on Apple M3 Pro, Godot 4.7.2, Node.js 26.5.0, and Code
 | Evaluate | Ends the episode and runs the independent terminal checks. |
 | Manual controls | Select an arm, move along XYZ, grasp, release, or trim. |
 
-Manual actions are locked while a controller episode is active. Recorded playback is labeled separately from live inference.
+Manual actions are locked while a controller episode is active. Recorded playback is labeled separately from live inference. Stop immediately revokes the controller's action lease and terminates its process group; closing the launcher also stops its controller.
+
+### Background execution
+
+Godot explicitly redraws its observation viewport and uploads a heartbeat frame every two seconds. The controller requires a current-session frame less than five seconds old before acting; a missing renderer stops the run. A screen lock does not require the window to remain visible. A sustained macOS lock test recorded 40 changing observations, with physical-console and user-session lock flags true before and after each action. See [runtime verification](evidence/RUNTIME.md).
+
+The host must remain powered on and awake. Screen lock and system sleep are different: execution cannot progress while the host is suspended, and stale observations are rejected after a pause. No operating-system sleep or security settings are changed. Keep the renderer and local service running throughout each experiment.
 
 ## Architecture
 
@@ -105,6 +111,8 @@ npm test
 node replay.mjs examples/astra-suture-42.jsonl
 # Verify a locally recorded live episode:
 node verify-evidence.mjs sessions/<session-id>-agent.jsonl
+# Run the declared independent live evaluation set (1, 7, 42, 99, 2026):
+node evaluate.mjs
 ```
 
 Local `sessions/` records include accepted/rejected actions, state revisions, controller tool arguments, actual camera frames, and terminal results. The verifier checks image hashes, action correspondence, and deterministic replay. Public examples are sanitized; local authentication data and private session metadata are excluded from the repository.

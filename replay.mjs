@@ -6,10 +6,11 @@ const base=process.env.VESSEL_URL||'http://127.0.0.1:8765';
 const file=process.argv[2];
 if(!file)throw Error('Usage: node replay.mjs <session.jsonl>');
 const rows=fs.readFileSync(path.resolve(file),'utf8').trim().split('\n').map(JSON.parse);
-async function api(endpoint,body){const r=await fetch(base+endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(!r.ok)throw Error(j.error);return j;}
+async function api(endpoint,body){const r=await fetch(base+endpoint,{method:'POST',headers:{'Content-Type':'application/json','x-vessel-controller-token':process.env.VESSEL_CONTROLLER_TOKEN||''},body:JSON.stringify(body)});const j=await r.json();if(!r.ok)throw Error(j.error);return j;}
 let stopped=false;
-async function stop(error){if(stopped)return;stopped=true;await api('/api/agent/status',{running:false,phase:error?'replay error':'replay done',error:error||null});}
+async function stop(error){if(stopped)return;stopped=true;try{await api('/api/agent/status',{running:false,phase:error?'replay error':'replay done',error:error||null});}catch{}}
 async function main(){
+ if(!process.env.VESSEL_CONTROLLER_TOKEN){const result=await api('/api/replay/start',{recording:path.resolve(file)});console.log(JSON.stringify(result));return;}
  await api('/api/reset',{seed:rows.find(x=>x.type==='reset').seed});
  await api('/api/agent/status',{running:true,phase:'recorded playback',task:'replay',model:null,toolCount:0});
  let count=0;

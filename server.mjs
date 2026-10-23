@@ -8,12 +8,29 @@ import {VesselSim} from './sim.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url));
 const port=Number(process.env.PORT||8765),sim=new VesselSim();
 fs.mkdirSync(path.join(root,'sessions'),{recursive:true});
-let id='',log=[],frames=new Map(),agent={running:false},seen=new Map(),sockets=new Set(),agentProcess=null;
+let id='',log=[],frames=new Map(),agent={running:false},seen=new Map(),sockets=new Set(),agentProcess=null,controllerToken=null;
 function reset(seed=42){sim.reset(seed);id=new Date().toISOString().replace(/[:.]/g,'-')+'-'+crypto.randomBytes(3).toString('hex');log=[];frames.clear();seen.clear();record('reset',{seed});}
 function record(type,data){let e={type,at:new Date().toISOString(),revision:sim.revision,...data};log.push(e);fs.appendFileSync(path.join(root,'sessions',id+'.jsonl'),JSON.stringify(e)+'\n');}
 function json(res,code,data){res.writeHead(code,{'content-type':'application/json','cache-control':'no-store'});res.end(JSON.stringify(data));}
 function broadcast(){const s=JSON.stringify({state:sim.snapshot(),session:id,agent});for(const r of sockets)r.write('data: '+s+'\n\n');}
 async function body(req){let b='';for await(const c of req){b+=c;if(b.length>4e6)throw Error('Body too large');}return b?JSON.parse(b):{};}
+function authorizedController(req){return controllerToken&&req.headers['x-vessel-controller-token']===controllerToken;}
+function stopController(){
+ const proc=agentProcess;controllerToken=null;
+ if(proc){agent={...agent,running:true,phase:'stopping'};try{process.kill(-proc.pid,'SIGTERM');}catch{proc.kill('SIGTERM');}
+  setTimeout(()=>{try{process.kill(-proc.pid,'SIGKILL');}catch{}},2000);
+ }else agent={...agent,running:false};
+ broadcast();return !!proc;
+}
+function launchController(script,args,logFile,task){
+ controllerToken=crypto.randomBytes(32).toString('hex');
+ agent={running:true,phase:'starting',model:task==='replay'?null:'gpt-6-astra',task};
+ const fd=fs.openSync(logFile,'a');
+ const proc=spawn(process.execPath,[path.join(root,script),...args],{cwd:root,detached:true,env:{...process.env,VESSEL_URL:`http://127.0.0.1:${port}`,VESSEL_CONTROLLER_TOKEN:controllerToken},stdio:['ignore',fd,fd]});fs.closeSync(fd);agentProcess=proc;
+ proc.on('error',e=>{if(agentProcess===proc){agentProcess=null;controllerToken=null;agent={...agent,running:false,phase:'error',error:e.message};broadcast();}});
+ proc.on('exit',(code,signal)=>{if(agentProcess===proc){agentProcess=null;controllerToken=null;if(agent.running)agent={...agent,running:false,phase:agent.phase==='stopping'?'stopped':'error',exitCode:code,signal};broadcast();}});
+ broadcast();
+}
 reset();
 const server=http.createServer(async(req,res)=>{
  try{
@@ -33,34 +50,28 @@ const server=http.createServer(async(req,res)=>{
     const dirs=[dir,path.join(root,'evidence','suture'),path.join(root,'evidence','loop')];
     const files=dirs.filter(d=>fs.existsSync(d)).flatMap(d=>fs.readdirSync(d).filter(f=>f.endsWith('-agent.jsonl')).map(f=>path.join(d,f))).sort((a,b)=>path.basename(b).localeCompare(path.basename(a)));
     const latest=files.find(f=>fs.readFileSync(f,'utf8').split('\n').filter(Boolean).map(JSON.parse).some(e=>e.type==='verification'));
-    const recording=latest?latest.replace('-agent.jsonl','.jsonl'):path.join(root,'examples','astra-suture-42.jsonl');
+    const recording=b.recording?path.resolve(b.recording):(latest?latest.replace('-agent.jsonl','.jsonl'):path.join(root,'examples','astra-suture-42.jsonl'));
     if(!fs.existsSync(recording))throw Error('No completed model run is available to replay');
-    const fd=fs.openSync(path.join(dir,'replay-process.log'),'a');
-    agentProcess=spawn(process.execPath,[path.join(root,'replay.mjs'),recording],{cwd:root,env:{...process.env,VESSEL_URL:`http://127.0.0.1:${port}`},stdio:['ignore',fd,fd]});fs.closeSync(fd);
-    agentProcess.on('error',e=>{agentProcess=null;agent={...agent,running:false,error:e.message};});
-    agentProcess.on('exit',()=>{agentProcess=null;agent={...agent,running:false};});
+    launchController('replay.mjs',[recording],path.join(dir,'replay-process.log'),'replay');
     return json(res,200,{started:true,mode:'recorded replay',file:path.basename(recording)});
    }
    if(url.pathname==='/api/agent/start'){
     if(agent.running||agentProcess)throw Error('An agent is already running');
     if(['completed','failed'].includes(sim.status))throw Error('This episode has ended. Reset the scene before starting a controller run.');
-    if(!frames.has(sim.revision))throw Error('Open Godot and wait for a rendered frame first');
+    if(!frames.has(sim.revision)||Date.now()-frames.get(sim.revision).receivedAt>5000)throw Error('Open Godot and wait for a fresh rendered frame first');
     if(!['loop','suture'].includes(b.task))throw Error('Unknown experiment');
-    const fd=fs.openSync(path.join(root,'sessions',id+'-process.log'),'a');
-    agent={running:true,phase:'starting',model:'gpt-6-astra',task:b.task};
-    agentProcess=spawn(process.execPath,[path.join(root,'agent.mjs'),...(b.task==='loop'?['--loop']:[])],{cwd:root,env:{...process.env,VESSEL_URL:`http://127.0.0.1:${port}`},stdio:['ignore',fd,fd]});fs.closeSync(fd);
-    agentProcess.on('error',e=>{agentProcess=null;agent={...agent,running:false,phase:'error',error:e.message};broadcast();});
-    agentProcess.on('exit',code=>{agentProcess=null;if(agent.running)agent={...agent,running:false,phase:'stopped',exitCode:code};broadcast();});
+    launchController('agent.mjs',b.task==='loop'?['--loop']:[],path.join(root,'sessions',id+'-process.log'),b.task);
     broadcast();return json(res,200,{started:true,task:b.task});
    }
-   if(url.pathname==='/api/agent/stop'){agentProcess?.kill('SIGTERM');return json(res,200,{stopping:!!agentProcess});}
+   if(url.pathname==='/api/agent/stop'){return json(res,200,{stopping:stopController()});}
    if(url.pathname==='/api/frame'){
     if(typeof b.image!=='string'||!b.image.startsWith('data:image/jpeg;base64,')||b.revision!==sim.revision||b.session!==id)throw Error('Invalid or stale frame');
-    const frame={revision:b.revision,session:id,engine:b.engine,image:b.image,uiImage:b.uiImage,hash:crypto.createHash('sha256').update(b.image).digest('hex')};frames.set(b.revision,frame);for(const k of frames.keys())if(k<sim.revision-2)frames.delete(k);return json(res,200,{ok:true});
+    const frame={receivedAt:Date.now(),revision:b.revision,session:id,engine:b.engine,image:b.image,uiImage:b.uiImage,hash:crypto.createHash('sha256').update(b.image).digest('hex')};frames.set(b.revision,frame);for(const k of frames.keys())if(k<sim.revision-2)frames.delete(k);return json(res,200,{ok:true});
    }
-   if(url.pathname==='/api/reset'){if(agent.running)throw Error('Stop agent before resetting');reset(Number(b.seed??42));broadcast();return json(res,200,sim.observe());}
-   if(url.pathname==='/api/agent/status'){agent={...agent,...b};record('agent_status',b);broadcast();return json(res,200,{ok:true});}
+   if(url.pathname==='/api/reset'){if((agent.running||agentProcess)&&!(agent.task==='replay'&&authorizedController(req)))throw Error('Stop agent before resetting');reset(Number(b.seed??42));broadcast();return json(res,200,sim.observe());}
+   if(url.pathname==='/api/agent/status'){if(!authorizedController(req))throw Error('Controller lease is not active');agent={...agent,...b};record('agent_status',b);broadcast();return json(res,200,{ok:true});}
    if(url.pathname==='/api/step'||url.pathname==='/api/cut'||url.pathname==='/api/finish'){
+    if(['gpt-6-astra','replay'].includes(b.source)&&!authorizedController(req))throw Error('Controller lease is not active');
     if(agent.running&&b.source!==(agent.task==='replay'?'replay':'gpt-6-astra'))throw Error('Manual controls locked during agent run');
     if(typeof b.commandId!=='string')throw Error('commandId required');
     if(seen.has(b.commandId))return json(res,200,seen.get(b.commandId));
@@ -77,4 +88,4 @@ const server=http.createServer(async(req,res)=>{
  }catch(e){json(res,400,{error:e.message});}
 });
 server.listen(port,'127.0.0.1',()=>console.log(`Vessel Lab running at http://127.0.0.1:${port}`));
-process.on('SIGTERM',()=>{agentProcess?.kill('SIGTERM');server.close();process.exit(0);});
+for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>{stopController();server.close();setTimeout(()=>process.exit(0),2200).unref();});

@@ -1,0 +1,969 @@
+{
+  "test": "actual Godot rendering during scripted safe movements",
+  "mode": "locked",
+  "startedAt": "2026-10-23T17:40:25.568Z",
+  "samples": [
+    {
+      "before": {
+        "at": "2026-10-23T17:40:25Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:25Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 1,
+      "frameHash": "4bae56d8768d039858e1b21e69be4d6a8158e34b9c70c350e1ebc9f1e66ed119",
+      "latencyMs": 188,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:28Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:29Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 2,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 416,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:32Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:32Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 3,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 193,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:35Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:36Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 4,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 279,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:39Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:39Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 5,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 380,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:42Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:42Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 6,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 298,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:45Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:46Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 7,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 284,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:49Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:49Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 8,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 301,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:52Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:53Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 9,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 295,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:56Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:56Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 10,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 286,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:40:59Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:40:59Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 11,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 407,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:03Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:03Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 12,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 282,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:06Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:06Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 13,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 302,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:09Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:10Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 14,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 301,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:13Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:13Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 15,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 387,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:16Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:16Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 16,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 279,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:20Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:20Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 17,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 280,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:23Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:23Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 18,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 383,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:26Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:27Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 19,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 379,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:30Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:30Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 20,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 487,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:33Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:34Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 21,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 279,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:37Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:37Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 22,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 403,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:40Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:40Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 23,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 284,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:44Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:44Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 24,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 484,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:47Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:48Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 25,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 489,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:51Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:51Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 26,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 492,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:54Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:54Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 27,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 292,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:41:58Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:41:58Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 28,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 727,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:01Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:02Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 29,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 298,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:05Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:05Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 30,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 392,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:08Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:09Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 31,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 521,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:12Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:12Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 32,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 401,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:15Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:16Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 33,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 525,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:19Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:19Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 34,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 389,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:22Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:23Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 35,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 489,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:26Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:27Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 36,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 419,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:30Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:30Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 37,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 604,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:33Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:34Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 38,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 505,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:37Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:37Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 39,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 516,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:42:40Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-23T17:42:41Z",
+        "console": true,
+        "frontmost": "com.apple.loginwindow",
+        "cgSessionLocked": true,
+        "locked": true,
+        "userSessionLocked": true,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "revision": 40,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 385,
+      "engine": "Godot 4.7.2-stable (official)"
+    }
+  ],
+  "passed": true,
+  "endedAt": "2026-10-23T17:42:44.415Z"
+}

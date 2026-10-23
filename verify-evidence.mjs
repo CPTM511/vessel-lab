@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
+import {sourceManifest} from './manifest.mjs';
 import {VesselSim,VERSION} from './sim.mjs';
 const file=process.argv[2];
 if(!file){console.error('Usage: node verify-evidence.mjs <session-agent.jsonl>');process.exit(1);}
@@ -24,10 +25,11 @@ for(const e of rows.filter(x=>x.type==='tool')){
  const bytes=fs.readFileSync(path.join(dir,e.frameFile));
  const hash=crypto.createHash('sha256').update('data:image/jpeg;base64,'+bytes.toString('base64')).digest('hex');
  assert.equal(hash,e.frameHash);assert.ok(e.engine.startsWith('Godot '));
- if(e.tool==='step'){
+ if(['step','cut','finish'].includes(e.tool)){
   const engine=engineRows.find(x=>x.type==='action'&&x.command.commandId===e.callId);
   assert.ok(engine,'Model action must correspond to an actual applied engine command');
-  assert.deepEqual(engine.command.action,e.args);assert.equal(engine.revision,e.afterRevision);movements++;
+  if(e.tool==='step'){assert.deepEqual(engine.command.action,e.args);movements++;}
+  assert.equal(engine.revision,e.afterRevision);assert.deepEqual(engine.result,e.output);
  }
  frames++;
 }
@@ -35,5 +37,7 @@ const model=rows.find(x=>x.type==='model_session'),pre=rows.find(x=>x.type==='su
 assert.equal(model.model,'gpt-6-astra');assert.equal(pre.account.type,'chatgpt');
 assert.ok(post,'A completed verification record is required');assert.equal(post.allowance.creditBalanceUnchanged,true);
 assert.equal(post.allowance.ordinaryUsageAllowed,true);
-const report={valid:true,model:model.model,account:pre.account,task:post.task,actions,modelMovements:movements,verifiedGodotFrames:frames,subscription:post.allowance,finalResult:sim.result,limitations:'Local logs are reproducible evidence, not a third-party attestation or clinical validation.'};
+const configuration=rows.find(x=>x.type==='configuration');
+if(configuration)assert.deepEqual(configuration.source,sourceManifest(),'Recorded sources must match the verifier checkout');
+const report={valid:true,sourceDigest:configuration?.source.digest??null,hostLockSamples:rows.filter(x=>x.type==='tool'&&x.host?.screenLocked&&x.host?.userSessionLocked).length,model:model.model,account:pre.account,task:post.task,actions,modelMovements:movements,verifiedGodotFrames:frames,subscription:post.allowance,finalResult:sim.result,limitations:'Local logs are reproducible evidence, not a third-party attestation or clinical validation.'};
 console.log(JSON.stringify(report,null,2));

@@ -1,0 +1,369 @@
+{
+  "test": "actual Godot rendering during scripted safe movements",
+  "mode": "background",
+  "startedAt": "2026-10-23T17:37:12.743Z",
+  "samples": [
+    {
+      "before": {
+        "at": "2026-10-23T17:37:12Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:13Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 1,
+      "frameHash": "4bae56d8768d039858e1b21e69be4d6a8158e34b9c70c350e1ebc9f1e66ed119",
+      "latencyMs": 231,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:16Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:16Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 2,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 238,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:19Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:19Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 3,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 233,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:22Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:22Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 4,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 231,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:25Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:26Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 5,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 328,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:29Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:29Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 6,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 225,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:32Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:32Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 7,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 122,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:35Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:35Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 8,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 230,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:38Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:38Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 9,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 123,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:41Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:42Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 10,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 224,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:45Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:45Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 11,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 225,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:48Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:48Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 12,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 121,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:51Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:51Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 13,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 225,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:54Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:55Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 14,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 226,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:37:58Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:37:58Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 15,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 328,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:38:01Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:38:01Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 16,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 225,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:38:04Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:38:04Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 17,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 125,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:38:07Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:38:07Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 18,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 226,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:38:10Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:38:11Z",
+        "console": true,
+        "frontmost": "com.google.Chrome",
+        "locked": false
+      },
+      "revision": 19,
+      "frameHash": "d8606db07c8222fbe1fb86c94d6bc5a2520119e2bde14f428ecedeae6ae8f8b0",
+      "latencyMs": 287,
+      "engine": "Godot 4.7.2-stable (official)"
+    },
+    {
+      "before": {
+        "at": "2026-10-23T17:38:14Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "after": {
+        "at": "2026-10-23T17:38:14Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "locked": false
+      },
+      "revision": 20,
+      "frameHash": "0c2ea0727e381db1988759fafaf3456700e96d1f1bd7a1364117f73dae0700f2",
+      "latencyMs": 226,
+      "engine": "Godot 4.7.2-stable (official)"
+    }
+  ],
+  "passed": true,
+  "endedAt": "2026-10-23T17:38:17.519Z"
+}

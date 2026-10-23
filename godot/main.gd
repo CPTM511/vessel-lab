@@ -1,6 +1,6 @@
 extends Control
 
-const BASE = "http://127.0.0.1:8765"
+var BASE = OS.get_environment("VESSEL_URL") if OS.has_environment("VESSEL_URL") else "http://127.0.0.1:8765"
 const ACCENT = Color("72e5b4")
 var state: Dictionary = {}
 var session_id = ""
@@ -8,6 +8,7 @@ var rendered_revision = -1
 var poll_busy = false
 var capture_busy = false
 var uploaded_frames = 0
+var last_capture_ms = 0
 var command_busy = false
 var agent_running = false
 var last_phase = ""
@@ -381,19 +382,25 @@ func poll() -> void:
 		feedback_label.text = str(data.agent.error)
 	if state.get("result"):
 		feedback_label.text = "Evaluation: " + ("PASS" if state.result.passed else "FAIL") + "\n" + str(state.result.checks)
-	if rendered_revision != int(state.revision) and not capture_busy:
-		draw_state(state)
-		rendered_revision = int(state.revision)
+	if not capture_busy and (rendered_revision != int(state.revision) or Time.get_ticks_msec() - last_capture_ms > 2000):
+		if rendered_revision != int(state.revision):
+			draw_state(state)
+			rendered_revision = int(state.revision)
 		capture(rendered_revision, session_id)
 
 func capture(revision: int, sid: String) -> void:
 	if capture_busy:
 		return
 	capture_busy = true
+	last_capture_ms = Time.get_ticks_msec()
 	# Request an actual draw even when the native window is minimized or occluded.
 	await get_tree().process_frame
 	RenderingServer.force_draw(false)
 	var img = viewport.get_texture().get_image()
+	if img.is_empty():
+		capture_busy = false
+		rendered_revision = -1
+		return
 	if img.get_width() > 1000:
 		img.resize(1000, int(float(img.get_height())*1000/img.get_width()))
 	var b64 = Marshalls.raw_to_base64(img.save_jpg_to_buffer(.86))
