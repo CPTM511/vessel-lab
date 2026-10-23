@@ -1,0 +1,43 @@
+{
+  "checkpoint": "C0 anatomy inspection, in development",
+  "procedureComplete": false,
+  "mechanicsEnabled": false,
+  "liveModelEpisodes": 0,
+  "vesselBaselineTag": "v0.1.2",
+  "vesselRuntimeDigest": "5f99a4b67661585ad3b308d1a3322d36f17a14bd2f9003022b2eea46efbcbae8",
+  "reports": {
+    "inspection-attempt-03": {
+      "samples": 7,
+      "maxLatencyMs": 972,
+      "passed": true,
+      "sourceDigest": "7b2cabd214212bdceb3204f037895ab7ac35a1baecc599e5c026d7ed04c657ed"
+    },
+    "forward-plus-locked": {
+      "samples": 40,
+      "maxLatencyMs": 1292,
+      "passed": true,
+      "sourceDigest": "7b2cabd214212bdceb3204f037895ab7ac35a1baecc599e5c026d7ed04c657ed"
+    },
+    "compatibility-inspection": {
+      "samples": 7,
+      "maxLatencyMs": 967,
+      "passed": true,
+      "sourceDigest": "7b2cabd214212bdceb3204f037895ab7ac35a1baecc599e5c026d7ed04c657ed"
+    }
+  },
+  "verifiedFrameHashes": 54,
+  "pending": [
+    "Physical low-level manipulation and cutting",
+    "Independent protected-volume and terminal score",
+    "Unobstructed anatomical integration with physical deformation",
+    "Fresh model observations and controller lifecycle",
+    "Independent GPT-6 Astra seeds 11, 29, 83",
+    "Clean-source final release workflow"
+  ],
+  "limitations": [
+    "Visual morph is not tissue physics",
+    "Anatomy is synthetic, not expert validated",
+    "Compatibility lacks subsurface scattering",
+    "Locked-host rendering does not imply system-sleep execution"
+  ]
+}

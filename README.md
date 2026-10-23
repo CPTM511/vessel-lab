@@ -120,7 +120,11 @@ Local `sessions/` records include accepted/rejected actions, state revisions, co
 
 The current model uses fixed circular support, annular-plane puncture detection, constraint-based thread, and geometric knot recognition. It does not simulate thread self-contact, real knot topology, tissue tearing mechanics, lumen collapse, blood flow, or leakage under pressure. End effectors use kinematic XYZ and jaw controls rather than full robot dynamics or six-degree-of-freedom needle control. The lumen-area measurement is explicitly unavailable (`null`).
 
-These limitations bound the experimental claim. The platform does not establish clinical validity or real-world surgical capability. Other procedures have not been implemented.
+These limitations bound the experimental claim. The platform does not establish clinical validity or real-world surgical capability. Other complete procedure benchmarks have not been implemented.
+
+## Adult anatomy module (in development)
+
+A separately runnable [adult circumcision anatomy preview](procedures/circumcision/README.md) provides layered procedural geometry and actual Godot inspection frames. Its retraction control is a visual morph; physical cutting and autonomous procedure execution are pending. See the [frozen prototype protocol](procedures/circumcision/docs/PROTOCOL.md) and [checkpoint evidence](procedures/circumcision/evidence/CHECKPOINT.md). This module does not change the vessel v0.1.2 runtime or its accepted evaluation.
 
 ## Development
 

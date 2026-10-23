@@ -1,0 +1,97 @@
+{
+  "kind": "scripted-anatomy-inspection-not-model-evidence",
+  "createdAt": "2026-10-23T18:46:48.694Z",
+  "results": [
+    {
+      "mode": "covered",
+      "retraction": 0,
+      "revision": 1,
+      "latencyMs": 428,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "7ce000df5717380c0cfcdbfc9fcd799377c6fb676d3c9e56d995ce503b856319",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 191328
+    },
+    {
+      "mode": "retracted",
+      "retraction": 1,
+      "revision": 2,
+      "latencyMs": 739,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "133f1f1dd27f2c8fb6bbcabef3e512b8f85ef1d799fe36552363c8279bf2beb5",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 191328
+    },
+    {
+      "mode": "ventral",
+      "retraction": 1,
+      "revision": 3,
+      "latencyMs": 734,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "8ff02fcfbd08a3455220b5b054dcb6a362cabf935f293dad1d70d4d60b1cc0f0",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 191328
+    },
+    {
+      "mode": "inner",
+      "retraction": 0,
+      "revision": 4,
+      "latencyMs": 943,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "41b59b70c9a4275b178bb24e0e0087e44f35841ac979aa7cde0ded4d602bc190",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 191328
+    },
+    {
+      "mode": "protected",
+      "retraction": 1,
+      "revision": 5,
+      "latencyMs": 1043,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "77ad780f13fce4635ac748c1c62aaf3cba172de7122fe2d1b5a2f501bf2a2b5a",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 191328
+    },
+    {
+      "mode": "glans",
+      "retraction": 1,
+      "revision": 6,
+      "latencyMs": 633,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "cc45d7ee7a0fab09f0743901731e4c53490af06144fbe2e2609f05b31bb44240",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 191328
+    },
+    {
+      "mode": "outer",
+      "retraction": 0,
+      "revision": 7,
+      "latencyMs": 838,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "da02dc393688f8810aa1d92f0d54c7400fcca51bfa15604107f3b5de2ed87bd8",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 191328
+    }
+  ]
+}

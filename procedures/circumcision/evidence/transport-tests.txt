@@ -1,0 +1,4 @@
+Command: node --test tests/inspection.test.mjs
+Result: 1 test passed, 0 failed.
+Coverage: missing frame fails closed; stale session/revision rejected; invalid mode/morph leaves state unchanged; duplicate command is idempotent; reused command ID with a different body is rejected; foreign origin is rejected; stale frame is rejected.
+These are transport-only scripted tests, not rendered or model evidence.
