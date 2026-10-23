@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "fixture": "actual seed-1 episode copied and deliberately modified for negative tests",
+  "checks": [
+    {
+      "tampering": "action",
+      "rejected": true
+    },
+    {
+      "tampering": "frame",
+      "rejected": true
+    }
+  ]
+}

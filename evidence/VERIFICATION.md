@@ -1,3 +1,5 @@
+Current v1 results: [five-seed evaluation](EVALUATION.md). The prototype evidence below is retained as historical context.
+
 # Prototype verification
 
 Recorded experiment date: October 24, 2026. Mechanics version: 0.1.1.
@@ -70,4 +72,4 @@ godot --path godot --script res://test_background_capture.gd
 
 The vessel has a supported circular cross-section. Puncture detection uses annular lip planes, thread uses distance constraints, and knot recognition uses accumulated geometric winding. There is no real thread self-contact, full robot dynamics, lumen collapse, blood flow, or pressure/leakage evaluation. The lumen-area measurement returns `null`.
 
-The evidence supports completion of this simplified benchmark. It does not demonstrate clinical validity or real surgical performance. Further procedures and multi-seed live-model evaluation remain outside this recorded result.
+The evidence supports completion of this simplified benchmark. It does not demonstrate clinical validity or real surgical performance. Further procedures remain outside this historical recorded result. The subsequent five-seed vessel v1 evaluation is documented separately in [EVALUATION.md](EVALUATION.md).

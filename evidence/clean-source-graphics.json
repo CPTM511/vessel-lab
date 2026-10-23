@@ -1,0 +1,40 @@
+{
+  "source": "clean Git archive 48b6799",
+  "test": "actual graphical Godot workflow",
+  "passed": true,
+  "checks": [
+    "actual graphical launch",
+    "current Godot camera frame",
+    "manual movement rendered and measured",
+    "reset",
+    "bundled recorded replay",
+    "terminal score and native UI image"
+  ],
+  "engine": "Godot 4.7.2-stable (official)",
+  "result": {
+    "passed": true,
+    "checks": {
+      "closure": true,
+      "secured": true,
+      "threadTrimmed": true,
+      "released": true,
+      "tissueIntact": true
+    },
+    "metrics": {
+      "coverage": 1,
+      "maxGap": 0.08164727695938655,
+      "meanGap": 0.08164121582618665,
+      "bridges": 24,
+      "knot": true,
+      "cut": true,
+      "damage": 0,
+      "held": false,
+      "lumenAreaRatio": null,
+      "lumenModel": "fixture-constrained; not independently simulated",
+      "simulationSeconds": 34.2999999999987
+    },
+    "scope": "simplified annular-lip and geometric-knot benchmark; NOT validated vessel anastomosis",
+    "holdTest": "5 simulated seconds, no external pressure load"
+  },
+  "stderr": ""
+}

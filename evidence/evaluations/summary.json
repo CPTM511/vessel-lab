@@ -1,0 +1,209 @@
+{
+  "kind": "declared live controller evaluation",
+  "model": "gpt-6-astra",
+  "seeds": [
+    1,
+    7,
+    42,
+    99,
+    2026
+  ],
+  "source": {
+    "algorithm": "sha256",
+    "files": {
+      "agent.mjs": "970ebc8f08533a57ea81ced11bb9622fcabadeb3a600156d0560e71954e73036",
+      "server.mjs": "891adcfa7c43794cf8b670f4a5e1886ea171c282d1f8042410ce78766532f0ff",
+      "sim.mjs": "bb7a5320e40af9083d7653a1f90199d2411b369a48ba39c34723e13d27a09311",
+      "launch.mjs": "ca4f1b70e475276204c762252137069902aff8bbc08973961245af6baffe7013",
+      "replay.mjs": "e531723cec0fa379a83b9f0c88326fd1134c0dd66d87c94c427bf4fb48d8bbe7",
+      "evaluate.mjs": "b3e606233aec29ae7e9188f9177f2201c30208890c4e2f92f9f6fada521fe077",
+      "verify-evidence.mjs": "18b3bcef4fb09305e36a16e31994d01ea91cd332caae42652f176d5a2097d2f3",
+      "manifest.mjs": "3b936f526c08b6c3879a226eb011d7af280aa50c1ffd74eb6798879e179eee89",
+      "host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+      "godot/main.gd": "b9145a2fc27458693a2300ddc92295ee9b269148d8bcc3a499ba2e2def8a073a",
+      "godot/main.tscn": "4a1942bb6a9bc2abf5efcbe640e22fe8f8f2af32e96d75cce7fbc548eacc8886",
+      "godot/project.godot": "1fb8e2fd357b8c1a1f7c7b24388f1451458368c257a735dec3995216cd0dbcf8"
+    },
+    "digest": "5f99a4b67661585ad3b308d1a3322d36f17a14bd2f9003022b2eea46efbcbae8"
+  },
+  "startedAt": "2026-10-23T17:44:43.155Z",
+  "completedAt": "2026-10-23T18:27:51.667Z",
+  "passed": true,
+  "attempts": [
+    {
+      "seed": 1,
+      "passed": true,
+      "result": {
+        "passed": true,
+        "checks": {
+          "closure": true,
+          "secured": true,
+          "threadTrimmed": true,
+          "released": true,
+          "tissueIntact": true
+        },
+        "metrics": {
+          "coverage": 1,
+          "maxGap": 0.08170020079965709,
+          "meanGap": 0.08169375141581244,
+          "bridges": 24,
+          "knot": true,
+          "cut": true,
+          "damage": 0,
+          "held": false,
+          "lumenAreaRatio": null,
+          "lumenModel": "fixture-constrained; not independently simulated",
+          "simulationSeconds": 37.19999999999853
+        },
+        "scope": "simplified annular-lip and geometric-knot benchmark; NOT validated vessel anastomosis",
+        "holdTest": "5 simulated seconds, no external pressure load"
+      },
+      "actions": 61,
+      "frames": 65,
+      "rejectedCommands": 0,
+      "toolErrors": 0,
+      "episode": "evaluations/attempt-01-seed-1/episode.json",
+      "verificationValid": true
+    },
+    {
+      "seed": 7,
+      "passed": true,
+      "result": {
+        "passed": true,
+        "checks": {
+          "closure": true,
+          "secured": true,
+          "threadTrimmed": true,
+          "released": true,
+          "tissueIntact": true
+        },
+        "metrics": {
+          "coverage": 1,
+          "maxGap": 0.08180222157348363,
+          "meanGap": 0.08179499855268665,
+          "bridges": 24,
+          "knot": true,
+          "cut": true,
+          "damage": 0,
+          "held": false,
+          "lumenAreaRatio": null,
+          "lumenModel": "fixture-constrained; not independently simulated",
+          "simulationSeconds": 31.999999999998824
+        },
+        "scope": "simplified annular-lip and geometric-knot benchmark; NOT validated vessel anastomosis",
+        "holdTest": "5 simulated seconds, no external pressure load"
+      },
+      "actions": 62,
+      "frames": 66,
+      "rejectedCommands": 0,
+      "toolErrors": 0,
+      "episode": "evaluations/attempt-02-seed-7/episode.json",
+      "verificationValid": true
+    },
+    {
+      "seed": 42,
+      "passed": true,
+      "result": {
+        "passed": true,
+        "checks": {
+          "closure": true,
+          "secured": true,
+          "threadTrimmed": true,
+          "released": true,
+          "tissueIntact": true
+        },
+        "metrics": {
+          "coverage": 1,
+          "maxGap": 0.08164727695938653,
+          "meanGap": 0.08164121582618665,
+          "bridges": 24,
+          "knot": true,
+          "cut": true,
+          "damage": 0,
+          "held": false,
+          "lumenAreaRatio": null,
+          "lumenModel": "fixture-constrained; not independently simulated",
+          "simulationSeconds": 37.09999999999854
+        },
+        "scope": "simplified annular-lip and geometric-knot benchmark; NOT validated vessel anastomosis",
+        "holdTest": "5 simulated seconds, no external pressure load"
+      },
+      "actions": 65,
+      "frames": 133,
+      "rejectedCommands": 1,
+      "toolErrors": 1,
+      "episode": "evaluations/attempt-03-seed-42/episode.json",
+      "verificationValid": true
+    },
+    {
+      "seed": 99,
+      "passed": true,
+      "result": {
+        "passed": true,
+        "checks": {
+          "closure": true,
+          "secured": true,
+          "threadTrimmed": true,
+          "released": true,
+          "tissueIntact": true
+        },
+        "metrics": {
+          "coverage": 0.9583333333333334,
+          "maxGap": 0.5531972830516927,
+          "meanGap": 0.10135910843542074,
+          "bridges": 23,
+          "knot": true,
+          "cut": true,
+          "damage": 0.03,
+          "held": false,
+          "lumenAreaRatio": null,
+          "lumenModel": "fixture-constrained; not independently simulated",
+          "simulationSeconds": 37.24999999999853
+        },
+        "scope": "simplified annular-lip and geometric-knot benchmark; NOT validated vessel anastomosis",
+        "holdTest": "5 simulated seconds, no external pressure load"
+      },
+      "actions": 64,
+      "frames": 130,
+      "rejectedCommands": 1,
+      "toolErrors": 1,
+      "episode": "evaluations/attempt-04-seed-99/episode.json",
+      "verificationValid": true
+    },
+    {
+      "seed": 2026,
+      "passed": true,
+      "result": {
+        "passed": true,
+        "checks": {
+          "closure": true,
+          "secured": true,
+          "threadTrimmed": true,
+          "released": true,
+          "tissueIntact": true
+        },
+        "metrics": {
+          "coverage": 1,
+          "maxGap": 0.0816428369418494,
+          "meanGap": 0.08163676273737316,
+          "bridges": 24,
+          "knot": true,
+          "cut": true,
+          "damage": 0,
+          "held": false,
+          "lumenAreaRatio": null,
+          "lumenModel": "fixture-constrained; not independently simulated",
+          "simulationSeconds": 34.499999999998685
+        },
+        "scope": "simplified annular-lip and geometric-knot benchmark; NOT validated vessel anastomosis",
+        "holdTest": "5 simulated seconds, no external pressure load"
+      },
+      "actions": 61,
+      "frames": 66,
+      "rejectedCommands": 0,
+      "toolErrors": 0,
+      "episode": "evaluations/attempt-05-seed-2026/episode.json",
+      "verificationValid": true
+    }
+  ]
+}

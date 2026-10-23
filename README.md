@@ -6,7 +6,7 @@ Vessel Lab connects a language-model controller to a three-dimensional suturing 
 
 The project is an experimental embodied-AI research platform. Its simplified mechanics are not clinically validated.
 
-![Vessel Lab interface](evidence/godot-ui-replay.jpg)
+![Vessel Lab interface after a live evaluation](evidence/godot-ui-v1.jpg)
 
 ## Capabilities
 
@@ -88,20 +88,17 @@ Evaluation is computed by the environment; a controller's success statement cann
 
 ## Experimental result
 
-A live GPT-6 Astra episode on seed 42 completed the prototype benchmark on October 24, 2026:
+The vessel-suturing v1 evaluation completed five independent live GPT-6 Astra episodes on the predeclared seeds **1, 7, 42, 99, 2026**. All five passed the unchanged terminal checks. All attempts and rejected commands are retained.
 
-| Measurement | Result |
-|---|---|
-| Low-level step calls | 59 |
-| Tool responses with Godot frames | 67 |
-| Thread bridges / punctures | 24 / 48 |
-| Closure coverage | 24/24 samples |
-| Maximum gap | 0.08165 mm |
-| Knot, trim, release, and hold checks | Passed |
-| Synthetic damage | 0 |
-| Controller turn duration | 512.664 seconds |
+| Seed | Step calls | Godot observations | Rejected tool calls | Coverage | Damage | Maximum gap (mm) | All five checks |
+|---|---:|---:|---:|---:|---:|---:|---|
+| 1 | 59 | 65 | 0 | 100.00% | 0.000 | 0.081700 | Passed |
+| 7 | 60 | 66 | 0 | 100.00% | 0.000 | 0.081802 | Passed |
+| 42 | 63 | 133 | 1 | 100.00% | 0.000 | 0.081647 | Passed |
+| 99 | 62 | 130 | 1 | 95.83% | 0.030 | 0.553197 | Passed |
+| 2026 | 59 | 66 | 0 | 100.00% | 0.000 | 0.081643 | Passed |
 
-This is one recorded episode, not a success-rate estimate. The expanded v1 evaluation is in progress. See the [verification report](evidence/VERIFICATION.md) for evidence and limits.
+These are five observations on a small fixed synthetic fixture set, not a generalization or clinical-validity claim. See the [complete evaluation and reproducible evidence](evidence/EVALUATION.md). The earlier prototype recording remains available in `examples/astra-suture-42.jsonl` and is excluded from this evaluation denominator.
 
 ## Reproduction
 
@@ -111,6 +108,8 @@ npm test
 node replay.mjs examples/astra-suture-42.jsonl
 # Verify a locally recorded live episode:
 node verify-evidence.mjs sessions/<session-id>-agent.jsonl
+# Verify a published episode without private session metadata:
+node verify-public.mjs evidence/evaluations/attempt-01-seed-1/episode.json
 # Run the declared independent live evaluation set (1, 7, 42, 99, 2026):
 node evaluate.mjs
 ```

@@ -18,3 +18,5 @@ System sleep, shutdown, network loss, and prolonged application suspension do no
 ## Reproduction
 
 With the controller stopped and the graphical Godot client running, execute `node tests/render-host.mjs --locked` from a terminal or task that remains active when macOS is locked. The probe resets the fixture and performs 40 scripted movements. It rejects any sample without both OS lock flags, requires changing fresh frames, and saves a timestamped report under `sessions/`. Without `--locked`, it tests fresh rendering without making a claim about the OS window state. Never run this probe during an autonomous episode.
+
+The frozen source archive also launched an actual graphical Godot scene on an isolated local port. A manual movement changed the rendered camera image and measured tool pose; reset and bundled playback then completed with a passing terminal score. Results are in `clean-source-graphics.json`, with the native interface captured in `clean-source-ui.jpg`. The controller evaluation was not modified by this isolated replay test.
