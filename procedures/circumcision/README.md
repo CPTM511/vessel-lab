@@ -22,6 +22,8 @@ This command saves actual images and source hashes for seven views. `--locked --
 
 ## Mechanical development
 
+The latest [resection feasibility and contact audit](evidence/RESECTION.md) identifies a blocking mechanical defect: a complete numerical trajectory satisfies the narrow geometric score but contains retained-layer crossings and extensive detached-shell self-intersections. Its actual Godot run was stopped and preserved. Contact handling must be corrected before autonomous evaluation or release.
+
 See [local cutting and independent area semantics](docs/CUTTING.md), [the mechanical model and controls](docs/MECHANICS.md) and [current scripted attachment evidence](evidence/CLOSURE.md). The current fixture demonstrates bilateral grasp/release, local cutting, one synthetic edge attachment and a released hold, with actual Godot images and independently reproduced topology and assessment. See [evaluator definitions and limitations](docs/EVALUATOR.md). It is not an autonomous episode or a completed procedure.
 
 ```sh

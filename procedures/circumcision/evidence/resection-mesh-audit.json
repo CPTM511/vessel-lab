@@ -1,0 +1,284 @@
+{
+  "kind": "static numerical mesh audit; not rendered or autonomous evidence",
+  "method": "Interior segment/triangle intersections with a spatial grid; adjacent faces excluded. Coplanar overlap, near contact and continuous collision are not evaluated.",
+  "analyticControls": "crossing detected; separated pair rejected",
+  "initial": {
+    "revision": 0,
+    "activeFaces": 4608,
+    "candidatePairs": 146382,
+    "properCrossings": {
+      "retained": 0,
+      "detached": 0,
+      "mixed": 0
+    },
+    "witnesses": []
+  },
+  "endpoint": {
+    "revision": 1715,
+    "activeFaces": 4416,
+    "candidatePairs": 277381,
+    "properCrossings": {
+      "retained": 42,
+      "detached": 4836,
+      "mixed": 0
+    },
+    "witnesses": [
+      {
+        "faces": [
+          865,
+          2304
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -10.743911506701261,
+          11.21793976675739,
+          1.3965544135883017
+        ]
+      },
+      {
+        "faces": [
+          865,
+          2305
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -9.653512884008762,
+          11.61197372870091,
+          1.004215731739134
+        ]
+      },
+      {
+        "faces": [
+          866,
+          2306
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -10.743911506701261,
+          11.138471059875137,
+          1.9411814137432932
+        ]
+      },
+      {
+        "faces": [
+          867,
+          2306
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -10.049893674428896,
+          11.396862041488891,
+          2.3919194305886733
+        ]
+      },
+      {
+        "faces": [
+          867,
+          2307
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -9.666692707122456,
+          11.513443265550501,
+          2.359200471321321
+        ]
+      },
+      {
+        "faces": [
+          960,
+          2305
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -9.653512884008762,
+          11.61197372870091,
+          1.0042157317391336
+        ]
+      },
+      {
+        "faces": [
+          960,
+          2400
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -9.265779476163559,
+          11.773141331178596,
+          0.8980281918288091
+        ]
+      },
+      {
+        "faces": [
+          960,
+          2401
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "retained",
+        "point": [
+          -8.49814487590287,
+          12.006785498978626,
+          0.8674694727354451
+        ]
+      },
+      {
+        "faces": [
+          1248,
+          2880
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          43.008225598445435,
+          16.404009895982384,
+          -0.6050841511333875
+        ]
+      },
+      {
+        "faces": [
+          1249,
+          2880
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          41.954777287125374,
+          15.937555372318553,
+          -0.761646354123333
+        ]
+      },
+      {
+        "faces": [
+          1249,
+          2881
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          41.60353426645255,
+          15.883841590563849,
+          -0.6615777700254376
+        ]
+      },
+      {
+        "faces": [
+          1249,
+          2976
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          41.60353426645255,
+          15.883841590563849,
+          -0.661577770025439
+        ]
+      },
+      {
+        "faces": [
+          1338,
+          2876
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          43.70109705820947,
+          13.82726376517902,
+          -2.573992506140582
+        ]
+      },
+      {
+        "faces": [
+          1339,
+          2876
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          43.35627401599416,
+          14.13915735244307,
+          -2.5622714475443824
+        ]
+      },
+      {
+        "faces": [
+          1339,
+          2877
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          43.281591091771894,
+          14.21908613889585,
+          -2.592186940089955
+        ]
+      },
+      {
+        "faces": [
+          1340,
+          2877
+        ],
+        "layers": [
+          0,
+          1
+        ],
+        "type": "detached",
+        "point": [
+          43.14034492388344,
+          15.1717780489801,
+          -2.8951288264475594
+        ]
+      }
+    ]
+  }
+}
