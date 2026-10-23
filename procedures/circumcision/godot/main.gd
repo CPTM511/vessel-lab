@@ -36,6 +36,7 @@ var arm_select: OptionButton
 var mechanics_label: Label
 var active_mechanics = false
 var retraction_button: Button
+var cut_toggle: CheckBox
 var last_mode = ""
 var last_morph = -1.0
 var morph_slider: HSlider
@@ -164,8 +165,12 @@ func build_ui() -> void:
 	mechanics_panel.add_child(jaw_row)
 	add_button("Grasp",jaw_row,func():mechanical_step({"jaw":0.0}))
 	add_button("Release",jaw_row,func():mechanical_step({"jaw":1.0}))
+	cut_toggle = CheckBox.new()
+	cut_toggle.text = "Cut with each manual jog"
+	mechanics_panel.add_child(cut_toggle)
+	add_button("Local cut pulse",mechanics_panel,func():mechanical_step({"cut":true}))
 	mechanics_label = note("",mechanics_panel,ACCENT)
-	note("Physical shell manipulation only. Cutting, closure and model control remain disabled.",mechanics_panel)
+	note("Local triangle ablation enabled. Closure, terminal score and model control remain disabled.",mechanics_panel)
 	panel.add_child(text_label("Layer inspection",18))
 	add_button("Outer preputial skin",panel,func():preset("outer"))
 	add_button("Inner preputial mucosa",panel,func():preset("inner"))
@@ -185,7 +190,7 @@ func build_ui() -> void:
 	slider_timer.timeout.connect(func(): send_change({"retraction":morph_slider.value}))
 	add_child(slider_timer)
 	morph_slider.value_changed.connect(func(_v):slider_timer.start())
-	note("Visual morph only. Tissue forces and cutting are not enabled in this checkpoint.",panel)
+	note("Visual inspection morph only. Disabled during the physical mechanics sandbox.",panel)
 	mode_label = note("",panel,ACCENT)
 	panel.add_child(HSeparator.new())
 	panel.add_child(text_label("Inspection record",18))
@@ -365,7 +370,10 @@ func mechanical_jog(axis: int, amount: float, rotation_value: bool) -> void:
 	target_value[axis] += amount
 	if rotation_value:
 		target_value[axis] = fposmod(target_value[axis]+180.0,360.0)-180.0
-	mechanical_step({property:target_value})
+	var change = {property:target_value}
+	if cut_toggle.button_pressed:
+		change["cut"] = true
+	mechanical_step(change)
 
 func draw_instruments(data: Dictionary) -> void:
 	for n in instrument_nodes.get_children():
@@ -380,9 +388,15 @@ func draw_instruments(data: Dictionary) -> void:
 		for sign_value in [-1,1]:
 			var tip = p+q*Vector3(0,0,sign_value*(.22+a.jaw*.75))
 			line(tip,p+q*Vector3(0,4,0),.18,color,instrument_nodes)
+		if a.get("cutting",false):
+			var blade = SphereMesh.new()
+			blade.radius = .35
+			blade.height = .70
+			mesh_node(blade,plain_material(Color("eea672")),p,instrument_nodes)
 		world_label("L" if arm_name=="left" else "R",p+q*Vector3(0,14,0),instrument_nodes,color,23)
 	var m: Dictionary = data.metrics
 	mechanics_label.text = "Grasps: %s  ·  Protected hits: %s\nPeak displacement: %.2f mm\nTime: %.2f s\nL: %.1f, %.1f, %.1f\nR: %.1f, %.1f, %.1f" % [m.activeGrasps,m.protectedIntersections,m.maxDisplacementMm,m.simulationSeconds,data.arms.left.position[0],data.arms.left.position[1],data.arms.left.position[2],data.arms.right.position[0],data.arms.right.position[1],data.arms.right.position[2]]
+	mechanics_label.text += "\nCut faces: %s · Components: %s\nTarget detached: %.2f%%\nOff-target removed: %.2f%%" % [m.cutFaceCount,m.components.size(),m.area.targetDetachedFraction*100,m.area.offTargetRemovedFraction*100]
 
 func poll() -> void:
 	if poll_busy:
@@ -463,7 +477,7 @@ func capture() -> void:
 	if frame == null or frame.is_empty() or ui == null or ui.is_empty():
 		capture_busy = false
 		return
-	var body = {"session":captured_session,"revision":captured_revision,"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
+	var body = {"session":captured_session,"revision":captured_revision,"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"cutFaceCount":scene_state.get("mechanics",{}).get("metrics",{}).get("cutFaceCount",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
 	var request = HTTPRequest.new()
 	request.timeout = 3
 	add_child(request)

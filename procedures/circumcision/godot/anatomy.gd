@@ -9,6 +9,7 @@ var meshes: Dictionary = {}
 var materials: Dictionary = {}
 var retraction = 0.0
 var mechanical_positions: Array = []
+var mechanical_faces: Array = []
 var rest_cage: Dictionary = {}
 var mechanical_scale = 1.0
 var surface_count = 0
@@ -120,6 +121,62 @@ func fold_point(u: float, theta: float) -> Vector3:
 	var inside = deformed_point(1.0,theta,true)
 	return outside.lerp(inside,u) + Vector3(.20*sin(u*PI),0,0)
 
+func fold_cell_active(theta: float) -> bool:
+	if mechanical_faces.is_empty():
+		return true
+	var j = int(floor(fposmod(theta,TAU)/TAU*rest_cage.angular))
+	for layer in range(2):
+		var id = (layer*rest_cage.axial*rest_cage.angular+(rest_cage.axial-1)*rest_cage.angular+j)*2
+		if not mechanical_faces[id].active or not mechanical_faces[id+1].active:
+			return false
+	return true
+
+func mechanical_surface(layer: int) -> void:
+	var st = SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var divisions = 4
+	var count = 0
+	for face in mechanical_faces:
+		if not face.active or int(face.layer) != layer:
+			continue
+		var ids: Array = face.nodes
+		var uv_points: Array = []
+		var deltas: Array = []
+		for id in ids:
+			var node: Dictionary = rest_cage.nodes[int(id)]
+			var j = int(node.j)
+			if int(face.j) == int(rest_cage.angular)-1 and j == 0:
+				j = int(rest_cage.angular)
+			uv_points.append(Vector2(float(j)/rest_cage.angular,float(node.ring)/rest_cage.axial))
+			deltas.append(vector_array(mechanical_positions[int(id)])/mechanical_scale-vector_array(node.rest))
+		for i in range(divisions):
+			for j in range(divisions-i):
+				var triangles = [[Vector2(i,j),Vector2(i+1,j),Vector2(i,j+1)]]
+				if i+j < divisions-1:
+					triangles.append([Vector2(i+1,j),Vector2(i+1,j+1),Vector2(i,j+1)])
+				for triangle in triangles:
+					# The inner face reverses winding; both materials remain two-sided.
+					if layer == 0:
+						triangle.reverse()
+					for v in triangle:
+						var w = Vector3(1.0-(v.x+v.y)/divisions,v.x/divisions,v.y/divisions)
+						var uv: Vector2 = uv_points[0]*w.x+uv_points[1]*w.y+uv_points[2]*w.z
+						var delta: Vector3 = deltas[0]*w.x+deltas[1]*w.y+deltas[2]*w.z
+						st.set_uv(uv)
+						st.add_vertex(prepuce_point(uv.y,uv.x*TAU,layer==1)+delta)
+					count += 1
+	if count == 0:
+		return
+	st.index()
+	st.generate_normals()
+	st.generate_tangents()
+	var n = MeshInstance3D.new()
+	n.mesh = st.commit()
+	n.material_override = materials.skin if layer==0 else materials.mucosa
+	var key = "outer" if layer==0 else "inner"
+	parts[key].add_child(n)
+	meshes[key] = n
+
 func surface(name_value: String, point_function: Callable, mat: Material, rings: int = RINGS, segments: int = SEGMENTS, reverse: bool = false) -> MeshInstance3D:
 	var vertices = PackedVector3Array()
 	var normals = PackedVector3Array()
@@ -141,9 +198,13 @@ func surface(name_value: String, point_function: Callable, mat: Material, rings:
 			normals.append(-n if reverse else n)
 	for i in range(rings):
 		for j in range(segments):
+			if name_value == "fold" and not fold_cell_active(TAU*(float(j)+.5)/segments):
+				continue
 			var a = i*(segments+1)+j
 			var b = a+segments+1
 			indices.append_array(PackedInt32Array([a,b+1,b,a,a+1,b+1]))
+	if indices.is_empty():
+		return null
 	var arrays = []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = vertices
@@ -193,8 +254,12 @@ func update_prepuce(value: float) -> void:
 		for c in parts[key].get_children():
 			parts[key].remove_child(c)
 			c.queue_free()
-	surface("outer",func(u,t):return deformed_point(u,t,false),materials.skin)
-	surface("inner",func(u,t):return deformed_point(u,t,true),materials.mucosa,RINGS,SEGMENTS,true)
+	if mechanical_positions.is_empty():
+		surface("outer",func(u,t):return deformed_point(u,t,false),materials.skin)
+		surface("inner",func(u,t):return deformed_point(u,t,true),materials.mucosa,RINGS,SEGMENTS,true)
+	else:
+		mechanical_surface(0)
+		mechanical_surface(1)
 	surface("fold",fold_point,materials.mucosa,10)
 	# Thin ventral attachment web; this is not a calibrated tissue membrane.
 	var st = SurfaceTool.new()
@@ -282,11 +347,13 @@ func apply_mechanics(data: Dictionary) -> void:
 	if rest_cage.is_empty():
 		rest_cage = JSON.parse_string(FileAccess.get_file_as_string("res://data/tissue-rest.json"))
 	mechanical_positions = data.positions
+	mechanical_faces = data.faces
 	mechanical_scale = data.scale
 	scale = Vector3.ONE*mechanical_scale
 	update_prepuce(0.0)
 
 func clear_mechanics() -> void:
 	mechanical_positions = []
+	mechanical_faces = []
 	mechanical_scale = 1.0
 	scale = Vector3.ONE

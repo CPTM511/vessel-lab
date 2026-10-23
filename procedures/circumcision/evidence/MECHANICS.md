@@ -1,5 +1,7 @@
 # Bilateral mechanical checkpoint
 
+Historical manipulation checkpoint at commit `6775335`. The current cutting source and rendered evidence are documented in [CUTTING.md](CUTTING.md). Reproduce the original observations using that historical commit; its source fingerprints intentionally differ from later work.
+
 Status: **manual mechanical development, not a completed procedure**. No model inference was used. The C0 live seed set has not begun.
 
 The final scripted fixture (`mechanics-attempt-03/report.json`) executes 14 low-level commands through the actual local service and Godot renderer. Both instruments approach the tissue, close their jaws, establish separate barycentric grasps, move and release. A rotation command exercises the instrument pose interface. The inspector's visual retraction morph is disabled throughout.

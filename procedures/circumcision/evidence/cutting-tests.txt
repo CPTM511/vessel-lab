@@ -1,0 +1,20 @@
+✔ capsule sweep detects triangle interiors, edges and degenerate cases without endpoint tunneling (0.652292ms)
+✔ local cutting uses geometry, remains bounded, and cannot edit the independent target mask (1149.563625ms)
+✔ invalid cutting commands and occupied instruments are rejected atomically (1240.066042ms)
+✔ topology includes both layers and bending support; detached tissue remains simulated (28.898333ms)
+✔ off-target loss is measured from immutable initial area; no-cut baseline is not a success (20.262875ms)
+✔ cutting reproducibly releases a grasp when its actual supporting face is removed (3914.353333ms)
+✔ inspection state is atomic, revisioned, idempotent and origin restricted (5279.458458ms)
+✔ invalid bilateral commands and stale revisions are atomic (28.777792ms)
+✔ rest state is stable, fixed boundaries do not drift, and grasp requires proximity (322.504792ms)
+✔ barycentric grasp moves actual tissue; releasing removes constraints without a visual morph (2424.383ms)
+✔ protected anatomy uses independent geometry and swept instrument violations remain recorded (5604.940167ms)
+✔ the same seed and low-level sequence reproduce tissue positions (1443.830083ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9894.845791

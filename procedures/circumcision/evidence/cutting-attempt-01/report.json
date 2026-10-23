@@ -1,0 +1,5340 @@
+{
+  "kind": "scripted mechanical development fixture; no model inference or procedure completion",
+  "seed": 11,
+  "startedAt": "2026-10-23T20:40:44.451Z",
+  "sourceHashes": {
+    "mechanics.mjs": "93fa47a640960f71398cc996c72be12e7b06da198678f62b92d3a6de423eb524",
+    "cutting.mjs": "c98f2ca23dd614c1f61e2a1a37f8ed58e0baa19f8fc6559a253afe5451c32d1d",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "inspector.mjs": "9be5f57044d70487bda51334bfb85519b07f6e9bc49df1f75f751240374b7eeb",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "probe-mechanics.mjs": "85379c8048770980e5e590972910daf2f61f87f3d8e4df34e6e7edca5f93fc87",
+    "godot/main.gd": "ff92b2a11430ee81d62e88eadd3574ec0617a95f2d4b3ca97a5d7eafc179b5b2",
+    "godot/anatomy.gd": "9f85d78ec14191c4cd62fca38dae650d3504a56b3f0e912bf915d5463a91f7ef",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/data/tissue-rest.json": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+  },
+  "cuttingFixture": true,
+  "steps": [
+    {
+      "action": {
+        "revision": 0,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            25.80350696004531,
+            12.722687911984519,
+            6.787310442447462
+          ]
+        }
+      },
+      "observation": {
+        "revision": 1,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.80350696004531,
+              12.722687911984519,
+              6.787310442447462
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26,
+              16,
+              -8
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.049999999999999996
+        },
+        "events": [],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-001.jpg",
+        "imageHash": "37e05be0e8fe482b4497a0dd3e4fe1b043c0b05757a74c91fb2aa27a0faba5b2",
+        "revision": 2,
+        "mechanicsRevision": 1,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1372,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:45.657Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:47.059Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 1,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            25.607013920090623,
+            9.445375823969037,
+            5.574620884894925
+          ]
+        }
+      },
+      "observation": {
+        "revision": 2,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.607013920090623,
+              9.445375823969037,
+              5.574620884894925
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26,
+              16,
+              -8
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.09999999999999999
+        },
+        "events": [],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-002.jpg",
+        "imageHash": "45a80bfbe96ded1104259832c8c8835e04b8e542aa548081072851aac8a4794b",
+        "revision": 3,
+        "mechanicsRevision": 2,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1184,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:47.096Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:48.311Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 2,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            25.410520880135934,
+            6.168063735953556,
+            4.361931327342387
+          ]
+        }
+      },
+      "observation": {
+        "revision": 3,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.410520880135934,
+              6.168063735953556,
+              4.361931327342387
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26,
+              16,
+              -8
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.15
+        },
+        "events": [],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-003.jpg",
+        "imageHash": "e8062b96264c6ddd4aff89ade49c0377faea0b2527a094759e301335de7de279",
+        "revision": 4,
+        "mechanicsRevision": 3,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1260,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:48.339Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:49.625Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 3,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            25.34157155384051,
+            5.018056282352996,
+            3.9363990641231523
+          ]
+        }
+      },
+      "observation": {
+        "revision": 4,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.34157155384051,
+              5.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26,
+              16,
+              -8
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.19999999999999998
+        },
+        "events": [],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-004.jpg",
+        "imageHash": "f4f9acf0204ed4778a0cec661bbd555c8ee42ffb350c876abcf6102f4a10b1d5",
+        "revision": 5,
+        "mechanicsRevision": 4,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1242,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:49.652Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:50.921Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 4,
+        "duration": 0.05,
+        "left": {
+          "jaw": 0
+        }
+      },
+      "observation": {
+        "revision": 5,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.34157155384051,
+              5.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26,
+              16,
+              -8
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 1,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.24999999999999997
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-005.jpg",
+        "imageHash": "733657f1cd57ecf2033e697f18ba0b88a24ca54e19e899d7bfa83dc2d92152e1",
+        "revision": 6,
+        "mechanicsRevision": 5,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1176,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:50.947Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:52.149Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 5,
+        "duration": 0.05,
+        "right": {
+          "position": [
+            25.70089730779347,
+            12.729519022454324,
+            -6.789838128584988
+          ]
+        }
+      },
+      "observation": {
+        "revision": 6,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.34157155384051,
+              5.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              25.70089730779347,
+              12.729519022454324,
+              -6.789838128584988
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 1,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.3000000000000001
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-006.jpg",
+        "imageHash": "141d825399297203f94d4aa687c877ea89285230614ed1fdd7d3cf5e3f3550fe",
+        "revision": 7,
+        "mechanicsRevision": 6,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1270,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:52.176Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:53.472Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 6,
+        "duration": 0.05,
+        "right": {
+          "position": [
+            25.401794615586937,
+            9.459038044908649,
+            -5.579676257169975
+          ]
+        }
+      },
+      "observation": {
+        "revision": 7,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.34157155384051,
+              5.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              25.401794615586937,
+              9.459038044908649,
+              -5.579676257169975
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 1,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.35000000000000026
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-007.jpg",
+        "imageHash": "df7983472df86cabe96db3465488ae997be2b465d7801afd82c00c93e4db3bd5",
+        "revision": 8,
+        "mechanicsRevision": 7,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1347,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:53.498Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:54.870Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 7,
+        "duration": 0.05,
+        "right": {
+          "position": [
+            25.10269192338041,
+            6.188557067362972,
+            -4.369514385754963
+          ]
+        }
+      },
+      "observation": {
+        "revision": 8,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.34157155384051,
+              5.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              25.10269192338041,
+              6.188557067362972,
+              -4.369514385754963
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 1,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.4000000000000004
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-008.jpg",
+        "imageHash": "2fa3465b530626dbd9bd54e9941e95ccb4997b31cdad12497b607d2d57c16477",
+        "revision": 9,
+        "mechanicsRevision": 8,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1256,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:54.896Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:56.178Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 8,
+        "duration": 0.05,
+        "right": {
+          "position": [
+            24.995643468296876,
+            5.018056282352996,
+            -3.9363990641231523
+          ]
+        }
+      },
+      "observation": {
+        "revision": 9,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.34157155384051,
+              5.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              24.995643468296876,
+              5.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 1,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.45000000000000057
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-009.jpg",
+        "imageHash": "1d456b68acc322b9958e50c6180012d52f5955563143f5c81a93e76e06b63e93",
+        "revision": 10,
+        "mechanicsRevision": 9,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1138,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:56.204Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:57.367Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 9,
+        "duration": 0.05,
+        "right": {
+          "jaw": 0
+        }
+      },
+      "observation": {
+        "revision": 10,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.34157155384051,
+              5.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              24.995643468296876,
+              5.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2293,
+              "nodes": [
+                1147,
+                1195,
+                1194
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                24.995643468296876,
+                5.018056282352996,
+                -3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 2,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            },
+            {
+              "arm": "right",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 0,
+          "meanDisplacementMm": 0,
+          "maxConstraintStrain": 0,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.5000000000000007
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8e8a4ebd289b7cc5a9035db8c7691736b5c2871dabff4980e2fcf0cea6eeee3e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-010.jpg",
+        "imageHash": "fe4ceb6acd50ea8f748bde3414581318cb68547e83eb2d1345376fd663cc6011",
+        "revision": 11,
+        "mechanicsRevision": 10,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1341,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:57.398Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:58.765Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 10,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            28.34157155384051,
+            6.018056282352996,
+            3.9363990641231523
+          ]
+        }
+      },
+      "observation": {
+        "revision": 11,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              28.34157155384051,
+              6.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              24.995643468296876,
+              5.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2293,
+              "nodes": [
+                1147,
+                1195,
+                1194
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                24.995643468296876,
+                5.018056282352996,
+                -3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 2,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            },
+            {
+              "arm": "right",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 3.1622776601683795,
+          "meanDisplacementMm": 0.01501710627404845,
+          "maxConstraintStrain": 1.3227059957565954,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.5500000000000005
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "e7b49bf028adcb273e36a3f185ceba9e1826abe3f7fe4a00da5e4f866c4d17e7",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-011.jpg",
+        "imageHash": "8c82fad24b50ed2e4790641763bc28a44cfac0f7ad6bb84e57c59b62bb28dc0f",
+        "revision": 12,
+        "mechanicsRevision": 11,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1137,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:58.794Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:59.957Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 11,
+        "duration": 0.05,
+        "right": {
+          "position": [
+            26.995643468296876,
+            6.018056282352996,
+            -3.9363990641231523
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            10
+          ]
+        }
+      },
+      "observation": {
+        "revision": 12,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              28.34157155384051,
+              6.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2217,
+              "nodes": [
+                1109,
+                1157,
+                1156
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                25.34157155384051,
+                5.018056282352996,
+                3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 0,
+            "grasp": {
+              "face": 2293,
+              "nodes": [
+                1147,
+                1195,
+                1194
+              ],
+              "weights": [
+                0,
+                1,
+                0
+              ],
+              "point": [
+                24.995643468296876,
+                5.018056282352996,
+                -3.9363990641231523
+              ],
+              "distance": 0,
+              "offset": [
+                0,
+                0,
+                0
+              ]
+            },
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 2,
+          "graspErrors": [
+            {
+              "arm": "left",
+              "error": 0
+            },
+            {
+              "arm": "right",
+              "error": 0
+            }
+          ],
+          "maxDisplacementMm": 3.1622776601683795,
+          "meanDisplacementMm": 0.04975835565042331,
+          "maxConstraintStrain": 0.7475528497521251,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.6000000000000003
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "90e5b27b4b575ef4cb507f33266e7bc6963033e76466d1b1c5cc3a4fcb0a327e",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-012.jpg",
+        "imageHash": "0a584486c923e8212ea33941ab029da583ddb7d113ee550754bc1ca13d823ff3",
+        "revision": 13,
+        "mechanicsRevision": 12,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1253,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:40:59.987Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:01.268Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 12,
+        "duration": 0.05,
+        "left": {
+          "jaw": 1
+        },
+        "right": {
+          "jaw": 1
+        }
+      },
+      "observation": {
+        "revision": 13,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              28.34157155384051,
+              6.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 1.8029144435436564,
+          "meanDisplacementMm": 0.07801615783267565,
+          "maxConstraintStrain": 0.13148348720636305,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.6500000000000001
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "ab1de439773b0f6131ec7ceb7b4a6b4de4fc70373171b1d8de58f33c1be9ff69",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-013.jpg",
+        "imageHash": "231a8c021cf12fe413103e1014e38d1b11cc150a2535848c07eede176eda7783",
+        "revision": 14,
+        "mechanicsRevision": 13,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1431,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:01.298Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:02.754Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 13,
+        "duration": 0.2
+      },
+      "observation": {
+        "revision": 14,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              28.34157155384051,
+              6.018056282352996,
+              3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.7623643893071178,
+          "meanDisplacementMm": 0.07631299346349493,
+          "maxConstraintStrain": 0.04301778189990091,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.8499999999999994
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "40df42c563b76bee8324623a021fa6b59b92e08d542e0dea755dfb2b8ee66fd5",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-014.jpg",
+        "imageHash": "54e648c00e0f76fafc6d28d11b16b5788222fd3725a29a72653958d85a14e166",
+        "revision": 15,
+        "mechanicsRevision": 14,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1914,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:02.782Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:04.723Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 14,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            28.873887410548377,
+            9.22202141812587,
+            5.240717751196705
+          ]
+        }
+      },
+      "observation": {
+        "revision": 15,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              28.873887410548377,
+              9.22202141812587,
+              5.240717751196705
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.6886046777493835,
+          "meanDisplacementMm": 0.07422231605235938,
+          "maxConstraintStrain": 0.037847273773989665,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.8999999999999992
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "9e6ba0cf7db8248b4bd845099cc3a0c4b1e511431b5b226dc1df9015f594b0f6",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-015.jpg",
+        "imageHash": "230c86f0efe7489dd9840cd7a17e5ae5f6f91855f0e343c7e9750d950faea4bd",
+        "revision": 16,
+        "mechanicsRevision": 15,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1148,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:04.755Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:05.930Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 15,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            29.406203267256245,
+            12.425986553898744,
+            6.545036438270258
+          ]
+        }
+      },
+      "observation": {
+        "revision": 16,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              29.406203267256245,
+              12.425986553898744,
+              6.545036438270258
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.6301376762053186,
+          "meanDisplacementMm": 0.07216268550357555,
+          "maxConstraintStrain": 0.03357574198698288,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.9499999999999991
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "edff10e4018987245df0e65f27a33eba085de5ef10ea0a7f555847712cbd691b",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-016.jpg",
+        "imageHash": "887d7113a779fd08bd14c82eb4e76c0cecc926c785b907772075373480aa2a99",
+        "revision": 17,
+        "mechanicsRevision": 16,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1159,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:05.957Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:07.143Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 16,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            29.938519123964113,
+            15.629951689671618,
+            7.849355125343811
+          ]
+        }
+      },
+      "observation": {
+        "revision": 17,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              29.938519123964113,
+              15.629951689671618,
+              7.849355125343811
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.5827959109565826,
+          "meanDisplacementMm": 0.07016705513390041,
+          "maxConstraintStrain": 0.030023716004635936,
+          "protectedIntersections": 0,
+          "simulationSeconds": 0.9999999999999989
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "8170df88baf753cacefc5be2ad199f2955ae16fb71c967cf8c91d13c0c75e177",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-017.jpg",
+        "imageHash": "8f5d68fae62f1521ec21496b85307d18aa68ea643d8a5b44e8a7b3c030a36520",
+        "revision": 18,
+        "mechanicsRevision": 17,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1251,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:07.170Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:08.448Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 17,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            30,
+            16,
+            8
+          ]
+        }
+      },
+      "observation": {
+        "revision": 18,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              30,
+              16,
+              8
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.5438033278854039,
+          "meanDisplacementMm": 0.06824752476140947,
+          "maxConstraintStrain": 0.027049251720469236,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.0499999999999987
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "09998a3fd00567d7e2e0c08fa45cd6eecf7ce2ffcfa7db3734623bb476d5ad4f",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-018.jpg",
+        "imageHash": "74b09f930cccc5659884e30eabec93b5950281ceeb1371ee817c07de870f3a54",
+        "revision": 19,
+        "mechanicsRevision": 18,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1232,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:08.475Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:09.733Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 18,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            27.609290672638874,
+            13.502483968596994,
+            7.455093966858968
+          ]
+        }
+      },
+      "observation": {
+        "revision": 19,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              27.609290672638874,
+              13.502483968596994,
+              7.455093966858968
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.5112278720859046,
+          "meanDisplacementMm": 0.06640908777875723,
+          "maxConstraintStrain": 0.024534401347421353,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.0999999999999985
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "a79b1d87a6c24dea7ee557e3e862669e5bb63f8412dcd1668a4cfb4d8852dc32",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-019.jpg",
+        "imageHash": "9ae3e9c8422cb40e31dd89a269f6c452ccae59098b6e619159e1a07e24ad67a6",
+        "revision": 20,
+        "mechanicsRevision": 19,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1248,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:09.759Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:11.032Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 19,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            25.218581345277748,
+            11.004967937193989,
+            6.910187933717935
+          ]
+        }
+      },
+      "observation": {
+        "revision": 20,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.218581345277748,
+              11.004967937193989,
+              6.910187933717935
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.4836906351412674,
+          "meanDisplacementMm": 0.06465279182097851,
+          "maxConstraintStrain": 0.022385586856767725,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.1499999999999984
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "9c1df05c933ccf5980451b1d7f7aa417d45170ea34686aad760961f1dc5f09fa",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-020.jpg",
+        "imageHash": "80fec720b9d46d455dc7e873055639f8b3b15d303cd7ae8fb80653f289a97c05",
+        "revision": 21,
+        "mechanicsRevision": 20,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1156,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:11.059Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:12.242Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 20,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            22.827872017916622,
+            8.507451905790983,
+            6.3652819005769015
+          ]
+        }
+      },
+      "observation": {
+        "revision": 21,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              22.827872017916622,
+              8.507451905790983,
+              6.3652819005769015
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.46018278170341026,
+          "meanDisplacementMm": 0.06297776017345745,
+          "maxConstraintStrain": 0.02053062887004886,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.1999999999999982
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "d3e19ce1bbbda74671c68733c21da3c84f0f799f32fe4fdcb5e57fc210412500",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-021.jpg",
+        "imageHash": "0e5fff5bf136c73feb35a2595e62147f23c7badf0619024cf73a1cc423a41695",
+        "revision": 22,
+        "mechanicsRevision": 21,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1365,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:12.272Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:13.664Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 21,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            21.430756421869198,
+            7.047919139127485,
+            6.046842218860348
+          ]
+        }
+      },
+      "observation": {
+        "revision": 22,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              21.430756421869198,
+              7.047919139127485,
+              6.046842218860348
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 0,
+          "activeConstraintCount": 12720,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4608
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 0,
+            "targetDetachedFraction": 0,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 0
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.43994795707399587,
+          "meanDisplacementMm": 0.06138369309759676,
+          "maxConstraintStrain": 0.018914127284359816,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.249999999999998
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "bdf9fbf6e8359082c94fce4adda2cfe22ccc11fbcdf8d31036f16911d596d2a8",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-022.jpg",
+        "imageHash": "aca2f5836a1991c1085fdd9b382fd91410929adfff1fbe95c1937f64dce687c8",
+        "revision": 23,
+        "mechanicsRevision": 22,
+        "cutFaceCount": 0,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1457,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:13.691Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:15.175Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 22,
+        "duration": 0.05,
+        "left": {
+          "cut": true
+        }
+      },
+      "observation": {
+        "revision": 23,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              21.430756421869198,
+              7.047919139127485,
+              6.046842218860348
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": true
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 2,
+          "activeConstraintCount": 12718,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4606
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 2.791524692466603,
+            "targetDetachedFraction": 0.00060098424484436,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 2.791524692466603
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.42240785431809946,
+          "meanDisplacementMm": 0.059868442964241736,
+          "maxConstraintStrain": 0.017492278631251912,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.2999999999999978
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          },
+          {
+            "type": "local_cut",
+            "revision": 23,
+            "time": 1.2999999999999978,
+            "faces": 2
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "254d8a410bf77fd47b8e2e7385945267e8600ff5bb3212bc850b17393ecc0587",
+      "topologyHash": "7009b9509d946efa5f869a2ab0641cbca023261a173cf6a5c65ba82465839ae2",
+      "frame": {
+        "filename": "frame-023.jpg",
+        "imageHash": "f57750b5b554b4236fafe8fa91f8e598ad4d6d52238a1649cfd6a3e47665a523",
+        "revision": 24,
+        "mechanicsRevision": 23,
+        "cutFaceCount": 2,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1148,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:15.206Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:16.380Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 23,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            21.430756421869198,
+            5.547919139127485,
+            8.546842218860348
+          ],
+          "cut": true
+        }
+      },
+      "observation": {
+        "revision": 24,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              21.430756421869198,
+              5.547919139127485,
+              8.546842218860348
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": true
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 4,
+          "activeConstraintCount": 12713,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4604
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 6.067605224044763,
+            "targetDetachedFraction": 0.0013062879771140916,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 6.067605224044763
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.40672716586016433,
+          "meanDisplacementMm": 0.058427412016392635,
+          "maxConstraintStrain": 0.01621862779267369,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.3499999999999976
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          },
+          {
+            "type": "local_cut",
+            "revision": 23,
+            "time": 1.2999999999999978,
+            "faces": 2
+          },
+          {
+            "type": "local_cut",
+            "revision": 24,
+            "time": 1.3499999999999976,
+            "faces": 2
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "c4c21b074b34a076663e900f046ef8767f2f174ed3a52bf3687e0104b4e600f2",
+      "topologyHash": "f483e5abeba65eb7f42ce66ce152020afa5107829692a51ace385da27d1c4956",
+      "frame": {
+        "filename": "frame-024.jpg",
+        "imageHash": "9d7ff4a1d81894941fd772990fdffc9aa0f3fd62fa177a02e291bb11cd8f1d94",
+        "revision": 25,
+        "mechanicsRevision": 24,
+        "cutFaceCount": 4,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1158,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:16.413Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:17.596Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 24,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            23.430756421869198,
+            7.547919139127485,
+            8.546842218860348
+          ]
+        }
+      },
+      "observation": {
+        "revision": 25,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              23.430756421869198,
+              7.547919139127485,
+              8.546842218860348
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 4,
+          "activeConstraintCount": 12713,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4604
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 6.067605224044763,
+            "targetDetachedFraction": 0.0013062879771140916,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 6.067605224044763
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.3931800862427567,
+          "meanDisplacementMm": 0.057058913292711726,
+          "maxConstraintStrain": 0.015087254123371308,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.3999999999999975
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          },
+          {
+            "type": "local_cut",
+            "revision": 23,
+            "time": 1.2999999999999978,
+            "faces": 2
+          },
+          {
+            "type": "local_cut",
+            "revision": 24,
+            "time": 1.3499999999999976,
+            "faces": 2
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "7bbef114489a57e78f07e508932287e2a341009f3e6cc69f50efaa9a12efc33b",
+      "topologyHash": "f483e5abeba65eb7f42ce66ce152020afa5107829692a51ace385da27d1c4956",
+      "frame": {
+        "filename": "frame-025.jpg",
+        "imageHash": "5071bfa9fba4bd97238a225e9d4df9ddd47ea58f6168896bbd684e30baca0447",
+        "revision": 26,
+        "mechanicsRevision": 25,
+        "cutFaceCount": 4,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1457,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:17.627Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:19.109Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 25,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            25.47488912231775,
+            10.177928921693786,
+            9.621351430808978
+          ]
+        }
+      },
+      "observation": {
+        "revision": 26,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              25.47488912231775,
+              10.177928921693786,
+              9.621351430808978
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 4,
+          "activeConstraintCount": 12713,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4604
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 6.067605224044763,
+            "targetDetachedFraction": 0.0013062879771140916,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 6.067605224044763
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.3812031894226253,
+          "meanDisplacementMm": 0.0557584342101221,
+          "maxConstraintStrain": 0.01408730808185954,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.4499999999999973
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          },
+          {
+            "type": "local_cut",
+            "revision": 23,
+            "time": 1.2999999999999978,
+            "faces": 2
+          },
+          {
+            "type": "local_cut",
+            "revision": 24,
+            "time": 1.3499999999999976,
+            "faces": 2
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "a5bc4ff278d6e457e2b7197647ea86bb29fcbf806c797ec5455e537386df911c",
+      "topologyHash": "f483e5abeba65eb7f42ce66ce152020afa5107829692a51ace385da27d1c4956",
+      "frame": {
+        "filename": "frame-026.jpg",
+        "imageHash": "9686cb03bc028501e943ac8f421eb64c54d0ce955fb0b717ec737dfc88a9782f",
+        "revision": 27,
+        "mechanicsRevision": 26,
+        "cutFaceCount": 4,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1248,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:19.137Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:20.411Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 26,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            27.519021822766305,
+            12.807938704260087,
+            10.695860642757609
+          ]
+        }
+      },
+      "observation": {
+        "revision": 27,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              27.519021822766305,
+              12.807938704260087,
+              10.695860642757609
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 4,
+          "activeConstraintCount": 12713,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4604
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 6.067605224044763,
+            "targetDetachedFraction": 0.0013062879771140916,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 6.067605224044763
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.37061571979211905,
+          "meanDisplacementMm": 0.054521579559556714,
+          "maxConstraintStrain": 0.013183869607142018,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.4999999999999971
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          },
+          {
+            "type": "local_cut",
+            "revision": 23,
+            "time": 1.2999999999999978,
+            "faces": 2
+          },
+          {
+            "type": "local_cut",
+            "revision": 24,
+            "time": 1.3499999999999976,
+            "faces": 2
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "13338b6b11c02a7057182ea7cbdcdac02e793f5aab26e8c3977c021963bbe6a7",
+      "topologyHash": "f483e5abeba65eb7f42ce66ce152020afa5107829692a51ace385da27d1c4956",
+      "frame": {
+        "filename": "frame-027.jpg",
+        "imageHash": "04668d68a5130633c744602a0bed0fe8e36e4a4b0b55c93d40202954bc2b389f",
+        "revision": 28,
+        "mechanicsRevision": 27,
+        "cutFaceCount": 4,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1238,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:20.437Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:21.699Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 27,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            29.563154523214855,
+            15.43794848682639,
+            11.770369854706239
+          ]
+        }
+      },
+      "observation": {
+        "revision": 28,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              29.563154523214855,
+              15.43794848682639,
+              11.770369854706239
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 4,
+          "activeConstraintCount": 12713,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4604
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 6.067605224044763,
+            "targetDetachedFraction": 0.0013062879771140916,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 6.067605224044763
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.36122148134864385,
+          "meanDisplacementMm": 0.05334418161773666,
+          "maxConstraintStrain": 0.012364643715458534,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.549999999999997
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          },
+          {
+            "type": "local_cut",
+            "revision": 23,
+            "time": 1.2999999999999978,
+            "faces": 2
+          },
+          {
+            "type": "local_cut",
+            "revision": 24,
+            "time": 1.3499999999999976,
+            "faces": 2
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "0215f7430c02eca30aa24b4553a9f638a415d628fa9045d2fab7ce03dea98a41",
+      "topologyHash": "f483e5abeba65eb7f42ce66ce152020afa5107829692a51ace385da27d1c4956",
+      "frame": {
+        "filename": "frame-028.jpg",
+        "imageHash": "50f4a2cb626ffa934e56db0d5f240ca55b6560f0afbc934c6ab20233a8614c70",
+        "revision": 29,
+        "mechanicsRevision": 28,
+        "cutFaceCount": 4,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1353,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:21.724Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:23.102Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "action": {
+        "revision": 28,
+        "duration": 0.05,
+        "left": {
+          "position": [
+            30,
+            16,
+            12
+          ]
+        }
+      },
+      "observation": {
+        "revision": 29,
+        "seed": 11,
+        "scale": 0.9948066209908575,
+        "units": "mm",
+        "arms": {
+          "left": {
+            "position": [
+              30,
+              16,
+              12
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          },
+          "right": {
+            "position": [
+              26.995643468296876,
+              6.018056282352996,
+              -3.9363990641231523
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              10
+            ],
+            "quaternion": [
+              0,
+              0,
+              0.08715574274765817,
+              0.9961946980917455
+            ],
+            "jaw": 1,
+            "grasp": null,
+            "cutting": false
+          }
+        },
+        "metrics": {
+          "cutFaceCount": 4,
+          "activeConstraintCount": 12713,
+          "components": [
+            {
+              "id": 0,
+              "anchored": true,
+              "nodeCount": 2400,
+              "faceCount": 4604
+            }
+          ],
+          "area": {
+            "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+            "targetInitialAreaMm2": 4644.921587236515,
+            "nonTargetInitialAreaMm2": 2636.1886767327946,
+            "targetDetachedAreaMm2": 6.067605224044763,
+            "targetDetachedFraction": 0.0013062879771140916,
+            "offTargetRemovedAreaMm2": 0,
+            "offTargetRemovedFraction": 0,
+            "ablatedAreaMm2": 6.067605224044763
+          },
+          "activeGrasps": 0,
+          "graspErrors": [],
+          "maxDisplacementMm": 0.3528533406620223,
+          "meanDisplacementMm": 0.0522220277418509,
+          "maxConstraintStrain": 0.011618764794804948,
+          "protectedIntersections": 0,
+          "simulationSeconds": 1.5999999999999968
+        },
+        "events": [
+          {
+            "type": "surface_grasp",
+            "revision": 5,
+            "time": 0.2333333333333333,
+            "arm": "left",
+            "face": 2217,
+            "distance": 0
+          },
+          {
+            "type": "surface_grasp",
+            "revision": 10,
+            "time": 0.483333333333334,
+            "arm": "right",
+            "face": 2293,
+            "distance": 0
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "left"
+          },
+          {
+            "type": "grasp_released",
+            "revision": 13,
+            "time": 0.6250000000000002,
+            "arm": "right"
+          },
+          {
+            "type": "local_cut",
+            "revision": 23,
+            "time": 1.2999999999999978,
+            "faces": 2
+          },
+          {
+            "type": "local_cut",
+            "revision": 24,
+            "time": 1.3499999999999976,
+            "faces": 2
+          }
+        ],
+        "protectedContacts": [],
+        "capabilities": {
+          "pose": true,
+          "jaw": true,
+          "physicalGrasp": true,
+          "cutting": true,
+          "edgeAttachments": false,
+          "terminalScore": false,
+          "modelController": false
+        },
+        "cage": {
+          "angular": 48,
+          "axial": 24,
+          "hash": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb"
+        },
+        "task": {
+          "version": "C0-target-mask-1",
+          "hash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+          "boundaryRings": [
+            12,
+            4
+          ]
+        },
+        "cutting": {
+          "radiusMm": 0.35,
+          "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+        },
+        "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+      },
+      "geometryHash": "2e3e08f9fd0f5b85e7c5ee61df4ccd582cc1dcf063021b417aeec4e786126150",
+      "topologyHash": "f483e5abeba65eb7f42ce66ce152020afa5107829692a51ace385da27d1c4956",
+      "frame": {
+        "filename": "frame-029.jpg",
+        "imageHash": "f0b5101ea90e3dc8c42dc84ec6783ce95fffc74be3a57853551627fb018a5f15",
+        "revision": 30,
+        "mechanicsRevision": 29,
+        "cutFaceCount": 4,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1334,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:23.131Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-23T20:41:24.492Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    }
+  ],
+  "passed": true,
+  "heldMetrics": {
+    "cutFaceCount": 0,
+    "activeConstraintCount": 12720,
+    "components": [
+      {
+        "id": 0,
+        "anchored": true,
+        "nodeCount": 2400,
+        "faceCount": 4608
+      }
+    ],
+    "area": {
+      "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+      "targetInitialAreaMm2": 4644.921587236515,
+      "nonTargetInitialAreaMm2": 2636.1886767327946,
+      "targetDetachedAreaMm2": 0,
+      "targetDetachedFraction": 0,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 0
+    },
+    "activeGrasps": 2,
+    "graspErrors": [
+      {
+        "arm": "left",
+        "error": 0
+      },
+      {
+        "arm": "right",
+        "error": 0
+      }
+    ],
+    "maxDisplacementMm": 3.1622776601683795,
+    "meanDisplacementMm": 0.04975835565042331,
+    "maxConstraintStrain": 0.7475528497521251,
+    "protectedIntersections": 0,
+    "simulationSeconds": 0.6000000000000003
+  },
+  "cutMetrics": {
+    "cutFaceCount": 4,
+    "activeConstraintCount": 12713,
+    "components": [
+      {
+        "id": 0,
+        "anchored": true,
+        "nodeCount": 2400,
+        "faceCount": 4604
+      }
+    ],
+    "area": {
+      "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+      "targetInitialAreaMm2": 4644.921587236515,
+      "nonTargetInitialAreaMm2": 2636.1886767327946,
+      "targetDetachedAreaMm2": 6.067605224044763,
+      "targetDetachedFraction": 0.0013062879771140916,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 6.067605224044763
+    },
+    "activeGrasps": 0,
+    "graspErrors": [],
+    "maxDisplacementMm": 0.40672716586016433,
+    "meanDisplacementMm": 0.058427412016392635,
+    "maxConstraintStrain": 0.01621862779267369,
+    "protectedIntersections": 0,
+    "simulationSeconds": 1.3499999999999976
+  },
+  "finalMetrics": {
+    "cutFaceCount": 4,
+    "activeConstraintCount": 12713,
+    "components": [
+      {
+        "id": 0,
+        "anchored": true,
+        "nodeCount": 2400,
+        "faceCount": 4604
+      }
+    ],
+    "area": {
+      "targetMaskHash": "738215af663f5819311163fee226cd2f638c43e6e9621d39237197767f8c8a6b",
+      "targetInitialAreaMm2": 4644.921587236515,
+      "nonTargetInitialAreaMm2": 2636.1886767327946,
+      "targetDetachedAreaMm2": 6.067605224044763,
+      "targetDetachedFraction": 0.0013062879771140916,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 6.067605224044763
+    },
+    "activeGrasps": 0,
+    "graspErrors": [],
+    "maxDisplacementMm": 0.3528533406620223,
+    "meanDisplacementMm": 0.0522220277418509,
+    "maxConstraintStrain": 0.011618764794804948,
+    "protectedIntersections": 0,
+    "simulationSeconds": 1.5999999999999968
+  },
+  "endedAt": "2026-10-23T20:41:24.524Z"
+}

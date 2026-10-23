@@ -57,6 +57,7 @@ const server=http.createServer(async(req,res)=>{
   if(req.url==='/api/frame'){
    if(body.revision!==state.revision)return respond(res,409,{error:'Stale frame revision'});
    if(mechanics&&body.mechanicsRevision!==mechanics.revision)return respond(res,409,{error:'Frame mechanics revision mismatch'});
+   if(mechanics&&body.cutFaceCount!==mechanics.metrics().cutFaceCount)return respond(res,409,{error:'Frame cutting topology mismatch'});
    if(body.mechanicsEnabled!==state.mechanicsEnabled)return respond(res,409,{error:'Frame phase mismatch'});
    if(body.mode!==state.mode||body.retraction!==state.retraction)return respond(res,409,{error:'Frame inspection state mismatch'});
    if(!/^data:image\/jpeg;base64,/.test(body.image)||!/^data:image\/jpeg;base64,/.test(body.uiImage))return respond(res,400,{error:'Actual JPEG frames required'});

@@ -124,7 +124,7 @@ These limitations bound the experimental claim. The platform does not establish 
 
 ## Adult anatomy module (in development)
 
-A separately runnable [adult circumcision anatomy preview](procedures/circumcision/README.md) provides layered procedural geometry, low-level bilateral grasp and constraint-based tissue deformation with actual Godot frames. Anatomy inspection retains a separate visual morph; cutting, closure and autonomous procedure execution are pending. See the [frozen prototype protocol](procedures/circumcision/docs/PROTOCOL.md) and [checkpoint evidence](procedures/circumcision/evidence/CHECKPOINT.md). This module does not change the vessel v0.1.2 runtime or its accepted evaluation.
+A separately runnable [adult circumcision anatomy preview](procedures/circumcision/README.md) provides layered procedural geometry, low-level bilateral grasp, constraint-based tissue deformation and local swept cutting with actual Godot frames. Anatomy inspection retains a separate visual morph; wound closure, terminal scoring and autonomous procedure execution are pending. See the [frozen prototype protocol](procedures/circumcision/docs/PROTOCOL.md) and [current cutting evidence](procedures/circumcision/evidence/CUTTING.md). This module does not change the vessel v0.1.2 runtime or its accepted evaluation.
 
 ## Development
 

@@ -1,6 +1,8 @@
 // Deterministic synthetic shell manipulation. This is not calibrated living tissue.
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import {defineTask,areaAccounting} from './task-definition.mjs';
+import {CUT_RADIUS_MM,sweptFaces,buildSupports,updateTopology} from './cutting.mjs';
 export const cage=JSON.parse(fs.readFileSync(new URL('godot/data/tissue-rest.json',import.meta.url)));
 export const cageHash=crypto.createHash('sha256').update(fs.readFileSync(new URL('godot/data/tissue-rest.json',import.meta.url))).digest('hex');
 if(cage.anatomySourceSha256!==crypto.createHash('sha256').update(fs.readFileSync(new URL('godot/anatomy.gd',import.meta.url))).digest('hex'))throw Error('Shared anatomy export is stale. Run godot/export_physics.gd before mechanics.');
@@ -67,10 +69,11 @@ export class TissueSim{
  reset(seed=11){
   if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Seed must be an unsigned 32-bit integer');
   this.seed=seed;let r=(Math.imul(seed,1664525)+1013904223)>>>0;this.scale=.99+(r/2**32)*.02;
-  this.revision=0;this.time=0;this.events=[];this.protectedContacts=[];
+  this.revision=0;this.time=0;this.events=[];this.protectedContacts=[];this.cutHistory=[];
+  this.task=defineTask(cage,this.scale);
   this.nodes=cage.nodes.map(n=>({...n,rest:mul(n.rest,this.scale),p:mul(n.rest,this.scale),velocity:[0,0,0],inv:n.fixed?0:1}));
   this.faces=cage.faces.map(f=>({...f,nodes:[...f.nodes],active:true}));
-  this.arms={left:{position:[26,16,8],rotationDeg:[0,0,0],quaternion:[0,0,0,1],jaw:1,grasp:null},right:{position:[26,16,-8],rotationDeg:[0,0,0],quaternion:[0,0,0,1],jaw:1,grasp:null}};
+  this.arms={left:{position:[26,16,8],rotationDeg:[0,0,0],quaternion:[0,0,0,1],jaw:1,grasp:null,cutting:false},right:{position:[26,16,-8],rotationDeg:[0,0,0],quaternion:[0,0,0,1],jaw:1,grasp:null,cutting:false}};
   this.edges=[];const edgeKeys=new Set();
   const edge=(a,b,compliance,kind)=>{const key=a<b?a+':'+b:b+':'+a;if(edgeKeys.has(key))return;edgeKeys.add(key);this.edges.push({a,b,rest:distance(this.nodes[a].p,this.nodes[b].p),compliance,kind,lambda:0});};
   for(let layer=0;layer<2;layer++)for(let i=0;i<=cage.axial;i++)for(let j=0;j<cage.angular;j++){
@@ -85,6 +88,8 @@ export class TissueSim{
    for(let k=0;k<=cage.axial;k++){const candidate=this.idx(0,k,j),d=distance(this.nodes[candidate].p,this.nodes[b].p);if(d<best){best=d;a=candidate;}}
    edge(a,b,.0005,'interlayer');
   }
+  this.incident=buildSupports(cage,this.edges);
+  this.topology=updateTopology(this.nodes,this.faces,this.edges,this.incident);
   this.lastMetrics=null;return this.observe();
  }
  event(type,data={}){this.events.push({type,revision:this.revision,time:this.time,...data});this.events=this.events.slice(-60);}
@@ -113,10 +118,11 @@ export class TissueSim{
  }
  solve(dt){
   const old=this.nodes.map(n=>[...n.p]);
-  for(const n of this.nodes)if(n.inv)n.p=add(n.p,mul(n.velocity,dt*.65));
+  for(const n of this.nodes)if(n.inv&&n.alive)n.p=add(n.p,mul(n.velocity,dt*.65));
   for(const e of this.edges)e.lambda=0;
   for(let iteration=0;iteration<10;iteration++){
    for(const e of this.edges){
+    if(!e.active)continue;
     const a=this.nodes[e.a],b=this.nodes[e.b],dx=b.p[0]-a.p[0],dy=b.p[1]-a.p[1],dz=b.p[2]-a.p[2],l=Math.hypot(dx,dy,dz);if(l<1e-9)continue;
     const alpha=e.compliance/(dt*dt),dl=(-(l-e.rest)-alpha*e.lambda)/(a.inv+b.inv+alpha);e.lambda+=dl;
     const ka=a.inv*dl/l,kb=b.inv*dl/l;
@@ -130,6 +136,7 @@ export class TissueSim{
    // Contact projection on the shared protected glans hull. This is a fixture,
    // not a model of glanular tissue forces or full preputial self-contact.
    if(iteration===9)for(const n of this.nodes){
+    if(!n.alive)continue;
     if(!n.inv){n.p=[...n.rest];continue;}
     if(n.p[0]>=-9.7*this.scale&&n.p[0]<=23.2*this.scale&&Math.hypot(n.p[1],n.p[2])<15*this.scale){
      const q=glansQuery(n.p,this.scale);if(q.distance<.10)n.p=add(n.p,mul(q.normal,.10-q.distance));
@@ -168,16 +175,26 @@ export class TissueSim{
   if(!Number.isFinite(duration)||duration<.02||duration>.5)throw Error('Duration must be 0.02–0.5 simulated seconds');
   const planned={};
   for(const name of ['left','right'])if(action[name]!==undefined){
-   const a=action[name];if(!a||typeof a!=='object'||Array.isArray(a)||Object.keys(a).some(k=>!['position','rotationDeg','jaw'].includes(k)))throw Error('Unsupported instrument field');
+   const a=action[name];if(!a||typeof a!=='object'||Array.isArray(a)||Object.keys(a).some(k=>!['position','rotationDeg','jaw','cut'].includes(k)))throw Error('Unsupported instrument field');
    if(a.position!==undefined){if(!Array.isArray(a.position)||a.position.length!==3||!a.position.every(Number.isFinite)||a.position[0]<-85||a.position[0]>45||Math.abs(a.position[1])>45||Math.abs(a.position[2])>45)throw Error('Position is outside the finite instrument workspace');if(distance(a.position,this.arms[name].position)>4.000001)throw Error('Translation exceeds 4 mm');}
    if(a.rotationDeg!==undefined){if(!Array.isArray(a.rotationDeg)||a.rotationDeg.length!==3||!a.rotationDeg.every(Number.isFinite)||a.rotationDeg.some(x=>Math.abs(x)>360))throw Error('Finite XYZ rotation degrees in [-360,360] required');const q=eulerQuaternion(a.rotationDeg);if(quatAngle(this.arms[name].quaternion,q)>20.000001)throw Error('Rotation exceeds 20 degrees');planned[name]=q;}
    if(a.jaw!==undefined&&(!Number.isFinite(a.jaw)||a.jaw<0||a.jaw>1))throw Error('Jaw must be between zero and one');
+   if(a.cut!==undefined&&typeof a.cut!=='boolean')throw Error('Cut must be an explicit boolean pulse');
+   if(a.cut&&(this.arms[name].grasp||this.arms[name].jaw<=.65||(a.jaw??1)<=.65))throw Error('Cutting requires an open, unoccupied instrument');
   }
-  const before=copy(this);
-  try{return this.applyValidatedStep(action,planned,duration);}catch(error){Object.assign(this,before);throw error;}
+  const before=copy(this),task=this.task;
+  try{return this.applyValidatedStep(action,planned,duration);}catch(error){Object.assign(this,before);this.task=task;throw error;}
+ }
+ cutSweep(name,from,to){
+  const ids=sweptFaces(this.nodes,this.faces,from,to);if(!ids.length)return;
+  for(const id of ids)this.faces[id].active=false;
+  this.cutHistory.push({revision:this.revision,time:this.time,arm:name,faces:ids,from:[...from],to:[...to],radiusMm:CUT_RADIUS_MM});
+  this.topology=updateTopology(this.nodes,this.faces,this.edges,this.incident);
+  for(const [arm,a] of Object.entries(this.arms))if(a.grasp&&!this.faces[a.grasp.face].active){a.grasp=null;this.event('grasp_released_by_cut',{arm});}
  }
  applyValidatedStep(action,planned,duration){
-  const start=copy(this.arms);this.revision++;const substeps=Math.ceil(duration*120),dt=duration/substeps,hits=new Set();
+  const start=copy(this.arms),cutStart=this.cutHistory.length;this.revision++;
+  for(const name of ['left','right'])this.arms[name].cutting=action[name]?.cut===true;const substeps=Math.ceil(duration*120),dt=duration/substeps,hits=new Set();
   for(let i=1;i<=substeps;i++){
    for(const name of ['left','right']){
     const a=this.arms[name],v=action[name]??{},old=copy(a);
@@ -185,20 +202,23 @@ export class TissueSim{
     if(planned[name])a.quaternion=quatMix(start[name].quaternion,planned[name],i/substeps);
     if(v.jaw!==undefined)this.updateJaw(name,start[name].jaw+(v.jaw-start[name].jaw)*i/substeps);
     this.sweepProtected(name,old,a,hits);
+    if(a.cutting)this.cutSweep(name,old.position,a.position);
    }
    this.solve(dt);
+   for(const [name,a] of Object.entries(this.arms))if(a.cutting)this.cutSweep(name,a.position,a.position);
   }
   for(const name of ['left','right'])if(action[name]?.rotationDeg)this.arms[name].rotationDeg=[...action[name].rotationDeg];
+  if(this.cutHistory.length>cutStart)this.event('local_cut',{faces:this.cutHistory.slice(cutStart).reduce((n,c)=>n+c.faces.length,0)});
   this.lastMetrics=null;return this.observe();
  }
  metrics(){
   if(this.lastMetrics)return copy(this.lastMetrics);
   const displacement=this.nodes.map(n=>distance(n.p,n.rest));let maxStrain=0;
-  for(const e of this.edges)maxStrain=Math.max(maxStrain,Math.abs(distance(this.nodes[e.a].p,this.nodes[e.b].p)/e.rest-1));
+  for(const e of this.edges)if(e.active)maxStrain=Math.max(maxStrain,Math.abs(distance(this.nodes[e.a].p,this.nodes[e.b].p)/e.rest-1));
   const graspErrors=Object.entries(this.arms).filter(([,a])=>a.grasp).map(([name,a])=>({arm:name,error:distance(this.graspPoint(a.grasp),add(a.position,rotate(a.quaternion,a.grasp.offset)))}));
-  this.lastMetrics={activeGrasps:graspErrors.length,graspErrors,maxDisplacementMm:Math.max(...displacement),meanDisplacementMm:displacement.reduce((s,x)=>s+x,0)/displacement.length,maxConstraintStrain:maxStrain,protectedIntersections:this.protectedContacts.length,simulationSeconds:this.time};
+  this.lastMetrics={cutFaceCount:this.faces.filter(f=>!f.active).length,activeConstraintCount:this.edges.filter(e=>e.active).length,components:copy(this.topology.components),area:areaAccounting(this.task,this.faces,this.topology.componentOf,this.topology.components),activeGrasps:graspErrors.length,graspErrors,maxDisplacementMm:Math.max(...displacement),meanDisplacementMm:displacement.reduce((s,x)=>s+x,0)/displacement.length,maxConstraintStrain:maxStrain,protectedIntersections:this.protectedContacts.length,simulationSeconds:this.time};
   return copy(this.lastMetrics);
  }
- observe(){return {revision:this.revision,seed:this.seed,scale:this.scale,units:'mm',arms:copy(this.arms),metrics:this.metrics(),events:copy(this.events.slice(-8)),protectedContacts:copy(this.protectedContacts),capabilities:{pose:true,jaw:true,physicalGrasp:true,cutting:false,edgeAttachments:false,terminalScore:false,modelController:false},cage:{angular:cage.angular,axial:cage.axial,hash:cageHash},scope:'Synthetic layered shell, compliant distance constraints, barycentric grasp, sampled protected volumes; no clinical validation'};}
- snapshot(){return {...this.observe(),positions:this.nodes.map(n=>n.p),faces:this.faces};}
+ observe(){return {revision:this.revision,seed:this.seed,scale:this.scale,units:'mm',arms:copy(this.arms),metrics:this.metrics(),events:copy(this.events.slice(-8)),protectedContacts:copy(this.protectedContacts),capabilities:{pose:true,jaw:true,physicalGrasp:true,cutting:true,edgeAttachments:false,terminalScore:false,modelController:false},cage:{angular:cage.angular,axial:cage.axial,hash:cageHash},task:{version:this.task.version,hash:this.task.hash,boundaryRings:this.task.boundaryRings},cutting:{radiusMm:CUT_RADIUS_MM,method:'Swept capsule triangle ablation; whole intersected cage faces removed'},scope:'Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation'};}
+ snapshot(){return {...this.observe(),positions:this.nodes.map(n=>n.p),faces:this.faces,componentOf:this.topology.componentOf,targetMask:this.task.target,woundPairNodes:this.task.pairNodes};}
 }

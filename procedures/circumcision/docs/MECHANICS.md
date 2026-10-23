@@ -1,10 +1,10 @@
 # Bilateral shell manipulation checkpoint
 
-The development sandbox connects low-level instrument commands to a deterministic tissue solver and the running Godot renderer. It is **not a complete circumcision simulation**. Local cutting, wound-edge attachments, an independent procedure score and live model control remain disabled.
+The development sandbox connects low-level instrument commands to a deterministic tissue solver and the running Godot renderer. It is **not a complete circumcision simulation**. Local cutting and topology accounting are available in the development sandbox. Wound-edge attachments, a complete procedure score and live model control remain disabled. See [local cutting and target semantics](CUTTING.md).
 
 ## Shared anatomical representation
 
-`godot/export_physics.gd` samples the original anatomical surfaces into `godot/data/tissue-rest.json`: 2,400 control vertices, 4,608 surface triangles and 81 glanular cross-sections. The export records the anatomical source hash. The solver refuses a stale export. Godot interpolates the solver's displacement field over the dense visual mesh; the inspection retraction morph is disabled during mechanics. Changing the camera or inspecting a layer cannot change physical tissue positions.
+`godot/export_physics.gd` samples the original anatomical surfaces into `godot/data/tissue-rest.json`: 2,400 control vertices, 4,608 surface triangles and 81 glanular cross-sections. The export records the anatomical source hash. The solver refuses a stale export. Godot subdivides each surviving mechanical triangle and interpolates its barycentric displacement over the authored anatomical surface; the inspection retraction morph is disabled during mechanics. Changing the camera or inspecting a layer cannot change physical tissue positions.
 
 To regenerate the data after changing `anatomy.gd`:
 
@@ -39,4 +39,4 @@ The probe is explicitly scripted. Its record includes every low-level action, ob
 
 ## Remaining limitations
 
-Full retraction with folding and self-contact is not validated. There is no finite-element tissue model, calibrated force response, realistic friction, cutting topology, bleeding, healing or clinical outcome model. The fixture's recorded peak edge strain is approximately 0.75 during a rapid local pull, which underscores the absence of material calibration. Final C0 release criteria, including a five-second released closure test and independent model episodes, remain unmet.
+Full retraction with folding and self-contact is not validated. There is no finite-element tissue model, calibrated force response, realistic friction, remeshed blade incisions, bleeding, healing or clinical outcome model. The fixture's recorded peak edge strain is approximately 0.75 during a rapid local pull, which underscores the absence of material calibration. Final C0 release criteria, including a five-second released closure test and independent model episodes, remain unmet.
