@@ -7,6 +7,7 @@ var session_id = ""
 var rendered_revision = -1
 var poll_busy = false
 var capture_busy = false
+var uploaded_frames = 0
 var command_busy = false
 var agent_running = false
 var last_phase = ""
@@ -92,7 +93,7 @@ func build_ui() -> void:
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
 	header.add_child(label("GODOT  ·  LOCAL RESEARCH PROTOTYPE  ·  0.1", 13, Color("78919f")))
-	layout.add_child(label("血管缝合实验台    /    订阅内 GPT-6 Astra · 原子动作 · 可回放", 17))
+	layout.add_child(label("Autonomous vessel suturing  /  GPT-6 Astra · Low-level control · Replayable experiments", 17))
 	var body = HBoxContainer.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_theme_constant_override("separation", 18)
@@ -102,10 +103,10 @@ func build_ui() -> void:
 	body.add_child(view_column)
 	var cameras = HBoxContainer.new()
 	view_column.add_child(cameras)
-	button("立体视角", func(): set_camera(Vector3(11, 9, 14)), cameras)
-	button("俯视", func(): set_camera(Vector3(0.1, 18, 0.1)), cameras)
-	button("侧视", func(): set_camera(Vector3(0.1, 3, 19)), cameras)
-	button("吻合口", func(): set_camera(Vector3(10, 4, 7)), cameras)
+	button("Perspective", func(): set_camera(Vector3(11, 9, 14)), cameras)
+	button("Top", func(): set_camera(Vector3(0.1, 18, 0.1)), cameras)
+	button("Side", func(): set_camera(Vector3(0.1, 3, 19)), cameras)
+	button("Seam", func(): set_camera(Vector3(10, 4, 7)), cameras)
 	var view_container = SubViewportContainer.new()
 	view_container.stretch = true
 	view_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -117,7 +118,7 @@ func build_ui() -> void:
 	viewport.own_world_3d = true
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	view_container.add_child(viewport)
-	view_column.add_child(label("坐标单位 mm  ·  X 血管轴向 / Y 向上 / Z 横向  ·  思考时仿真暂停", 13, Color("78919f")))
+	view_column.add_child(label("Units: mm  ·  X axial / Y vertical / Z lateral  ·  Simulation pauses during model inference", 13, Color("78919f")))
 	var panel_scroll = ScrollContainer.new()
 	panel_scroll.custom_minimum_size.x = 330
 	panel_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -126,30 +127,30 @@ func build_ui() -> void:
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	panel.add_theme_constant_override("separation", 10)
 	panel_scroll.add_child(panel)
-	status_label = label("正在连接本地控制器…", 17, ACCENT)
+	status_label = label("Connecting to controller…", 17, ACCENT)
 	panel.add_child(status_label)
-	button("验证真实模型闭环", func(): command("/api/agent/start", {"task": "loop"}), panel, true)
-	button("GPT 自主缝合", func(): command("/api/agent/start", {"task": "suture"}), panel, true)
-	button("停止模型", func(): command("/api/agent/stop", {}), panel)
-	button("回放最近模型记录（不调用模型）", func(): command("/api/replay/start", {}), panel, true)
+	button("Verify model feedback loop", func(): command("/api/agent/start", {"task": "loop"}), panel, true)
+	button("Start autonomous suturing", func(): command("/api/agent/start", {"task": "suture"}), panel, true)
+	button("Stop controller", func(): command("/api/agent/stop", {}), panel)
+	button("Replay recorded run", func(): command("/api/replay/start", {}), panel, true)
 	var reset_row = HBoxContainer.new()
 	panel.add_child(reset_row)
-	button("重置种子 42", func(): command("/api/reset", {"seed": 42}), reset_row, true)
-	button("独立验收", finish_episode, reset_row, true)
+	button("Reset · seed 42", func(): command("/api/reset", {"seed": 42}), reset_row, true)
+	button("Evaluate", finish_episode, reset_row, true)
 	panel.add_child(HSeparator.new())
-	panel.add_child(label("实验状态", 17, ACCENT))
+	panel.add_child(label("Experiment metrics", 17, ACCENT))
 	progress = ProgressBar.new()
 	progress.max_value = 100
 	progress.custom_minimum_size.y = 18
 	panel.add_child(progress)
-	metrics_label = label("等待场景状态", 15)
+	metrics_label = label("Waiting for scene state", 15)
 	panel.add_child(metrics_label)
 	panel.add_child(HSeparator.new())
 	var manual_row = HBoxContainer.new()
 	panel.add_child(manual_row)
 	arm_select = OptionButton.new()
-	arm_select.add_item("右臂 / 持针")
-	arm_select.add_item("左臂 / 抓持")
+	arm_select.add_item("Right arm")
+	arm_select.add_item("Left arm")
 	manual_row.add_child(arm_select)
 	move_size = SpinBox.new()
 	move_size.min_value = 0.1
@@ -171,10 +172,10 @@ func build_ui() -> void:
 		button(["X+", "Y+", "Z+"][axis], func(): jog(a, 1), grid, true)
 	var jaw_row = HBoxContainer.new()
 	panel.add_child(jaw_row)
-	button("夹持", func(): jaw(0.0), jaw_row, true)
-	button("松开", func(): jaw(1.0), jaw_row, true)
-	button("剪线", func(): command("/api/cut", {"commandId": command_id(), "source": "manual"}), jaw_row, true)
-	feedback_label = label("仅本地运行，无 API Key。", 13, Color("9fb3bf"))
+	button("Grasp", func(): jaw(0.0), jaw_row, true)
+	button("Release", func(): jaw(1.0), jaw_row, true)
+	button("Trim thread", func(): command("/api/cut", {"commandId": command_id(), "source": "manual"}), jaw_row, true)
+	feedback_label = label("Manual controls ready.", 13, Color("9fb3bf"))
 	feedback_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	feedback_label.custom_minimum_size.y = 40
 	panel.add_child(feedback_label)
@@ -183,7 +184,7 @@ func build_ui() -> void:
 	events_label.custom_minimum_size.y = 70
 	events_label.add_theme_font_size_override("normal_font_size", 12)
 	panel.add_child(events_label)
-	layout.add_child(label("研究原型：环形唇口 / 顺应性约束 / 几何线结。管腔由支架保持；未经医学验证。", 12, Color("78919f")))
+	layout.add_child(label("Research prototype: annular lips, compliant constraints and a geometric knot. Fixture-supported lumen. No clinical validation.", 12, Color("78919f")))
 
 func build_world() -> void:
 	world = Node3D.new()
@@ -350,7 +351,7 @@ func poll() -> void:
 	req.queue_free()
 	poll_busy = false
 	if response[1] != 200:
-		status_label.text = "控制器未连接 · 请运行启动脚本"
+		status_label.text = "Controller offline · run the launcher"
 		return
 	var data = JSON.parse_string(response[3].get_string_from_utf8())
 	if not data is Dictionary:
@@ -364,13 +365,13 @@ func poll() -> void:
 	if phase != last_phase:
 		last_phase = phase
 		rendered_revision = -1
-	status_label.text = (("回放 · " if data.agent.get("task") == "replay" else "GPT-6 Astra · ") + data.agent.get("phase", "运行中")) if agent_running else ("Godot 已连接 · " + str(state.status))
+	status_label.text = (("Replay · " if data.agent.get("task") == "replay" else "GPT-6 Astra · ") + data.agent.get("phase", "running")) if agent_running else ("Godot connected · " + str(state.status))
 	if not agent_running and data.agent.get("task") == "replay":
-		status_label.text = "回放已结束 · 无模型调用"
+		status_label.text = "Replay finished · recorded actions"
 	for b in buttons:
 		b.disabled = agent_running
 	progress.value = state.metrics.coverage * 100
-	metrics_label.text = "闭合覆盖  %.1f%%\n缝线连接  %d    /    线结  %s\n平均间隙  %.3f mm\n剪线  %s    /    损伤  %.3f\n仿真时间  %.2f s    /    状态版本 %d" % [state.metrics.coverage*100, state.metrics.bridges, "已固定" if state.metrics.knot else "未固定", state.metrics.meanGap, "完成" if state.metrics.cut else "未完成", state.metrics.damage, state.time, state.revision]
+	metrics_label.text = "Closure coverage  %.1f%%\nThread bridges  %d  /  Knot  %s\nMean gap  %.3f mm\nTrimmed  %s  /  Damage  %.3f\nSim time  %.2f s  /  Revision %d" % [state.metrics.coverage*100, state.metrics.bridges, "secured" if state.metrics.knot else "unsecured", state.metrics.meanGap, "yes" if state.metrics.cut else "no", state.metrics.damage, state.time, state.revision]
 	coords_label.text = "R  (%.2f, %.2f, %.2f)\nL  (%.2f, %.2f, %.2f)" % [state.arms.right.position[0], state.arms.right.position[1], state.arms.right.position[2], state.arms.left.position[0], state.arms.left.position[1], state.arms.left.position[2]]
 	var event_lines: Array[String] = []
 	for ev in state.events:
@@ -379,7 +380,7 @@ func poll() -> void:
 	if data.agent.get("error"):
 		feedback_label.text = str(data.agent.error)
 	if state.get("result"):
-		feedback_label.text = "独立验收：" + ("通过" if state.result.passed else "未通过") + "\n" + str(state.result.checks)
+		feedback_label.text = "Evaluation: " + ("PASS" if state.result.passed else "FAIL") + "\n" + str(state.result.checks)
 	if rendered_revision != int(state.revision) and not capture_busy:
 		draw_state(state)
 		rendered_revision = int(state.revision)
@@ -389,7 +390,9 @@ func capture(revision: int, sid: String) -> void:
 	if capture_busy:
 		return
 	capture_busy = true
-	await RenderingServer.frame_post_draw
+	# Request an actual draw even when the native window is minimized or occluded.
+	await get_tree().process_frame
+	RenderingServer.force_draw(false)
 	var img = viewport.get_texture().get_image()
 	if img.get_width() > 1000:
 		img.resize(1000, int(float(img.get_height())*1000/img.get_width()))
@@ -399,13 +402,21 @@ func capture(revision: int, sid: String) -> void:
 		ui_image.resize(1600, int(float(ui_image.get_height())*1600/ui_image.get_width()))
 	var ui_b64 = Marshalls.raw_to_base64(ui_image.save_jpg_to_buffer(.90))
 	var req = HTTPRequest.new()
+	req.timeout = 3
 	add_child(req)
-	req.request(BASE + "/api/frame", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"revision": revision, "session": sid, "engine": "Godot " + Engine.get_version_info().string, "image": "data:image/jpeg;base64," + b64, "uiImage": "data:image/jpeg;base64," + ui_b64}))
+	var err = req.request(BASE + "/api/frame", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"revision": revision, "session": sid, "engine": "Godot " + Engine.get_version_info().string, "image": "data:image/jpeg;base64," + b64, "uiImage": "data:image/jpeg;base64," + ui_b64}))
+	if err != OK:
+		req.queue_free()
+		capture_busy = false
+		rendered_revision = -1
+		return
 	var upload = await req.request_completed
 	req.queue_free()
 	capture_busy = false
 	if upload[1] != 200:
 		rendered_revision = -1
+	else:
+		uploaded_frames += 1
 
 func command_id() -> String:
 	return "godot-" + str(Time.get_ticks_usec())
@@ -426,7 +437,7 @@ func command(endpoint: String, value: Dictionary) -> void:
 	req.queue_free()
 	command_busy = false
 	var data = JSON.parse_string(result[3].get_string_from_utf8())
-	feedback_label.text = str(data.get("error", "操作已执行")) if data is Dictionary else "网络错误"
+	feedback_label.text = str(data.get("error", "Command applied")) if data is Dictionary else "Connection error"
 	poll()
 
 func jog(axis: int, direction: int) -> void:

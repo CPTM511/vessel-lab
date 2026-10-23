@@ -11,7 +11,7 @@ let stopped=false;
 async function stop(error){if(stopped)return;stopped=true;await api('/api/agent/status',{running:false,phase:error?'replay error':'replay done',error:error||null});}
 async function main(){
  await api('/api/reset',{seed:rows.find(x=>x.type==='reset').seed});
- await api('/api/agent/status',{running:true,phase:'证据回放 · 无模型调用',task:'replay',model:null,toolCount:0});
+ await api('/api/agent/status',{running:true,phase:'recorded playback',task:'replay',model:null,toolCount:0});
  let count=0;
  for(const row of rows.filter(x=>x.type==='action')){
   if(stopped)break;

@@ -1,0 +1,8 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+{"image_width":896,"passed":false,"revision":61,"test":"background_camera_capture","uploaded_frames":2,"window_minimized":false}
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+{"automatic_render_loop":false,"changed_image":true,"image_width":896,"passed":true,"revision":61,"test":"explicit_redraw_capture","uploaded_frames":2}

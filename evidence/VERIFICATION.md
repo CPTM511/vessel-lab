@@ -1,58 +1,73 @@
-# 实际运行验证 · 2026-10-24
+# Prototype verification
 
-## 已验证的结果
+Recorded experiment date: October 24, 2026. Mechanics version: 0.1.1.
 
-| 项目 | 实测结果 |
+## Observed results
+
+| Check | Recorded result |
 |---|---|
-| 模型 | Codex app-server 实际返回 `gpt-6-astra`，禁止回退 |
-| 登录 | 现有 ChatGPT 订阅登录，未使用 API Key |
-| 图形环境 | 本机 Godot 4.7.2 / OpenGL Compatibility / Apple M3 Pro |
-| 第一个控制闭环 | 2 次模型自主位移，7 次真实 Godot 图像反馈 |
-| 完整自主缝合 | 59 次 `step` + 1 次 `cut` + 1 次 `finish`，总计 67 次工具反馈 |
-| 运行时间 | 模型 turn 512.664 秒，约 8 分 33 秒；仿真时间 34.3 秒 |
-| 周向连接 / 穿刺 | 24 / 48 |
-| 闭合覆盖 | 24/24 采样点，100% |
-| 最大间隙 | 0.0816473 mm |
-| 打结 / 剪线 / 释放 | 全部通过 |
-| 合成损伤 | 0 |
-| 独立保持测试 | 释放后解算 5 秒，通过；没有外部压力负载 |
-| 运行成本观察 | 运行前后积分余额未变化，普通订阅额度可用；无外部收费服务 |
-| 离线校验 | 67 张原始 Godot 反馈图像哈希一致，所有模型位移动作对应实际引擎命令，确定性重放终态一致 |
-| 重启验收 | 实际执行 `Start.command` 后在 Godot 中重放到同一通过终态 |
-| 干净发布包 | 不含本机 sessions 的 Git archive 独立启动后，自带样本完整重放通过；关键 HTTP 拒绝/幂等条件通过，见 `release-check.json` |
+| Controller identity | Codex app-server returned `gpt-6-astra`; model fallback was disabled. |
+| Renderer | Godot 4.7.2, OpenGL Compatibility, Apple M3 Pro. |
+| Initial feedback-loop experiment | Two autonomous movements and seven Godot image/tool responses. |
+| Full suturing episode | 59 `step` calls, one `cut`, one `finish`; 67 image/tool responses in total. |
+| Duration | 512.664 seconds for the controller turn; 34.3 simulated seconds. |
+| Thread bridges / punctures | 24 / 48. |
+| Closure coverage | 24/24 samples, 100%. |
+| Maximum gap | 0.0816473 mm. |
+| Knot, trim, and release | All passed. |
+| Synthetic damage | 0. |
+| Independent hold evaluation | Five simulated seconds after release; passed without an external pressure load. |
+| Offline verification | All 67 frame hashes matched; model movements corresponded to applied commands; deterministic replay reproduced the result. |
+| Restart check | The launcher started the native Godot scene and replay reproduced the passing result. |
+| Clean-source check | A Git archive without local sessions replayed the bundled recording successfully. HTTP rejection/idempotency checks passed; see `release-check.json`. |
 
-完整模型运行时间为北京时间 **00:41:14–00:49:47** 左右。该证据是一个固定种子 42 的样本，不支持稳定成功率或泛化能力结论。
+The live controller turn ran approximately from 00:41:14 to 00:49:47, UTC+08:00. This is a single seed-42 episode and does not establish a general success rate.
 
-## 实际画面
+## Native interface
 
-下面是重新启动交付版后，在 Godot 原生窗口回放到通过终态的实际截图。回放没有再次调用模型。
+The screenshot below shows the English interface replaying the recorded episode. It is a product replay capture, not a newly executed live model experiment. The original model trace and frames are preserved without translation.
 
-![Godot 运行界面](godot-ui-replay.jpg)
+![Vessel Lab native Godot interface](godot-ui-replay.jpg)
 
-## 机制与失败检查
+## Mechanics checks
 
-`npm test`：6 项测试通过（约 54 秒），包括三个种子的完整程序化夹具及重放。原始输出在 `sim-tests.txt`。
+`npm test` passed six tests in approximately 54 seconds. Original test output is retained in `sim-tests.txt`.
 
-- 过时版本、非法坐标、非有限数、非法夹爪命令不会部分修改状态。
-- 针尖穿过空管腔不会生成穿刺；松弛缝线不会把组织推开。
-- 未处理场景不能通过；未打结释放会滑脱并失败；仍持有器械时验收失败。
-- 完整程序化动作夹具在种子 1、42、2026 下通过并可确定性重放。这是引擎测试，未冒充模型运行。
+- Invalid coordinates, non-finite values, stale revisions, and invalid jaw commands leave the state unchanged.
+- A needle moving through the empty lumen creates no puncture; slack thread cannot push tissue apart.
+- An untreated scene fails evaluation. Unsecured release loses closure. Holding a tool prevents a passing terminal result.
+- Scripted reference fixtures pass on seeds 1, 42, and 2026 and reproduce deterministically. These fixtures are engine tests, not model episodes.
 
-公开动作样本 `examples/astra-suture-42.jsonl` 来自上述真实模型运行，未替换为测试夹具。可在 Godot 点“回放最近模型记录”，或在本地服务启动后运行：
+## Replay and evidence
+
+The public `examples/astra-suture-42.jsonl` contains sanitized commands from the live episode. It has not been replaced with a scripted fixture. With the service and Godot running:
 
 ```sh
 node replay.mjs examples/astra-suture-42.jsonl
 ```
 
-本机交付包另含 `loop/`、`suture/` 两组原始日志和全部图像，可运行：
+A local live episode can be checked with:
 
 ```sh
-node verify-evidence.mjs evidence/loop/2026-10-23T16-38-45-488Z-da84ed-agent.jsonl
-node verify-evidence.mjs evidence/suture/2026-10-23T16-41-05-674Z-c4a4a6-agent.jsonl
+node verify-evidence.mjs sessions/<session-id>-agent.jsonl
 ```
 
-## 尚未实现或验证
+The local delivery archive also retains the original `loop/` and `suture/` evidence folders and all tool-response images. Private raw session metadata is excluded from the public repository. These are reproducible local records, not independent third-party attestation.
 
-血管有固定圆形截面支撑；针尖穿刺采用环形唇口平面检测；缝线为距离约束；打结采用累计绕转的几何规则。没有真实线材自碰撞、完整 6 自由度器械和机器人关节动力学、管腔塌陷、血流或渗漏压力测试。管腔面积指标明确返回 `null`。
+## Rendering reliability check
 
-这是本地可审计的简化研究基准，不是临床有效性或真实手术能力的证据。其他术式尚未实现。
+The English-interface update uses an explicit Godot redraw for each capture and a bounded upload timeout. `godot/test_background_capture.gd` changed the camera while automatic rendering was disabled and confirmed that a new, nonempty image was uploaded. The actual OpenGL renderer was used; this was not a headless or generated image.
+
+An earlier native-minimization attempt did not confirm the requested OS window state and is retained as a failed verification attempt. The explicit-redraw check is a separate test, not a claim that minimized or locked-host execution has been validated. Both outputs are preserved in `background-capture-check.txt`.
+
+With the local service running and a graphical Godot executable on `PATH`:
+
+```sh
+godot --path godot --script res://test_background_capture.gd
+```
+
+## Scope limits
+
+The vessel has a supported circular cross-section. Puncture detection uses annular lip planes, thread uses distance constraints, and knot recognition uses accumulated geometric winding. There is no real thread self-contact, full robot dynamics, lumen collapse, blood flow, or pressure/leakage evaluation. The lumen-area measurement returns `null`.
+
+The evidence supports completion of this simplified benchmark. It does not demonstrate clinical validity or real surgical performance. Further procedures and multi-seed live-model evaluation remain outside this recorded result.

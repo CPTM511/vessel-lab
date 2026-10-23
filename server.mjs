@@ -43,7 +43,7 @@ const server=http.createServer(async(req,res)=>{
    }
    if(url.pathname==='/api/agent/start'){
     if(agent.running||agentProcess)throw Error('An agent is already running');
-    if(['completed','failed'].includes(sim.status))throw Error('本轮已结束，请先重置场景再开始模型运行。');
+    if(['completed','failed'].includes(sim.status))throw Error('This episode has ended. Reset the scene before starting a controller run.');
     if(!frames.has(sim.revision))throw Error('Open Godot and wait for a rendered frame first');
     if(!['loop','suture'].includes(b.task))throw Error('Unknown experiment');
     const fd=fs.openSync(path.join(root,'sessions',id+'-process.log'),'a');

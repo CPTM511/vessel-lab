@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "type": "module",
-  "description": "Local, subscription-powered embodied AI suturing research sandbox",
+  "description": "Godot-based benchmark for autonomous robotic vessel suturing",
   "license": "MIT",
   "scripts": {"start": "node server.mjs", "test": "node --test tests/*.test.mjs", "agent": "node agent.mjs", "verify": "node verify-evidence.mjs"},
   "engines": {"node": ">=22"}
