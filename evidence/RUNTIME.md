@@ -14,3 +14,7 @@ An earlier native minimize request did not establish that the OS window was mini
 The controller now rejects missing or expired frames before acting. Stop revokes its local action lease immediately and terminates the process group, including a child that ignores graceful termination. Protocol tests cover both revoked commands and unavailable ordinary model allowance using an explicitly labeled local test double; those tests make no model calls.
 
 System sleep, shutdown, network loss, and prolonged application suspension do not provide continuous inference. The service does not change OS security or sleep settings. A recovered host must supply fresh frames; interrupted episodes remain recorded and must not be counted as successful autonomous runs. This evidence is local and reproducible, not third-party attestation.
+
+## Reproduction
+
+With the controller stopped and the graphical Godot client running, execute `node tests/render-host.mjs --locked` from a terminal or task that remains active when macOS is locked. The probe resets the fixture and performs 40 scripted movements. It rejects any sample without both OS lock flags, requires changing fresh frames, and saves a timestamped report under `sessions/`. Without `--locked`, it tests fresh rendering without making a claim about the OS window state. Never run this probe during an autonomous episode.

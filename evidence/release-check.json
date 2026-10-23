@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "source": "clean Git archive (no local sessions or private evidence)",
+  "source": "clean Git archive 48b6799 (no local sessions or private evidence)",
   "checks": [
     "start without Godot rejected",
     "foreign origin rejected",

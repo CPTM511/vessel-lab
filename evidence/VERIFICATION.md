@@ -31,7 +31,7 @@ The screenshot below shows the English interface replaying the recorded episode.
 
 ## Mechanics checks
 
-`npm test` passed six tests in approximately 54 seconds. Original test output is retained in `sim-tests.txt`.
+The original six mechanics tests passed in approximately 54 seconds (`sim-tests.txt`). The current eight-test suite also covers process shutdown, revoked controller commands, expired frames, and unavailable allowance; all eight passed in 41.4 seconds (`runtime-tests.txt`). Lifecycle tests use a local protocol double and do not count as live model evaluations.
 
 - Invalid coordinates, non-finite values, stale revisions, and invalid jaw commands leave the state unchanged.
 - A needle moving through the empty lumen creates no puncture; slack thread cannot push tissue apart.
@@ -58,7 +58,7 @@ The local delivery archive also retains the original `loop/` and `suture/` evide
 
 The English-interface update uses an explicit Godot redraw for each capture and a bounded upload timeout. `godot/test_background_capture.gd` changed the camera while automatic rendering was disabled and confirmed that a new, nonempty image was uploaded. The actual OpenGL renderer was used; this was not a headless or generated image.
 
-An earlier native-minimization attempt did not confirm the requested OS window state and is retained as a failed verification attempt. The explicit-redraw check is a separate test, not a claim that minimized or locked-host execution has been validated. Both outputs are preserved in `background-capture-check.txt`.
+An earlier native-minimization attempt did not confirm the requested OS window state and is retained as a failed verification attempt. The explicit-redraw check is a separate test, not a claim that minimized or locked-host execution has been validated. Both outputs are preserved in `background-capture-check.txt`. Subsequent actual background and macOS lock tests passed with 20 and 40 changing frames respectively; see [runtime verification](RUNTIME.md) for OS-state evidence and host conditions.
 
 With the local service running and a graphical Godot executable on `PATH`:
 
