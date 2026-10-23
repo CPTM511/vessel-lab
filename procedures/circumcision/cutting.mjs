@@ -63,12 +63,26 @@ export function buildSupports(cage,edges){
  }
  return incident;
 }
+export function newWoundEdges(faces){
+ const groups=new Map();
+ faces.forEach((f,id)=>{for(let i=0;i<3;i++){
+  const nodes=[f.nodes[i],f.nodes[(i+1)%3]].sort((a,b)=>a-b),key=nodes.join(':');
+  if(!groups.has(key))groups.set(key,{key,nodes,original:0,live:[]});
+  const g=groups.get(key);g.original++;if(f.active)g.live.push({face:id,layer:f.layer});
+ }});
+ return [...groups.values()].filter(g=>g.original===2&&g.live.length===1).map(g=>({key:g.key,nodes:g.nodes,...g.live[0]}));
+}
 export function updateTopology(nodes,faces,edges,incident){
  for(let i=0;i<nodes.length;i++){
   const alive=incident[i].some(id=>faces[id].active);nodes[i].alive=alive;
   if(!alive)nodes[i].velocity=[0,0,0];
  }
- for(const e of edges)e.active=e.support.every(group=>group.some(id=>faces[id].active));
+ const woundEdges=newWoundEdges(faces),boundaryNodes=new Set(woundEdges.flatMap(e=>e.nodes));
+ for(const e of edges){
+  // The exposed interface has no hidden native tie across two cut margins.
+  e.releasedInterface=e.kind==='interlayer'&&boundaryNodes.has(e.a)&&boundaryNodes.has(e.b);
+  e.active=!e.releasedInterface&&e.support.every(group=>group.some(id=>faces[id].active));
+ }
  const parents=nodes.map((_,i)=>i),find=i=>{while(parents[i]!==i){parents[i]=parents[parents[i]];i=parents[i];}return i;};
  const union=(a,b)=>{a=find(a);b=find(b);if(a!==b)parents[b]=a;};
  for(const f of faces)if(f.active){union(f.nodes[0],f.nodes[1]);union(f.nodes[1],f.nodes[2]);}
@@ -79,5 +93,5 @@ export function updateTopology(nodes,faces,edges,incident){
   const id=groups.get(root);componentOf[i]=id;const c=components[id];c.nodeCount++;c.anchored||=nodes[i].fixed;
  }
  for(const f of faces)if(f.active)components[componentOf[f.nodes[0]]].faceCount++;
- return {componentOf,components};
+ return {componentOf,components,woundEdges};
 }

@@ -1,5 +1,7 @@
 # Local cutting development evidence
 
+Historical cutting checkpoint at commit `18cd3f0`. Its source fingerprints remain tied to that commit. See [the subsequent attachment and evaluator checkpoint](CLOSURE.md) for the current source and evidence.
+
 **Scripted fixture only. No model inference or completed circumcision episode.** The v0.1.2 vessel-suturing release is unchanged. The complete adult prototype C0 gates remain unmet.
 
 ## Actual rendered run

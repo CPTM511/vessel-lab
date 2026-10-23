@@ -169,8 +169,11 @@ func build_ui() -> void:
 	cut_toggle.text = "Cut with each manual jog"
 	mechanics_panel.add_child(cut_toggle)
 	add_button("Local cut pulse",mechanics_panel,func():mechanical_step({"cut":true}))
+	add_button("Synthetic edge attachment",mechanics_panel,func():global_mechanical_step({"approximate":true}))
+	add_button("Advance 0.5 simulated seconds",mechanics_panel,func():global_mechanical_step({"duration":.5}))
+	add_button("Finish C0 assessment",mechanics_panel,func():send_request("/api/finish",{"source":"manual-mechanics"}))
 	mechanics_label = note("",mechanics_panel,ACCENT)
-	note("Local triangle ablation enabled. Closure, terminal score and model control remain disabled.",mechanics_panel)
+	note("Edge ties are synthetic constraints, not simulated stitches or knots. Model control remains disabled.",mechanics_panel)
 	panel.add_child(text_label("Layer inspection",18))
 	add_button("Outer preputial skin",panel,func():preset("outer"))
 	add_button("Inner preputial mucosa",panel,func():preset("inner"))
@@ -355,6 +358,13 @@ func send_request(route: String, change: Dictionary) -> void:
 func selected_arm() -> String:
 	return "left" if arm_select.selected == 0 else "right"
 
+func global_mechanical_step(change: Dictionary) -> void:
+	if not active_mechanics:
+		return
+	var action = {"revision":scene_state.mechanics.revision,"duration":.05}
+	action.merge(change,true)
+	send_request("/api/step",{"source":"manual-mechanics","action":action})
+
 func mechanical_step(change: Dictionary) -> void:
 	if not active_mechanics:
 		return
@@ -394,9 +404,16 @@ func draw_instruments(data: Dictionary) -> void:
 			blade.height = .70
 			mesh_node(blade,plain_material(Color("eea672")),p,instrument_nodes)
 		world_label("L" if arm_name=="left" else "R",p+q*Vector3(0,14,0),instrument_nodes,color,23)
+	for tie in data.get("attachments",[]):
+		if tie.active:
+			line(Vector3(tie.points[0][0],tie.points[0][1],tie.points[0][2]),Vector3(tie.points[1][0],tie.points[1][1],tie.points[1][2]),.085,Color("aac4f0"),instrument_nodes)
 	var m: Dictionary = data.metrics
 	mechanics_label.text = "Grasps: %s  ·  Protected hits: %s\nPeak displacement: %.2f mm\nTime: %.2f s\nL: %.1f, %.1f, %.1f\nR: %.1f, %.1f, %.1f" % [m.activeGrasps,m.protectedIntersections,m.maxDisplacementMm,m.simulationSeconds,data.arms.left.position[0],data.arms.left.position[1],data.arms.left.position[2],data.arms.right.position[0],data.arms.right.position[1],data.arms.right.position[2]]
 	mechanics_label.text += "\nCut faces: %s · Components: %s\nTarget detached: %.2f%%\nOff-target removed: %.2f%%" % [m.cutFaceCount,m.components.size(),m.area.targetDetachedFraction*100,m.area.offTargetRemovedFraction*100]
+	var assessment: Dictionary = data.assessment
+	mechanics_label.text += "\nSynthetic ties: %s\nReleased hold: %.2f / 5.00 s\nValid wound samples: %s / 48\nC0 assessment: %s" % [m.activeAttachments,m.releaseSeconds,assessment.closure.validSamples,"PASS" if assessment.passed else "INCOMPLETE"]
+	if not assessment.passed:
+		mechanics_label.text += "\nUnmet: " + ", ".join(assessment.failedGates)
 
 func poll() -> void:
 	if poll_busy:
@@ -477,7 +494,7 @@ func capture() -> void:
 	if frame == null or frame.is_empty() or ui == null or ui.is_empty():
 		capture_busy = false
 		return
-	var body = {"session":captured_session,"revision":captured_revision,"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"cutFaceCount":scene_state.get("mechanics",{}).get("metrics",{}).get("cutFaceCount",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
+	var body = {"session":captured_session,"revision":captured_revision,"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"cutFaceCount":scene_state.get("mechanics",{}).get("metrics",{}).get("cutFaceCount",null),"activeAttachments":scene_state.get("mechanics",{}).get("metrics",{}).get("activeAttachments",null),"assessmentPassed":scene_state.get("mechanics",{}).get("assessment",{}).get("passed",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
 	var request = HTTPRequest.new()
 	request.timeout = 3
 	add_child(request)

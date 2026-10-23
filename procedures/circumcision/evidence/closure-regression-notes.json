@@ -1,0 +1,13 @@
+{
+  "kind": "development regression history; no model inference",
+  "initialExistingSuite": {
+    "tests": 12,
+    "passed": 11,
+    "failed": 1,
+    "test": "off-target loss is measured from immutable initial area; no-cut baseline is not a success",
+    "failure": "The historical assertion expected capabilities.terminalScore to remain false. The implemented evaluator now exposes that capability.",
+    "change": "The assertion now requires terminalScore true, assessment.passed false and closure.validSamples zero on intact tissue. No acceptance threshold was changed."
+  },
+  "dedicatedEvaluatorSuite": {"tests": 8, "passed": 8, "failed": 0},
+  "combinedSuite": {"tests": 20, "passed": 20, "failed": 0}
+}

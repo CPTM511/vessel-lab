@@ -1,6 +1,6 @@
 # Bilateral shell manipulation checkpoint
 
-The development sandbox connects low-level instrument commands to a deterministic tissue solver and the running Godot renderer. It is **not a complete circumcision simulation**. Local cutting and topology accounting are available in the development sandbox. Wound-edge attachments, a complete procedure score and live model control remain disabled. See [local cutting and target semantics](CUTTING.md).
+The development sandbox connects low-level instrument commands to a deterministic tissue solver and the running Godot renderer. It is **not a complete circumcision simulation**. Local cutting and topology accounting are available in the development sandbox. Local synthetic edge attachments and a C0 evaluator are now implemented; live model control remains disabled and the complete procedural workflow is unvalidated. See [evaluator definitions](EVALUATOR.md). See [local cutting and target semantics](CUTTING.md).
 
 ## Shared anatomical representation
 

@@ -1,0 +1,16 @@
+✔ nominally close intact surfaces never count as cut wound edges (65.738417ms)
+✔ a real two-layer cut exposes independent retained margins and releases hidden native ties (66.382708ms)
+✔ missing samples and widened edges cannot shrink the fixed scoring denominator (93.750166ms)
+✔ retained collapse or an observed substep orientation reversal is a persistent failure (109.652459ms)
+✔ five consecutive simulated seconds must be released; terminal success freezes further actions (11090.963ms)
+✔ closed jaws, surface proximity, a grasp or cut pulse resets released hold (180.61925ms)
+✔ local synthetic attachments require physical held cut margins and survive release (231.562667ms)
+✔ protected hits and off-target removal independently fail an otherwise prepared fixture (102.896458ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12012.750708

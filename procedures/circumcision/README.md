@@ -1,6 +1,6 @@
 # Adult anatomy research preview
 
-An in-development Godot module for an adult circumcision tissue-manipulation benchmark. The current checkpoint provides original layered anatomy, bilateral low-level grippers, constraint-based tissue deformation, local swept cutting, component/area accounting and real rendered feedback. Wound closure, the full terminal evaluator and autonomous procedure execution are **not yet implemented**. Full retraction and self-contact are not validated. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
+An in-development Godot module for an adult circumcision tissue-manipulation benchmark. The current checkpoint provides original layered anatomy, bilateral low-level grippers, constraint-based tissue deformation, local swept cutting, component/area accounting and real rendered feedback. Local synthetic edge attachments and a C0 terminal evaluator are available. The full low-level resection/closure workflow and autonomous procedure execution are **not yet validated or released**. Full retraction and self-contact are not validated. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
 
 ## Run
 
@@ -22,11 +22,11 @@ This command saves actual images and source hashes for seven views. `--locked --
 
 ## Mechanical development
 
-See [local cutting and independent area semantics](docs/CUTTING.md), [the mechanical model and controls](docs/MECHANICS.md) and [current scripted cutting evidence](evidence/CUTTING.md). The current fixture demonstrates bilateral grasp/release followed by local cutting and withdrawal, with actual Godot images and independently reproduced topology. It is not an autonomous episode or a completed procedure.
+See [local cutting and independent area semantics](docs/CUTTING.md), [the mechanical model and controls](docs/MECHANICS.md) and [current scripted attachment evidence](evidence/CLOSURE.md). The current fixture demonstrates bilateral grasp/release, local cutting, one synthetic edge attachment and a released hold, with actual Godot images and independently reproduced topology and assessment. See [evaluator definitions and limitations](docs/EVALUATOR.md). It is not an autonomous episode or a completed procedure.
 
 ```sh
 node --test tests/*.test.mjs
-node probe-mechanics.mjs --cutting --output evidence/local-mechanical-probe
+node probe-mechanics.mjs --closure --output evidence/local-mechanical-probe
 node verify-mechanics.mjs evidence/local-mechanical-probe/report.json
 ```
 

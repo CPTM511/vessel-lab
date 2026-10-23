@@ -1,6 +1,6 @@
 # Local cutting and topology checkpoint
 
-The sandbox now supports a bounded local cutting interaction and independent material-area accounting. This is a development checkpoint, **not a completed procedure or live model evaluation**. Synthetic wound attachments, retained-element integrity checks, the released closure hold and the terminal evaluator remain pending. The numerical C0 acceptance thresholds are unchanged.
+The sandbox now supports a bounded local cutting interaction and independent material-area accounting. This is a development checkpoint, **not a completed procedure or live model evaluation**. Synthetic wound attachments, retained-element integrity checks, the released hold and terminal evaluator are described in [EVALUATOR.md](EVALUATOR.md). The complete procedural workflow remains pending. The numerical C0 acceptance thresholds are unchanged.
 
 ## Instrument interaction
 
@@ -26,9 +26,9 @@ Godot subdivides each surviving cage triangle independently, using the original 
 - Each face's initial rest area is immutable. Current stretching does not alter the denominator. The serialized definition, initial areas and nominal wound-pair indices are hashed.
 - Target removal includes locally ablated target faces and surviving target faces disconnected from every proximal fixed vertex.
 - Off-target removal uses the same rule for initially non-target faces, divided by initial non-target area.
-- Nominal retained edge samples are the 48 angular vertex pairs at the two boundary rows. These identify candidate evaluation samples; they do not create an attachment or establish that the expected wound edges remain valid after a cut.
+- Nominal retained edge samples are the 48 angular vertex pairs at the two boundary rows. These identify fixed evaluation samples; the evaluator additionally requires actual new retained cut edges and does not award closure credit for intact adjacent surfaces.
 
-The displayed area fractions are **partial accounting**, not terminal success. No-cut tissue has zero target detachment. Later closure and retained-edge validation must reject missing or invalid wound samples, unresolved detached material and protected-volume hits. No live episode has been run and the complete mechanics/evaluator/controller candidate is not frozen yet.
+The displayed area fractions are **partial accounting**, not terminal success. No-cut tissue has zero target detachment. The separate evaluator rejects missing or invalid wound samples, unresolved detached material and protected-volume hits. No live episode has been run and the complete mechanics/evaluator/controller candidate is not frozen yet.
 
 ## Reproduction
 

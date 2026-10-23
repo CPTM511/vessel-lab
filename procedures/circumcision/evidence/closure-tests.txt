@@ -1,0 +1,28 @@
+✔ capsule sweep detects triangle interiors, edges and degenerate cases without endpoint tunneling (0.710416ms)
+✔ local cutting uses geometry, remains bounded, and cannot edit the independent target mask (1432.580708ms)
+✔ invalid cutting commands and occupied instruments are rejected atomically (1495.187834ms)
+✔ topology includes both layers and bending support; detached tissue remains simulated (49.955666ms)
+✔ off-target loss is measured from immutable initial area; no-cut baseline is not a success (36.647875ms)
+✔ cutting reproducibly releases a grasp when its actual supporting face is removed (4664.665375ms)
+✔ nominally close intact surfaces never count as cut wound edges (81.658625ms)
+✔ a real two-layer cut exposes independent retained margins and releases hidden native ties (84.553459ms)
+✔ missing samples and widened edges cannot shrink the fixed scoring denominator (115.468583ms)
+✔ retained collapse or an observed substep orientation reversal is a persistent failure (124.864375ms)
+✔ five consecutive simulated seconds must be released; terminal success freezes further actions (11557.457167ms)
+✔ closed jaws, surface proximity, a grasp or cut pulse resets released hold (189.507875ms)
+✔ local synthetic attachments require physical held cut margins and survive release (252.486292ms)
+✔ protected hits and off-target removal independently fail an otherwise prepared fixture (111.429625ms)
+✔ inspection state is atomic, revisioned, idempotent and origin restricted (5335.702834ms)
+✔ invalid bilateral commands and stale revisions are atomic (63.895916ms)
+✔ rest state is stable, fixed boundaries do not drift, and grasp requires proximity (384.750459ms)
+✔ barycentric grasp moves actual tissue; releasing removes constraints without a visual morph (2923.777ms)
+✔ protected anatomy uses independent geometry and swept instrument violations remain recorded (6278.535459ms)
+✔ the same seed and low-level sequence reproduce tissue positions (1697.216791ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12595.151333

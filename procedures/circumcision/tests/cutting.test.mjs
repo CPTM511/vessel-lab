@@ -61,7 +61,7 @@ test('topology includes both layers and bending support; detached tissue remains
 
 test('off-target loss is measured from immutable initial area; no-cut baseline is not a success',()=>{
  const s=new TissueSim(29),baseline=s.observe();
- assert.equal(baseline.metrics.area.targetDetachedFraction,0);assert.equal(baseline.capabilities.terminalScore,false);
+ assert.equal(baseline.metrics.area.targetDetachedFraction,0);assert.equal(baseline.capabilities.terminalScore,true);assert.equal(baseline.assessment.passed,false);assert.equal(baseline.assessment.closure.validSamples,0);
  s.faces[0].active=false;const top=updateTopology(s.nodes,s.faces,s.edges,s.incident);
  const result=areaAccounting(s.task,s.faces,top.componentOf,top.components);
  assert.equal(result.offTargetRemovedAreaMm2,s.task.areas[0]);

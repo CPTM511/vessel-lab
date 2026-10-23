@@ -1,0 +1,29 @@
+{
+  "kind": "offline verifier corruption checks; no model inference",
+  "cases": [
+    {
+      "tampering": "action",
+      "rejected": true
+    },
+    {
+      "tampering": "frame",
+      "rejected": true
+    },
+    {
+      "tampering": "topology",
+      "rejected": true
+    },
+    {
+      "tampering": "target",
+      "rejected": true
+    },
+    {
+      "tampering": "releaseTimer",
+      "rejected": true
+    },
+    {
+      "tampering": "attachment",
+      "rejected": true
+    }
+  ]
+}

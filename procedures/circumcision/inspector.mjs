@@ -24,7 +24,7 @@ const server=http.createServer(async(req,res)=>{
   if(!body||typeof body!=='object'||Array.isArray(body))return respond(res,400,{error:'Object required'});
   if(req.url!=='/api/frame')res.audit={route:req.url,request:body};
   if(body.session!==state.session)return respond(res,409,{error:'Stale session'});
-  if(['/api/inspect','/api/mechanics/reset','/api/inspection/reset','/api/step'].includes(req.url)){
+  if(['/api/inspect','/api/mechanics/reset','/api/inspection/reset','/api/step','/api/finish'].includes(req.url)){
    const key=body.commandId;
    if(typeof key!=='string'||!key||key.length>128)return respond(res,400,{error:'commandId required'});
    const digest=crypto.createHash('sha256').update(JSON.stringify({route:req.url,body})).digest('hex');
@@ -36,11 +36,11 @@ const server=http.createServer(async(req,res)=>{
    }else if(req.url==='/api/inspection/reset'){
     if(!['manual-inspection','scripted-inspection-test'].includes(body.source))return respond(res,400,{error:'Explicit inspection source required'});
     mechanics=null;state.mechanicsEnabled=false;state.stage='anatomy-inspection';state.retraction=0;state.mode='covered';
-   }else if(req.url==='/api/step'){
+   }else if(req.url==='/api/step'||req.url==='/api/finish'){
     if(!mechanics)return respond(res,409,{error:'Enable the mechanics sandbox first'});
     if(!['manual-mechanics','scripted-mechanics-test'].includes(body.source))return respond(res,400,{error:'No autonomous controller is enabled'});
     if(!frame||Date.now()-frame.receivedAt>5000)return respond(res,409,{error:'Fresh actual Godot frame required before mechanical action'});
-    try{mechanics.step(body.action);}catch(e){return respond(res,400,{error:e.message});}
+    try{if(req.url==='/api/finish')mechanics.finish();else mechanics.step(body.action);}catch(e){return respond(res,400,{error:e.message});}
    }else {
     if(mechanics&&body.retraction!==undefined)return respond(res,409,{error:'Visual retraction morph is disabled during mechanics'});
    if(body.mode!==undefined&&!modes.has(body.mode))return respond(res,400,{error:'Unknown inspection mode'});
@@ -58,6 +58,7 @@ const server=http.createServer(async(req,res)=>{
    if(body.revision!==state.revision)return respond(res,409,{error:'Stale frame revision'});
    if(mechanics&&body.mechanicsRevision!==mechanics.revision)return respond(res,409,{error:'Frame mechanics revision mismatch'});
    if(mechanics&&body.cutFaceCount!==mechanics.metrics().cutFaceCount)return respond(res,409,{error:'Frame cutting topology mismatch'});
+   if(mechanics&&(body.activeAttachments!==mechanics.metrics().activeAttachments||body.assessmentPassed!==mechanics.assessment().passed))return respond(res,409,{error:'Frame attachment or assessment mismatch'});
    if(body.mechanicsEnabled!==state.mechanicsEnabled)return respond(res,409,{error:'Frame phase mismatch'});
    if(body.mode!==state.mode||body.retraction!==state.retraction)return respond(res,409,{error:'Frame inspection state mismatch'});
    if(!/^data:image\/jpeg;base64,/.test(body.image)||!/^data:image\/jpeg;base64,/.test(body.uiImage))return respond(res,400,{error:'Actual JPEG frames required'});

@@ -2,6 +2,8 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {defineTask,areaAccounting} from './task-definition.mjs';
+import {evaluate,recordIntegrity,releasedCondition} from './evaluation.mjs';
+import {planAttachment,solveAttachment,invalidateAttachments,attachmentPoint} from './attachments.mjs';
 import {CUT_RADIUS_MM,sweptFaces,buildSupports,updateTopology} from './cutting.mjs';
 export const cage=JSON.parse(fs.readFileSync(new URL('godot/data/tissue-rest.json',import.meta.url)));
 export const cageHash=crypto.createHash('sha256').update(fs.readFileSync(new URL('godot/data/tissue-rest.json',import.meta.url))).digest('hex');
@@ -69,7 +71,7 @@ export class TissueSim{
  reset(seed=11){
   if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Seed must be an unsigned 32-bit integer');
   this.seed=seed;let r=(Math.imul(seed,1664525)+1013904223)>>>0;this.scale=.99+(r/2**32)*.02;
-  this.revision=0;this.time=0;this.events=[];this.protectedContacts=[];this.cutHistory=[];
+  this.revision=0;this.time=0;this.events=[];this.protectedContacts=[];this.cutHistory=[];this.attachments=[];this.invalidFaces=new Set();this.releaseSeconds=0;this.terminal=null;this.lastEvaluation=null;
   this.task=defineTask(cage,this.scale);
   this.nodes=cage.nodes.map(n=>({...n,rest:mul(n.rest,this.scale),p:mul(n.rest,this.scale),velocity:[0,0,0],inv:n.fixed?0:1}));
   this.faces=cage.faces.map(f=>({...f,nodes:[...f.nodes],active:true}));
@@ -120,6 +122,7 @@ export class TissueSim{
   const old=this.nodes.map(n=>[...n.p]);
   for(const n of this.nodes)if(n.inv&&n.alive)n.p=add(n.p,mul(n.velocity,dt*.65));
   for(const e of this.edges)e.lambda=0;
+  for(const a of this.attachments)a.lambda=0;
   for(let iteration=0;iteration<10;iteration++){
    for(const e of this.edges){
     if(!e.active)continue;
@@ -128,6 +131,7 @@ export class TissueSim{
     const ka=a.inv*dl/l,kb=b.inv*dl/l;
     a.p[0]-=ka*dx;a.p[1]-=ka*dy;a.p[2]-=ka*dz;b.p[0]+=kb*dx;b.p[1]+=kb*dy;b.p[2]+=kb*dz;
    }
+   for(const tie of this.attachments)if(tie.active)solveAttachment(this,tie,dt);
    for(const a of Object.values(this.arms))if(a.grasp){
     const g=a.grasp,current=this.graspPoint(g),desired=add(a.position,rotate(a.quaternion,g.offset));
     const denominator=g.nodes.reduce((sum,id,k)=>sum+this.nodes[id].inv*g.weights[k]**2,0);
@@ -147,6 +151,8 @@ export class TissueSim{
    const n=this.nodes[i];if(!n.p.every(Number.isFinite))throw Error('Non-finite mechanical state');
    n.velocity=mul(sub(n.p,old[i]),1/dt);
   }
+  recordIntegrity(this,old);
+  this.releaseSeconds=releasedCondition(this,protectedQueries)?this.releaseSeconds+dt:0;
   this.time+=dt;
  }
  instrumentSamples(arm){
@@ -168,8 +174,9 @@ export class TissueSim{
   }
  }
  step(action){
+  if(this.terminal)throw Error('Episode is terminal; reset before another action');
   if(!action||typeof action!=='object'||Array.isArray(action))throw Error('Action object required');
-  if(Object.keys(action).some(k=>!['revision','duration','left','right'].includes(k)))throw Error('Unsupported action field');
+  if(Object.keys(action).some(k=>!['revision','duration','left','right','approximate'].includes(k)))throw Error('Unsupported action field');
   if(action.revision!==this.revision)throw Error('Stale mechanical revision');
   const duration=action.duration??.1;
   if(!Number.isFinite(duration)||duration<.02||duration>.5)throw Error('Duration must be 0.02–0.5 simulated seconds');
@@ -182,18 +189,23 @@ export class TissueSim{
    if(a.cut!==undefined&&typeof a.cut!=='boolean')throw Error('Cut must be an explicit boolean pulse');
    if(a.cut&&(this.arms[name].grasp||this.arms[name].jaw<=.65||(a.jaw??1)<=.65))throw Error('Cutting requires an open, unoccupied instrument');
   }
+  if(action.approximate!==undefined&&typeof action.approximate!=='boolean')throw Error('Approximate must be an explicit boolean pulse');
+  if(action.approximate&&(action.left!==undefined||action.right!==undefined))throw Error('Create a local attachment in a separate stationary command');
+  const tie=action.approximate?planAttachment(this):null;
   const before=copy(this),task=this.task;
-  try{return this.applyValidatedStep(action,planned,duration);}catch(error){Object.assign(this,before);this.task=task;throw error;}
+  try{return this.applyValidatedStep(action,planned,duration,tie);}catch(error){Object.assign(this,before);this.task=task;throw error;}
  }
  cutSweep(name,from,to){
   const ids=sweptFaces(this.nodes,this.faces,from,to);if(!ids.length)return;
   for(const id of ids)this.faces[id].active=false;
   this.cutHistory.push({revision:this.revision,time:this.time,arm:name,faces:ids,from:[...from],to:[...to],radiusMm:CUT_RADIUS_MM});
   this.topology=updateTopology(this.nodes,this.faces,this.edges,this.incident);
+  invalidateAttachments(this);
   for(const [arm,a] of Object.entries(this.arms))if(a.grasp&&!this.faces[a.grasp.face].active){a.grasp=null;this.event('grasp_released_by_cut',{arm});}
  }
- applyValidatedStep(action,planned,duration){
+ applyValidatedStep(action,planned,duration,tie){
   const start=copy(this.arms),cutStart=this.cutHistory.length;this.revision++;
+  if(tie){this.attachments.push(tie);this.releaseSeconds=0;this.event('synthetic_edge_attachment',{id:tie.id});}
   for(const name of ['left','right'])this.arms[name].cutting=action[name]?.cut===true;const substeps=Math.ceil(duration*120),dt=duration/substeps,hits=new Set();
   for(let i=1;i<=substeps;i++){
    for(const name of ['left','right']){
@@ -209,16 +221,22 @@ export class TissueSim{
   }
   for(const name of ['left','right'])if(action[name]?.rotationDeg)this.arms[name].rotationDeg=[...action[name].rotationDeg];
   if(this.cutHistory.length>cutStart)this.event('local_cut',{faces:this.cutHistory.slice(cutStart).reduce((n,c)=>n+c.faces.length,0)});
-  this.lastMetrics=null;return this.observe();
+  this.lastMetrics=null;this.lastEvaluation=null;return this.observe();
+ }
+ assessment(){if(!this.lastEvaluation)this.lastEvaluation=evaluate(this,protectedQueries);return copy(this.lastEvaluation);}
+ finish(){
+  if(this.terminal)throw Error('Episode is already terminal');
+  const result=this.assessment();if(!result.passed)throw Error('C0 gates unmet: '+result.failedGates.join(', '));
+  this.terminal=result;this.revision++;this.event('episode_complete');return this.observe();
  }
  metrics(){
   if(this.lastMetrics)return copy(this.lastMetrics);
   const displacement=this.nodes.map(n=>distance(n.p,n.rest));let maxStrain=0;
   for(const e of this.edges)if(e.active)maxStrain=Math.max(maxStrain,Math.abs(distance(this.nodes[e.a].p,this.nodes[e.b].p)/e.rest-1));
   const graspErrors=Object.entries(this.arms).filter(([,a])=>a.grasp).map(([name,a])=>({arm:name,error:distance(this.graspPoint(a.grasp),add(a.position,rotate(a.quaternion,a.grasp.offset)))}));
-  this.lastMetrics={cutFaceCount:this.faces.filter(f=>!f.active).length,activeConstraintCount:this.edges.filter(e=>e.active).length,components:copy(this.topology.components),area:areaAccounting(this.task,this.faces,this.topology.componentOf,this.topology.components),activeGrasps:graspErrors.length,graspErrors,maxDisplacementMm:Math.max(...displacement),meanDisplacementMm:displacement.reduce((s,x)=>s+x,0)/displacement.length,maxConstraintStrain:maxStrain,protectedIntersections:this.protectedContacts.length,simulationSeconds:this.time};
+  this.lastMetrics={activeAttachments:this.attachments.filter(a=>a.active).length,releaseSeconds:this.releaseSeconds,cutFaceCount:this.faces.filter(f=>!f.active).length,activeConstraintCount:this.edges.filter(e=>e.active).length,components:copy(this.topology.components),area:areaAccounting(this.task,this.faces,this.topology.componentOf,this.topology.components),activeGrasps:graspErrors.length,graspErrors,maxDisplacementMm:Math.max(...displacement),meanDisplacementMm:displacement.reduce((s,x)=>s+x,0)/displacement.length,maxConstraintStrain:maxStrain,protectedIntersections:this.protectedContacts.length,simulationSeconds:this.time};
   return copy(this.lastMetrics);
  }
- observe(){return {revision:this.revision,seed:this.seed,scale:this.scale,units:'mm',arms:copy(this.arms),metrics:this.metrics(),events:copy(this.events.slice(-8)),protectedContacts:copy(this.protectedContacts),capabilities:{pose:true,jaw:true,physicalGrasp:true,cutting:true,edgeAttachments:false,terminalScore:false,modelController:false},cage:{angular:cage.angular,axial:cage.axial,hash:cageHash},task:{version:this.task.version,hash:this.task.hash,boundaryRings:this.task.boundaryRings},cutting:{radiusMm:CUT_RADIUS_MM,method:'Swept capsule triangle ablation; whole intersected cage faces removed'},scope:'Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation'};}
+ observe(){return {revision:this.revision,seed:this.seed,scale:this.scale,units:'mm',arms:copy(this.arms),metrics:this.metrics(),assessment:this.assessment(),terminal:copy(this.terminal),attachments:this.attachments.map(a=>({...copy(a),points:a.anchors.map(p=>attachmentPoint(this.nodes,p))})),events:copy(this.events.slice(-8)),protectedContacts:copy(this.protectedContacts),capabilities:{pose:true,jaw:true,physicalGrasp:true,cutting:true,edgeAttachments:true,terminalScore:true,modelController:false},cage:{angular:cage.angular,axial:cage.axial,hash:cageHash},task:{version:this.task.version,hash:this.task.hash,boundaryRings:this.task.boundaryRings},cutting:{radiusMm:CUT_RADIUS_MM,method:'Swept capsule triangle ablation; whole intersected cage faces removed'},scope:'Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation'};}
  snapshot(){return {...this.observe(),positions:this.nodes.map(n=>n.p),faces:this.faces,componentOf:this.topology.componentOf,targetMask:this.task.target,woundPairNodes:this.task.pairNodes};}
 }

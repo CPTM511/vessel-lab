@@ -37,11 +37,16 @@ test('inspection state is atomic, revisioned, idempotent and origin restricted',
   assert.equal((await post({session:reset.session,revision:reset.revision,commandId:crypto.randomUUID(),source:'scripted-inspection-test',retraction:1})).status,409);
   // A prerecorded JPEG is a transport test fixture only, never live evidence.
   const image='data:image/jpeg;base64,'+fs.readFileSync(new URL('../evidence/inspection-attempt-03/covered.jpg',import.meta.url)).toString('base64');
-  const frame={session:reset.session,revision:reset.revision,mechanicsRevision:0,cutFaceCount:0,mechanicsEnabled:true,mode:'covered',retraction:0,renderer:'forward_plus',image,uiImage:image};
+  const frame={session:reset.session,revision:reset.revision,mechanicsRevision:0,cutFaceCount:0,activeAttachments:0,assessmentPassed:false,mechanicsEnabled:true,mode:'covered',retraction:0,renderer:'forward_plus',image,uiImage:image};
   const upload=body=>fetch(base+'/api/frame',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   assert.equal((await upload({...frame,cutFaceCount:1})).status,409);
   assert.equal((await upload({...frame,image:'data:image/jpeg;base64,AAAA'})).status,400);
+  assert.equal((await upload({...frame,activeAttachments:1})).status,409);
+  assert.equal((await upload({...frame,assessmentPassed:true})).status,409);
   assert.equal((await upload(frame)).status,200);
+  const finish=await fetch(base+'/api/finish',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:reset.session,revision:reset.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test'})});
+  assert.equal(finish.status,400);assert.match((await finish.json()).error,/C0 gates unmet/);
+  assert.equal((await fetch(base+'/api/state').then(r=>r.json())).mechanics.revision,0);
   await new Promise(r=>setTimeout(r,5100));
   const stale=await fetch(base+'/api/step',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:reset.session,revision:reset.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',action:{revision:0,duration:.05,left:{jaw:0}}})});
   assert.equal(stale.status,409);assert.match((await stale.json()).error,/Fresh actual Godot frame/);
