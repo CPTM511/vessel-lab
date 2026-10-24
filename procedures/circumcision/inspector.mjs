@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {TissueSim} from './mechanics.mjs';
 
 // Geometry inspection and manual mechanical development; no autonomous procedure yet.
-const modes=new Set(['covered','retracted','ventral','inner','outer','glans','protected']);
+const modes=new Set(['covered','retracted','ventral','inner','outer','glans','protected','meatus']);
 const port=Number(process.env.ANATOMY_PORT||8785);
 const state={session:crypto.randomUUID(),revision:0,mode:'covered',retraction:0,stage:'anatomy-inspection',mechanicsEnabled:false,controlSource:'manual-inspection'};
 let frame=null;let mechanics=null;const commands=new Map();

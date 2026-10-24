@@ -178,6 +178,7 @@ func build_ui() -> void:
 	add_button("Outer preputial skin",panel,func():preset("outer"))
 	add_button("Inner preputial mucosa",panel,func():preset("inner"))
 	add_button("Glans / corona / sulcus",panel,func():preset("glans"))
+	add_button("Meatal close-up",panel,func():preset("meatus"))
 	add_button("Protected anatomy",panel,func():preset("protected"))
 	panel.add_child(HSeparator.new())
 	panel.add_child(text_label("Retraction morphology",18))
@@ -307,6 +308,7 @@ func update_labels(mode: String) -> void:
 		"protected":points=[["Glans / corona",Vector3(19,-23,-12),Vector3(6,-9,0)],["Urethral proxy",Vector3(-43,-17,-10),Vector3(-40,-5,0)],["Ventral frenulum",Vector3(-2,-22,15),Vector3(0,-10.5,0)]]
 		"outer":points=[["Outer preputial skin",Vector3(-2,23,0),Vector3(-2,13,0)],["Distal fold",Vector3(31,13,0),Vector3(25,4,0)]]
 		"ventral":points=[["Frenular attachment",Vector3(10,-25,4),Vector3(0,-10.5,0)],["Inner preputial mucosa",Vector3(-24,-21,13),Vector3(-11,-10,0)]]
+		"meatus":points=[["Meatus",Vector3(24,5,-3),Vector3(22.9,.5,.3)]]
 		"retracted", "glans":points=[["Corona",Vector3(-6,23,-6),Vector3(-4,12,0)],["Coronal sulcus",Vector3(-24,21,9),Vector3(-10,9,0)],["Urethral meatus",Vector3(32,14,0),Vector3(22.6,1,0)]]
 		_:points=[["Outer preputial skin",Vector3(-3,24,0),Vector3(-3,14,0)],["Preputial opening",Vector3(33,13,0),Vector3(25.3,5,0)],["Shaft",Vector3(-51,20,6),Vector3(-51,10,0)]]
 	for p in points:
@@ -335,7 +337,7 @@ func view_input(event: InputEvent) -> void:
 		update_camera()
 
 func preset(mode: String) -> void:
-	var value = 1.0 if mode in ["retracted","ventral","protected","glans"] else 0.0
+	var value = 1.0 if mode in ["retracted","ventral","protected","glans","meatus"] else 0.0
 	send_change({"mode":mode} if active_mechanics else {"mode":mode,"retraction":value})
 
 func send_change(change: Dictionary) -> void:
@@ -468,11 +470,16 @@ func apply_state(data: Dictionary) -> void:
 		morph_slider.set_value_no_signal(morph)
 	if mode != last_mode:
 		specimen.show_mode(mode)
-		support.visible = mode not in ["ventral","protected"]
+		support.visible = mode not in ["ventral","protected","meatus"]
 		orbit_yaw = .70
 		orbit_pitch = -.80 if mode in ["ventral","protected"] else .47
 		orbit_distance = 135 if mode in ["covered","protected"] else 114
 		target = Vector3(-18,0,0) if mode in ["covered","protected"] else Vector3(-2,0,0)
+		if mode == "meatus":
+			orbit_yaw=1.38
+			orbit_pitch=.12
+			orbit_distance=38.0
+			target=Vector3(20,.5,0)
 		update_camera()
 		last_mode = mode
 	update_labels(mode)

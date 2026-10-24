@@ -6,6 +6,26 @@ const tri=[[0,0,0],[2,0,0],[0,2,0]];
 const shift=(t,delta)=>t.map(p=>p.map((v,i)=>v+delta[i]));
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-6,`${a} != ${b}`);
 
+test('shell separation and a rigid support plane remain satisfied together while sliding',()=>{
+ const old=[...shift(tri,[0,0,.1]),...shift(tri,[0,0,.13000009])];
+ const faces=[{nodes:[0,1,2],active:true},{nodes:[3,4,5],active:true}];
+ const proposal=()=>old.map((p,i)=>({p:[p[0]+.02,p[1],i<3?.1:.105],inv:1,alive:true}));
+ const uncoupled=proposal();filterShellMotion(uncoupled,faces,old);
+ assert.ok(Math.min(...uncoupled.map(n=>n.p[2]))<.099,'Fixture must expose the conflicting independent projections');
+ const nodes=proposal(),stats=filterShellMotion(nodes,faces,old,{}, {margin:.1,query:p=>({distance:p[2],normal:[0,0,1]})});
+ assert.ok(stats.rigidContacts>0);assert.equal(stats.limited,false);
+ assert.ok(nodes.every(n=>n.p[2]>=.1-1e-9));
+ assert.ok(triangleSeparation(nodes.slice(0,3).map(n=>n.p),nodes.slice(3).map(n=>n.p)).distance>=CONTACT_GAP_MM-1e-7);
+ for(let i=0;i<nodes.length;i++)near(nodes[i].p[0],old[i][0]+.02);
+});
+
+test('rigid support projection leaves fixed nodes and unconstrained tangential motion unchanged',()=>{
+ const old=[[0,0,.1],[2,0,.1]],nodes=[{p:[.04,0,-.2],inv:1,alive:true},{p:[2,0,.1],inv:0,alive:true}];
+ const stats=filterShellMotion(nodes,[],old,{}, {margin:.1,query:p=>({distance:p[2],normal:[0,0,1]})});
+ assert.ok(stats.rigidContacts>0);assert.equal(stats.limited,false);
+ near(nodes[0].p[0],.04);assert.ok(nodes[0].p[2]>=.1);assert.deepEqual(nodes[1].p,old[1]);
+});
+
 test('continuous shell contact stops fast tunnelling through a fixed triangle',()=>{
  const hit=sweptTriangleContact(shift(tri,[0,0,4]),shift(tri,[0,0,-4]),tri,tri);
  near(hit.time,(4-CONTACT_GAP_MM)/8);near(hit.distance,CONTACT_GAP_MM);

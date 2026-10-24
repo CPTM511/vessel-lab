@@ -1,0 +1,48 @@
+{
+  "kind": "Godot mechanical mesh vertex samples against sampled glans; not exact triangle or continuous intersection",
+  "revision": 1188,
+  "surfaces": {
+    "inner": {
+      "vertices": 18142,
+      "minimumDistanceMm": 0.042760620231244016,
+      "negative": 0,
+      "witness": {
+        "p": [
+          -5.41938352584839,
+          11.0214710235596,
+          6.89675521850586
+        ],
+        "q": {
+          "distance": 0.042760620231244016,
+          "normal": [
+            0,
+            0.8573340274396898,
+            0.514760493233544
+          ],
+          "structure": "glans"
+        }
+      }
+    },
+    "outer": {
+      "vertices": 18142,
+      "minimumDistanceMm": 0.1466290496808086,
+      "negative": 0,
+      "witness": {
+        "p": [
+          -4.5883207321167,
+          8.1799144744873,
+          11.0093898773193
+        ],
+        "q": {
+          "distance": 0.1466290496808086,
+          "normal": [
+            0,
+            0.5974699823947707,
+            0.801891277005301
+          ],
+          "structure": "glans"
+        }
+      }
+    }
+  }
+}

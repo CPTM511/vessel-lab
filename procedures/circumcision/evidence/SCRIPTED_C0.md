@@ -1,5 +1,7 @@
 # Complete scripted C0 mechanics checkpoint
 
+Historical source: commit `b3df294`. The subsequent [anatomy and coupled-contact checkpoint](ANATOMY_INTEGRATION.md) has its own source fingerprints and evidence. Reproduce this record with its historical source.
+
 The first complete low-level scripted fixture passes the existing C0 numerical evaluator. It performs local circumferential face ablation, detachment, two-stage specimen collection, instrument withdrawal and a released hold. This is a deterministic engineering fixture on seed 11, **not an independent model episode or a completed prototype release**. The frozen protocol and evaluator thresholds are unchanged.
 
 ## Actual rendered evidence

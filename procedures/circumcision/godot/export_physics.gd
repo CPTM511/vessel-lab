@@ -31,9 +31,52 @@ func _initialize() -> void:
 	for i in range(81):
 		var points: Array = []
 		for j in range(ANGULAR):
-			points.append(point(anatomy.glans_point(float(i)/80,TAU*float(j)/ANGULAR)))
+			points.append(point(anatomy.glans_volume_point(float(i)/80,TAU*float(j)/ANGULAR)))
 		sections.append(points)
-	var result = {"schema":"anatomy-rest-cage-v1","units":"mm","angular":ANGULAR,"axial":AXIAL,"nodes":nodes,"faces":faces,"glansSections":sections,"provenance":"Original authored Godot anatomy.gd; synthetic dimensions, not patient data","anatomySourceSha256":FileAccess.get_sha256("res://anatomy.gd")}
+	# Support half-spaces conservatively enclose every vertex of the rendered
+	# protected surfaces. These are exclusion envelopes, not injury thresholds.
+	var hulls: Dictionary = {}
+	for name_value in ["frenulum","meatus","glans"]:
+		var vertices: Array = []
+		var rings = 64 if name_value == "frenulum" else (112 if name_value == "glans" else 48)
+		var angular = 32 if name_value == "frenulum" else 192
+		var morphs = [0.0,1.0] if name_value == "frenulum" else [0.0]
+		for morph in morphs:
+			anatomy.retraction = morph
+			for i in range(rings+1):
+				for j in range(angular):
+					var p: Vector3
+					if name_value == "glans":
+						p = anatomy.glans_point(float(i)/rings,TAU*j/angular)
+					elif name_value == "frenulum":
+						p = anatomy.frenulum_point(float(i)/rings,TAU*j/angular)
+					else:
+						p = anatomy.meatus_point(float(i)/rings,TAU*j/angular)
+					vertices.append(p)
+		anatomy.retraction = 0.0
+		var normals: Array = []
+		for ix in range(-2,3):
+			for iy in range(-2,3):
+				for iz in range(-2,3):
+					if (ix==0 and iy==0 and iz==0) or (ix%2==0 and iy%2==0 and iz%2==0):
+						continue
+					normals.append(Vector3(ix,iy,iz).normalized())
+		if name_value == "glans":
+			for i in range(1,12):
+				for j in range(48):
+					var phi = PI*i/12.0
+					var theta = TAU*j/48.0
+					normals.append(Vector3(cos(phi),sin(phi)*cos(theta),sin(phi)*sin(theta)))
+		var planes: Array = []
+		for normal in normals:
+			var bound = -INF
+			for p in vertices:
+				bound = maxf(bound,normal.dot(p))
+			# A 0.005 mm protective padding covers finite sampling and
+			# floating-point differences; unrelated to C0 score thresholds.
+			planes.append([normal.x,normal.y,normal.z,bound+.005])
+		hulls[name_value] = {"planes":planes,"sampledVertices":vertices.size(),"inspectionMorphs":morphs,"paddingMm":.005,"method":"Conservative intersection of support half-spaces; may include adjacent empty space"}
+	var result = {"schema":"anatomy-rest-cage-v1","units":"mm","angular":ANGULAR,"axial":AXIAL,"nodes":nodes,"faces":faces,"glansSections":sections,"protectedHulls":hulls,"provenance":"Original authored Godot anatomy.gd; synthetic dimensions, not patient data","anatomySourceSha256":FileAccess.get_sha256("res://anatomy.gd")}
 	var output = ProjectSettings.globalize_path("res://data/tissue-rest.json")
 	var f = FileAccess.open(output,FileAccess.WRITE)
 	f.store_string(JSON.stringify(result)+"\n")

@@ -1,0 +1,82 @@
+{
+  "kind": "Anatomy and joint-contact development evidence; no model episodes",
+  "frozenProtocolHash": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+  "previousPublishedCheckpoint": "b3df294b7b59973acb68d38865d40e3cdbaa4e27",
+  "experiments": [
+    {
+      "id": "first-meatal-geometry",
+      "classification": "Actual anatomy inspection, visually rejected geometry",
+      "record": "anatomy-rejected-meatus-01/report.json",
+      "reason": "The first opening formed an implausible protruding spout; rounded cap and shared mouth segmentation replaced it.",
+      "source": "anatomy-rejected-meatus-source/"
+    },
+    {
+      "id": "independent-rigid-shell-projections",
+      "classification": "Full scripted numerical replay; C0 geometric gates passed but sampled glans contact failed",
+      "actionCount": 1838,
+      "sourceHashes": {
+        "mechanics.mjs": "9b5152bfd3ed4e50a0901c1445e301b7630875fe72682b29c1dd881c08830085",
+        "contact.mjs": "45cf3b68f77b9c29c2b4defbf15406c5790d9bc3d0e9b5707106ae97361ac4cd",
+        "mesh-audit.mjs": "2708b75b995b37d3520ef5e762f3e0c23c3d8ea5989d7ff9385175779f8bf74f",
+        "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+        "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+        "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+        "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+        "inspector.mjs": "2bc9c9ed7ed4e160934382c92a62bdb27f10a2cf991350b6aefd99d096f897ef",
+        "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+        "probe-mechanics.mjs": "e90f300bd519ea1bd0e03c1c348b34745b38f4aee5ae8e1691d51e507ca1e947",
+        "probe-trajectory.mjs": "4bfc25e3069cb484c77950b6043af253d4d6b78add4d944063b821972862c01f",
+        "godot/main.gd": "944a884b613fd0ad8c0655f3bceda18b2529564b2ae359fbf3512ea99b85ca45",
+        "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+        "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+        "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+        "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+        "godot/export_physics.gd": "398d7a2ed5bfca2f11f94cfb5f574a4f2c2d16db94f6dbc0fc61f6cdba03a148"
+      },
+      "maximumSampledPenetrationMm": 0.18008157231876032,
+      "witness": {
+        "revision": 1412,
+        "node": 1453,
+        "position": [
+          19.629925267834757,
+          -0.8472283200956605,
+          5.153243234380147
+        ],
+        "query": {
+          "distance": -0.18008157231876032,
+          "normal": [
+            0,
+            -0.3495021074477873,
+            0.9369355777691204
+          ],
+          "structure": "glans"
+        }
+      },
+      "mechanicalSource": "anatomy-before-joint/mechanics.mjs",
+      "contactSource": "anatomy-before-joint/contact.mjs",
+      "interpretation": "Shell separation could undo rigid glans projection. A passing protected-instrument score did not establish tissue exclusion."
+    },
+    {
+      "id": "joint-contact-fixed-old-trajectory",
+      "classification": "Full scripted numerical replay; correct C0 rejection",
+      "record": "anatomy-scripted-regression-01.json",
+      "actionCount": 1838,
+      "interpretation": "The right gripper missed the shifted specimen. The unresolved-component gate failed; the other six gates passed. Sampled rigid penetration and declared proper crossings were zero."
+    },
+    {
+      "id": "geometry-refreshed-collection",
+      "classification": "Scripted numerical continuation of the verified first 1497 actions",
+      "record": "anatomy-collection-numerical-02.json",
+      "actionCount": 2023,
+      "interpretation": "Refreshed approach coordinates and confirmed bilateral grasps; all unchanged C0 numerical gates passed. The separate full actual Godot record and exact offline verifier also passed."
+    }
+  ],
+  "limits": [
+    "No independent adult model episode or clinical validation.",
+    "Projection checks sampled node endpoints; the surface diagnostics sample subdivided Godot mesh vertices, not triangle interiors or continuous rigid contact.",
+    "Zero attachments; retained edge approximation is passive authored geometry and recoil.",
+    "Uncalibrated strain, no gravity or support-surface collision."
+  ],
+  "actualRenderedRecord": "anatomy-c0-attempt-02/report.json",
+  "offlineVerification": "anatomy-c0-verification.json"
+}

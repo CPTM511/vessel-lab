@@ -16,7 +16,7 @@ const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
 const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,sha(await fs.readFile(path.join(import.meta.dirname,f)))])));
 const report={kind:'scripted anatomy inspection; not model or procedure evidence',startedAt:new Date().toISOString(),requiresLockedHost:locked,sourceHashes,sourceDigest:sha(JSON.stringify(sourceHashes)),samples:[],passed:false};
 async function api(route,body){const r=await fetch(base+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(4000)});const j=await r.json();if(!r.ok)throw Error(j.error);return j;}
-const checks=count?Array.from({length:count},(_,i)=>['covered',i%2===0?.15:.25]):[['covered',0],['retracted',1],['ventral',1],['inner',0],['protected',1],['glans',1],['outer',0]];
+const checks=count?Array.from({length:count},(_,i)=>['covered',i%2===0?.15:.25]):[['covered',0],['retracted',1],['ventral',1],['inner',0],['protected',1],['glans',1],['meatus',1],['outer',0]];
 try{
  for(let index=0;index<checks.length;index++){
   const [mode,retraction]=checks[index];

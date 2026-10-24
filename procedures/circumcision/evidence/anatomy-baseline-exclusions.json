@@ -1,0 +1,138 @@
+{
+  "kind": "Baseline visual/protected-query alignment audit; static samples, not a procedure",
+  "anatomyHash": "e583f15126dda17a1d1030d4bb636437063efa2e8f55c526d8d53dcc7e67cd81",
+  "rows": [
+    {
+      "retraction": 0,
+      "samples": 1105,
+      "outsideUnion": 450,
+      "outsideInstrumentRadius": 50,
+      "maxDistanceMm": 0.5364968813807921,
+      "witness": {
+        "p": [
+          7.8125,
+          -10.5440559387207,
+          1.77626013755798
+        ],
+        "queries": [
+          {
+            "distance": 0.5364968813807921,
+            "normal": [
+              0,
+              -0.9860424562879831,
+              0.1664940671542407
+            ],
+            "structure": "glans"
+          },
+          {
+            "distance": 5.892134507861288,
+            "normal": [
+              0.2385456205255662,
+              -0.9382794407338946,
+              0.2504549421036899
+            ],
+            "structure": "urethra"
+          },
+          {
+            "distance": 0.6570288674116918,
+            "normal": [
+              0.0018559798774069843,
+              -0.18374200786319805,
+              0.9829727513441534
+            ],
+            "structure": "frenulum"
+          }
+        ],
+        "distance": 0.5364968813807921
+      }
+    },
+    {
+      "retraction": 0.5,
+      "samples": 1105,
+      "outsideUnion": 609,
+      "outsideInstrumentRadius": 16,
+      "maxDistanceMm": 0.5346200521471465,
+      "witness": {
+        "p": [
+          3.54999995231628,
+          -11.2170391082764,
+          -1.39353382587433
+        ],
+        "queries": [
+          {
+            "distance": 0.5346200521471465,
+            "normal": [
+              0,
+              -0.9994993710911816,
+              -0.03163869763963872
+            ],
+            "structure": "glans"
+          },
+          {
+            "distance": 5.4164698730396745,
+            "normal": [
+              0.24087178142699525,
+              -0.9474290069461815,
+              -0.21061591038940622
+            ],
+            "structure": "urethra"
+          },
+          {
+            "distance": 0.5432997915637314,
+            "normal": [
+              0.005737947472567664,
+              -0.5680567997841817,
+              -0.8229693482613772
+            ],
+            "structure": "frenulum"
+          }
+        ],
+        "distance": 0.5346200521471465
+      }
+    },
+    {
+      "retraction": 1,
+      "samples": 1105,
+      "outsideUnion": 617,
+      "outsideInstrumentRadius": 51,
+      "maxDistanceMm": 1.3303722530543993,
+      "witness": {
+        "p": [
+          -10.8000001907349,
+          -7.93191623687744,
+          -1.96102643013
+        ],
+        "queries": [
+          {
+            "distance": 1.3303722530543993,
+            "normal": [
+              -1,
+              0,
+              0
+            ],
+            "structure": "glans"
+          },
+          {
+            "distance": 1.771039338027277,
+            "normal": [
+              -5.978907167818664e-16,
+              -0.7512240609911939,
+              -0.660047278751984
+            ],
+            "structure": "urethra"
+          },
+          {
+            "distance": 2.002212030073764,
+            "normal": [
+              -0.007907969207145489,
+              0.7828889515074238,
+              -0.6221112068035952
+            ],
+            "structure": "frenulum"
+          }
+        ],
+        "distance": 1.3303722530543993
+      }
+    }
+  ]
+}

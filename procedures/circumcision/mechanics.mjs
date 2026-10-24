@@ -44,14 +44,14 @@ export function glansQuery(p,scale=1){
  const v=mul(p,1/scale),xmin=-9.5,xmax=23,xc=clamp(v[0],xmin,xmax),f=(xc-xmin)/(xmax-xmin)*80,k=Math.min(79,Math.floor(f)),t=f-k;
  // Interpolate the same exported YZ polygon directly, avoiding temporary
  // 3D vectors for each edge of every tissue-node hull query.
- let inside=false,best=Infinity,closestY=0,closestZ=0;
+ let inside=false,best=Infinity,closestY=0,closestZ=0,closestDy=0,closestDz=1;
  const sections=cage.glansSections,low=sections[k],high=sections[k+1];
  let ay=low[0][1]+(high[0][1]-low[0][1])*t,az=low[0][2]+(high[0][2]-low[0][2])*t;
  for(let j=0;j<cage.angular;j++){
   const next=(j+1)%cage.angular,by=low[next][1]+(high[next][1]-low[next][1])*t,bz=low[next][2]+(high[next][2]-low[next][2])*t;
   if((az>v[2])!==(bz>v[2])&&v[1]<(by-ay)*(v[2]-az)/(bz-az)+ay)inside=!inside;
   const dy=by-ay,dz=bz-az,u=clamp(((v[1]-ay)*dy+(v[2]-az)*dz)/Math.max(1e-12,dy*dy+dz*dz),0,1),cy=ay+dy*u,cz=az+dz*u;
-  const d=Math.hypot(v[1]-cy,v[2]-cz);if(d<best){best=d;closestY=cy;closestZ=cz;}
+  const d=Math.hypot(v[1]-cy,v[2]-cz);if(d<best){best=d;closestY=cy;closestZ=cz;closestDy=dy;closestDz=dz;}
   ay=by;az=bz;
  }
  const inverse=1/Math.max(best,1e-9);
@@ -59,15 +59,36 @@ export function glansQuery(p,scale=1){
  let d=inside?-best:best;
  if(v[0]<xmin||v[0]>xmax){const axial=Math.abs(v[0]-xc);d=inside?axial:Math.hypot(axial,best);n=[Math.sign(v[0]-xc),0,0];}
  else if(inside&&Math.min(v[0]-xmin,xmax-v[0])<best){d=-Math.min(v[0]-xmin,xmax-v[0]);n=[v[0]-xmin<xmax-v[0]?-1:1,0,0];}
+ if(best<1e-9){const l=Math.max(1e-12,Math.hypot(closestDy,closestDz));n=v[0]>=xmax?[1,0,0]:v[0]<=xmin?[-1,0,0]:[0,closestDz/l,-closestDy/l];}
  return {distance:d*scale,normal:n,structure:'glans'};
 }
 function capsuleQuery(p,a,b,r,name){const cp=closestSegment(p,a,b).p,d=sub(p,cp),l=length(d);return {distance:l-r,normal:l>1e-9?mul(d,1/l):[0,1,0],structure:name};}
+// Unit support-plane residuals are conservative distance lower bounds outside
+// a convex exclusion envelope. They deliberately include some adjacent space.
+const protectedPlanes=Object.fromEntries(Object.entries(cage.protectedHulls).map(([name,hull])=>[name,hull.planes.map(p=>{const l=Math.hypot(p[0],p[1],p[2]);return p.map(v=>v/l);})]));
+const protectedBoxes=Object.fromEntries(Object.entries(protectedPlanes).map(([name,planes])=>[name,planes.filter(p=>p.slice(0,3).filter(v=>v===0).length===2)]));
+function envelopeQuery(p,name,structure){
+ let best=-Infinity,normal=null;
+ // Outside the enclosing axis box by more than every interaction radius,
+ // its lower bound is sufficient; avoid the full envelope in distant queries.
+ for(const plane of protectedBoxes[name]){const d=plane[0]*p[0]+plane[1]*p[1]+plane[2]*p[2]-plane[3];if(d>best){best=d;normal=plane;}}
+ if(best>4)return {distance:best,normal:normal.slice(0,3),structure};
+ for(const plane of protectedPlanes[name]){const d=plane[0]*p[0]+plane[1]*p[1]+plane[2]*p[2]-plane[3];if(d>best){best=d;normal=plane;}}
+ return {distance:best,normal:normal.slice(0,3),structure};
+}
 export function protectedQueries(p,scale=1){
  const v=mul(p,1/scale);
  const urethra=capsuleQuery(v,[-72,-5.7,0],[-1,-5.7,0],1.2,'urethra');
  const distal=capsuleQuery(v,[-1,-5.7,0],[22.6,.3,0],1.2,'urethra');
  const frenulum=capsuleQuery(v,[-10.8,-10.4,0],[9,-10.2,0],1.15,'frenulum');
- return [glansQuery(p,scale),...[urethra.distance<distal.distance?urethra:distal,frenulum].map(q=>({...q,distance:q.distance*scale}))];
+ // Keep the earlier capsules as well as the newly exported visible-surface
+ // envelopes; the anatomical correction never removes an existing exclusion.
+ const meatus=envelopeQuery(v,'meatus','urethra'),web=envelopeQuery(v,'frenulum','frenulum');
+ const urethral=[urethra,distal,meatus].reduce((a,b)=>a.distance<b.distance?a:b);
+ const frenular=web.distance<frenulum.distance?web:frenulum;
+ const sampledGlans=glansQuery(p,scale),glansEnvelope=envelopeQuery(v,'glans','glans');
+ const glans=glansEnvelope.distance*scale<sampledGlans.distance?{...glansEnvelope,distance:glansEnvelope.distance*scale}:sampledGlans;
+ return [glans,...[urethral,frenular].map(q=>({...q,distance:q.distance*scale}))];
 }
 
 export class TissueSim{
@@ -77,7 +98,7 @@ export class TissueSim{
   if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Seed must be an unsigned 32-bit integer');
   this.seed=seed;let r=(Math.imul(seed,1664525)+1013904223)>>>0;this.scale=.99+(r/2**32)*.02;
   this.revision=0;this.time=0;this.events=[];this.protectedContacts=[];this.cutHistory=[];this.attachments=[];this.invalidFaces=new Set();this.releaseSeconds=0;this.terminal=null;this.lastEvaluation=null;
-  this.contactStats={contacts:0,limitedSubsteps:0,lastAdvance:1};this.contactCache={};
+  this.contactStats={contacts:0,rigidContacts:0,limitedSubsteps:0,lastAdvance:1};this.contactCache={};
   this.task=defineTask(cage,this.scale);
   this.nodes=cage.nodes.map(n=>({...n,rest:mul(n.rest,this.scale),p:mul(n.rest,this.scale),velocity:[0,0,0],inv:n.fixed?0:1}));
   this.faces=cage.faces.map(f=>({...f,nodes:[...f.nodes],active:true}));
@@ -154,8 +175,8 @@ export class TissueSim{
    }
    projectShellContacts(this.nodes,this.faces,this.contactCache);
   }
-  const contact=filterShellMotion(this.nodes,this.faces,old,this.contactCache);
-  this.contactStats.contacts+=contact.contacts;
+  const contact=filterShellMotion(this.nodes,this.faces,old,this.contactCache,{margin:.1,query:p=>p[0]>=-9.7*this.scale&&p[0]<=23.2*this.scale&&Math.hypot(p[1],p[2])<15*this.scale?glansQuery(p,this.scale):null});
+  this.contactStats.contacts+=contact.contacts;this.contactStats.rigidContacts+=contact.rigidContacts;
   this.contactStats.limitedSubsteps+=Number(contact.limited);
   this.contactStats.lastAdvance=contact.advance;
   for(let i=0;i<this.nodes.length;i++){
@@ -246,6 +267,7 @@ export class TissueSim{
   for(const e of this.edges)if(e.active)maxStrain=Math.max(maxStrain,Math.abs(distance(this.nodes[e.a].p,this.nodes[e.b].p)/e.rest-1));
   const graspErrors=Object.entries(this.arms).filter(([,a])=>a.grasp).map(([name,a])=>({arm:name,error:distance(this.graspPoint(a.grasp),add(a.position,rotate(a.quaternion,a.grasp.offset)))}));
   this.lastMetrics={activeAttachments:this.attachments.filter(a=>a.active).length,releaseSeconds:this.releaseSeconds,cutFaceCount:this.faces.filter(f=>!f.active).length,activeConstraintCount:this.edges.filter(e=>e.active).length,components:copy(this.topology.components),area:areaAccounting(this.task,this.faces,this.topology.componentOf,this.topology.components),activeGrasps:graspErrors.length,graspErrors,maxDisplacementMm:Math.max(...displacement),meanDisplacementMm:displacement.reduce((s,x)=>s+x,0)/displacement.length,maxConstraintStrain:maxStrain,protectedIntersections:this.protectedContacts.length,simulationSeconds:this.time};
+  this.lastMetrics.rigidGlansContact={projectionMarginMm:.1,planeConstraints:this.contactStats.rigidContacts,scope:'Sampled node endpoint projection coupled with shell contact; not exact continuous tissue/glans collision'};
   this.lastMetrics.shellContact={gapMm:CONTACT_GAP_MM,contactDetections:this.contactStats.contacts,limitedSubsteps:this.contactStats.limitedSubsteps,lastAdvanceFraction:this.contactStats.lastAdvance};
   return copy(this.lastMetrics);
  }

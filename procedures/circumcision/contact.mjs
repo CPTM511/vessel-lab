@@ -181,11 +181,18 @@ export function projectShellContacts(nodes,faces,cache){
  }
 }
 
-export function filterShellMotion(nodes,faces,old,cache={}){
- let proposed=nodes.map(n=>[...n.p]);const stats={contacts:0,passes:0,limited:false,advance:1};
+export function filterShellMotion(nodes,faces,old,cache={},rigid=null){
+ let proposed=nodes.map(n=>[...n.p]);const stats={contacts:0,rigidContacts:0,passes:0,limited:false,advance:1};
  if(proposed.every((p,i)=>p.every((v,k)=>v===old[i][k])))return stats;
  let broadphase=cache.broadphase;
- const versions=new Uint32Array(nodes.length),queries=new Map(),bounds=new Map(),activeConstraints=new Map();
+ const versions=new Uint32Array(nodes.length),queries=new Map(),bounds=new Map(),activeConstraints=new Map(),rigidConstraints=new Map();
+ const rigidContacts=positions=>{
+  if(!rigid)return [];const found=[];
+  for(let i=0;i<nodes.length;i++){if(!nodes[i].inv||nodes[i].alive===false)continue;const q=rigid.query(positions[i]);if(q&&q.distance<rigid.margin-1e-9){
+   if(!q.normal.every(Number.isFinite)||Math.abs(Math.hypot(...q.normal)-1)>1e-6)throw Error('Rigid contact requires a finite unit normal');
+   found.push({node:i,normal:q.normal,bound:dot(positions[i],q.normal)+rigid.margin+1e-5-q.distance});
+  }}return found;
+ };
  const boxFor=id=>{
   const ids=faces[id].nodes,previous=bounds.get(id);
   if(previous&&ids.every((n,k)=>previous.versions[k]===versions[n]))return previous.box;
@@ -196,13 +203,16 @@ export function filterShellMotion(nodes,faces,old,cache={}){
  const limit=contacts=>{
   // A bounded fallback may constrain motion, but must never silently allow
   // interpenetration. Repeating an unchanged proposal cannot resolve it.
-  const time=Math.max(0,Math.min(...contacts.map(c=>c.time))*.9);
+  let time=contacts.length?Math.max(0,Math.min(...contacts.map(c=>c.time))*.9):0;
+  // A smaller shell-safe fraction must also preserve the sampled rigid
+  // endpoint constraint. If it cannot, retain the valid previous state.
+  if(rigid)for(let attempt=0;attempt<20;attempt++){const limited=old.map((p,i)=>mix(p,proposed[i],time));if(!rigidContacts(limited).length)break;time=attempt===19?0:time*.5;}
   cache.lastLimit=contacts.slice(0,2).map(c=>({...c,oldA:c.fa.map(i=>old[i]),oldB:c.fb.map(i=>old[i]),nextA:c.fa.map(i=>proposed[i]),nextB:c.fb.map(i=>proposed[i])}));
   for(let i=0;i<nodes.length;i++)nodes[i].p=mix(old[i],proposed[i],time);
   stats.limited=true;stats.advance=time;return stats;
  };
  for(let pass=0;pass<12;pass++){
-  const contacts=[];stats.passes++;
+  const contacts=[],rigidHits=rigidContacts(proposed);stats.passes++;
   if(!broadphase||[...broadphase.boxes].some(([id,box])=>faces[id].active&&faces[id].nodes.some(n=>proposed[n].some((v,k)=>Math.min(v,old[n][k])<box.lo[k]+CONTACT_GAP_MM||Math.max(v,old[n][k])>box.hi[k]-CONTACT_GAP_MM))))cache.broadphase=broadphase=candidates(faces,old,proposed);
   for(const [a,b] of broadphase.pairs){
    if(!faces[a].active||!faces[b].active)continue;
@@ -218,10 +228,11 @@ export function filterShellMotion(nodes,faces,old,cache={}){
    }
    if(hit)contacts.push({...hit,fa,fb,faceA:a,faceB:b});
   }
-  if(!contacts.length){for(let i=0;i<nodes.length;i++)nodes[i].p=proposed[i];return stats;}
-  stats.contacts+=contacts.length;
+  if(!contacts.length&&!rigidHits.length){for(let i=0;i<nodes.length;i++)nodes[i].p=proposed[i];return stats;}
+  stats.contacts+=contacts.length;stats.rigidContacts+=rigidHits.length;
   if(pass===11)return limit(contacts);
   let changed=false;
+  for(const c of rigidHits)rigidConstraints.set(c.node,c);
   for(const c of contacts){
    if(c.distance<1e-12)throw Error('Shell contact started from an intersecting configuration');
    c.normal=c.delta.map(v=>v/c.distance);
@@ -234,9 +245,13 @@ export function filterShellMotion(nodes,faces,old,cache={}){
   for(let iteration=0;iteration<256;iteration++){
    let moved=false;
    for(const c of activeConstraints.values())moved=projectContact(nodes,proposed,c,versions)||moved;
+   for(const c of rigidConstraints.values()){const deficit=c.bound-dot(proposed[c.node],c.normal);if(deficit<=0)continue;
+    const p=proposed[c.node];let changedNode=false;for(let k=0;k<3;k++){const previous=p[k];p[k]+=deficit*c.normal[k];changedNode||=p[k]!==previous;}if(changedNode){versions[c.node]++;moved=true;}
+   }
    changed||=moved;
    let deficit=0;
    for(const c of activeConstraints.values())deficit=Math.max(deficit,planeDeficit(proposed,c));
+   for(const c of rigidConstraints.values())deficit=Math.max(deficit,c.bound-dot(proposed[c.node],c.normal));
    if(!moved||deficit<1e-9)break;
   }
   if(!changed)return limit(contacts);

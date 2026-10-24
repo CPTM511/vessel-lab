@@ -80,13 +80,31 @@ func profile(x: float, points: Array) -> float:
 			return maxf(.06,(2*t*t*t-3*t*t+1)*a.y+(t*t*t-2*t*t+t)*h*m0+(-2*t*t*t+3*t*t)*b.y+(t*t*t-t*t)*h*m1)
 	return points[-1].y
 
-func glans_point(u: float, theta: float) -> Vector3:
-	var x = lerpf(-9.5, 23.0, u)
-	var r = profile(x,[Vector2(-9.5,9.7),Vector2(-6.5,12.9),Vector2(-3.5,14.0),Vector2(.5,13.6),Vector2(6,12.4),Vector2(12,10.1),Vector2(18,6.9),Vector2(21,4.0),Vector2(23,.12)])
+func glans_profile_point(x: float, theta: float) -> Vector3:
+	var r: float
+	if x >= 18.0:
+		# Rounded apical cap. The distal opening removes a patch from this
+		# surface; it does not extend a tube beyond a closed pointed tip.
+		r = 6.9*sqrt(maxf(0.0,(23.0-x)/5.0))
+	else:
+		r = profile(x,[Vector2(-9.5,9.7),Vector2(-6.5,12.9),Vector2(-3.5,14.0),Vector2(.5,13.6),Vector2(6,12.4),Vector2(12,10.1),Vector2(18,6.9),Vector2(21,4.0),Vector2(23,.12)])
 	var ventral = pow(maxf(0.0,-cos(theta)),12)
-	var notch = 1.0 - .15 * ventral * exp(-pow((x+3.5)/7.0,2.0))
-	var subtle = .018 * sin(theta*13.0+x*1.4) * sin(u*PI)
+	var notch = 1.0-.15*ventral*exp(-pow((x+3.5)/7.0,2.0)) if x < 18.0 else 1.0
+	var subtle = .018*sin(theta*13.0+x*1.4)*sin((x+9.5)/32.5*PI)*(1-smoothstep(16.0,18.0,x))
 	return Vector3(x,(r*notch+subtle)*cos(theta)*.91+.5,(r+subtle)*sin(theta))
+
+func glans_point(u: float, theta: float) -> Vector3:
+	var x = lerpf(-9.5,23.0,u)
+	if x >= 18.0:
+		var edge_radius = 1.0/sqrt(pow(.91*cos(theta)/1.65,2.0)+pow(sin(theta)/.30,2.0))
+		var edge_x = 23.0-5.0*pow(edge_radius/6.9,2.0)
+		x = lerpf(18.0,edge_x,(x-18.0)/5.0)
+	return glans_profile_point(x,theta)
+
+func glans_volume_point(u: float, theta: float) -> Vector3:
+	# A conservative solid cap fills the protected urethral cavity. Visible
+	# surface and exclusion sections use the same authored profile.
+	return glans_profile_point(lerpf(-9.5,23.0,u),theta)
 
 func shaft_point(u: float, theta: float) -> Vector3:
 	var x = lerpf(-72,-8.2,u)
@@ -233,20 +251,26 @@ func build_static() -> void:
 		var x = lerpf(-72,22.6,u)
 		var center_y = lerpf(-5.7,.3,smoothstep(-1,23,x))
 		return Vector3(x,center_y+1.15*cos(theta),.95*sin(theta)),materials.urethra,96,64)
-	var slit = SphereMesh.new()
-	slit.radius = 1.0
-	slit.height = 2.0
-	slit.radial_segments = 48
-	slit.rings = 24
-	var m = StandardMaterial3D.new()
-	m.albedo_color = Color("5d3a3d")
-	m.roughness = .59
-	var n = MeshInstance3D.new()
-	n.mesh = slit
-	n.material_override = m
-	n.position = Vector3(22.6,.42,0)
-	n.scale = Vector3(.24,1.68,.32)
-	parts.meatus.add_child(n)
+	# Rounded mucosal rim and a short, recessed lumen. The hidden lumen end is
+	# a visualization boundary, not a physiological flow model.
+	surface("meatus",meatus_point,materials.mucosa,48,SEGMENTS,true)
+
+func meatus_point(u: float, theta: float) -> Vector3:
+	var edge = glans_point(1.0,theta)
+	var t = smoothstep(0.0,1.0,u)
+	return Vector3(lerpf(edge.x,19.8,u),.5+lerpf(edge.y-.5,.95*cos(theta),t),lerpf(edge.z,.70*sin(theta),t))
+
+func frenulum_point(u: float, theta: float) -> Vector3:
+	# A thin, closed-section ventral web joins the glanular underside to the
+	# retained inner collar. It remains a protected fixture in mechanics.
+	var x = lerpf(9.0,-10.8,u)
+	var glans_u = clampf((x+9.5)/32.5,0,1)
+	var underside = glans_point(glans_u,PI).y
+	var root_y = prepuce_point(0.0,PI,true).y
+	var y = lerpf(underside-.12-.35*sin(u*PI),root_y,smoothstep(.72,1.0,u))
+	var width = .35+1.45*pow(sin(u*PI*.5),.8)
+	var thickness = .12+.18*sin(u*PI)
+	return Vector3(x,y+thickness*cos(theta),width*sin(theta))
 
 func update_prepuce(value: float) -> void:
 	retraction = clampf(value,0,1)
@@ -261,29 +285,7 @@ func update_prepuce(value: float) -> void:
 		mechanical_surface(0)
 		mechanical_surface(1)
 	surface("fold",fold_point,materials.mucosa,10)
-	# Thin ventral attachment web; this is not a calibrated tissue membrane.
-	var st = SurfaceTool.new()
-	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var steps = 32
-	for i in range(steps):
-		for j in range(12):
-			for ij in [Vector2(i,j),Vector2(i+1,j),Vector2(i+1,j+1),Vector2(i,j),Vector2(i+1,j+1),Vector2(i,j+1)]:
-				var u = ij.x/steps
-				var v = ij.y/12.0
-				var attachment_x = lerpf(7.0,-10.8,retraction)
-				var x = lerpf(9.0,attachment_x,u)
-				var width = .42 + 2.0*sin(u*PI*.72)
-				var glans_u = clampf((x+9.5)/32.5,0,1)
-				var underside = glans_point(glans_u,PI).y
-				var y = underside - .24 - .45*sin(u*PI)*sin(v*PI)
-				st.set_uv(Vector2(u,v))
-				st.add_vertex(Vector3(x,y,(v-.5)*2*width))
-	st.generate_normals()
-	st.generate_tangents()
-	var n = MeshInstance3D.new()
-	n.mesh = st.commit()
-	n.material_override = materials.frenulum
-	parts.frenulum.add_child(n)
+	surface("frenulum",frenulum_point,materials.frenulum,64,32)
 	count_geometry()
 
 func count_geometry() -> void:
@@ -311,7 +313,7 @@ func show_mode(mode: String) -> void:
 			for key in ["shaft","outer","inner","fold"]:
 				parts[key].visible = false
 			parts.urethra.visible = true
-		"glans":
+		"glans", "meatus":
 			for key in ["outer","inner","fold"]:
 				parts[key].visible = false
 		"outer":

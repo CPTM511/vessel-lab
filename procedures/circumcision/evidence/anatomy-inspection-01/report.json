@@ -1,0 +1,251 @@
+{
+  "kind": "scripted anatomy inspection; not model or procedure evidence",
+  "startedAt": "2026-10-24T04:19:21.219Z",
+  "requiresLockedHost": false,
+  "sourceHashes": {
+    "inspector.mjs": "2bc9c9ed7ed4e160934382c92a62bdb27f10a2cf991350b6aefd99d096f897ef",
+    "mechanics.mjs": "063fcb087087e914f94ba08c31c09427209095fc81a7078bbbb2acb791912a07",
+    "contact.mjs": "0212a0c392efcd7af95fd4ae2089a2371980c1383bc36c07a3ef52c527b14431",
+    "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+    "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+    "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "inspect.mjs": "0c6ea5ef624bd02b15118a2d72ed7b768e210e23cec3ca34a0df8492bea47581",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/main.gd": "944a884b613fd0ad8c0655f3bceda18b2529564b2ae359fbf3512ea99b85ca45",
+    "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a",
+    "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+  },
+  "sourceDigest": "0ca47922004c5c6e94e705127415a9f055d08e2521ba3a53229c28989dc03cc9",
+  "samples": [
+    {
+      "mode": "covered",
+      "retraction": 0,
+      "revision": 1,
+      "latencyMs": 601,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "covered.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:21.220Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:21.809Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "retracted",
+      "retraction": 1,
+      "revision": 2,
+      "latencyMs": 663,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "29371980eb689ab2d2c27dadb83c9625495cd818b96315fdca02cbb53c4e2e4f",
+      "filename": "retracted.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:21.886Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:22.560Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "retraction": 1,
+      "revision": 3,
+      "latencyMs": 651,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "54f072c42c54f702788f31f534d59db9efee195780133935a7d8f7174f13c4e0",
+      "filename": "ventral.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:22.592Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:23.248Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "inner",
+      "retraction": 0,
+      "revision": 4,
+      "latencyMs": 652,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "87776a289a972db764b1732462091e429db66e26aa5b0382a255be262e6f10bb",
+      "filename": "inner.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:23.278Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:23.932Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "protected",
+      "retraction": 1,
+      "revision": 5,
+      "latencyMs": 861,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "5a70f4765eec14e8e4efb25b60c9409ca2b2744301a0e0ef543b6473304476ec",
+      "filename": "protected.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:23.963Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:24.826Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "glans",
+      "retraction": 1,
+      "revision": 6,
+      "latencyMs": 654,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "c137cafa46c3d2c21d1f3bb7052e676a7d91b373978a83dac590ee9dd7127c88",
+      "filename": "glans.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:24.860Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:25.519Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "meatus",
+      "retraction": 1,
+      "revision": 7,
+      "latencyMs": 550,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "e290733ab668b1c911c1d20f329cb689cdbf4948b227e1107c2ca9e71dc7a164",
+      "filename": "meatus.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:25.550Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:26.101Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "outer",
+      "retraction": 0,
+      "revision": 8,
+      "latencyMs": 651,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "d169e8926b3e74f43e33ac3586471b22511cc583908d671c7ab5664e4f17b41f",
+      "filename": "outer.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:26.133Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T04:19:26.786Z",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    }
+  ],
+  "passed": true,
+  "endedAt": "2026-10-24T04:19:26.816Z"
+}

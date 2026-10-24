@@ -1,0 +1,65 @@
+{
+  "steps": 2023,
+  "maxLatencyMs": 2490,
+  "started": "2026-10-24T04:33:36.856Z",
+  "ended": "2026-10-24T05:24:48.012Z",
+  "renderer": "forward_plus",
+  "driver": "metal",
+  "meshAudits": 130,
+  "locked": {
+    "count": 460,
+    "ranges": [
+      [
+        409,
+        579
+      ],
+      [
+        1735,
+        2023
+      ]
+    ]
+  },
+  "unlocked": {
+    "count": 1560
+  },
+  "unknown": {
+    "count": 3,
+    "ranges": [
+      [
+        408,
+        408
+      ],
+      [
+        580,
+        580
+      ],
+      [
+        1734,
+        1734
+      ]
+    ]
+  },
+  "uniqueImageHashes": 2023,
+  "sourceHashCount": 16,
+  "final": {
+    "target": 1,
+    "offTarget": 0,
+    "hits": 0,
+    "closure": 48,
+    "maxEdgeGap": 0.5094884208571686,
+    "released": 5.250000000000051,
+    "strain": 1.7093191707518822,
+    "rigid": {
+      "projectionMarginMm": 0.1,
+      "planeConstraints": 29326,
+      "scope": "Sampled node endpoint projection coupled with shell contact; not exact continuous tissue/glans collision"
+    },
+    "shell": {
+      "gapMm": 0.03,
+      "contactDetections": 73732,
+      "limitedSubsteps": 4,
+      "lastAdvanceFraction": 1
+    }
+  },
+  "finish": 2024
+}
