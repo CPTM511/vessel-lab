@@ -11,13 +11,14 @@ export const CONTACT_GAP_MM=.03;
 const TOL=1e-7;
 
 function pointTriangle(p,a,b,c){
- const ab=sub(b,a),ac=sub(c,a),ap=sub(p,a),d1=dot(ab,ap),d2=dot(ac,ap);
+ const abx=b[0]-a[0],aby=b[1]-a[1],abz=b[2]-a[2],acx=c[0]-a[0],acy=c[1]-a[1],acz=c[2]-a[2];
+ const apx=p[0]-a[0],apy=p[1]-a[1],apz=p[2]-a[2],d1=abx*apx+aby*apy+abz*apz,d2=acx*apx+acy*apy+acz*apz;
  if(d1<=0&&d2<=0)return [1,0,0];
- const bp=sub(p,b),d3=dot(ab,bp),d4=dot(ac,bp);
+ const bpx=p[0]-b[0],bpy=p[1]-b[1],bpz=p[2]-b[2],d3=abx*bpx+aby*bpy+abz*bpz,d4=acx*bpx+acy*bpy+acz*bpz;
  if(d3>=0&&d4<=d3)return [0,1,0];
  const vc=d1*d4-d3*d2;
  if(vc<=0&&d1>=0&&d3<=0){const v=d1/(d1-d3);return [1-v,v,0];}
- const cp=sub(p,c),d5=dot(ab,cp),d6=dot(ac,cp);
+ const cpx=p[0]-c[0],cpy=p[1]-c[1],cpz=p[2]-c[2],d5=abx*cpx+aby*cpy+abz*cpz,d6=acx*cpx+acy*cpy+acz*cpz;
  if(d6>=0&&d5<=d6)return [0,0,1];
  const vb=d5*d2-d1*d6;
  if(vb<=0&&d2>=0&&d6<=0){const w=d2/(d2-d6);return [1-w,0,w];}
@@ -28,20 +29,31 @@ function pointTriangle(p,a,b,c){
  const v=vb/den,w=vc/den;return [1-v-w,v,w];
 }
 function segmentParameters(p1,q1,p2,q2){
- const d1=sub(q1,p1),d2=sub(q2,p2),r=sub(p1,p2),a=dot(d1,d1),e=dot(d2,d2),f=dot(d2,r);let s=0,t=0;
+ const dx=q1[0]-p1[0],dy=q1[1]-p1[1],dz=q1[2]-p1[2],ex=q2[0]-p2[0],ey=q2[1]-p2[1],ez=q2[2]-p2[2];
+ const rx=p1[0]-p2[0],ry=p1[1]-p2[1],rz=p1[2]-p2[2],a=dx*dx+dy*dy+dz*dz,e=ex*ex+ey*ey+ez*ez,f=ex*rx+ey*ry+ez*rz;let s=0,t=0;
  if(a<1e-24&&e<1e-24)return [0,0];
  if(a<1e-24)t=clamp(f/e);
- else{const c=dot(d1,r);if(e<1e-24)s=clamp(-c/a);else{const b=dot(d1,d2),den=a*e-b*b;s=den>1e-24?clamp((b*f-c*e)/den):0;t=(b*s+f)/e;if(t<0){t=0;s=clamp(-c/a);}else if(t>1){t=1;s=clamp((b-c)/a);}}}
+ else{const c=dx*rx+dy*ry+dz*rz;if(e<1e-24)s=clamp(-c/a);else{const b=dx*ex+dy*ey+dz*ez,den=a*e-b*b;s=den>1e-24?clamp((b*f-c*e)/den):0;t=(b*s+f)/e;if(t<0){t=0;s=clamp(-c/a);}else if(t>1){t=1;s=clamp((b-c)/a);}}}
  return [s,t];
 }
-const weighted=(p,w)=>[0,1,2].map(i=>p[0][i]*w[0]+p[1][i]*w[1]+p[2][i]*w[2]);
+const weighted=(p,w)=>[
+ p[0][0]*w[0]+p[1][0]*w[1]+p[2][0]*w[2],
+ p[0][1]*w[0]+p[1][1]*w[1]+p[2][1]*w[2],
+ p[0][2]*w[0]+p[1][2]*w[1]+p[2][2]*w[2]
+];
 export function triangleSeparation(a,b){
  // Closest features of initially disjoint convex triangles. The continuous
  // query stops at a positive gap before either triangle can intersect.
  let best=Infinity,answer=null;
  const consider=(wa,wb)=>{
-  if(!wa||!wb)return;const pa=weighted(a,wa),pb=weighted(b,wb),delta=sub(pa,pb),d2=dot(delta,delta);
-  if(d2<best){best=d2;answer={distance:Math.sqrt(d2),a:wa,b:wb,delta};}
+  if(!wa||!wb)return;
+  // Keep the arithmetic order of the reference query while avoiding the
+  // temporary weighted-point and delta arrays for rejected feature pairs.
+  const dx=(a[0][0]*wa[0]+a[1][0]*wa[1]+a[2][0]*wa[2])-(b[0][0]*wb[0]+b[1][0]*wb[1]+b[2][0]*wb[2]);
+  const dy=(a[0][1]*wa[0]+a[1][1]*wa[1]+a[2][1]*wa[2])-(b[0][1]*wb[0]+b[1][1]*wb[1]+b[2][1]*wb[2]);
+  const dz=(a[0][2]*wa[0]+a[1][2]*wa[1]+a[2][2]*wa[2])-(b[0][2]*wb[0]+b[1][2]*wb[1]+b[2][2]*wb[2]);
+  const d2=dx*dx+dy*dy+dz*dz;
+  if(d2<best){best=d2;answer={distance:Math.sqrt(d2),a:wa,b:wb,delta:[dx,dy,dz]};}
  };
  for(let i=0;i<3;i++){
   const w=[0,0,0];w[i]=1;
@@ -78,8 +90,11 @@ export function sweptTriangleContact(a0,a1,b0,b1,gap=CONTACT_GAP_MM){
   // contacts needlessly stall, even when one plane separates the whole sweep.
   let safe=Infinity;
   for(let i=0;i<3;i++)for(let j=0;j<3;j++){
-   const closing=dot(sub(vb[j],va[i]),normal);
-   if(closing>1e-15)safe=Math.min(safe,(dot(sub(a[i],b[j]),normal)-gap)/closing);
+   const closing=(vb[j][0]-va[i][0])*normal[0]+(vb[j][1]-va[i][1])*normal[1]+(vb[j][2]-va[i][2])*normal[2];
+   if(closing>1e-15){
+    const separation=(a[i][0]-b[j][0])*normal[0]+(a[i][1]-b[j][1])*normal[1]+(a[i][2]-b[j][2])*normal[2];
+    safe=Math.min(safe,(separation-gap)/closing);
+   }
   }
   if(time+safe>1)return null;
   if(last.distance<=gap+TOL)return {...last,time,conservativeLimit:false};

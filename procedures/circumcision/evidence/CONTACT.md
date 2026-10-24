@@ -50,3 +50,9 @@ node verify-mechanics.mjs evidence/local-contact-probe/report.json
 ```
 
 Use a fresh output directory. Source fingerprints include the contact solver and mesh audit. Offline verification reproduces actions, observed state, geometry, topology, declared mesh checkpoints and actual image hashes. Historical reports require their recorded source revision; they must not be silently reinterpreted using a changed solver.
+
+## Allocation optimization
+
+A subsequent implementation change removes temporary vector arrays from repeated feature-distance queries while preserving arithmetic order. The [exact-parity record](contact-allocation-check.json) checks 10,000 deterministic random motions, 12 recorded grazing motions, and the complete 1,603-command adaptive-collection prefix. The final observation, every node and the contact cache match the earlier implementation exactly. All [31 mechanical/contact tests](contact-allocation-tests.txt) pass.
+
+In one paired numerical timing diagnostic on the same saved state, six stationary 0.05-second commands took 3.0–3.2 seconds each with the prior implementation and 0.9–1.1 seconds each after the change. The resulting snapshots and contact caches were exactly equal. This is a small timing diagnostic, not a general benchmark or a rendered-latency claim. The optimization does not resolve the recorded collection failure. A complete rendered resection test is being recorded separately; it is not yet accepted.
