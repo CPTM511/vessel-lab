@@ -1,0 +1,72 @@
+{
+  "kind": "Round5 measured runtime feedback and existing deadline disclosure; no physics or acceptance change",
+  "parentFreeze": {
+    "protocol": "C0",
+    "model": "gpt-6-astra",
+    "seeds": [
+      11,
+      29,
+      83
+    ],
+    "frozenAt": "2026-10-24T11:52:31.856Z",
+    "runtimeBaseCommit": "4726d5df45a192912d784ca38dfdea572ad4d95a",
+    "sourceDigest": "202783f0a2e1a853c317984c0acd9e87da63fad189379674348fa3fbbdb38c1f",
+    "protocolHash": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "instructionsHash": "19ba23debfebaed716282d778730c5473a5a5f34cb0ade134cf60815e9346eef",
+    "toolsHash": "ea598b9a8c1a495aced5e68a42cef51903ea803d4e481ed9c6509533bd3857ea",
+    "promptHash": "a13e13503eac893f1a7fff5c4c69acf45e46011a4dacbfe91e3d43194bac2849",
+    "preflightFile": "evidence/evaluation-rounds/round4-preflight.json",
+    "preflightHash": "4ca29a889bd2aed7e475e8eac2d240372223988c36c077f4c06403a91b9804c8",
+    "episodePolicy": "Fresh independent resets and model contexts for seeds11,29,83. No supplied trajectory or intervention. Preserve every attempt from all rounds; four prior attempts were unsuccessful.",
+    "round": 4
+  },
+  "source": {
+    "algorithm": "sha256",
+    "files": {
+      "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+      "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+      "agent.mjs": "96eb63cfacc49961feec65da1e011951552b737f2c7fb41e668e1061da3fd46a",
+      "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+      "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+      "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+      "controller-spec.mjs": "2ff287823adc532198a9541cc9a25b8d12a068aeeb8ebf6972add209d7a320b0",
+      "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+      "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+      "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+      "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+      "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+      "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+      "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+      "contact.mjs": "e3055167091828140224402372959da9a3f913d9519fe535fbd2494945bc0c9a",
+      "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+      "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+      "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+      "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+      "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+      "godot/anatomy.gd": "a2baf2fa8d2160de0b52049e117402197249bd98b535dac1ed70f3f7bc7f1ebf",
+      "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a",
+      "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+      "godot/data/tissue-rest.json": "64162d9945a4893347e46b581dff327260981ee8b4688f877501f172e721c893",
+      "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+    },
+    "digest": "541fa1f89ec5546454acb94e5c8c6cf773ee0ffd11dc18fce5f63cc1e2149d4e"
+  },
+  "changedRuntimeFiles": [
+    "agent.mjs",
+    "controller-spec.mjs"
+  ],
+  "artifacts": {
+    "METHOD.md": "f514a645a0d5d05f323b80263ff449108c83d7009986e9c7d7346f050a5cd70a",
+    "duration-counterfactual.jpg": "67509b9272ad2d3e992b3286a0e8983478b9e30b3c2fa354617171fa11eeb1ed",
+    "duration-counterfactual.json": "8a9de7792273d324935d32c19305f7f9e42ec352214dd3a9f46eabf7c4a1d514",
+    "duration-render.json": "44bf40bbd4f9a6999f9e13a289566cb0cbae17068dda6bfa5c69ca5b709db1ac",
+    "new-failure-record-tests.txt": "a4ce51a7d5dd01e0a5fa976323ed4449e9d60a90e10b90c45639491550601a03",
+    "prefix-replay.json": "105747528bd6e940261598dcbdd94f4c182e39d4ea0fd911386a0f034c2ac386",
+    "runtime-feedback-final-tests-02.txt": "325da8492e5d553c7651838003a39b7c362cdfd90b65ed0a1c43934bb45a44ec"
+  },
+  "priorAttempts": 5,
+  "priorSuccesses": 0,
+  "runtimeFeedbackSchema": "wall-clock-v1",
+  "validation": "Actual shorter-duration counterfactual returned a matching image in2513ms with changed physical response, not state equivalence.10 protocol/boundary checks and5 new historical failure checks passed; the prior15 failure checks remain retained. Private round4 replay verifies all89 accepted states,157 images and affirmative per-call guards. Physics, renderer, anatomy and evaluator source are unchanged, retaining prior preflight evidence.",
+  "limits": "An interface omission is confirmed; a causal claim about internal model reasoning is not established. Reported prior cost is not a prediction. All prior failures remain in the denominator. No automatic subdivision or prescribed movement is introduced."
+}

@@ -1,0 +1,18 @@
+✔ controller quota: lease, access and rendered-feedback boundaries (365.473167ms)
+✔ controller api: lease, access and rendered-feedback boundaries (388.232791ms)
+✔ controller wrong_model: lease, access and rendered-feedback boundaries (397.267583ms)
+✔ controller wrong_provider: lease, access and rendered-feedback boundaries (391.475667ms)
+✔ controller stop: lease, access and rendered-feedback boundaries (2443.798667ms)
+✔ controller loop: lease, access and rendered-feedback boundaries (1000.13675ms)
+✔ controller missing_after_action: lease, access and rendered-feedback boundaries (5517.871458ms)
+✔ freeze requires exact source, model, protocol, declared seeds and controller contract (20.804875ms)
+✔ timing feedback reports observed milliseconds and simulated work separately (0.969834ms)
+✔ timing cannot conceal late frames, invalid timestamps or unsupported durations (0.182084ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10564.067584

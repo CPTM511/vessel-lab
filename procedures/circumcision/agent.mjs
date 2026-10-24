@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 import {spawn} from 'node:child_process';
-import {MODEL,toolsForTask,instructions,prompts} from './controller-spec.mjs';
+import {MODEL,toolsForTask,instructions,prompts,ACTION_FRAME_DEADLINE_MS,RUNTIME_FEEDBACK_SCHEMA,actionTiming} from './controller-spec.mjs';
 import {sourceManifest,sha256} from './manifest.mjs';
 import {OrdinaryUsageGuard} from './ordinary-guard.mjs';
 import {hostState} from '../../host-state.mjs';
@@ -13,6 +13,7 @@ const installed='/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI
 const executable=process.env.CODEX_BIN||(fs.existsSync(installed)?installed:'codex');
 const env={...process.env};for(const k of ['OPENAI_API_KEY','OPENAI_BASE_URL','OPENAI_ORG_ID','OPENAI_PROJECT_ID'])delete env[k];
 const allowance=new OrdinaryUsageGuard();let child,session,finished=false,next=0,toolCount=0,moves=0,images=0;
+let lastActionTiming=null;
 const pending=new Map();let resolveDone,rejectDone;const done=new Promise((resolve,reject)=>{resolveDone=resolve;rejectDone=reject;});done.catch(()=>{});
 function save(type,data={}){if(runDir)fs.appendFileSync(path.join(runDir,'agent.jsonl'),JSON.stringify({type,at:new Date().toISOString(),...data})+'\n');}
 async function api(route,body){
@@ -25,7 +26,7 @@ function reply(id,result){if(!finished&&child?.stdin.writable)child.stdin.write(
 async function guard(){const checked=allowance.check(await rpc('account/rateLimits/read',{}));save('allowance_check',checked);return checked;}
 function active(s){if(finished||s.episode!==episode||s.session!==session)throw Error('Controller episode is no longer active');}
 async function rendered(s,after=0){
- const deadline=after?after+5000:Date.now()+5000;
+ const deadline=after?after+ACTION_FRAME_DEADLINE_MS:Date.now()+ACTION_FRAME_DEADLINE_MS;
  while(!finished&&Date.now()<deadline){
   let f;try{f=await api('/api/frame');}catch(e){if(e.status!==503)throw e;}
   if(f&&Date.now()<=deadline&&f.mechanicsEnabled&&f.session===s.session&&f.revision===s.revision&&f.mechanicsRevision===s.mechanics.revision&&f.cutFaceCount===s.mechanics.metrics.cutFaceCount&&f.activeAttachments===s.mechanics.metrics.activeAttachments&&f.assessmentPassed===s.mechanics.assessment.passed&&f.controlSource===MODEL&&f.seed===s.mechanics.seed&&Math.abs(f.anatomyScale-s.mechanics.scale)<1e-6&&f.receivedAt>=after&&Date.now()-f.receivedAt<5000)return f;
@@ -42,7 +43,7 @@ async function shutdown(error){
 }
 function fatal(message){process.exitCode=1;void shutdown(message);}
 async function handleTool(message){
- const {tool,arguments:args,callId,namespace}=message.params;let before,output,accepted=false,guardPassed=false,commandStarted=0;
+ const {tool,arguments:args,callId,namespace}=message.params;let before,output,accepted=false,guardPassed=false,commandStarted=0,responseReceivedAt=0;
  const beforeHost=hostState(),started=Date.now();toolCount++;
  save('model_tool_request',{model:MODEL,namespace,tool,args,callId});
  try{
@@ -55,11 +56,12 @@ async function handleTool(message){
   else if(tool==='inspect')output=await api('/api/inspect',{...command,mode:args.mode});
   else output=await api(tool==='finish'?'/api/finish':'/api/step',{...command,...(tool==='step'?{action:args}:{})});
   accepted=['step','inspect','finish'].includes(tool);
-  if(accepted){save('accepted_command',{tool,args,callId,beforeRevision:before.revision,commandStartedAt:commandStarted,result:output});if(tool==='step')moves++;}
+  if(accepted){responseReceivedAt=Date.now();save('accepted_command',{tool,args,callId,beforeRevision:before.revision,commandStartedAt:commandStarted,responseReceivedAt,result:output});if(tool==='step')moves++;}
   const current=await api('/api/state');active(current);const f=await rendered(current,commandStarted);active(current);
   const filename=`frame-${String(toolCount).padStart(5,'0')}.jpg`;fs.writeFileSync(path.join(runDir,filename),Buffer.from(f.image.split(',')[1],'base64'));images++;
   const geometryHash=sha256(JSON.stringify(current.mechanics.positions)),topologyHash=sha256(JSON.stringify({faces:current.mechanics.faces,componentOf:current.mechanics.componentOf,targetMask:current.mechanics.targetMask}));
-  const observation={...(tool==='geometry'?{geometry:output}:{}),observation:structuredClone(current.mechanics)};
+  if(accepted)lastActionTiming=actionTiming(tool,args,commandStarted,responseReceivedAt,f.receivedAt);
+  const observation={...(tool==='geometry'?{geometry:output}:{}),runtime:{schema:RUNTIME_FEEDBACK_SCHEMA,actionFrameDeadlineMs:ACTION_FRAME_DEADLINE_MS,lastAction:lastActionTiming},observation:structuredClone(current.mechanics)};
   // The returned ordinary observation omits the full mesh; geometry is explicitly queried.
   for(const field of ['positions','faces','componentOf','targetMask','woundPairNodes'])delete observation.observation[field];
   save('tool_result',{model:MODEL,tool,args,callId,success:true,beforeRevision:before.revision,afterRevision:current.revision,output:observation,geometryHash,topologyHash,frame:{filename,imageHash:f.imageHash,revision:f.revision,mechanicsRevision:f.mechanicsRevision,seed:f.seed,anatomyScale:f.anatomyScale,renderer:f.renderer,driver:f.driver,receivedAt:f.receivedAt},beforeHost,afterHost:hostState(),latencyMs:Date.now()-started,commandToFrameMs:commandStarted?f.receivedAt-commandStarted:null});
@@ -80,7 +82,7 @@ async function handleTool(message){
 async function main(){
  if(!token||!runDir||!episode||!prompts[task])throw Error('Start the controller through the local Godot service');
  const current=await api('/api/observe');session=current.session;active(current);
- save('configuration',{kind:process.env.ANATOMY_PROTOCOL_TEST==='1'?'protocol test double; no model inference':'live controller attempt',model:MODEL,task,episode,seed:current.mechanics.seed,scenario:current.mechanics.scenario,source:sourceManifest(),instructionsHash:sha256(instructions),toolsHash:sha256(JSON.stringify(tools)),promptHash:sha256(prompts[task]),node:process.version,reasoning:'Inherited without an effort override',host:hostState()});
+ save('configuration',{kind:process.env.ANATOMY_PROTOCOL_TEST==='1'?'protocol test double; no model inference':'live controller attempt',model:MODEL,task,episode,runtimeFeedbackSchema:RUNTIME_FEEDBACK_SCHEMA,seed:current.mechanics.seed,scenario:current.mechanics.scenario,source:sourceManifest(),instructionsHash:sha256(instructions),toolsHash:sha256(JSON.stringify(tools)),promptHash:sha256(prompts[task]),node:process.version,reasoning:'Inherited without an effort override',host:hostState()});
  await rendered(current);await status({phase:'checking access',toolCount,moves,images});
  child=spawn(executable,['app-server','--listen','stdio://','-c','forced_login_method="chatgpt"'],{cwd:root,env,stdio:['pipe','pipe','pipe']});
  child.on('error',e=>fatal(e.message));child.stderr.on('data',()=>{});

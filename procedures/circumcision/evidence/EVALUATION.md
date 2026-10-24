@@ -1,6 +1,6 @@
 # C0 independent controller evaluation
 
-**There are zero successful episodes across four ended attempts.** Round1 seed11 was interrupted by an external access-status request failure; round1 seed29 failed synthetic gates; round2 seed11 stopped after an accepted command missed its rendered-feedback deadline. Seed83 has not started. The adult prototype has not met its release gate.
+**There are zero successful episodes across five ended attempts.** Round1 seed11 was interrupted by an external access-status request failure; round1 seed29 failed synthetic gates; round2 seed11 stopped after an accepted command missed its rendered-feedback deadline. Seed83 has not started. The adult prototype has not met its release gate.
 
 The [initial source and instruction freeze](evaluation-rounds/round1-freeze.json) was published at `47488cc1ed2a593021d28d5099ae6c16a6b9d119` before evaluation began. Runtime digest: `d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b`. The declared seeds remain **11, 29 and 83**; all three complete case successes are required by [protocol C0](../docs/PROTOCOL.md). Every attempt, including infrastructure interruptions, remains in the [evaluation ledger](c0-evaluation-status.json). The historical two-translation connectivity check is excluded from this denominator.
 
@@ -69,3 +69,7 @@ Round3 seed11 began at2026-10-24 10:56:23 UTC under published commit`4726d5df45a
 ## Round 4 preparation
 
 The targeted contact and mesh-template optimizations passed the [recorded validation](evaluation-rounds/round4-validation/METHOD.md). The [new source freeze](../evaluation-freeze.json) preserves the same declared seeds, exact model, controller instructions and C0 thresholds. All four previous failed attempts remain reported. No round 4 outcome is implied by scripted validation.
+
+## Round 4 outcome and round 5 preparation
+
+Round 4 seed 11 ended unsuccessfully after 89 accepted moves and 157 actual images. A collection action missed the five-second actual-frame deadline. Target detachment, protected and non-target integrity, and edge proximity passed; collection and released hold remained unmet. The [runtime observability correction](evaluation-rounds/round5-validation/METHOD.md) exposes measured action cost and the existing deadline without changing physics, rendering, action ranges or C0 gates. The new freeze precedes fresh independent evaluation; no success is implied by its scripted or protocol checks.

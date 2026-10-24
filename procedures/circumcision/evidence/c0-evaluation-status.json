@@ -71,12 +71,27 @@
       "moves": 100,
       "images": 153,
       "record": "c0-round3-seed11-attempt01/agent.jsonl"
+    },
+    {
+      "round": 4,
+      "seed": 11,
+      "attempt": 1,
+      "sourceDigest": "202783f0a2e1a853c317984c0acd9e87da63fad189379674348fa3fbbdb38c1f",
+      "startedAt": "2026-10-24T11:53:05.763Z",
+      "endedAt": "2026-10-24T12:25:57.190Z",
+      "outcome": "rendered_feedback_deadline_failure",
+      "episodeSucceeded": false,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "moves": 89,
+      "images": 157,
+      "record": "c0-round4-seed11-attempt01/agent.jsonl"
     }
   ],
-  "startedAttempts": 4,
-  "endedAttempts": 4,
+  "startedAttempts": 5,
+  "endedAttempts": 5,
   "successfulAttempts": 0,
-  "unsuccessfulAttempts": 4,
+  "unsuccessfulAttempts": 5,
   "infrastructureAborts": 1,
   "successfulDeclaredCases": 0,
   "unstartedSeeds": [

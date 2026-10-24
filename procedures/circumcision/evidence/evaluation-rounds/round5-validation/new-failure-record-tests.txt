@@ -1,0 +1,13 @@
+✔ c0-round4-seed11-attempt01 verifies failure without success (79914.056958ms)
+✔ c0-round4-seed11-attempt01 cannot pass default success verification (71.790834ms)
+✔ c0-round4-seed11-attempt01 rejects source (152.206166ms)
+✔ c0-round4-seed11-attempt01 rejects image (164.628041ms)
+✔ c0-round4-seed11-attempt01 rejects missing result (79813.168209ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 160174.580042

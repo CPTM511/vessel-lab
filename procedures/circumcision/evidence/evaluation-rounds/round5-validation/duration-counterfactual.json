@@ -1,0 +1,71 @@
+{
+  "kind": "Offline duration counterfactuals from an identical predecessor; different simulated time, not state equivalence or autonomy",
+  "results": [
+    {
+      "duration": 0.5,
+      "solverSubsteps": 60,
+      "elapsedMs": 5196.216416,
+      "protected": 0,
+      "offTarget": 0,
+      "target": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 0.2108598443915731
+        },
+        {
+          "arm": "right",
+          "error": 3.972054645195637e-15
+        }
+      ]
+    },
+    {
+      "duration": 0.1,
+      "solverSubsteps": 12,
+      "elapsedMs": 1473.8002079999997,
+      "protected": 0,
+      "offTarget": 0,
+      "target": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 1.6042803557703935
+        },
+        {
+          "arm": "right",
+          "error": 3.972054645195637e-15
+        }
+      ]
+    },
+    {
+      "duration": 0.02,
+      "solverSubsteps": 3,
+      "elapsedMs": 345.66941700000007,
+      "protected": 0,
+      "offTarget": 0,
+      "target": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 2.0067061149610312
+        },
+        {
+          "arm": "right",
+          "error": 4.351167857633658e-15
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,811 @@
+{
+  "kind": "Diagnostic scripted duration counterfactual from exact pre-failure state; no inference",
+  "started": 1792844985450,
+  "accepted": 1792844987441,
+  "computeResponseMs": 1991,
+  "frameReceivedAt": 1792844987963,
+  "totalFrameMs": 2513,
+  "deadlinePassed": true,
+  "imageHash": "7c61b73877b31e6ca78741ac5e2d821f00c64254d8e799c568e1884f2b99b263",
+  "finalObservation": {
+    "revision": 89,
+    "seed": 11,
+    "scale": 0.92,
+    "scenario": {
+      "version": "S1",
+      "seed": 11,
+      "profile": "compact",
+      "scale": 0.92,
+      "initialArms": {
+        "left": {
+          "position": [
+            32.62475784003735,
+            20.601149676293137,
+            14.237410549335182
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ],
+          "jaw": 1
+        },
+        "right": {
+          "position": [
+            31.44753006540239,
+            23.28498516224325,
+            -12.906749487183989
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ],
+          "jaw": 1
+        }
+      },
+      "scope": "Authored synthetic size cases and deterministic initial instrument offsets; not population anatomy or a procedure trajectory"
+    },
+    "units": "mm",
+    "arms": {
+      "left": {
+        "position": [
+          15.8,
+          1.8,
+          -13.7
+        ],
+        "rotationDeg": [
+          270,
+          0,
+          0
+        ],
+        "jaw": 0,
+        "quaternion": [
+          0.7071067811865476,
+          0,
+          0,
+          -0.7071067811865475
+        ],
+        "grasp": {
+          "face": 1318,
+          "nodes": [
+            659,
+            660,
+            707
+          ],
+          "weights": [
+            0.9171200665401996,
+            0.0828799334598004,
+            0
+          ],
+          "point": [
+            0.14516723253034,
+            1.7166584959033844,
+            -12.891965296807312
+          ],
+          "distance": 0.8826133390570496,
+          "offset": [
+            0.34516723253034,
+            -0.8080347031926873,
+            -0.08334150409661578
+          ]
+        },
+        "cutting": false
+      },
+      "right": {
+        "position": [
+          27,
+          15.8,
+          -8.5
+        ],
+        "rotationDeg": [
+          -35,
+          0,
+          0
+        ],
+        "jaw": 0,
+        "quaternion": [
+          -0.3007057995042731,
+          0,
+          0,
+          0.9537169507482269
+        ],
+        "grasp": {
+          "face": 1340,
+          "nodes": [
+            670,
+            671,
+            718
+          ],
+          "weights": [
+            0.4112576608813363,
+            0.02956001133666474,
+            0.559182327781999
+          ],
+          "point": [
+            -1.010976874734678,
+            12.223888835156908,
+            -3.262383227294812
+          ],
+          "distance": 0.8869214401915491,
+          "offset": [
+            -0.0109768747346779,
+            -0.881876242523789,
+            -0.09382666020185285
+          ]
+        },
+        "cutting": false
+      }
+    },
+    "metrics": {
+      "activeAttachments": 0,
+      "releaseSeconds": 0,
+      "cutFaceCount": 192,
+      "activeConstraintCount": 12144,
+      "components": [
+        {
+          "id": 0,
+          "anchored": true,
+          "nodeCount": 864,
+          "faceCount": 1536
+        },
+        {
+          "id": 1,
+          "anchored": false,
+          "nodeCount": 1536,
+          "faceCount": 2880
+        }
+      ],
+      "area": {
+        "targetMaskHash": "97f39ede2e71c69440b2b1854592299231ca24be94dc29e78376ea1ec95f656b",
+        "targetInitialAreaMm2": 3972.6170977376937,
+        "nonTargetInitialAreaMm2": 2254.6275568629844,
+        "targetDetachedAreaMm2": 3972.6170977376937,
+        "targetDetachedFraction": 1,
+        "offTargetRemovedAreaMm2": 0,
+        "offTargetRemovedFraction": 0,
+        "ablatedAreaMm2": 303.12484693657973
+      },
+      "activeGrasps": 2,
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 1.6042803557703935
+        },
+        {
+          "arm": "right",
+          "error": 3.972054645195637e-15
+        }
+      ],
+      "maxDisplacementMm": 30.44646771851268,
+      "meanDisplacementMm": 3.2010459362202486,
+      "maxConstraintStrain": 9.26506997405081,
+      "protectedIntersections": 0,
+      "simulationSeconds": 19.499999999999535,
+      "rigidGlansContact": {
+        "projectionMarginMm": 0.1,
+        "planeConstraints": 37504,
+        "scope": "Sampled node endpoint projection coupled with shell contact; not exact continuous tissue/glans collision"
+      },
+      "shellContact": {
+        "gapMm": 0.03,
+        "contactDetections": 48353,
+        "limitedSubsteps": 0,
+        "lastAdvanceFraction": 1
+      }
+    },
+    "assessment": {
+      "protocol": "C0",
+      "passed": false,
+      "gates": {
+        "targetDetached": true,
+        "offTargetPreserved": true,
+        "protectedVolumes": true,
+        "retainedEdgeApproximation": true,
+        "releasedHold": false,
+        "retainedIntegrity": true,
+        "resolvedTargetComponents": false
+      },
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "area": {
+        "targetMaskHash": "97f39ede2e71c69440b2b1854592299231ca24be94dc29e78376ea1ec95f656b",
+        "targetInitialAreaMm2": 3972.6170977376937,
+        "nonTargetInitialAreaMm2": 2254.6275568629844,
+        "targetDetachedAreaMm2": 3972.6170977376937,
+        "targetDetachedFraction": 1,
+        "offTargetRemovedAreaMm2": 0,
+        "offTargetRemovedFraction": 0,
+        "ablatedAreaMm2": 303.12484693657973
+      },
+      "closure": {
+        "totalSamples": 48,
+        "validSamples": 48,
+        "coveredSamples": 48,
+        "coverage": 1,
+        "samples": [
+          {
+            "index": 0,
+            "nodes": [
+              576,
+              1392
+            ],
+            "valid": true,
+            "gapMm": 0.4506055695820266,
+            "withinTolerance": true
+          },
+          {
+            "index": 1,
+            "nodes": [
+              577,
+              1393
+            ],
+            "valid": true,
+            "gapMm": 0.4228944728368803,
+            "withinTolerance": true
+          },
+          {
+            "index": 2,
+            "nodes": [
+              578,
+              1394
+            ],
+            "valid": true,
+            "gapMm": 0.41970017978845936,
+            "withinTolerance": true
+          },
+          {
+            "index": 3,
+            "nodes": [
+              579,
+              1395
+            ],
+            "valid": true,
+            "gapMm": 0.4778547772293354,
+            "withinTolerance": true
+          },
+          {
+            "index": 4,
+            "nodes": [
+              580,
+              1396
+            ],
+            "valid": true,
+            "gapMm": 0.36928311080906945,
+            "withinTolerance": true
+          },
+          {
+            "index": 5,
+            "nodes": [
+              581,
+              1397
+            ],
+            "valid": true,
+            "gapMm": 0.4099084430933603,
+            "withinTolerance": true
+          },
+          {
+            "index": 6,
+            "nodes": [
+              582,
+              1398
+            ],
+            "valid": true,
+            "gapMm": 0.40667935223702883,
+            "withinTolerance": true
+          },
+          {
+            "index": 7,
+            "nodes": [
+              583,
+              1399
+            ],
+            "valid": true,
+            "gapMm": 0.356157411937376,
+            "withinTolerance": true
+          },
+          {
+            "index": 8,
+            "nodes": [
+              584,
+              1400
+            ],
+            "valid": true,
+            "gapMm": 0.42101957225665015,
+            "withinTolerance": true
+          },
+          {
+            "index": 9,
+            "nodes": [
+              585,
+              1401
+            ],
+            "valid": true,
+            "gapMm": 0.380240583438773,
+            "withinTolerance": true
+          },
+          {
+            "index": 10,
+            "nodes": [
+              586,
+              1402
+            ],
+            "valid": true,
+            "gapMm": 0.39027317254518734,
+            "withinTolerance": true
+          },
+          {
+            "index": 11,
+            "nodes": [
+              587,
+              1403
+            ],
+            "valid": true,
+            "gapMm": 0.42730604039981607,
+            "withinTolerance": true
+          },
+          {
+            "index": 12,
+            "nodes": [
+              588,
+              1404
+            ],
+            "valid": true,
+            "gapMm": 0.40153449385328255,
+            "withinTolerance": true
+          },
+          {
+            "index": 13,
+            "nodes": [
+              589,
+              1405
+            ],
+            "valid": true,
+            "gapMm": 0.40490023727572316,
+            "withinTolerance": true
+          },
+          {
+            "index": 14,
+            "nodes": [
+              590,
+              1406
+            ],
+            "valid": true,
+            "gapMm": 0.4316486754924146,
+            "withinTolerance": true
+          },
+          {
+            "index": 15,
+            "nodes": [
+              591,
+              1407
+            ],
+            "valid": true,
+            "gapMm": 0.3641670353941475,
+            "withinTolerance": true
+          },
+          {
+            "index": 16,
+            "nodes": [
+              592,
+              1408
+            ],
+            "valid": true,
+            "gapMm": 0.4058639198394647,
+            "withinTolerance": true
+          },
+          {
+            "index": 17,
+            "nodes": [
+              593,
+              1409
+            ],
+            "valid": true,
+            "gapMm": 0.44615156470529976,
+            "withinTolerance": true
+          },
+          {
+            "index": 18,
+            "nodes": [
+              594,
+              1410
+            ],
+            "valid": true,
+            "gapMm": 0.3976259167508945,
+            "withinTolerance": true
+          },
+          {
+            "index": 19,
+            "nodes": [
+              595,
+              1411
+            ],
+            "valid": true,
+            "gapMm": 0.47697847285664957,
+            "withinTolerance": true
+          },
+          {
+            "index": 20,
+            "nodes": [
+              596,
+              1412
+            ],
+            "valid": true,
+            "gapMm": 0.48474970476355445,
+            "withinTolerance": true
+          },
+          {
+            "index": 21,
+            "nodes": [
+              597,
+              1413
+            ],
+            "valid": true,
+            "gapMm": 0.36350675833096324,
+            "withinTolerance": true
+          },
+          {
+            "index": 22,
+            "nodes": [
+              598,
+              1414
+            ],
+            "valid": true,
+            "gapMm": 0.4683777905249803,
+            "withinTolerance": true
+          },
+          {
+            "index": 23,
+            "nodes": [
+              599,
+              1415
+            ],
+            "valid": true,
+            "gapMm": 0.37361674423238667,
+            "withinTolerance": true
+          },
+          {
+            "index": 24,
+            "nodes": [
+              600,
+              1416
+            ],
+            "valid": true,
+            "gapMm": 0.23787958788443286,
+            "withinTolerance": true
+          },
+          {
+            "index": 25,
+            "nodes": [
+              601,
+              1417
+            ],
+            "valid": true,
+            "gapMm": 0.3507849162035048,
+            "withinTolerance": true
+          },
+          {
+            "index": 26,
+            "nodes": [
+              602,
+              1418
+            ],
+            "valid": true,
+            "gapMm": 0.27369066457550384,
+            "withinTolerance": true
+          },
+          {
+            "index": 27,
+            "nodes": [
+              603,
+              1419
+            ],
+            "valid": true,
+            "gapMm": 0.2161184528251502,
+            "withinTolerance": true
+          },
+          {
+            "index": 28,
+            "nodes": [
+              604,
+              1420
+            ],
+            "valid": true,
+            "gapMm": 0.3580873980467352,
+            "withinTolerance": true
+          },
+          {
+            "index": 29,
+            "nodes": [
+              605,
+              1421
+            ],
+            "valid": true,
+            "gapMm": 0.31147616371089415,
+            "withinTolerance": true
+          },
+          {
+            "index": 30,
+            "nodes": [
+              606,
+              1422
+            ],
+            "valid": true,
+            "gapMm": 0.32526380467464505,
+            "withinTolerance": true
+          },
+          {
+            "index": 31,
+            "nodes": [
+              607,
+              1423
+            ],
+            "valid": true,
+            "gapMm": 0.44392042287873223,
+            "withinTolerance": true
+          },
+          {
+            "index": 32,
+            "nodes": [
+              608,
+              1424
+            ],
+            "valid": true,
+            "gapMm": 0.32953698187746916,
+            "withinTolerance": true
+          },
+          {
+            "index": 33,
+            "nodes": [
+              609,
+              1425
+            ],
+            "valid": true,
+            "gapMm": 0.4489900702614548,
+            "withinTolerance": true
+          },
+          {
+            "index": 34,
+            "nodes": [
+              610,
+              1426
+            ],
+            "valid": true,
+            "gapMm": 0.42945749983393033,
+            "withinTolerance": true
+          },
+          {
+            "index": 35,
+            "nodes": [
+              611,
+              1427
+            ],
+            "valid": true,
+            "gapMm": 0.36985141217918344,
+            "withinTolerance": true
+          },
+          {
+            "index": 36,
+            "nodes": [
+              612,
+              1428
+            ],
+            "valid": true,
+            "gapMm": 0.5477005851646753,
+            "withinTolerance": true
+          },
+          {
+            "index": 37,
+            "nodes": [
+              613,
+              1429
+            ],
+            "valid": true,
+            "gapMm": 0.43789228016365267,
+            "withinTolerance": true
+          },
+          {
+            "index": 38,
+            "nodes": [
+              614,
+              1430
+            ],
+            "valid": true,
+            "gapMm": 0.33249465771246595,
+            "withinTolerance": true
+          },
+          {
+            "index": 39,
+            "nodes": [
+              615,
+              1431
+            ],
+            "valid": true,
+            "gapMm": 0.41268141364651345,
+            "withinTolerance": true
+          },
+          {
+            "index": 40,
+            "nodes": [
+              616,
+              1432
+            ],
+            "valid": true,
+            "gapMm": 0.3619534354326077,
+            "withinTolerance": true
+          },
+          {
+            "index": 41,
+            "nodes": [
+              617,
+              1433
+            ],
+            "valid": true,
+            "gapMm": 0.3504234864379785,
+            "withinTolerance": true
+          },
+          {
+            "index": 42,
+            "nodes": [
+              618,
+              1434
+            ],
+            "valid": true,
+            "gapMm": 0.38682274300611225,
+            "withinTolerance": true
+          },
+          {
+            "index": 43,
+            "nodes": [
+              619,
+              1435
+            ],
+            "valid": true,
+            "gapMm": 0.3687811659568146,
+            "withinTolerance": true
+          },
+          {
+            "index": 44,
+            "nodes": [
+              620,
+              1436
+            ],
+            "valid": true,
+            "gapMm": 0.3568564466186179,
+            "withinTolerance": true
+          },
+          {
+            "index": 45,
+            "nodes": [
+              621,
+              1437
+            ],
+            "valid": true,
+            "gapMm": 0.3612531860099037,
+            "withinTolerance": true
+          },
+          {
+            "index": 46,
+            "nodes": [
+              622,
+              1438
+            ],
+            "valid": true,
+            "gapMm": 0.3668429500881657,
+            "withinTolerance": true
+          },
+          {
+            "index": 47,
+            "nodes": [
+              623,
+              1439
+            ],
+            "valid": true,
+            "gapMm": 0.4039192878631464,
+            "withinTolerance": true
+          }
+        ]
+      },
+      "release": {
+        "seconds": 0,
+        "currentCondition": false,
+        "requiredSeconds": 5
+      },
+      "invalidRetainedFaces": [],
+      "unresolvedComponents": [
+        {
+          "component": 1,
+          "reason": "Component is still grasped"
+        }
+      ],
+      "scope": "Independent synthetic geometry checks; no clinical validation"
+    },
+    "terminal": null,
+    "attachments": [],
+    "events": [
+      {
+        "type": "local_cut",
+        "revision": 69,
+        "time": 13.699999999999863,
+        "faces": 2
+      },
+      {
+        "type": "local_cut",
+        "revision": 70,
+        "time": 13.799999999999857,
+        "faces": 2
+      },
+      {
+        "type": "local_cut",
+        "revision": 71,
+        "time": 13.899999999999851,
+        "faces": 2
+      },
+      {
+        "type": "local_cut",
+        "revision": 72,
+        "time": 13.999999999999845,
+        "faces": 2
+      },
+      {
+        "type": "local_cut",
+        "revision": 74,
+        "time": 14.299999999999828,
+        "faces": 3
+      },
+      {
+        "type": "local_cut",
+        "revision": 76,
+        "time": 14.599999999999811,
+        "faces": 2
+      },
+      {
+        "type": "local_cut",
+        "revision": 77,
+        "time": 14.699999999999806,
+        "faces": 2
+      },
+      {
+        "type": "surface_grasp",
+        "revision": 85,
+        "time": 17.866666666666294,
+        "arm": "left",
+        "face": 1318,
+        "distance": 0.8826133390570496
+      }
+    ],
+    "protectedContacts": [],
+    "capabilities": {
+      "pose": true,
+      "jaw": true,
+      "physicalGrasp": true,
+      "cutting": true,
+      "edgeAttachments": true,
+      "terminalScore": true,
+      "modelController": true
+    },
+    "cage": {
+      "angular": 48,
+      "axial": 24,
+      "hash": "64162d9945a4893347e46b581dff327260981ee8b4688f877501f172e721c893"
+    },
+    "task": {
+      "version": "C0-target-mask-1",
+      "hash": "97f39ede2e71c69440b2b1854592299231ca24be94dc29e78376ea1ec95f656b",
+      "boundaryRings": [
+        12,
+        4
+      ]
+    },
+    "cutting": {
+      "radiusMm": 0.35,
+      "method": "Swept capsule triangle ablation; whole intersected cage faces removed"
+    },
+    "scope": "Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation"
+  },
+  "originalDurationSeconds": 0.5,
+  "counterfactualDurationSeconds": 0.1,
+  "scope": "Same commanded endpoint, different simulated time and resulting tissue response. Not state-equivalent replay or autonomous evidence."
+}

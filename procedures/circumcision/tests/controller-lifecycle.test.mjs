@@ -40,6 +40,11 @@ for(const [index,mode] of ['quota','api','wrong_model','wrong_provider','stop','
   if(['quota','api','wrong_model','wrong_provider'].includes(mode))assert.ok(!data.requests.some(r=>r.method==='turn/start'));
   const journal=fs.readFileSync(path.join(fixture.root,'sessions',end.agent.runId,'agent.jsonl'),'utf8').trim().split('\n').map(JSON.parse);assert.match(journal[0].kind,/test double/);
   if(mode==='loop'){assert.equal(end.agent.phase,'done');assert.equal(data.responses.filter(r=>r.result?.contentItems.some(i=>i.type==='inputImage')).length,3);assert.equal(journal.filter(r=>r.type==='tool_result').length,3);assert.equal(journal.find(r=>r.type==='verification').moves,2);}
+  if(mode==='loop'){
+   const results=journal.filter(r=>r.type==='tool_result'),delivered=data.responses.filter(r=>r.result?.contentItems.some(i=>i.type==='inputImage')).map(r=>JSON.parse(r.result.contentItems.find(i=>i.type==='inputText').text));
+   assert.deepEqual(delivered,results.map(r=>r.output),'The model must receive the recorded runtime telemetry');
+   for(const r of results){assert.equal(r.output.runtime.schema,'wall-clock-v1');assert.equal(r.output.runtime.actionFrameDeadlineMs,5000);if(r.tool==='step'){const a=journal.find(x=>x.type==='accepted_command'&&x.callId===r.callId);assert.deepEqual(r.output.runtime.lastAction,{tool:'step',simulatedDurationSeconds:r.args.duration,solverSubsteps:Math.ceil(r.args.duration*120),responseMs:a.responseReceivedAt-a.commandStartedAt,frameMs:r.frame.receivedAt-a.commandStartedAt});}else assert.equal(r.output.runtime.lastAction,null);}
+  }
   if(mode==='missing_after_action'){assert.match(end.agent.error,/observation unavailable/);assert.equal(journal.filter(r=>r.type==='accepted_command').length,1);assert.equal(journal.filter(r=>r.type==='tool_result'&&r.tool==='step').length,0);}
   assert.equal((await api('/api/mechanics/reset',{session:s.session,revision:end.revision,source:'manual-mechanics',commandId:crypto.randomUUID(),seed:29})).status,200);
  }finally{
