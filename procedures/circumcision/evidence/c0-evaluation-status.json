@@ -86,18 +86,77 @@
       "moves": 89,
       "images": 157,
       "record": "c0-round4-seed11-attempt01/agent.jsonl"
+    },
+    {
+      "round": 5,
+      "seed": 11,
+      "attempt": 1,
+      "sourceDigest": "541fa1f89ec5546454acb94e5c8c6cf773ee0ffd11dc18fce5f63cc1e2149d4e",
+      "startedAt": "2026-10-24T12:35:07.890Z",
+      "endedAt": "2026-10-24T13:29:46.369Z",
+      "outcome": "completed_c0",
+      "episodeSucceeded": true,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "moves": 165,
+      "images": 221,
+      "toolRequests": 221,
+      "maxCommandToFrameMs": 3535,
+      "record": "c0-round5-seed11-attempt01/agent.jsonl",
+      "verification": "c0-round5-seed11-attempt01-verification.json"
+    },
+    {
+      "round": 5,
+      "seed": 29,
+      "attempt": 1,
+      "sourceDigest": "541fa1f89ec5546454acb94e5c8c6cf773ee0ffd11dc18fce5f63cc1e2149d4e",
+      "startedAt": "2026-10-24T13:37:30.159Z",
+      "endedAt": "2026-10-24T14:09:13.004Z",
+      "outcome": "completed_c0",
+      "episodeSucceeded": true,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "moves": 96,
+      "images": 132,
+      "toolRequests": 132,
+      "maxCommandToFrameMs": 2846,
+      "record": "c0-round5-seed29-attempt01/agent.jsonl",
+      "verification": "c0-round5-seed29-attempt01-verification.json"
+    },
+    {
+      "round": 5,
+      "seed": 83,
+      "attempt": 1,
+      "sourceDigest": "541fa1f89ec5546454acb94e5c8c6cf773ee0ffd11dc18fce5f63cc1e2149d4e",
+      "startedAt": "2026-10-24T14:12:29.162Z",
+      "endedAt": "2026-10-24T14:57:30.085Z",
+      "outcome": "synthetic_gate_failure",
+      "episodeSucceeded": false,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "moves": 160,
+      "images": 210,
+      "toolRequests": 210,
+      "maxCommandToFrameMs": 3336,
+      "failedGates": [
+        "resolvedTargetComponents"
+      ],
+      "record": "c0-round5-seed83-attempt01/agent.jsonl"
     }
   ],
-  "startedAttempts": 5,
-  "endedAttempts": 5,
-  "successfulAttempts": 0,
-  "unsuccessfulAttempts": 5,
+  "startedAttempts": 8,
+  "endedAttempts": 8,
+  "successfulAttempts": 2,
+  "unsuccessfulAttempts": 6,
   "infrastructureAborts": 1,
-  "successfulDeclaredCases": 0,
-  "unstartedSeeds": [
-    83
-  ],
+  "successfulDeclaredCases": 2,
+  "unstartedSeeds": [],
   "releaseGateMet": false,
   "historicalConnectivityExcluded": true,
-  "scope": "All started full-procedure attempts are included. An infrastructure-aborted attempt is not a successful episode and is not evidence of surgical incapability. C0 still requires all three declared case successes with every attempt reported."
+  "scope": "All started full-procedure attempts are included. An infrastructure-aborted attempt is not a successful episode and is not evidence of surgical incapability. C0 still requires all three declared case successes with every attempt reported.",
+  "currentRound": 5,
+  "currentRoundPendingSeeds": [],
+  "currentRoundFailedSeeds": [
+    83
+  ]
 }

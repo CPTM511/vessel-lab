@@ -5,7 +5,7 @@ import fs from 'node:fs';import path from 'node:path';import assert from 'node:a
 
 const dir=path.resolve(process.argv[2]),lines=fs.readFileSync(path.join(dir,'agent.jsonl'),'utf8').trim().split('\n'),rows=lines.map(JSON.parse),wire=x=>JSON.parse(JSON.stringify(x));
 const recordedDigest=rows.find(r=>r.type==='configuration')?.source?.digest;
-const historicalRuntimes={'d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b':'round1','80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320':'round2','b51db9fee0baa0223c905a8f4ed3b734dc8862c255e730079e327089474386ae':'round3','202783f0a2e1a853c317984c0acd9e87da63fad189379674348fa3fbbdb38c1f':'round4'};
+const historicalRuntimes={'d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b':'round1','80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320':'round2','b51db9fee0baa0223c905a8f4ed3b734dc8862c255e730079e327089474386ae':'round3','202783f0a2e1a853c317984c0acd9e87da63fad189379674348fa3fbbdb38c1f':'round4','541fa1f89ec5546454acb94e5c8c6cf773ee0ffd11dc18fce5f63cc1e2149d4e':'round5'};
 const runtime=historicalRuntimes[recordedDigest]?'./evidence/runtime-c0-'+historicalRuntimes[recordedDigest]+'/procedures/circumcision/':'./';
 const {TissueSim}=await import(runtime+'mechanics.mjs'),{geometryQuery}=await import(runtime+'instrumentation.mjs');
 const {sourceManifest,sha256}=await import(runtime+'manifest.mjs'),{MODEL,instructions,toolsForTask,prompts,ACTION_FRAME_DEADLINE_MS,RUNTIME_FEEDBACK_SCHEMA,actionTiming}=await import(runtime+'controller-spec.mjs');

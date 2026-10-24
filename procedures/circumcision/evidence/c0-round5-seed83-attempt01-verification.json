@@ -1,0 +1,29 @@
+{
+  "recordVerified": true,
+  "episodeSucceeded": false,
+  "kind": "Actual controller completed turn with unmet C0 gates",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "seed": 83,
+  "sourceDigest": "541fa1f89ec5546454acb94e5c8c6cf773ee0ffd11dc18fce5f63cc1e2149d4e",
+  "privateAccessChecksVerified": false,
+  "moves": 160,
+  "toolCalls": 210,
+  "images": 210,
+  "rejected": 1,
+  "maxCommandToFrameMs": 3336,
+  "finalRevision": 160,
+  "assessmentPassed": false,
+  "failedGates": [
+    "resolvedTargetComponents"
+  ],
+  "metrics": {
+    "cutFaces": 197,
+    "targetDetachedFraction": 1,
+    "offTargetRemovedFraction": 0,
+    "protectedIntersections": 0,
+    "retainedEdgeCoverage": 1,
+    "releasedSeconds": 5.011666666666697
+  },
+  "scope": "Completed model turn and exact numerical/image-association verification, with an unsuccessful procedure outcome. Not clinical validation."
+}

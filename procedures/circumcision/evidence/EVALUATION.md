@@ -1,6 +1,6 @@
 # C0 independent controller evaluation
 
-**There are zero successful episodes across five ended attempts.** Round1 seed11 was interrupted by an external access-status request failure; round1 seed29 failed synthetic gates; round2 seed11 stopped after an accepted command missed its rendered-feedback deadline. Seed83 has not started. The adult prototype has not met its release gate.
+**Round5 finished2/3: seeds11/29 succeeded, while seed83 failed detached-component collection. Across all rounds there are two successes and six unsuccessful attempts.** The adult prototype has not met its release gate.
 
 The [initial source and instruction freeze](evaluation-rounds/round1-freeze.json) was published at `47488cc1ed2a593021d28d5099ae6c16a6b9d119` before evaluation began. Runtime digest: `d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b`. The declared seeds remain **11, 29 and 83**; all three complete case successes are required by [protocol C0](../docs/PROTOCOL.md). Every attempt, including infrastructure interruptions, remains in the [evaluation ledger](c0-evaluation-status.json). The historical two-translation connectivity check is excluded from this denominator.
 
@@ -73,3 +73,32 @@ The targeted contact and mesh-template optimizations passed the [recorded valida
 ## Round 4 outcome and round 5 preparation
 
 Round 4 seed 11 ended unsuccessfully after 89 accepted moves and 157 actual images. A collection action missed the five-second actual-frame deadline. Target detachment, protected and non-target integrity, and edge proximity passed; collection and released hold remained unmet. The [runtime observability correction](evaluation-rounds/round5-validation/METHOD.md) exposes measured action cost and the existing deadline without changing physics, rendering, action ranges or C0 gates. The new freeze precedes fresh independent evaluation; no success is implied by its scripted or protocol checks.
+
+
+## Round5 seed11: completed C0 episode
+
+The fresh exact `gpt-6-astra` / `xhigh` episode ran from12:35:07 to13:29:46 UTC on2026-10-24 under frozen runtime `541fa1f89ec5546454acb94e5c8c6cf773ee0ffd11dc18fce5f63cc1e2149d4e`, published before the run at `e0602d9`. It completed165 model-selected mechanical actions and221 actual rendered tool responses, with no rejected commands and maximum3,535ms accepted-command feedback. All C0 gates passed, including100% target detachment, zero off-target removal/protected contacts,48/48 edge samples within tolerance, resolved target components and5.0417 simulated seconds of released hold. Finish was accepted and the model turn completed naturally.
+
+The [record](c0-round5-seed11-attempt01/agent.jsonl) retains the actual decisions and unchanged images. [Verification](c0-round5-seed11-attempt01-verification.json) reproduces every numerical state and checks image integrity/association and measured timing metadata. Private pre/post checks were verified locally. This is one authored synthetic case, not proof of general reliability, anatomical accuracy or clinical validity; passive edge approximation and detached-shell crumpling remain disclosed limitations.
+
+```sh
+node verify-controller.mjs evidence/c0-round5-seed11-attempt01
+```
+
+
+## Round5 seed29: completed C0 episode
+
+A fresh context and reset under the same frozen runtime completed96 model-selected actions and132 actual image responses from13:37:30 to14:09:13 UTC on2026-10-24. Exact `gpt-6-astra` / `xhigh`, no rejected commands, maximum2,846ms feedback. All C0 gates and Finish passed:100% target detachment, zero off-target removal/protected contacts,48/48 edge samples within tolerance and5.0083 simulated seconds of released hold. All states and image associations reproduce exactly; private pre/post checks passed.
+
+[Original decisions and images](c0-round5-seed29-attempt01/agent.jsonl) and [verification](c0-round5-seed29-attempt01-verification.json) retain the same scope and limitations as seed11.
+
+```sh
+node verify-controller.mjs evidence/c0-round5-seed29-attempt01
+```
+
+
+## Round5 seed83: unresolved detached component
+
+The independent episode ended14:57:30 UTC after160 accepted moves and210 actual image responses. Maximum feedback was3,336ms; no frame deadline failed. Target detachment reached100%, off-target removal/protected contacts remained zero,48/48 edge pairs passed and released hold reached5.0117 simulated seconds. Finish was rejected because one detached component remained within3mm of protected anatomy. The model reported the incomplete result without claiming success.
+
+The [original record](c0-round5-seed83-attempt01/agent.jsonl) preserves contact limiting, retreat, release, local target cuts and the rejected Finish. Beginning at mechanical revision133, multiple substeps report zero permitted advancement. This is a diagnostic observation, not yet a proven root cause or a reason to relax collection/contact thresholds. No unchanged retry is counted.
