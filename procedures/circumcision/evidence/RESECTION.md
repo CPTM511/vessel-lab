@@ -1,6 +1,6 @@
 # Resection feasibility and contact failure
 
-**INCOMPLETE.** A 1,715-action numerical instrument trajectory satisfies the existing C0 geometric score, but an independent mesh audit detects interlayer and self-intersection defects. The graphical run was stopped when this defect was established. This checkpoint does not complete the procedure prototype and contains **no live model episode**.
+**Historical checkpoint `abdbaf3`; incomplete.** See the subsequent [contact development checkpoint](CONTACT.md) for the current solver. A 1,715-action numerical instrument trajectory satisfies the existing C0 geometric score, but an independent mesh audit detects interlayer and self-intersection defects. The graphical run was stopped when this defect was established. This checkpoint does not complete the procedure prototype and contains **no live model episode**.
 
 ## Numerical trajectory
 
@@ -24,7 +24,7 @@ The [development record](resection-development.json) preserves the unsuccessful 
 
 ## Why the geometric score is insufficient
 
-The [static mesh audit](resection-mesh-audit.json) detects **42 proper crossings involving retained faces and 4,836 involving detached faces** at the complete numerical endpoint. Initial geometry has zero detected crossings. The retained witnesses include outer and inner surfaces near the proximal inner-layer boundary. Detached tissue folds through itself during collection. The shell's current distance constraints and glans projection do not provide non-adjacent surface contact handling.
+The [static mesh audit](resection-mesh-audit.json) detects **42 proper crossings involving retained faces and 4,836 involving detached faces** at the complete numerical endpoint. Initial geometry has zero detected crossings. The retained witnesses include outer and inner surfaces near the proximal inner-layer boundary. Detached tissue folds through itself during collection. That checkpoint's distance constraints and glans projection do not provide non-adjacent surface contact handling.
 
 `mesh-audit.mjs` uses a spatial grid and interior segment/triangle intersections. It excludes adjacent faces, records witness face IDs and intersection points, and distinguishes retained, detached and mixed pairs. Its analytical controls detect a crossing and reject separated geometry. This diagnostic does **not** cover coplanar overlap, near-contact thickness or continuous collision; passing it alone would not establish a correct contact solver. The 42/4,836 figures are intersecting face-pair counts, not clinical damage measurements.
 
@@ -38,7 +38,7 @@ The actual stopped state has 38 cut faces, 1.559608% target detached and zero of
 
 ## Reproduce
 
-From the adult module directory, with this checkpoint's source:
+From the adult module directory, with source commit `abdbaf3`:
 
 ```sh
 node --test tests/mesh-audit.test.mjs

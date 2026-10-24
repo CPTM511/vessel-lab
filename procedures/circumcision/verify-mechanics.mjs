@@ -12,6 +12,8 @@ const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
 const wire=v=>JSON.parse(JSON.stringify(v));
 const allowed=new Set(['mechanics.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md']);
 if(report.schema==='scripted-trajectory-v1')allowed.add('probe-trajectory.mjs');
+if(fs.readFileSync(path.join(root,'mechanics.mjs'),'utf8').includes("from './contact.mjs'"))allowed.add('contact.mjs');
+if(report.schema==='scripted-trajectory-v1'&&fs.readFileSync(path.join(root,'probe-trajectory.mjs'),'utf8').includes("from './mesh-audit.mjs'"))allowed.add('mesh-audit.mjs');
 assert.equal(Object.keys(report.sourceHashes).length,allowed.size,'Missing source fingerprints');
 for(const [f,hash] of Object.entries(report.sourceHashes)){assert.ok(allowed.has(f),'Unexpected source path');assert.equal(sha(fs.readFileSync(path.join(root,f))),hash,'Source changed: '+f);}
 assert.match(report.kind,/scripted/);assert.ok(report.steps.length>0);
@@ -21,6 +23,10 @@ if(report.schema==='scripted-trajectory-v1'){
  const fixture=JSON.parse(bytes);
  assert.deepEqual(report.steps.map(s=>s.action),fixture.actions.slice(0,report.steps.length),'Recorded actions differ from the declared scripted trajectory');
  if(report.passed){assert.equal(report.steps.length,fixture.actions.length);assert.deepEqual(report.finalAssessment,fixture.expectedAssessment);}
+ if(report.passed&&report.sourceHashes['mesh-audit.mjs']){
+  const expected=fixture.actions.map((_,i)=>i+1).filter(n=>n%48===0||n===fixture.actions.length||(fixture.auditRevisions??[]).includes(n));
+  assert.deepEqual(report.meshChecks.map(a=>a.revision),expected,'Missing declared mesh checks');
+ }
  const journal=fs.readFileSync(path.join(dir,'steps.jsonl'),'utf8').trim().split('\n').map(line=>JSON.parse(line));
  assert.deepEqual(journal,report.steps,'Streaming action journal differs from final report');
 }
@@ -46,6 +52,7 @@ for(const [index,row] of report.steps.entries()){
  assert.equal(bytes[0],255);assert.equal(bytes[1],216);
  assert.equal(sha('data:image/jpeg;base64,'+bytes.toString('base64')),row.frame.imageHash,'Rendered frame hash mismatch');
  assert.equal(row.frame.mechanicsRevision,result.revision,'Frame mechanical revision mismatch');
+ for(const audit of report.meshChecks??[])if(audit.revision===result.revision)assert.deepEqual(auditSelfIntersections(sim),audit,'Intermediate mesh audit differs');
  if(development?.experiments.some(e=>e.alternateActionsAfterCommonPrefix?.prefixLength===sim.revision))branches.set(sim.revision,structuredClone(sim));
 }
 if(report.interruption){

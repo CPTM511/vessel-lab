@@ -5,13 +5,14 @@ import {defineTask,areaAccounting} from './task-definition.mjs';
 import {evaluate,recordIntegrity,releasedCondition} from './evaluation.mjs';
 import {planAttachment,solveAttachment,invalidateAttachments,attachmentPoint} from './attachments.mjs';
 import {CUT_RADIUS_MM,sweptFaces,buildSupports,updateTopology} from './cutting.mjs';
+import {CONTACT_GAP_MM,filterShellMotion,projectShellContacts} from './contact.mjs';
 export const cage=JSON.parse(fs.readFileSync(new URL('godot/data/tissue-rest.json',import.meta.url)));
 export const cageHash=crypto.createHash('sha256').update(fs.readFileSync(new URL('godot/data/tissue-rest.json',import.meta.url))).digest('hex');
 if(cage.anatomySourceSha256!==crypto.createHash('sha256').update(fs.readFileSync(new URL('godot/anatomy.gd',import.meta.url))).digest('hex'))throw Error('Shared anatomy export is stale. Run godot/export_physics.gd before mechanics.');
-export const add=(a,b)=>a.map((x,i)=>x+b[i]);
-export const sub=(a,b)=>a.map((x,i)=>x-b[i]);
-export const mul=(a,s)=>a.map(x=>x*s);
-export const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
+export const add=(a,b)=>a.length===3?[a[0]+b[0],a[1]+b[1],a[2]+b[2]]:a.map((x,i)=>x+b[i]);
+export const sub=(a,b)=>a.length===3?[a[0]-b[0],a[1]-b[1],a[2]-b[2]]:a.map((x,i)=>x-b[i]);
+export const mul=(a,s)=>a.length===3?[a[0]*s,a[1]*s,a[2]*s]:a.map(x=>x*s);
+export const dot=(a,b)=>a.length===3?a[0]*b[0]+a[1]*b[1]+a[2]*b[2]:a.reduce((s,x,i)=>s+x*b[i],0);
 export const length=a=>Math.hypot(...a);
 export const distance=(a,b)=>length(sub(a,b));
 const clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
@@ -41,16 +42,20 @@ export function rotate(q,p){const u=q.slice(0,3),t=mul(cross(u,p),2);return add(
 // The exact sampled sections originate from the same Godot geometry as the view.
 export function glansQuery(p,scale=1){
  const v=mul(p,1/scale),xmin=-9.5,xmax=23,xc=clamp(v[0],xmin,xmax),f=(xc-xmin)/(xmax-xmin)*80,k=Math.min(79,Math.floor(f)),t=f-k;
- let inside=false,best=Infinity,closest=null;
- const section=[];
- for(let j=0;j<cage.angular;j++)section.push(mix(cage.glansSections[k][j],cage.glansSections[k+1][j],t));
- const q=[0,v[1],v[2]];
- for(let j=0;j<section.length;j++){
-  const a=[0,section[j][1],section[j][2]],b=[0,section[(j+1)%section.length][1],section[(j+1)%section.length][2]];
-  if((a[2]>q[2])!==(b[2]>q[2])&&q[1]<(b[1]-a[1])*(q[2]-a[2])/(b[2]-a[2])+a[1])inside=!inside;
-  const cp=closestSegment(q,a,b).p,d=distance(q,cp);if(d<best){best=d;closest=cp;}
+ // Interpolate the same exported YZ polygon directly, avoiding temporary
+ // 3D vectors for each edge of every tissue-node hull query.
+ let inside=false,best=Infinity,closestY=0,closestZ=0;
+ const sections=cage.glansSections,low=sections[k],high=sections[k+1];
+ let ay=low[0][1]+(high[0][1]-low[0][1])*t,az=low[0][2]+(high[0][2]-low[0][2])*t;
+ for(let j=0;j<cage.angular;j++){
+  const next=(j+1)%cage.angular,by=low[next][1]+(high[next][1]-low[next][1])*t,bz=low[next][2]+(high[next][2]-low[next][2])*t;
+  if((az>v[2])!==(bz>v[2])&&v[1]<(by-ay)*(v[2]-az)/(bz-az)+ay)inside=!inside;
+  const dy=by-ay,dz=bz-az,u=clamp(((v[1]-ay)*dy+(v[2]-az)*dz)/Math.max(1e-12,dy*dy+dz*dz),0,1),cy=ay+dy*u,cz=az+dz*u;
+  const d=Math.hypot(v[1]-cy,v[2]-cz);if(d<best){best=d;closestY=cy;closestZ=cz;}
+  ay=by;az=bz;
  }
- let n=mul(sub(inside?closest:q,inside?q:closest),1/Math.max(best,1e-9));
+ const inverse=1/Math.max(best,1e-9);
+ let n=[0,(inside?closestY-v[1]:v[1]-closestY)*inverse,(inside?closestZ-v[2]:v[2]-closestZ)*inverse];
  let d=inside?-best:best;
  if(v[0]<xmin||v[0]>xmax){const axial=Math.abs(v[0]-xc);d=inside?axial:Math.hypot(axial,best);n=[Math.sign(v[0]-xc),0,0];}
  else if(inside&&Math.min(v[0]-xmin,xmax-v[0])<best){d=-Math.min(v[0]-xmin,xmax-v[0]);n=[v[0]-xmin<xmax-v[0]?-1:1,0,0];}
@@ -72,6 +77,7 @@ export class TissueSim{
   if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Seed must be an unsigned 32-bit integer');
   this.seed=seed;let r=(Math.imul(seed,1664525)+1013904223)>>>0;this.scale=.99+(r/2**32)*.02;
   this.revision=0;this.time=0;this.events=[];this.protectedContacts=[];this.cutHistory=[];this.attachments=[];this.invalidFaces=new Set();this.releaseSeconds=0;this.terminal=null;this.lastEvaluation=null;
+  this.contactStats={contacts:0,limitedSubsteps:0,lastAdvance:1};this.contactCache={};
   this.task=defineTask(cage,this.scale);
   this.nodes=cage.nodes.map(n=>({...n,rest:mul(n.rest,this.scale),p:mul(n.rest,this.scale),velocity:[0,0,0],inv:n.fixed?0:1}));
   this.faces=cage.faces.map(f=>({...f,nodes:[...f.nodes],active:true}));
@@ -146,7 +152,12 @@ export class TissueSim{
      const q=glansQuery(n.p,this.scale);if(q.distance<.10)n.p=add(n.p,mul(q.normal,.10-q.distance));
     }
    }
+   projectShellContacts(this.nodes,this.faces,this.contactCache);
   }
+  const contact=filterShellMotion(this.nodes,this.faces,old,this.contactCache);
+  this.contactStats.contacts+=contact.contacts;
+  this.contactStats.limitedSubsteps+=Number(contact.limited);
+  this.contactStats.lastAdvance=contact.advance;
   for(let i=0;i<this.nodes.length;i++){
    const n=this.nodes[i];if(!n.p.every(Number.isFinite))throw Error('Non-finite mechanical state');
    n.velocity=mul(sub(n.p,old[i]),1/dt);
@@ -235,6 +246,7 @@ export class TissueSim{
   for(const e of this.edges)if(e.active)maxStrain=Math.max(maxStrain,Math.abs(distance(this.nodes[e.a].p,this.nodes[e.b].p)/e.rest-1));
   const graspErrors=Object.entries(this.arms).filter(([,a])=>a.grasp).map(([name,a])=>({arm:name,error:distance(this.graspPoint(a.grasp),add(a.position,rotate(a.quaternion,a.grasp.offset)))}));
   this.lastMetrics={activeAttachments:this.attachments.filter(a=>a.active).length,releaseSeconds:this.releaseSeconds,cutFaceCount:this.faces.filter(f=>!f.active).length,activeConstraintCount:this.edges.filter(e=>e.active).length,components:copy(this.topology.components),area:areaAccounting(this.task,this.faces,this.topology.componentOf,this.topology.components),activeGrasps:graspErrors.length,graspErrors,maxDisplacementMm:Math.max(...displacement),meanDisplacementMm:displacement.reduce((s,x)=>s+x,0)/displacement.length,maxConstraintStrain:maxStrain,protectedIntersections:this.protectedContacts.length,simulationSeconds:this.time};
+  this.lastMetrics.shellContact={gapMm:CONTACT_GAP_MM,contactDetections:this.contactStats.contacts,limitedSubsteps:this.contactStats.limitedSubsteps,lastAdvanceFraction:this.contactStats.lastAdvance};
   return copy(this.lastMetrics);
  }
  observe(){return {revision:this.revision,seed:this.seed,scale:this.scale,units:'mm',arms:copy(this.arms),metrics:this.metrics(),assessment:this.assessment(),terminal:copy(this.terminal),attachments:this.attachments.map(a=>({...copy(a),points:a.anchors.map(p=>attachmentPoint(this.nodes,p))})),events:copy(this.events.slice(-8)),protectedContacts:copy(this.protectedContacts),capabilities:{pose:true,jaw:true,physicalGrasp:true,cutting:true,edgeAttachments:true,terminalScore:true,modelController:false},cage:{angular:cage.angular,axial:cage.axial,hash:cageHash},task:{version:this.task.version,hash:this.task.hash,boundaryRings:this.task.boundaryRings},cutting:{radiusMm:CUT_RADIUS_MM,method:'Swept capsule triangle ablation; whole intersected cage faces removed'},scope:'Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation'};}

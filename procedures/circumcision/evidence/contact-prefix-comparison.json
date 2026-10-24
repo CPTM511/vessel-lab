@@ -1,0 +1,13 @@
+{
+  "kind": "identical historical low-level prefix comparison",
+  "priorTrajectory": "resection-attempt-01/trajectory.json",
+  "currentTrajectory": "contact-attempt-01/trajectory.json",
+  "identicalActions": 268,
+  "prefixSha256": "afe8d1858aee6b808361cc55e20536bf7ac247be82a24cfb37a6dfcfc1779f4a",
+  "previousRetainedCrossingPairs": 20,
+  "currentRetainedCrossingPairs": 0,
+  "additionalCommand": {
+    "revision": 268,
+    "duration": 0.5
+  }
+}

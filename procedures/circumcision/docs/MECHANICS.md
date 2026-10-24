@@ -22,6 +22,12 @@ A gripper must close within 1 mm of a surface triangle. The nearest contact poin
 
 A rigid glanular fixture uses the sampled anatomical sections for contact projection. Urethral and frenular capsule proxies are separately checked. Conservative samples cover the complete modeled instrument shaft and jaws throughout motion. Protected intersections are recorded and remain visible after the instrument moves away. These approximations are not a clinical injury model or exact continuous collision detection against every visible triangle.
 
+## Non-adjacent shell contact
+
+The solver now filters each proposed substep through continuous triangle contact with a synthetic 0.03 mm gap. Swept bounds and separating planes precede closest-feature conservative advancement. Persistent frictionless contact constraints participate in subsequent mechanical iterations. When contacts cannot be resolved, motion is conservatively limited; the UI and observations expose grasp error and contact-limited substeps.
+
+Shared-vertex neighbours are excluded. The algorithm assumes separated initial geometry, uses linear substep trajectories and floating-point tolerances, and is not an exact collision or calibrated tissue model. Full folding and detached-specimen collection remain unvalidated. See [the contact method, evidence and limitations](../evidence/CONTACT.md).
+
 ## Control and evidence
 
 Enable **Mechanics sandbox** in the application. Select a gripper, translate in millimetres, rotate, close the jaws and release. The anatomy-only retraction preset and slider are disabled. Both instruments are independently controllable. The environment advances only through explicit low-level steps.

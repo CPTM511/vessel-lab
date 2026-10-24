@@ -1,0 +1,20 @@
+{
+  "kind": "offline evidence corruption controls; no inference",
+  "results": [
+    {
+      "case": "missing-contact-source",
+      "rejected": true,
+      "reason": "Missing source fingerprints"
+    },
+    {
+      "case": "missing-mesh-checkpoint",
+      "rejected": true,
+      "reason": "Missing declared mesh checks"
+    },
+    {
+      "case": "corrupted-image",
+      "rejected": true,
+      "reason": "Rendered frame hash mismatch"
+    }
+  ]
+}

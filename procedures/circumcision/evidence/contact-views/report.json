@@ -1,0 +1,41 @@
+{
+  "kind": "actual layer inspection of the scripted contact regression; no model inference",
+  "records": [
+    {
+      "mode": "inner",
+      "mechanicsRevision": 269,
+      "geometryHash": "701a98c0d2063ad24b4eb33fbd8f470d8fedfa6ea812b30d62b0b290a4ae7346",
+      "filename": "inner.jpg",
+      "imageHash": "f09c3ea40d9d30ffd88ddb4ac9a4abdc7b19a42668430979f13bea60ecc26316",
+      "uiFilename": "inner-ui.jpg",
+      "uiSha256": "49b0d36bdc2cf15462cfcefe7e23f592fa5cd212c9dd7ff3d12aa537267701f2",
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "latencyMs": 952
+    },
+    {
+      "mode": "protected",
+      "mechanicsRevision": 269,
+      "geometryHash": "701a98c0d2063ad24b4eb33fbd8f470d8fedfa6ea812b30d62b0b290a4ae7346",
+      "filename": "protected.jpg",
+      "imageHash": "376da03dadb99d2708f3eeea6d56e62a72a58367c1fad298f98a64d29db89e6a",
+      "uiFilename": "protected-ui.jpg",
+      "uiSha256": "2ff29dbe5b09bc6cda10293743e21fedcc8f11629719fd906f64348ad8f03fd8",
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "latencyMs": 1365
+    },
+    {
+      "mode": "covered",
+      "mechanicsRevision": 269,
+      "geometryHash": "701a98c0d2063ad24b4eb33fbd8f470d8fedfa6ea812b30d62b0b290a4ae7346",
+      "filename": "covered.jpg",
+      "imageHash": "e1e373d89b8523980718e980305acb232bdf9089ef92123ec6387d489eda6c8b",
+      "uiFilename": "covered-ui.jpg",
+      "uiSha256": "7e65f505661cf4572f53c94919ce0798a82fe0973b7ace2a4b109cc09f9b2062",
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "latencyMs": 1263
+    }
+  ]
+}

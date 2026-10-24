@@ -1,0 +1,22 @@
+{
+  "kind": "numerical protected-hull implementation equivalence, not clinical validation",
+  "referenceCommit": "abdbaf397344f25f8c617b46591ae3062d9644fd",
+  "referenceMechanicsSha256": "8d6f399696a74c8de444117c9622048a50755121c9fda79a6055bac4acd05082",
+  "candidateMechanicsSha256": "4f76736ae966af5818a031621e23fe5cde6a6ae7dffdfcb20b08c9df08191eda",
+  "cageSha256": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb",
+  "queries": 10000,
+  "generator": {
+    "initialState": 19,
+    "multiplier": 1664525,
+    "increment": 1013904223,
+    "modulus": 4294967296,
+    "drawOrder": [
+      "x = -12 + u * 38",
+      "y = -17 + u * 34",
+      "z = -17 + u * 34",
+      "scale = .99 + u * .02"
+    ]
+  },
+  "maxDistanceError": 0,
+  "maxNormalError": 0
+}

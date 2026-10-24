@@ -9,7 +9,7 @@ const args=process.argv.slice(2),option=(name,fallback)=>args.includes(name)?arg
 const base=option('--url','http://127.0.0.1:8785'),out=path.resolve(import.meta.dirname,option('--output','evidence/mechanics-'+Date.now()));
 await fs.mkdir(out,{recursive:true});
 const hash=v=>crypto.createHash('sha256').update(v).digest('hex');
-const sourceFiles=['mechanics.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
+const sourceFiles=['mechanics.mjs','contact.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
 const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,hash(await fs.readFile(path.join(import.meta.dirname,f)))])));
 const report={kind:'scripted mechanical development fixture; no model inference or procedure completion',seed:11,startedAt:new Date().toISOString(),sourceHashes,cuttingFixture:args.includes('--cutting')||args.includes('--closure'),closureFixture:args.includes('--closure'),steps:[],passed:false};
 async function api(route,body){const r=await fetch(base+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(12000)});const j=await r.json();if(!r.ok)throw Error(j.error);return j;}

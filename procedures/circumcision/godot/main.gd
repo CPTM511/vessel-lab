@@ -410,6 +410,10 @@ func draw_instruments(data: Dictionary) -> void:
 	var m: Dictionary = data.metrics
 	mechanics_label.text = "Grasps: %s  ·  Protected hits: %s\nPeak displacement: %.2f mm\nTime: %.2f s\nL: %.1f, %.1f, %.1f\nR: %.1f, %.1f, %.1f" % [m.activeGrasps,m.protectedIntersections,m.maxDisplacementMm,m.simulationSeconds,data.arms.left.position[0],data.arms.left.position[1],data.arms.left.position[2],data.arms.right.position[0],data.arms.right.position[1],data.arms.right.position[2]]
 	mechanics_label.text += "\nCut faces: %s · Components: %s\nTarget detached: %.2f%%\nOff-target removed: %.2f%%" % [m.cutFaceCount,m.components.size(),m.area.targetDetachedFraction*100,m.area.offTargetRemovedFraction*100]
+	var grasp_error := 0.0
+	for grasp in m.graspErrors:
+		grasp_error = maxf(grasp_error,float(grasp.error))
+	mechanics_label.text += "\nGrasp error: %.3f mm\nContact-limited substeps: %s" % [grasp_error,m.get("shellContact",{}).get("limitedSubsteps",0)]
 	var assessment: Dictionary = data.assessment
 	mechanics_label.text += "\nSynthetic ties: %s\nReleased hold: %.2f / 5.00 s\nValid wound samples: %s / 48\nC0 assessment: %s" % [m.activeAttachments,m.releaseSeconds,assessment.closure.validSamples,"PASS" if assessment.passed else "INCOMPLETE"]
 	if not assessment.passed:
