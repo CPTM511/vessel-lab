@@ -1,0 +1,14 @@
+{
+  "verified": true,
+  "kind": "Post-stop snapshot association; no new controller action",
+  "worldRevision": 12,
+  "mechanicsRevision": 9,
+  "controllerRunning": false,
+  "controllerPhase": "error",
+  "controllerExitCode": 1,
+  "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+  "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+  "terminal": null,
+  "cuts": 0,
+  "protectedIntersections": 0
+}

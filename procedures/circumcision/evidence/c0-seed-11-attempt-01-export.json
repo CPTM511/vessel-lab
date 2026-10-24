@@ -1,0 +1,33 @@
+{
+  "schema": "c0-controller-export-v1",
+  "kind": "Actual failed complete-procedure attempt; no successful Finish",
+  "seed": 11,
+  "attempt": 1,
+  "sourceDigest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b",
+  "publicJournalSha256": "e10e0a0d256b9b22f93fa4d6d8b414806af36094c4f85f99878bd436f51f2000",
+  "imageCopiesByteIdentical": true,
+  "images": {
+    "error-00007.jpg": "f2c9a8905630df708979e743033a81a6e5608b9e8c9ad8dd9772fabfc96c0626",
+    "frame-00001.jpg": "e35204274e0f5c0649f4525f56f09b1a1db820eb6a3c758d879c0c396a6b7604",
+    "frame-00002.jpg": "e35204274e0f5c0649f4525f56f09b1a1db820eb6a3c758d879c0c396a6b7604",
+    "frame-00003.jpg": "e35204274e0f5c0649f4525f56f09b1a1db820eb6a3c758d879c0c396a6b7604",
+    "frame-00004.jpg": "e35204274e0f5c0649f4525f56f09b1a1db820eb6a3c758d879c0c396a6b7604",
+    "frame-00005.jpg": "e35204274e0f5c0649f4525f56f09b1a1db820eb6a3c758d879c0c396a6b7604",
+    "frame-00006.jpg": "f2c9a8905630df708979e743033a81a6e5608b9e8c9ad8dd9772fabfc96c0626",
+    "frame-00008.jpg": "95c87f075ed6cf8e6ee18d1a17926c35d55f723499900ca35b24845817434e6f",
+    "frame-00009.jpg": "eb37746ec0cafb75d9f7880302e022e0cc599d8d6d70dbe386f9d7f69de4acc5",
+    "frame-00010.jpg": "7aa2ecb65860f27a89eb6af283622c5386aa00042f71f790203e20a2623fce2d",
+    "frame-00011.jpg": "a02ce48b3fb4bbc5ae0759d2b7d17f15a52b4d9dd63bf907022f4284044b7a33",
+    "frame-00012.jpg": "7a0fc306f81ab27d8874bd6866910dfb6fbb58ed93b53e46f44d445820e610b3",
+    "frame-00013.jpg": "743aaf2a57f4bbf0d647428917b7c91eb60a67717584ece85426e8de92f09744",
+    "frame-00014.jpg": "a8a987dacf1bb551cf0242ef7df3337cc90e0931551dd732a6902be53a0836e5",
+    "frame-00015.jpg": "a083dff431f8a5cc40747f1ed9a88a1fdbe7696456d8af69893e818a022912d3",
+    "frame-00016.jpg": "9c72aa7ebc9b6e2ab01350422e9e27d7bd9fc97adbb7a6bb223109c521cfe1d3"
+  },
+  "redactions": [
+    "access checks",
+    "session identifiers"
+  ],
+  "postStopUiSha256": "e95ab0c5970b5af1155ed5317ee4abc9334b956bd2c33dc344746bab7ec3867a",
+  "scope": "Image files are copied unchanged from the retained local original. The public record omits private access and session metadata; it cannot establish those private checks."
+}

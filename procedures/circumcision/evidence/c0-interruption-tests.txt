@@ -1,0 +1,15 @@
+✔ interrupted evidence verifies only its executed prefix (7075.220292ms)
+✔ default successful-episode verification rejects the interrupted record (54.357541ms)
+✔ interruption verification rejects wrong failure cause (57.879416ms)
+✔ interruption verification rejects completion claim (57.66475ms)
+✔ interruption verification rejects accepted final request (7100.874958ms)
+✔ interruption verification rejects missing earlier result (7080.022125ms)
+✔ interruption verification rejects changed image (101.527084ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21579.34425

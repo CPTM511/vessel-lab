@@ -1,0 +1,20 @@
+{
+  "recordVerified": true,
+  "episodeSucceeded": false,
+  "kind": "Actual controller access-check interruption; not a completed procedure",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "seed": 11,
+  "sourceDigest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b",
+  "moves": 9,
+  "toolRequests": 17,
+  "images": 16,
+  "unexecutedRequests": 1,
+  "rejectedMechanicalCommands": 1,
+  "maxCommandToFrameMs": 1739,
+  "finalRevision": 9,
+  "assessmentPassed": false,
+  "recordedPrivateChecksVerified": false,
+  "finalAccessCheckAvailable": false,
+  "scope": "Exact replay of the accepted prefix and actual image associations. The final requested operation was not executed. No successful procedure or complete post-run access check is established."
+}

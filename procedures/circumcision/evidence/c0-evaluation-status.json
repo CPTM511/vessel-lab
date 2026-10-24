@@ -1,0 +1,43 @@
+{
+  "schema": "c0-evaluation-status-v1",
+  "frozenCommit": "47488cc1ed2a593021d28d5099ae6c16a6b9d119",
+  "runtimeDigest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b",
+  "declaredSeeds": [
+    11,
+    29,
+    83
+  ],
+  "attempts": [
+    {
+      "seed": 11,
+      "attempt": 1,
+      "startedAt": "2026-10-24T09:22:31.486Z",
+      "endedAt": "2026-10-24T09:25:05.202Z",
+      "outcome": "infrastructure_access_check_abort",
+      "episodeSucceeded": false,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "moves": 9,
+      "toolRequests": 17,
+      "images": 16,
+      "rejectedMechanicalCommands": 1,
+      "unexecutedRequests": 1,
+      "finalAccessCheckAvailable": false,
+      "record": "c0-seed-11-attempt-01/agent.jsonl",
+      "verification": "c0-seed-11-attempt-01-verification.json"
+    }
+  ],
+  "startedAttempts": 1,
+  "endedAttempts": 1,
+  "successfulAttempts": 0,
+  "unsuccessfulAttempts": 1,
+  "infrastructureAborts": 1,
+  "successfulDeclaredCases": 0,
+  "unstartedSeeds": [
+    29,
+    83
+  ],
+  "releaseGateMet": false,
+  "historicalConnectivityExcluded": true,
+  "scope": "All started full-procedure attempts are included. An infrastructure-aborted attempt is not a successful episode and is not evidence of surgical incapability. C0 still requires all three declared case successes with every attempt reported."
+}
