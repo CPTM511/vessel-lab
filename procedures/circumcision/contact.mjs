@@ -66,6 +66,19 @@ export function triangleSeparation(a,b){
  return answer;
 }
 
+export function rotatingPlane(a0,a1,b0,b1,gap=.03){
+ const s0=triangleSeparation(a0,b0),s1=triangleSeparation(a1,b1);
+ if(s0.distance<=gap+1e-7||s1.distance<=gap+1e-7)return false;
+ const n0=s0.delta.map(v=>v/s0.distance),n1=s1.delta.map(v=>v/s1.distance),dn=sub(n1,n0);
+ for(let i=0;i<3;i++)for(let j=0;j<3;j++){
+  const d0=sub(a0[i],b0[j]),d1=sub(a1[i],b1[j]),dv=sub(d1,d0),c=dot(d0,n0),b=dot(dv,n0)+dot(d0,dn),a=dot(dv,dn);
+  let min=Math.min(c,c+b+a);
+  if(a>0){const t=-b/(2*a);if(t>0&&t<1)min=Math.min(min,c+t*(b+t*a));}
+  if(min<=gap+1e-7)return false;
+ }
+ return true;
+}
+
 export function sweptTriangleContact(a0,a1,b0,b1,gap=CONTACT_GAP_MM){
  // A fixed plane separating ALL start/end vertices separates their entire
  // linear sweep. This inexpensive certificate avoids iterative distance
@@ -78,8 +91,9 @@ export function sweptTriangleContact(a0,a1,b0,b1,gap=CONTACT_GAP_MM){
  }
  const va=a0.map((p,i)=>sub(a1[i],p)),vb=b0.map((p,i)=>sub(b1[i],p));
  if(va.every(a=>vb.every(b=>a.every((v,i)=>Math.abs(v-b[i])<1e-12))))return null;
+ if(rotatingPlane(a0,a1,b0,b1,gap))return null;
  let time=0,last=null;
- for(let iteration=0;iteration<64;iteration++){
+ for(let iteration=0;iteration<4096;iteration++){
   const a=a0.map((p,i)=>mix(p,a1[i],time)),b=b0.map((p,i)=>mix(p,b1[i],time));
   last=triangleSeparation(a,b);
   if(last.distance<1e-12)return {...last,time,conservativeLimit:false};
@@ -97,7 +111,10 @@ export function sweptTriangleContact(a0,a1,b0,b1,gap=CONTACT_GAP_MM){
    }
   }
   if(time+safe>1)return null;
-  if(last.distance<=gap+TOL)return {...last,time,conservativeLimit:false};
+  if(last.distance<=gap+TOL){
+   const closestClosing=dot(sub(weighted(vb,last.b),weighted(va,last.a)),normal);
+   if(last.distance<=gap||closestClosing>0)return {...last,time,conservativeLimit:false};
+  }
   time+=safe*.9;
  }
  // A difficult grazing trajectory is conservatively limited, never declared
@@ -132,18 +149,22 @@ function candidates(faces,old,next){
  return {pairs,boxes};
 }
 
+function planeDeficit(positions,c){
+ const n=c.normal;
+ return CONTACT_GAP_MM+1e-5-Math.min(...c.fa.map(i=>dot(positions[i],n)))+Math.max(...c.fb.map(i=>dot(positions[i],n)));
+}
 function projectContact(nodes,positions,c,versions){
- const ids=[...c.fa,...c.fb],weights=[...c.a,...c.b.map(v=>-v)];
- let separation=0,den=0;
- for(let k=0;k<ids.length;k++){separation+=weights[k]*dot(positions[ids[k]],c.normal);den+=nodes[ids[k]].inv*weights[k]**2;}
- const deficit=CONTACT_GAP_MM+1e-5-separation;
- if(den<1e-16||deficit<=0)return false;
+ // A closest feature may be nonunique on parallel faces. Resolve every
+ // supporting vertex pair along this normal instead of an arbitrary winner.
  let changed=false;
- for(let k=0;k<ids.length;k++){
-  const id=ids[k],amount=nodes[id].inv*weights[k]*deficit/den;
-  let moved=false;
-  for(let d=0;d<3;d++){const previous=positions[id][d];positions[id][d]+=c.normal[d]*amount;moved||=positions[id][d]!==previous;}
-  if(moved){changed=true;if(versions)versions[id]++;}
+ for(const a of c.fa)for(const b of c.fb){
+  const deficit=CONTACT_GAP_MM+1e-5-dot(sub(positions[a],positions[b]),c.normal),den=nodes[a].inv+nodes[b].inv;
+  if(deficit<=0||den<1e-16)continue;
+  for(const [id,sign] of [[a,1],[b,-1]]){
+   const amount=sign*nodes[id].inv*deficit/den;let moved=false;
+   for(let k=0;k<3;k++){const prev=positions[id][k];positions[id][k]+=amount*c.normal[k];moved||=positions[id][k]!==prev;}
+   if(moved){changed=true;if(versions)versions[id]++;}
+  }
  }
  return changed;
 }
@@ -164,7 +185,7 @@ export function filterShellMotion(nodes,faces,old,cache={}){
  let proposed=nodes.map(n=>[...n.p]);const stats={contacts:0,passes:0,limited:false,advance:1};
  if(proposed.every((p,i)=>p.every((v,k)=>v===old[i][k])))return stats;
  let broadphase=cache.broadphase;
- const versions=new Uint32Array(nodes.length),queries=new Map(),bounds=new Map();
+ const versions=new Uint32Array(nodes.length),queries=new Map(),bounds=new Map(),activeConstraints=new Map();
  const boxFor=id=>{
   const ids=faces[id].nodes,previous=bounds.get(id);
   if(previous&&ids.every((n,k)=>previous.versions[k]===versions[n]))return previous.box;
@@ -206,7 +227,17 @@ export function filterShellMotion(nodes,faces,old,cache={}){
    c.normal=c.delta.map(v=>v/c.distance);
    cache.manifold??=new Map();
    cache.manifold.set(c.faceA*faces.length+c.faceB,{faceA:c.faceA,faceB:c.faceB,fa:c.fa,fb:c.fb,a:c.a,b:c.b,normal:c.normal});
-   changed=projectContact(nodes,proposed,c,versions)||changed;
+   activeConstraints.set(c.faceA*faces.length+c.faceB,c);
+  }
+  // Resolve interacting contact planes together before the next full sweep.
+  // Retain planes within this proposal; later contacts must not undo earlier ones.
+  for(let iteration=0;iteration<256;iteration++){
+   let moved=false;
+   for(const c of activeConstraints.values())moved=projectContact(nodes,proposed,c,versions)||moved;
+   changed||=moved;
+   let deficit=0;
+   for(const c of activeConstraints.values())deficit=Math.max(deficit,planeDeficit(proposed,c));
+   if(!moved||deficit<1e-9)break;
   }
   if(!changed)return limit(contacts);
  }

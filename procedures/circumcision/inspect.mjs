@@ -11,7 +11,7 @@ const locked=args.includes('--locked');
 const count=Number(option('--samples',locked?'40':'0'));
 const out=path.resolve(import.meta.dirname,option('--output','evidence/inspection-'+Date.now()));
 await fs.mkdir(out,{recursive:true});
-const sourceFiles=['inspector.mjs','mechanics.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','godot/data/tissue-rest.json','launch.mjs','inspect.mjs','godot/project.godot','godot/main.gd','godot/main.tscn','godot/anatomy.gd','docs/PROTOCOL.md'];
+const sourceFiles=['inspector.mjs','mechanics.mjs','contact.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','godot/data/tissue-rest.json','launch.mjs','inspect.mjs','godot/project.godot','godot/main.gd','godot/main.tscn','godot/anatomy.gd','docs/PROTOCOL.md'];
 const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
 const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,sha(await fs.readFile(path.join(import.meta.dirname,f)))])));
 const report={kind:'scripted anatomy inspection; not model or procedure evidence',startedAt:new Date().toISOString(),requiresLockedHost:locked,sourceHashes,sourceDigest:sha(JSON.stringify(sourceHashes)),samples:[],passed:false};

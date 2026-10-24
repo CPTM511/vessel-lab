@@ -47,10 +47,10 @@ try{
   const before=hostState(),start=Date.now();let accepted;
   try{accepted=await api('/api/step',{session:state.session,revision:state.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',action});}
   catch(e){report.rejectedRequests=[{action,error:e.message}];throw e;}
-  const frame=await currentFrame(accepted,start);state=await api('/api/state');
+  const frame=await currentFrame(accepted,start);assert.equal(frame.controlSource,'scripted-mechanics-test');state=await api('/api/state');
   const filename=`frame-${String(report.steps.length+1).padStart(4,'0')}.jpg`;
   await fs.writeFile(path.join(out,filename),Buffer.from(frame.image.split(',')[1],'base64'));
-  const row={action,observation:accepted.mechanics,geometryHash:sha(JSON.stringify(state.mechanics.positions)),topologyHash:sha(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
+  const row={action,observation:accepted.mechanics,geometryHash:sha(JSON.stringify(state.mechanics.positions)),topologyHash:sha(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,controlSource:frame.controlSource,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
   report.steps.push(row);await journal.write(JSON.stringify(row)+'\n');
   if(report.steps.length%48===0||report.steps.length===actions.length||auditRevisions.includes(report.steps.length)){
    const audit=meshAudit(state.mechanics);report.meshChecks??=[];report.meshChecks.push(audit);report.meshAudit=audit;

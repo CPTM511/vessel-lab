@@ -1,0 +1,47 @@
+{
+  "kind": "Related numerical development checks; not independent model episodes or rendered timing",
+  "contactSourceHash": "45cf3b68f77b9c29c2b4defbf15406c5790d9bc3d0e9b5707106ae97361ac4cd",
+  "cleanReplay": {
+    "steps": 1838,
+    "checkpoints": [
+      {
+        "revision": 1188,
+        "reportHash": "05a22887d961c611174ab2df82e68b8654c7e9fab48169e217d00e5f82e95b78",
+        "exactNodeAndContactState": true
+      },
+      {
+        "revision": 1497,
+        "reportHash": "16b79f1e93f0ff30290124bc2143b84aaf43faba01493bbc360a8ee21f3aa361",
+        "exactNodeAndContactState": true
+      },
+      {
+        "revision": 1838,
+        "reportHash": "2626f3261761d915e6fb224d69ff1f8222db674b70729d83c5a5a01fb10cc67d",
+        "exactNodeAndContactState": true
+      }
+    ],
+    "observationChecks": 88,
+    "peakActionMs": 11695.779708000016,
+    "elapsedMs": 569387,
+    "snapshotHash": "625d3d4dcd05f1d1038388f834fb48d75feb6faea3b417db78c2c4a5d1ae4c50",
+    "peakContext": "A fresh Godot instance was launching concurrently. The cause of the timing spike was not established."
+  },
+  "warmFinalPhaseReplay": {
+    "steps": 341,
+    "fromRevision": 1497,
+    "toRevision": 1838,
+    "peakActionMs": 1294.9890830000004,
+    "peakRevisions": [
+      1596
+    ],
+    "assessmentPassed": true
+  },
+  "sampledGlansLimit": {
+    "revision": 1497,
+    "minimumNodeDistanceMm": -0.001014564965,
+    "negativeNodeCount": 1,
+    "nodesBelowProjectionMargin": 3,
+    "projectionMarginMm": 0.1,
+    "scope": "A static node query after shell projection, not an exact deformable triangle/glans collision audit."
+  }
+}

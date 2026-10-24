@@ -1,5 +1,7 @@
 # Continuous shell contact development checkpoint
 
+**Latest result:** the subsequent [complete scripted C0 checkpoint](SCRIPTED_C0.md) resolves collection for one bounded fixture: 1,838 actual rendered commands, all existing geometric gates passing and exact offline replay. The earlier results and unresolved failures below describe their recorded source revisions and remain preserved. No adult model episode or prototype release is claimed.
+
 **Procedure validation remains incomplete.** The current solver adds frictionless contact between non-adjacent tissue triangles. This checkpoint targets the retained-layer intersections identified in the [preserved resection failure](RESECTION.md). It is scripted engineering evidence, not an autonomous episode, complete procedure or clinical validation.
 
 ## Method

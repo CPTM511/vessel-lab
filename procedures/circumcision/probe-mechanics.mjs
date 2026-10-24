@@ -27,10 +27,10 @@ async function command(changes){
  const before=hostState(),start=Date.now();
  const action={revision:state.mechanics.revision,duration:.05,...changes};
  let accepted;try{accepted=await api('/api/step',{session:state.session,revision:state.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',action});}catch(e){report.rejectedRequests??=[];report.rejectedRequests.push({action,error:e.message,at:new Date().toISOString()});await persist();throw e;}
- const frame=await currentFrame(accepted,start);state=await api('/api/state');
+ const frame=await currentFrame(accepted,start);assert.equal(frame.controlSource,'scripted-mechanics-test');state=await api('/api/state');
  const filename=`frame-${String(report.steps.length+1).padStart(3,'0')}.jpg`;
  await fs.writeFile(path.join(out,filename),Buffer.from(frame.image.split(',')[1],'base64'));
- const row={action,observation:accepted.mechanics,geometryHash:hash(JSON.stringify(state.mechanics.positions)),topologyHash:hash(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
+ const row={action,observation:accepted.mechanics,geometryHash:hash(JSON.stringify(state.mechanics.positions)),topologyHash:hash(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,controlSource:frame.controlSource,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
  report.steps.push(row);await persist();
  assert.ok(row.latencyMs<5000,'Mechanical action and rendered feedback exceeded five seconds');
  return state.mechanics;

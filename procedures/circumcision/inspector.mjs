@@ -6,7 +6,7 @@ import {TissueSim} from './mechanics.mjs';
 // Geometry inspection and manual mechanical development; no autonomous procedure yet.
 const modes=new Set(['covered','retracted','ventral','inner','outer','glans','protected']);
 const port=Number(process.env.ANATOMY_PORT||8785);
-const state={session:crypto.randomUUID(),revision:0,mode:'covered',retraction:0,stage:'anatomy-inspection',mechanicsEnabled:false};
+const state={session:crypto.randomUUID(),revision:0,mode:'covered',retraction:0,stage:'anatomy-inspection',mechanicsEnabled:false,controlSource:'manual-inspection'};
 let frame=null;let mechanics=null;const commands=new Map();
 const current=(geometry=true)=>({...state,...(mechanics?{mechanics:geometry?mechanics.snapshot():mechanics.observe()}: {})});
 fs.mkdirSync(new URL('sessions/',import.meta.url),{recursive:true});
@@ -50,7 +50,7 @@ const server=http.createServer(async(req,res)=>{
    if(body.mode!==undefined)state.mode=body.mode;
    if(body.retraction!==undefined)state.retraction=body.retraction;
    }
-   state.revision++;frame=null;const output=current(false);commands.set(key,{digest,state:output});
+   state.controlSource=body.source;state.revision++;frame=null;const output=current(false);commands.set(key,{digest,state:output});
    if(commands.size>2000)commands.delete(commands.keys().next().value);
    return respond(res,200,output);
   }
@@ -59,6 +59,7 @@ const server=http.createServer(async(req,res)=>{
    if(mechanics&&body.mechanicsRevision!==mechanics.revision)return respond(res,409,{error:'Frame mechanics revision mismatch'});
    if(mechanics&&body.cutFaceCount!==mechanics.metrics().cutFaceCount)return respond(res,409,{error:'Frame cutting topology mismatch'});
    if(mechanics&&(body.activeAttachments!==mechanics.metrics().activeAttachments||body.assessmentPassed!==mechanics.assessment().passed))return respond(res,409,{error:'Frame attachment or assessment mismatch'});
+   if(body.controlSource!==state.controlSource)return respond(res,409,{error:'Frame control source mismatch'});
    if(body.mechanicsEnabled!==state.mechanicsEnabled)return respond(res,409,{error:'Frame phase mismatch'});
    if(body.mode!==state.mode||body.retraction!==state.retraction)return respond(res,409,{error:'Frame inspection state mismatch'});
    if(!/^data:image\/jpeg;base64,/.test(body.image)||!/^data:image\/jpeg;base64,/.test(body.uiImage))return respond(res,400,{error:'Actual JPEG frames required'});

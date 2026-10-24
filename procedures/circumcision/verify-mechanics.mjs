@@ -44,6 +44,7 @@ for(const [index,row] of report.steps.entries()){
  assert.deepEqual(wire(result),row.observation,'Observation does not reproduce at action '+index);
  assert.equal(sha(JSON.stringify(sim.snapshot().positions)),row.geometryHash,'Mechanical geometry mismatch');
  assert.equal(sha(JSON.stringify({faces:sim.snapshot().faces,componentOf:sim.snapshot().componentOf,targetMask:sim.snapshot().targetMask})),row.topologyHash,'Topology does not reproduce');
+ assert.equal(row.frame.controlSource,'scripted-mechanics-test','Frame control source mismatch');
  assert.equal(row.frame.cutFaceCount,result.metrics.cutFaceCount,'Frame cut topology mismatch');
  assert.equal(row.frame.activeAttachments,result.metrics.activeAttachments,'Frame attachment mismatch');
  assert.equal(row.frame.assessmentPassed,result.assessment.passed,'Frame assessment mismatch');

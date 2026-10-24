@@ -1,0 +1,46 @@
+✔ 100 deterministic deforming face pairs retain separation along sampled accepted paths (105.089291ms)
+✔ continuous shell contact stops fast tunnelling through a fixed triangle (3.68225ms)
+✔ edge/edge contact is detected when every vertex projects outside the other triangle (0.696834ms)
+✔ coplanar sliding collision and a separating trajectory are distinguished (0.356ms)
+✔ common rigid translation creates no contact and preserves separation (0.090958ms)
+✔ a recorded grazing path is certified without exhausting conservative advancement (4.039167ms)
+✔ collision response preserves fixed points and exposes conservative limiting (3.511083ms)
+✔ cut faces are absent from collision and shared vertices define adjacency (0.470584ms)
+✔ reused broad-phase bounds rebuild when a previously distant face moves into contact (3.78725ms)
+✔ parallel surface contact preserves sliding instead of globally freezing the stack (68.362167ms)
+✔ coupled contact keeps a fixed obstacle fixed when all parallel closest features are tied (0.471209ms)
+✔ capsule sweep detects triangle interiors, edges and degenerate cases without endpoint tunneling (1.140125ms)
+✔ local cutting uses geometry, remains bounded, and cannot edit the independent target mask (731.769833ms)
+✔ invalid cutting commands and occupied instruments are rejected atomically (651.495666ms)
+✔ topology includes both layers and bending support; detached tissue remains simulated (62.247375ms)
+✔ off-target loss is measured from immutable initial area; no-cut baseline is not a success (39.643542ms)
+✔ cutting reproducibly releases a grasp when its actual supporting face is removed (1649.050583ms)
+✔ near-band departing witnesses are not false time-zero impacts (36.702875ms)
+✔ near-band approach is still detected immediately (0.755042ms)
+✔ a departing closest vertex does not hide later approach by another vertex (0.284958ms)
+✔ nominally close intact surfaces never count as cut wound edges (118.002ms)
+✔ a real two-layer cut exposes independent retained margins and releases hidden native ties (138.760042ms)
+✔ missing samples and widened edges cannot shrink the fixed scoring denominator (129.69675ms)
+✔ retained collapse or an observed substep orientation reversal is a persistent failure (151.465375ms)
+✔ five consecutive simulated seconds must be released; terminal success freezes further actions (20870.138375ms)
+✔ closed jaws, surface proximity, a grasp or cut pulse resets released hold (371.977041ms)
+✔ local synthetic attachments require physical held cut margins and survive release (1124.109792ms)
+✔ protected hits and off-target removal independently fail an otherwise prepared fixture (146.405792ms)
+✔ invalid bilateral commands and stale revisions are atomic (90.070958ms)
+✔ rest state is stable, fixed boundaries do not drift, and grasp requires proximity (247.190958ms)
+✔ barycentric grasp moves actual tissue; releasing removes constraints without a visual morph (1956.078417ms)
+✔ protected anatomy uses independent geometry and swept instrument violations remain recorded (1866.681875ms)
+✔ the same seed and low-level sequence reproduce tissue positions (1346.601959ms)
+✔ proper interior crossings are detected in either triangle order (3.430667ms)
+✔ coplanar overlap is explicitly outside the diagnostic (0.153334ms)
+✔ broad phase finds crossings between retained and detached faces (1.793709ms)
+✔ a rotating separating plane certifies separated layers throughout the linear sweep (1.409333ms)
+✔ endpoint separation cannot certify interior gap loss, tunnelling or coplanar crossing (0.326ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23166.426875

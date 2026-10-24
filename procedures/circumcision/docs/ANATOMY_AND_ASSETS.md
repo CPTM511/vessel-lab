@@ -25,7 +25,7 @@ There are no patient images, external textures, downloaded meshes or generative 
 ## Fidelity boundaries
 
 - **Visual realism:** smooth layered geometry, distinct surface finish, subtle skin detail and clinical inspection lighting. The first version is an anatomical specimen, not a complete body. Procedural regularity, a simplified meatus and attachment geometry remain limitations.
-- **Mechanical fidelity:** the inspection morph remains nonphysical. The separate mechanics sandbox now uses a shared sampled cage, compliant constraints and barycentric grasps. It lacks material calibration and validated self-contact; a plausible image does not establish mechanical correctness.
+- **Mechanical fidelity:** the inspection morph remains nonphysical. The separate mechanics sandbox now uses a shared sampled cage, compliant constraints and barycentric grasps. It lacks material calibration. Continuous shell contact has one complete scripted regression, with sampled-contact and geometric limitations documented in [the evidence](../evidence/SCRIPTED_C0.md); a plausible image does not establish general mechanical correctness.
 - **Clinical validity:** not established. There is no expert anatomical validation, patient-specific fit, living-tissue calibration, perfusion, innervation, healing or clinical outcome model.
 
 Godot's [renderer feature matrix](https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html) identifies subsurface scattering as a Forward+ feature. Compatibility remains an explicit fallback with different shading. The selected renderer and actual observed output are recorded in checkpoint evidence.

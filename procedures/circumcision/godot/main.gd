@@ -476,7 +476,8 @@ func apply_state(data: Dictionary) -> void:
 		update_camera()
 		last_mode = mode
 	update_labels(mode)
-	status.text = "BILATERAL MECHANICS  ·  MANUAL" if active_mechanics else "ANATOMY INSPECTOR  ·  CONNECTED"
+	var scripted = str(data.get("controlSource","")).begins_with("scripted-")
+	status.text = ("BILATERAL MECHANICS  ·  SCRIPTED" if scripted else "BILATERAL MECHANICS  ·  MANUAL") if active_mechanics else "ANATOMY INSPECTOR  ·  CONNECTED"
 	mode_label.text = "View: %s\nMorph: %.0f%%  ·  Revision: %s" % [mode,morph*100,revision]
 	geometry_label.text = "%s surfaces · %s triangles\nNominal specimen length: 97.3 mm" % [specimen.surface_count,specimen.triangle_count]
 	last_capture = 0
@@ -498,7 +499,7 @@ func capture() -> void:
 	if frame == null or frame.is_empty() or ui == null or ui.is_empty():
 		capture_busy = false
 		return
-	var body = {"session":captured_session,"revision":captured_revision,"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"cutFaceCount":scene_state.get("mechanics",{}).get("metrics",{}).get("cutFaceCount",null),"activeAttachments":scene_state.get("mechanics",{}).get("metrics",{}).get("activeAttachments",null),"assessmentPassed":scene_state.get("mechanics",{}).get("assessment",{}).get("passed",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
+	var body = {"session":captured_session,"revision":captured_revision,"controlSource":scene_state.get("controlSource",""),"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"cutFaceCount":scene_state.get("mechanics",{}).get("metrics",{}).get("cutFaceCount",null),"activeAttachments":scene_state.get("mechanics",{}).get("metrics",{}).get("activeAttachments",null),"assessmentPassed":scene_state.get("mechanics",{}).get("assessment",{}).get("passed",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
 	var request = HTTPRequest.new()
 	request.timeout = 3
 	add_child(request)
@@ -507,7 +508,7 @@ func capture() -> void:
 		request.queue_free()
 		if code==200:
 			frames+=1
-			feedback_label.text="Actual Godot frames: %s\nNo model controller is running." % frames)
+			feedback_label.text=("Actual Godot frames: %s\nScripted verification; no model inference." if str(body.controlSource).begins_with("scripted-") else "Actual Godot frames: %s\nNo model controller is running.") % frames)
 	var error = request.request(base+"/api/frame",["Content-Type: application/json"],HTTPClient.METHOD_POST,JSON.stringify(body))
 	if error != OK:
 		capture_busy = false

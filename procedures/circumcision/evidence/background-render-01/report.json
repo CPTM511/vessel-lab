@@ -1,0 +1,615 @@
+{
+  "kind": "Scripted changing inspection views of a completed mechanical fixture; no model inference",
+  "condition": "unlocked background",
+  "startedAt": "2026-10-24T03:31:45.963Z",
+  "sourceHashes": {
+    "mechanics.mjs": "4f76736ae966af5818a031621e23fe5cde6a6ae7dffdfcb20b08c9df08191eda",
+    "contact.mjs": "45cf3b68f77b9c29c2b4defbf15406c5790d9bc3d0e9b5707106ae97361ac4cd",
+    "mesh-audit.mjs": "2708b75b995b37d3520ef5e762f3e0c23c3d8ea5989d7ff9385175779f8bf74f",
+    "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+    "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+    "inspector.mjs": "c99545340d6691118a6ba77974c891a25f10a92587d6ca00d4df1b75610bcce0",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "probe-mechanics.mjs": "e90f300bd519ea1bd0e03c1c348b34745b38f4aee5ae8e1691d51e507ca1e947",
+    "probe-trajectory.mjs": "4bfc25e3069cb484c77950b6043af253d4d6b78add4d944063b821972862c01f",
+    "godot/main.gd": "8fa259252ebb5c04312c0bc1fd3ce2b87bb4813aa18bb7428ff800309e66a82b",
+    "godot/anatomy.gd": "9f85d78ec14191c4cd62fca38dae650d3504a56b3f0e912bf915d5463a91f7ef",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/data/tissue-rest.json": "a4915e9b846ecefee4ea9988a5da694b3a6bbe2294d08682d86975e98cf48dfb",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+  },
+  "probeHash": "bf6a5eeef0071b9e596e5c997ca0ee0c2b36c6d8f959a0b489a34ce89d23750d",
+  "hostProbeHashes": {
+    "host-state.py": "0484da6959615e6e349699ecf2608189cae05b0941095798b24c6a115f8cd634",
+    "host-state.swift": "26f97d433b1e0c6e0ba458dae2c4a502c1e934a4d2aae2e23cd481b60c36660a",
+    "host-state": "4212d3965b73f3da3ed3a4329faecacdd7c940392eaae02e8691a4f8fa730951"
+  },
+  "samples": [
+    {
+      "mode": "ventral",
+      "revision": 1841,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-001.jpg",
+      "latencyMs": 847,
+      "before": {
+        "at": "2026-10-24T03:31:46Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:31:47Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1842,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-002.jpg",
+      "latencyMs": 925,
+      "before": {
+        "at": "2026-10-24T03:31:48Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:31:49Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1843,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-003.jpg",
+      "latencyMs": 925,
+      "before": {
+        "at": "2026-10-24T03:31:50Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:31:51Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1844,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-004.jpg",
+      "latencyMs": 924,
+      "before": {
+        "at": "2026-10-24T03:31:52Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:31:53Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1845,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-005.jpg",
+      "latencyMs": 924,
+      "before": {
+        "at": "2026-10-24T03:31:54Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:31:55Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1846,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-006.jpg",
+      "latencyMs": 842,
+      "before": {
+        "at": "2026-10-24T03:31:56Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:31:57Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1847,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-007.jpg",
+      "latencyMs": 1008,
+      "before": {
+        "at": "2026-10-24T03:31:58Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:31:59Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1848,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-008.jpg",
+      "latencyMs": 838,
+      "before": {
+        "at": "2026-10-24T03:32:00Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:01Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1849,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-009.jpg",
+      "latencyMs": 925,
+      "before": {
+        "at": "2026-10-24T03:32:02Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:03Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1850,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-010.jpg",
+      "latencyMs": 932,
+      "before": {
+        "at": "2026-10-24T03:32:04Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:05Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1851,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-011.jpg",
+      "latencyMs": 845,
+      "before": {
+        "at": "2026-10-24T03:32:06Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:07Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1852,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-012.jpg",
+      "latencyMs": 927,
+      "before": {
+        "at": "2026-10-24T03:32:08Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:09Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1853,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-013.jpg",
+      "latencyMs": 924,
+      "before": {
+        "at": "2026-10-24T03:32:10Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:11Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1854,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-014.jpg",
+      "latencyMs": 926,
+      "before": {
+        "at": "2026-10-24T03:32:12Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:13Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1855,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-015.jpg",
+      "latencyMs": 923,
+      "before": {
+        "at": "2026-10-24T03:32:15Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:16Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1856,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-016.jpg",
+      "latencyMs": 925,
+      "before": {
+        "at": "2026-10-24T03:32:17Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:18Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1857,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-017.jpg",
+      "latencyMs": 927,
+      "before": {
+        "at": "2026-10-24T03:32:19Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:20Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1858,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-018.jpg",
+      "latencyMs": 930,
+      "before": {
+        "at": "2026-10-24T03:32:21Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:22Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 1859,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "244f2004b0602b07920057b6648e67d0252692072842cfc2c063207c98a93e01",
+      "filename": "frame-019.jpg",
+      "latencyMs": 844,
+      "before": {
+        "at": "2026-10-24T03:32:23Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:24Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 1860,
+      "mechanicsRevision": 1839,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "35dedf33cf205f48306af71034f58712c8989ec59cf729061220772fc6bb9bb2",
+      "filename": "frame-020.jpg",
+      "latencyMs": 929,
+      "before": {
+        "at": "2026-10-24T03:32:25Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      },
+      "after": {
+        "at": "2026-10-24T03:32:26Z",
+        "console": true,
+        "frontmost": "com.openai.codex",
+        "cgSessionLocked": false,
+        "locked": false,
+        "userSessionLocked": false,
+        "lockSource": "IORegistry IOConsoleLocked and current-user CGSSessionScreenIsLocked"
+      }
+    }
+  ],
+  "passed": true,
+  "initialGeometryHash": "f838fe05b8f804b76bee4f48eda04738b091031cddd2265ee707ccde656e5cb7",
+  "finalGeometryHash": "f838fe05b8f804b76bee4f48eda04738b091031cddd2265ee707ccde656e5cb7",
+  "endedAt": "2026-10-24T03:32:27.489Z"
+}
