@@ -10,7 +10,7 @@ const report=JSON.parse(fs.readFileSync(file)),root=import.meta.dirname,dir=path
 const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
 // Signed zero is not representable on the JSON transport used by the inspector.
 const wire=v=>JSON.parse(JSON.stringify(v));
-const allowed=new Set(['mechanics.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md']);
+const allowed=new Set(['mechanics.mjs','scenario.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md']);
 if(report.schema==='scripted-trajectory-v1')allowed.add('probe-trajectory.mjs');
 if(fs.readFileSync(path.join(root,'mechanics.mjs'),'utf8').includes("from './contact.mjs'"))allowed.add('contact.mjs');
 if(report.schema==='scripted-trajectory-v1'&&fs.readFileSync(path.join(root,'probe-trajectory.mjs'),'utf8').includes("from './mesh-audit.mjs'"))allowed.add('mesh-audit.mjs');
@@ -31,6 +31,15 @@ if(report.schema==='scripted-trajectory-v1'){
  assert.deepEqual(journal,report.steps,'Streaming action journal differs from final report');
 }
 const sim=new TissueSim(report.seed);
+if(report.initial){
+ assert.deepEqual(wire(sim.observe().scenario),report.initial.scenario,'Initial scenario mismatch');
+ assert.equal(sha(JSON.stringify(sim.snapshot().positions)),report.initial.geometryHash,'Initial geometry mismatch');
+ assert.equal(report.initial.frame.filename,'initial.jpg');
+ assert.equal(report.initial.frame.seed,sim.seed);
+ assert.ok(Math.abs(report.initial.frame.anatomyScale-sim.scale)<1e-6);
+ assert.equal(report.initial.frame.mechanicsRevision,0);
+ assert.equal(sha('data:image/jpeg;base64,'+fs.readFileSync(path.join(dir,'initial.jpg')).toString('base64')),report.initial.frame.imageHash);
+}
 const developmentIndex=process.argv.indexOf('--development');
 const development=developmentIndex>=0?JSON.parse(fs.readFileSync(process.argv[developmentIndex+1])):null;
 const branches=new Map();
@@ -45,6 +54,8 @@ for(const [index,row] of report.steps.entries()){
  assert.equal(sha(JSON.stringify(sim.snapshot().positions)),row.geometryHash,'Mechanical geometry mismatch');
  assert.equal(sha(JSON.stringify({faces:sim.snapshot().faces,componentOf:sim.snapshot().componentOf,targetMask:sim.snapshot().targetMask})),row.topologyHash,'Topology does not reproduce');
  assert.equal(row.frame.controlSource,'scripted-mechanics-test','Frame control source mismatch');
+ assert.equal(row.frame.seed,result.seed,'Frame seed mismatch');
+ assert.ok(Math.abs(row.frame.anatomyScale-result.scale)<1e-6,'Frame anatomy scale mismatch');
  assert.equal(row.frame.cutFaceCount,result.metrics.cutFaceCount,'Frame cut topology mismatch');
  assert.equal(row.frame.activeAttachments,result.metrics.activeAttachments,'Frame attachment mismatch');
  assert.equal(row.frame.assessmentPassed,result.assessment.passed,'Frame assessment mismatch');

@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {defineTask,areaAccounting} from './task-definition.mjs';
+import {defineScenario} from './scenario.mjs';
 import {evaluate,recordIntegrity,releasedCondition} from './evaluation.mjs';
 import {planAttachment,solveAttachment,invalidateAttachments,attachmentPoint} from './attachments.mjs';
 import {CUT_RADIUS_MM,sweptFaces,buildSupports,updateTopology} from './cutting.mjs';
@@ -96,13 +97,13 @@ export class TissueSim{
  idx(layer,ring,j){return layer*(cage.axial+1)*cage.angular+ring*cage.angular+(j+cage.angular)%cage.angular;}
  reset(seed=11){
   if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Seed must be an unsigned 32-bit integer');
-  this.seed=seed;let r=(Math.imul(seed,1664525)+1013904223)>>>0;this.scale=.99+(r/2**32)*.02;
+  this.seed=seed;this.scenario=defineScenario(seed);this.scale=this.scenario.scale;
   this.revision=0;this.time=0;this.events=[];this.protectedContacts=[];this.cutHistory=[];this.attachments=[];this.invalidFaces=new Set();this.releaseSeconds=0;this.terminal=null;this.lastEvaluation=null;
   this.contactStats={contacts:0,rigidContacts:0,limitedSubsteps:0,lastAdvance:1};this.contactCache={};
   this.task=defineTask(cage,this.scale);
   this.nodes=cage.nodes.map(n=>({...n,rest:mul(n.rest,this.scale),p:mul(n.rest,this.scale),velocity:[0,0,0],inv:n.fixed?0:1}));
   this.faces=cage.faces.map(f=>({...f,nodes:[...f.nodes],active:true}));
-  this.arms={left:{position:[26,16,8],rotationDeg:[0,0,0],quaternion:[0,0,0,1],jaw:1,grasp:null,cutting:false},right:{position:[26,16,-8],rotationDeg:[0,0,0],quaternion:[0,0,0,1],jaw:1,grasp:null,cutting:false}};
+  this.arms=Object.fromEntries(Object.entries(this.scenario.initialArms).map(([name,a])=>[name,{...copy(a),quaternion:eulerQuaternion(a.rotationDeg),grasp:null,cutting:false}]));
   this.edges=[];const edgeKeys=new Set();
   const edge=(a,b,compliance,kind)=>{const key=a<b?a+':'+b:b+':'+a;if(edgeKeys.has(key))return;edgeKeys.add(key);this.edges.push({a,b,rest:distance(this.nodes[a].p,this.nodes[b].p),compliance,kind,lambda:0});};
   for(let layer=0;layer<2;layer++)for(let i=0;i<=cage.axial;i++)for(let j=0;j<cage.angular;j++){
@@ -271,6 +272,6 @@ export class TissueSim{
   this.lastMetrics.shellContact={gapMm:CONTACT_GAP_MM,contactDetections:this.contactStats.contacts,limitedSubsteps:this.contactStats.limitedSubsteps,lastAdvanceFraction:this.contactStats.lastAdvance};
   return copy(this.lastMetrics);
  }
- observe(){return {revision:this.revision,seed:this.seed,scale:this.scale,units:'mm',arms:copy(this.arms),metrics:this.metrics(),assessment:this.assessment(),terminal:copy(this.terminal),attachments:this.attachments.map(a=>({...copy(a),points:a.anchors.map(p=>attachmentPoint(this.nodes,p))})),events:copy(this.events.slice(-8)),protectedContacts:copy(this.protectedContacts),capabilities:{pose:true,jaw:true,physicalGrasp:true,cutting:true,edgeAttachments:true,terminalScore:true,modelController:false},cage:{angular:cage.angular,axial:cage.axial,hash:cageHash},task:{version:this.task.version,hash:this.task.hash,boundaryRings:this.task.boundaryRings},cutting:{radiusMm:CUT_RADIUS_MM,method:'Swept capsule triangle ablation; whole intersected cage faces removed'},scope:'Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation'};}
+ observe(){return {revision:this.revision,seed:this.seed,scale:this.scale,scenario:copy(this.scenario),units:'mm',arms:copy(this.arms),metrics:this.metrics(),assessment:this.assessment(),terminal:copy(this.terminal),attachments:this.attachments.map(a=>({...copy(a),points:a.anchors.map(p=>attachmentPoint(this.nodes,p))})),events:copy(this.events.slice(-8)),protectedContacts:copy(this.protectedContacts),capabilities:{pose:true,jaw:true,physicalGrasp:true,cutting:true,edgeAttachments:true,terminalScore:true,modelController:false},cage:{angular:cage.angular,axial:cage.axial,hash:cageHash},task:{version:this.task.version,hash:this.task.hash,boundaryRings:this.task.boundaryRings},cutting:{radiusMm:CUT_RADIUS_MM,method:'Swept capsule triangle ablation; whole intersected cage faces removed'},scope:'Synthetic layered shell, compliant constraints, local face ablation, sampled protected volumes; no clinical validation'};}
  snapshot(){return {...this.observe(),positions:this.nodes.map(n=>n.p),faces:this.faces,componentOf:this.topology.componentOf,targetMask:this.task.target,woundPairNodes:this.task.pairNodes};}
 }

@@ -21,7 +21,7 @@ await fs.mkdir(out,{recursive:true});
 // Exclusive evidence ownership also prevents accidentally overwriting a failed attempt.
 const journal=await fs.open(path.join(out,'steps.jsonl'),'wx');
 const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
-const sourceFiles=['mechanics.mjs','contact.mjs','mesh-audit.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','probe-trajectory.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
+const sourceFiles=['mechanics.mjs','scenario.mjs','contact.mjs','mesh-audit.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','probe-trajectory.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
 const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,sha(await fs.readFile(path.join(import.meta.dirname,f)))])));
 const trajectory={kind:'scripted low-level actions; not autonomous inference',seed,actions,auditRevisions,expectedAssessment};
 const trajectoryBytes=JSON.stringify(trajectory,null,2)+'\n';await fs.writeFile(path.join(out,'trajectory.json'),trajectoryBytes);
@@ -31,7 +31,7 @@ async function api(route,body){const r=await fetch(base+route,{method:body?'POST
 async function currentFrame(state,start){
  for(let i=0;i<100;i++){
   const r=await fetch(base+'/api/frame',{signal:AbortSignal.timeout(3000)});
-  if(r.ok){const f=await r.json();if(f.revision===state.revision&&f.session===state.session&&f.mechanicsEnabled&&f.mechanicsRevision===state.mechanics.revision&&f.cutFaceCount===state.mechanics.metrics.cutFaceCount&&f.activeAttachments===state.mechanics.metrics.activeAttachments&&f.assessmentPassed===state.mechanics.assessment.passed&&f.receivedAt>=start)return f;}
+  if(r.ok){const f=await r.json();if(f.revision===state.revision&&f.session===state.session&&f.mechanicsEnabled&&f.mechanicsRevision===state.mechanics.revision&&f.seed===state.mechanics.seed&&Math.abs(f.anatomyScale-state.mechanics.scale)<1e-6&&f.cutFaceCount===state.mechanics.metrics.cutFaceCount&&f.activeAttachments===state.mechanics.metrics.activeAttachments&&f.assessmentPassed===state.mechanics.assessment.passed&&f.receivedAt>=start)return f;}
   await new Promise(r=>setTimeout(r,80));
  }
  throw Error('No fresh matching mechanical Godot frame');
@@ -50,7 +50,7 @@ try{
   const frame=await currentFrame(accepted,start);assert.equal(frame.controlSource,'scripted-mechanics-test');state=await api('/api/state');
   const filename=`frame-${String(report.steps.length+1).padStart(4,'0')}.jpg`;
   await fs.writeFile(path.join(out,filename),Buffer.from(frame.image.split(',')[1],'base64'));
-  const row={action,observation:accepted.mechanics,geometryHash:sha(JSON.stringify(state.mechanics.positions)),topologyHash:sha(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,controlSource:frame.controlSource,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
+  const row={action,observation:accepted.mechanics,geometryHash:sha(JSON.stringify(state.mechanics.positions)),topologyHash:sha(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,controlSource:frame.controlSource,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,seed:frame.seed,anatomyScale:frame.anatomyScale,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
   report.steps.push(row);await journal.write(JSON.stringify(row)+'\n');
   if(report.steps.length%48===0||report.steps.length===actions.length||auditRevisions.includes(report.steps.length)){
    const audit=meshAudit(state.mechanics);report.meshChecks??=[];report.meshChecks.push(audit);report.meshAudit=audit;

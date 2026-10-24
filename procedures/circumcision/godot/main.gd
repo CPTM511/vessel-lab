@@ -34,6 +34,7 @@ var instrument_nodes: Node3D
 var mechanics_panel: VBoxContainer
 var arm_select: OptionButton
 var mechanics_label: Label
+var seed_input: SpinBox
 var active_mechanics = false
 var retraction_button: Button
 var cut_toggle: CheckBox
@@ -134,7 +135,14 @@ func build_ui() -> void:
 	panel.add_theme_constant_override("separation",11)
 	scroll.add_child(panel)
 	status = note("Connecting to inspection service…",panel,ACCENT)
-	add_button("Enable mechanics sandbox",panel,func(): send_request("/api/mechanics/reset",{"source":"manual-mechanics","seed":11}))
+	note("Seed for next reset (11 / 29 / 83)",panel)
+	seed_input = SpinBox.new()
+	seed_input.min_value = 0
+	seed_input.max_value = 4294967295
+	seed_input.step = 1
+	seed_input.value = 11
+	panel.add_child(seed_input)
+	add_button("Reset mechanics sandbox",panel,func(): send_request("/api/mechanics/reset",{"source":"manual-mechanics","seed":int(seed_input.value)}))
 	add_button("Return to anatomy inspector",panel,func(): send_request("/api/inspection/reset",{"source":"manual-inspection"}))
 	mechanics_panel = VBoxContainer.new()
 	mechanics_panel.visible = false
@@ -295,7 +303,7 @@ func build_world() -> void:
 	world.add_child(camera)
 	update_camera()
 	update_labels("covered")
-	geometry_label.text = "%s surfaces · %s triangles\nNominal specimen length: 97.3 mm" % [specimen.surface_count,specimen.triangle_count]
+	geometry_label.text = "%s surfaces · %s triangles\nNominal specimen length: %.1f mm" % [specimen.surface_count,specimen.triangle_count,97.3*specimen.scale.x]
 	renderer_label.text = "Renderer: %s\nDriver: %s" % [RenderingServer.get_current_rendering_method(),RenderingServer.get_current_rendering_driver_name()]
 
 func update_labels(mode: String) -> void:
@@ -314,6 +322,7 @@ func update_labels(mode: String) -> void:
 	for p in points:
 		line(p[1],p[2],.055,Color("a8bbb9"),labels)
 		world_label(p[0],p[1],labels,INK,24)
+	labels.scale = specimen.scale
 	labels.visible = show_labels
 
 func update_camera() -> void:
@@ -410,7 +419,7 @@ func draw_instruments(data: Dictionary) -> void:
 		if tie.active:
 			line(Vector3(tie.points[0][0],tie.points[0][1],tie.points[0][2]),Vector3(tie.points[1][0],tie.points[1][1],tie.points[1][2]),.085,Color("aac4f0"),instrument_nodes)
 	var m: Dictionary = data.metrics
-	mechanics_label.text = "Grasps: %s  ·  Protected hits: %s\nPeak displacement: %.2f mm\nTime: %.2f s\nL: %.1f, %.1f, %.1f\nR: %.1f, %.1f, %.1f" % [m.activeGrasps,m.protectedIntersections,m.maxDisplacementMm,m.simulationSeconds,data.arms.left.position[0],data.arms.left.position[1],data.arms.left.position[2],data.arms.right.position[0],data.arms.right.position[1],data.arms.right.position[2]]
+	mechanics_label.text = "Seed: %s  ·  Scale: %.3f\nGrasps: %s  ·  Protected hits: %s\nPeak displacement: %.2f mm\nTime: %.2f s\nL: %.1f, %.1f, %.1f\nR: %.1f, %.1f, %.1f" % [data.seed,data.scale,m.activeGrasps,m.protectedIntersections,m.maxDisplacementMm,m.simulationSeconds,data.arms.left.position[0],data.arms.left.position[1],data.arms.left.position[2],data.arms.right.position[0],data.arms.right.position[1],data.arms.right.position[2]]
 	mechanics_label.text += "\nCut faces: %s · Components: %s\nTarget detached: %.2f%%\nOff-target removed: %.2f%%" % [m.cutFaceCount,m.components.size(),m.area.targetDetachedFraction*100,m.area.offTargetRemovedFraction*100]
 	var grasp_error := 0.0
 	for grasp in m.graspErrors:
@@ -486,7 +495,7 @@ func apply_state(data: Dictionary) -> void:
 	var scripted = str(data.get("controlSource","")).begins_with("scripted-")
 	status.text = ("BILATERAL MECHANICS  ·  SCRIPTED" if scripted else "BILATERAL MECHANICS  ·  MANUAL") if active_mechanics else "ANATOMY INSPECTOR  ·  CONNECTED"
 	mode_label.text = "View: %s\nMorph: %.0f%%  ·  Revision: %s" % [mode,morph*100,revision]
-	geometry_label.text = "%s surfaces · %s triangles\nNominal specimen length: 97.3 mm" % [specimen.surface_count,specimen.triangle_count]
+	geometry_label.text = "%s surfaces · %s triangles\nNominal specimen length: %.1f mm" % [specimen.surface_count,specimen.triangle_count,97.3*specimen.scale.x]
 	last_capture = 0
 
 func capture() -> void:
@@ -506,7 +515,7 @@ func capture() -> void:
 	if frame == null or frame.is_empty() or ui == null or ui.is_empty():
 		capture_busy = false
 		return
-	var body = {"session":captured_session,"revision":captured_revision,"controlSource":scene_state.get("controlSource",""),"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"cutFaceCount":scene_state.get("mechanics",{}).get("metrics",{}).get("cutFaceCount",null),"activeAttachments":scene_state.get("mechanics",{}).get("metrics",{}).get("activeAttachments",null),"assessmentPassed":scene_state.get("mechanics",{}).get("assessment",{}).get("passed",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
+	var body = {"session":captured_session,"revision":captured_revision,"controlSource":scene_state.get("controlSource",""),"image":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(frame.save_jpg_to_buffer(.91)),"uiImage":"data:image/jpeg;base64,"+Marshalls.raw_to_base64(ui.save_jpg_to_buffer(.91)),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"surfaces":specimen.surface_count,"triangles":specimen.triangle_count,"mode":scene_state.get("mode",""),"retraction":last_morph,"mechanicsEnabled":active_mechanics,"mechanicsRevision":scene_state.get("mechanics",{}).get("revision",null),"seed":scene_state.get("mechanics",{}).get("seed",null),"anatomyScale":specimen.scale.x,"cutFaceCount":scene_state.get("mechanics",{}).get("metrics",{}).get("cutFaceCount",null),"activeAttachments":scene_state.get("mechanics",{}).get("metrics",{}).get("activeAttachments",null),"assessmentPassed":scene_state.get("mechanics",{}).get("assessment",{}).get("passed",null),"camera":{"yaw":orbit_yaw,"pitch":orbit_pitch,"distance":orbit_distance},"width":frame.get_width(),"height":frame.get_height()}
 	var request = HTTPRequest.new()
 	request.timeout = 3
 	add_child(request)

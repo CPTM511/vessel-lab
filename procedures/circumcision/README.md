@@ -1,6 +1,6 @@
 # Adult anatomy research preview
 
-An in-development Godot module for an adult circumcision tissue-manipulation benchmark. The current checkpoint provides original layered anatomy, bilateral low-level grippers, constraint-based tissue deformation, local swept cutting, component/area accounting and real rendered feedback. Local synthetic edge attachments and a C0 terminal evaluator are available. The refined anatomy and coupled rigid/shell contact checkpoint passes the existing C0 geometric evaluator in a complete 2,023-action scripted detachment/collection fixture with actual rendered feedback. Independent model execution and the full prototype release remain **pending**. This is bounded fixture evidence, not general retraction or self-contact validation. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
+An in-development Godot module for an adult circumcision tissue-manipulation benchmark. The current checkpoint provides original layered anatomy, bilateral low-level grippers, constraint-based tissue deformation, local swept cutting, component/area accounting and real rendered feedback. Local synthetic edge attachments and a C0 terminal evaluator are available. The refined anatomy/contact checkpoint at commit `3c87412` passes the C0 geometric evaluator in a complete 2,023-action scripted detachment/collection fixture. The current S1 candidate adds three distinct authored size cases and reproducible initial instrument offsets; its evidence is kept separate from that historical full trajectory. Independent model execution and the full prototype release remain **pending**. This is bounded fixture evidence, not general retraction or self-contact validation. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
 
 ## Run
 
@@ -12,7 +12,7 @@ node launch.mjs
 
 On macOS, double-click `Start anatomy.command`. Set `GODOT_BIN` if Godot is outside the usual application locations. The preview uses Forward+; run `node launch.mjs --compatibility` for the fallback. The local inspection service listens on `127.0.0.1:8785`.
 
-Drag to orbit, scroll to zoom, or select the covered, retracted, ventral and isolated anatomical views. In anatomy inspection, the retraction slider is a **visual morph**. Selecting **Enable mechanics sandbox** disables that morph and exposes translation, orientation, grasp, release and local cutting controls backed by the tissue solver. Cutting requires an open, unoccupied instrument and is explicit for each jog or pulse. An on-screen scale uses millimetres. Every captured image comes from the running Godot viewport; no rendered substitute is used when the renderer is unavailable.
+Drag to orbit, scroll to zoom, or select the covered, retracted, ventral and isolated anatomical views. In anatomy inspection, the retraction slider is a **visual morph**. Choose a seed for the next reset: **11**, **29** and **83** select compact, reference and expanded specimens. Selecting **Reset mechanics sandbox** disables that morph and exposes translation, orientation, grasp, release and local cutting controls backed by the tissue solver. Cutting requires an open, unoccupied instrument and is explicit for each jog or pulse. An on-screen scale uses millimetres. Every captured image comes from the running Godot viewport; no rendered substitute is used when the renderer is unavailable.
 
 ```sh
 node inspect.mjs --output evidence/local-inspection
@@ -22,15 +22,17 @@ This command saves actual images and source hashes for eight views, including a 
 
 ## Mechanical development
 
-The preserved [resection failure](evidence/RESECTION.md) shows why a passing geometric score is insufficient: the earlier solver allowed retained-layer crossings and detached-shell self-intersections. The [anatomy and protected-surface checkpoint](evidence/ANATOMY_INTEGRATION.md) now records refined frenular/meatal geometry, conservative surface-derived exclusions and coupled rigid/shell contact. Its 2,023 bounded commands have actual Godot frames, maximum 2,490 ms feedback, zero proper crossings at 130 checkpoints and exact offline replay. The earlier missed-grasp collection failure remains preserved. No attachments were placed: retained edge proximity comes from authored geometry and recoil, not demonstrated suturing. The [previous complete scripted checkpoint](evidence/SCRIPTED_C0.md) remains a historical result at commit `b3df294`.
+The preserved [resection failure](evidence/RESECTION.md) shows why a passing geometric score is insufficient: the earlier solver allowed retained-layer crossings and detached-shell self-intersections. The [anatomy and protected-surface checkpoint](evidence/ANATOMY_INTEGRATION.md), preserved at commit `3c87412`, records refined frenular/meatal geometry, conservative surface-derived exclusions and coupled rigid/shell contact. Its 2,023 bounded commands have actual Godot frames, maximum 2,490 ms feedback, zero proper crossings at 130 checkpoints and exact offline replay. The earlier missed-grasp collection failure remains preserved. No attachments were placed: retained edge proximity comes from authored geometry and recoil, not demonstrated suturing. The [previous complete scripted checkpoint](evidence/SCRIPTED_C0.md) remains a historical result at commit `b3df294`.
 
-See [local cutting and independent area semantics](docs/CUTTING.md), [the mechanical model and controls](docs/MECHANICS.md) and [current scripted attachment evidence](evidence/CLOSURE.md). The current fixture demonstrates bilateral grasp/release, local cutting, one synthetic edge attachment and a released hold, with actual Godot images and independently reproduced topology and assessment. See [evaluator definitions and limitations](docs/EVALUATOR.md). It is not an autonomous episode or a completed procedure.
+See [local cutting and independent area semantics](docs/CUTTING.md), [the mechanical model and controls](docs/MECHANICS.md) and [earlier scripted attachment evidence](evidence/CLOSURE.md). The local fixture demonstrates bilateral grasp/release, local cutting, one synthetic edge attachment and a released hold, with actual Godot images and independently reproduced topology and assessment. See [evaluator definitions and limitations](docs/EVALUATOR.md). It is not an autonomous episode or a completed procedure.
 
 ```sh
 node --test tests/*.test.mjs
-node probe-mechanics.mjs --closure --output evidence/local-mechanical-probe
+node probe-mechanics.mjs --closure --seed 11 --output evidence/local-mechanical-probe
 node verify-mechanics.mjs evidence/local-mechanical-probe/report.json
 ```
+
+The [S1 local evidence](evidence/SCENARIOS.md) records 237 actual actions across all three cases, exact replay and the expected rejection of incomplete procedures. See [S1 scenario definitions](docs/SCENARIOS.md) for size cases, initial offsets and scope. Full historical trajectories require their exact recorded source revision; they must not be interpreted as S1 results.
 
 ## Research boundaries
 

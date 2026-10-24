@@ -1,0 +1,15 @@
+{
+  "kind": "Offline record tampering checks; not rendered or model evidence",
+  "rows": [
+    {
+      "mutation": "Changed first recorded frame seed",
+      "rejected": true,
+      "reason": "Frame seed mismatch"
+    },
+    {
+      "mutation": "Changed first recorded frame anatomyScale",
+      "rejected": true,
+      "reason": "Frame anatomy scale mismatch"
+    }
+  ]
+}

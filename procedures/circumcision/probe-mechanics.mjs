@@ -9,14 +9,15 @@ const args=process.argv.slice(2),option=(name,fallback)=>args.includes(name)?arg
 const base=option('--url','http://127.0.0.1:8785'),out=path.resolve(import.meta.dirname,option('--output','evidence/mechanics-'+Date.now()));
 await fs.mkdir(out,{recursive:true});
 const hash=v=>crypto.createHash('sha256').update(v).digest('hex');
-const sourceFiles=['mechanics.mjs','contact.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
+const sourceFiles=['mechanics.mjs','scenario.mjs','contact.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
 const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,hash(await fs.readFile(path.join(import.meta.dirname,f)))])));
-const report={kind:'scripted mechanical development fixture; no model inference or procedure completion',seed:11,startedAt:new Date().toISOString(),sourceHashes,cuttingFixture:args.includes('--cutting')||args.includes('--closure'),closureFixture:args.includes('--closure'),steps:[],passed:false};
+const seed=Number(option('--seed','11'));
+const report={kind:'scripted mechanical development fixture; no model inference or procedure completion',seed,startedAt:new Date().toISOString(),sourceHashes,cuttingFixture:args.includes('--cutting')||args.includes('--closure'),closureFixture:args.includes('--closure'),steps:[],passed:false};
 async function api(route,body){const r=await fetch(base+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(12000)});const j=await r.json();if(!r.ok)throw Error(j.error);return j;}
 async function currentFrame(state,start){
  for(let i=0;i<80;i++){
   const r=await fetch(base+'/api/frame',{signal:AbortSignal.timeout(3000)});
-  if(r.ok){const f=await r.json();if(f.revision===state.revision&&f.session===state.session&&f.mechanicsEnabled&&f.mechanicsRevision===state.mechanics.revision&&f.cutFaceCount===state.mechanics.metrics.cutFaceCount&&f.activeAttachments===state.mechanics.metrics.activeAttachments&&f.assessmentPassed===state.mechanics.assessment.passed&&f.receivedAt>=start)return f;}
+  if(r.ok){const f=await r.json();if(f.revision===state.revision&&f.session===state.session&&f.mechanicsEnabled&&f.mechanicsRevision===state.mechanics.revision&&f.seed===state.mechanics.seed&&Math.abs(f.anatomyScale-state.mechanics.scale)<1e-6&&f.cutFaceCount===state.mechanics.metrics.cutFaceCount&&f.activeAttachments===state.mechanics.metrics.activeAttachments&&f.assessmentPassed===state.mechanics.assessment.passed&&f.receivedAt>=start)return f;}
   await new Promise(r=>setTimeout(r,100));
  }
  throw Error('No fresh matching mechanical Godot observation');
@@ -30,7 +31,7 @@ async function command(changes){
  const frame=await currentFrame(accepted,start);assert.equal(frame.controlSource,'scripted-mechanics-test');state=await api('/api/state');
  const filename=`frame-${String(report.steps.length+1).padStart(3,'0')}.jpg`;
  await fs.writeFile(path.join(out,filename),Buffer.from(frame.image.split(',')[1],'base64'));
- const row={action,observation:accepted.mechanics,geometryHash:hash(JSON.stringify(state.mechanics.positions)),topologyHash:hash(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,controlSource:frame.controlSource,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
+ const row={action,observation:accepted.mechanics,geometryHash:hash(JSON.stringify(state.mechanics.positions)),topologyHash:hash(JSON.stringify({faces:state.mechanics.faces,componentOf:state.mechanics.componentOf,targetMask:state.mechanics.targetMask})),frame:{filename,controlSource:frame.controlSource,imageHash:frame.imageHash,revision:frame.revision,mechanicsRevision:frame.mechanicsRevision,seed:frame.seed,anatomyScale:frame.anatomyScale,cutFaceCount:frame.cutFaceCount,activeAttachments:frame.activeAttachments,assessmentPassed:frame.assessmentPassed,renderer:frame.renderer,driver:frame.driver},latencyMs:Date.now()-start,before,after:hostState()};
  report.steps.push(row);await persist();
  assert.ok(row.latencyMs<5000,'Mechanical action and rendered feedback exceeded five seconds');
  return state.mechanics;
@@ -45,8 +46,12 @@ async function move(name,target){
 }
 try{
  const s=await api('/api/state'),start=Date.now();
- const reset=await api('/api/mechanics/reset',{session:s.session,revision:s.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',seed:11});
- await currentFrame(reset,start);state=await api('/api/state');
+ const reset=await api('/api/mechanics/reset',{session:s.session,revision:s.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test',seed});
+ const initialFrame=await currentFrame(reset,start);state=await api('/api/state');
+ report.initial={scenario:state.mechanics.scenario,geometryHash:hash(JSON.stringify(state.mechanics.positions)),frame:{filename:'initial.jpg',imageHash:initialFrame.imageHash,seed:initialFrame.seed,anatomyScale:initialFrame.anatomyScale,mechanicsRevision:initialFrame.mechanicsRevision,renderer:initialFrame.renderer,driver:initialFrame.driver}};
+ await fs.writeFile(path.join(out,'initial.jpg'),Buffer.from(initialFrame.image.split(',')[1],'base64'));
+ await fs.writeFile(path.join(out,'initial-ui.jpg'),Buffer.from(initialFrame.uiImage.split(',')[1],'base64'));
+ await persist();
  const n=state.mechanics.cage.angular,k=state.mechanics.cage.axial;
  const left=[...state.mechanics.positions[k*n+5]],right=[...state.mechanics.positions[k*n+n-5]];
  await move('left',left);await command({left:{jaw:0}});

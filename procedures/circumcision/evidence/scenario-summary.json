@@ -1,0 +1,125 @@
+{
+  "kind": "S1 scripted local mechanical checks; not complete procedures or live model episodes",
+  "cases": [
+    {
+      "seed": 11,
+      "profile": "compact",
+      "scale": 0.92,
+      "steps": 82,
+      "actualFrames": 82,
+      "maxLatencyMs": 3522,
+      "initialGeometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "initialFrameHash": "704e4c3256e180bacd3f9875dd0d18f0626b65e0b09c032060e7c3f675312f31",
+      "sourceHashes": {
+        "mechanics.mjs": "74646692c6634dc4a307b9cce3e1f7aaa19ec5247c6a42e0dbf751e5f1fec8a2",
+        "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+        "contact.mjs": "0212a0c392efcd7af95fd4ae2089a2371980c1383bc36c07a3ef52c527b14431",
+        "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+        "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+        "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+        "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+        "inspector.mjs": "09b0007746d8c209bebddcbc5d1ffad1ed5fc6dbd267cd8dfb62a5b4e77448fa",
+        "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+        "probe-mechanics.mjs": "da76a5ede8eb50853860f5cbee73f394cb6de485dc91935298e34950b4325d14",
+        "godot/main.gd": "4b97f8de8d26f18f3a8f76096317801d2e9989a2dc74f75d0f2562b3d04ded46",
+        "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+        "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+        "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+        "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+      },
+      "activeAttachments": 1,
+      "activeGrasps": 0,
+      "releasedSeconds": 5.258333333333384,
+      "protectedInstrumentIntersections": 0,
+      "offTargetRemovedFraction": 0,
+      "finishRejectedAsIncomplete": {
+        "expectedRejection": true,
+        "error": "C0 gates unmet: targetDetached, retainedEdgeApproximation"
+      },
+      "verified": true
+    },
+    {
+      "seed": 29,
+      "profile": "reference",
+      "scale": 1,
+      "steps": 78,
+      "actualFrames": 78,
+      "maxLatencyMs": 3653,
+      "initialGeometryHash": "da4b3faf554fa3c84504c38ddbe9303b62be3f37bebedbe8c00b21b8d4460258",
+      "initialFrameHash": "add2ab385009388b5324ef227a18b88cf7adbac59a61a20b1260d982b1ca7116",
+      "sourceHashes": {
+        "mechanics.mjs": "74646692c6634dc4a307b9cce3e1f7aaa19ec5247c6a42e0dbf751e5f1fec8a2",
+        "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+        "contact.mjs": "0212a0c392efcd7af95fd4ae2089a2371980c1383bc36c07a3ef52c527b14431",
+        "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+        "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+        "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+        "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+        "inspector.mjs": "09b0007746d8c209bebddcbc5d1ffad1ed5fc6dbd267cd8dfb62a5b4e77448fa",
+        "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+        "probe-mechanics.mjs": "da76a5ede8eb50853860f5cbee73f394cb6de485dc91935298e34950b4325d14",
+        "godot/main.gd": "4b97f8de8d26f18f3a8f76096317801d2e9989a2dc74f75d0f2562b3d04ded46",
+        "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+        "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+        "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+        "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+      },
+      "activeAttachments": 1,
+      "activeGrasps": 0,
+      "releasedSeconds": 5.250000000000051,
+      "protectedInstrumentIntersections": 0,
+      "offTargetRemovedFraction": 0,
+      "finishRejectedAsIncomplete": {
+        "expectedRejection": true,
+        "error": "C0 gates unmet: targetDetached, retainedEdgeApproximation"
+      },
+      "verified": true
+    },
+    {
+      "seed": 83,
+      "profile": "expanded",
+      "scale": 1.08,
+      "steps": 77,
+      "actualFrames": 77,
+      "maxLatencyMs": 3608,
+      "initialGeometryHash": "828c89c0c38a9fa06263d82ebf248b618df77a3769ccfad84f694e64f123197f",
+      "initialFrameHash": "0e1a44dd2c0e9a49db8fd09afbdfb565f2cb89e4086a5428be8d65a428a57eac",
+      "sourceHashes": {
+        "mechanics.mjs": "74646692c6634dc4a307b9cce3e1f7aaa19ec5247c6a42e0dbf751e5f1fec8a2",
+        "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+        "contact.mjs": "0212a0c392efcd7af95fd4ae2089a2371980c1383bc36c07a3ef52c527b14431",
+        "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+        "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+        "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+        "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+        "inspector.mjs": "09b0007746d8c209bebddcbc5d1ffad1ed5fc6dbd267cd8dfb62a5b4e77448fa",
+        "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+        "probe-mechanics.mjs": "da76a5ede8eb50853860f5cbee73f394cb6de485dc91935298e34950b4325d14",
+        "godot/main.gd": "4b97f8de8d26f18f3a8f76096317801d2e9989a2dc74f75d0f2562b3d04ded46",
+        "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+        "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+        "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+        "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+      },
+      "activeAttachments": 1,
+      "activeGrasps": 0,
+      "releasedSeconds": 5.241666666666717,
+      "protectedInstrumentIntersections": 0,
+      "offTargetRemovedFraction": 0,
+      "finishRejectedAsIncomplete": {
+        "expectedRejection": true,
+        "error": "C0 gates unmet: targetDetached, retainedEdgeApproximation"
+      },
+      "verified": true
+    }
+  ],
+  "totalActions": 237,
+  "maxLatencyMs": 3653,
+  "regressions": {
+    "passed": 47,
+    "failed": 0
+  },
+  "sourceFreezeForLiveEpisodes": false,
+  "adultLiveEpisodeCount": 0,
+  "fullC0ResultTransferredFromOlderSource": false
+}

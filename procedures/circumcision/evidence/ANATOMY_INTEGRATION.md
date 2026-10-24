@@ -1,5 +1,7 @@
 # Anatomy and protected-surface integration
 
+Historical checkpoint: [`3c87412`](https://github.com/CPTM511/vessel-lab/commit/3c87412767d305f5a543e8d25db999f3f5e3888f). Its source and initial conditions differ from S1. Use that revision to reproduce the records below.
+
 This development checkpoint aligns the original visible anatomy with conservative protected-volume queries and couples sampled glans contact with shell separation. It remains a synthetic adult research specimen. Independent model execution and final prototype acceptance are pending.
 
 The complete [actual Godot replay](anatomy-c0-attempt-02/report.json) and [exact offline verification](anatomy-c0-verification.json) pass all unchanged C0 geometric gates. This is scripted engineering evidence on seed 11, not an independent model episode or a completed prototype release.
@@ -58,7 +60,7 @@ The protocol, target mask and declared independent model seeds remain unchanged.
 
 ## Reproduce
 
-Use this checkpoint's matching source fingerprints. From the module directory:
+Use commit `3c87412` in a separate checkout and confirm its recorded source fingerprints. From that revision's module directory:
 
 ```sh
 node --test tests/*.test.mjs

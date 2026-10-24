@@ -57,6 +57,7 @@ const server=http.createServer(async(req,res)=>{
   if(req.url==='/api/frame'){
    if(body.revision!==state.revision)return respond(res,409,{error:'Stale frame revision'});
    if(mechanics&&body.mechanicsRevision!==mechanics.revision)return respond(res,409,{error:'Frame mechanics revision mismatch'});
+   if(mechanics&&(body.seed!==mechanics.seed||Math.abs(body.anatomyScale-mechanics.scale)>1e-6||!Number.isFinite(body.anatomyScale)))return respond(res,409,{error:'Frame scenario mismatch'});
    if(mechanics&&body.cutFaceCount!==mechanics.metrics().cutFaceCount)return respond(res,409,{error:'Frame cutting topology mismatch'});
    if(mechanics&&(body.activeAttachments!==mechanics.metrics().activeAttachments||body.assessmentPassed!==mechanics.assessment().passed))return respond(res,409,{error:'Frame attachment or assessment mismatch'});
    if(body.controlSource!==state.controlSource)return respond(res,409,{error:'Frame control source mismatch'});

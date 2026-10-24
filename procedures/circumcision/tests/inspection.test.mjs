@@ -38,13 +38,14 @@ test('inspection state is atomic, revisioned, idempotent and origin restricted',
   // A prerecorded JPEG is a transport test fixture only, never live evidence.
   const image='data:image/jpeg;base64,'+fs.readFileSync(new URL('fixtures/inspection.jpg',import.meta.url)).toString('base64');
   assert.equal(reset.controlSource,'scripted-mechanics-test');
-  const frame={controlSource:'scripted-mechanics-test',session:reset.session,revision:reset.revision,mechanicsRevision:0,cutFaceCount:0,activeAttachments:0,assessmentPassed:false,mechanicsEnabled:true,mode:'covered',retraction:0,renderer:'forward_plus',image,uiImage:image};
+  const frame={controlSource:'scripted-mechanics-test',session:reset.session,revision:reset.revision,mechanicsRevision:0,seed:reset.mechanics.seed,anatomyScale:reset.mechanics.scale,cutFaceCount:0,activeAttachments:0,assessmentPassed:false,mechanicsEnabled:true,mode:'covered',retraction:0,renderer:'forward_plus',image,uiImage:image};
   const upload=body=>fetch(base+'/api/frame',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   assert.equal((await upload({...frame,controlSource:'manual-mechanics'})).status,409);
   assert.equal((await upload({...frame,cutFaceCount:1})).status,409);
   assert.equal((await upload({...frame,image:'data:image/jpeg;base64,AAAA'})).status,400);
   assert.equal((await upload({...frame,activeAttachments:1})).status,409);
   assert.equal((await upload({...frame,assessmentPassed:true})).status,409);
+  for(const invalid of [{seed:29},{anatomyScale:1},{seed:undefined},{anatomyScale:undefined}])assert.equal((await upload({...frame,...invalid})).status,409);
   assert.equal((await upload(frame)).status,200);
   const finish=await fetch(base+'/api/finish',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:reset.session,revision:reset.revision,commandId:crypto.randomUUID(),source:'scripted-mechanics-test'})});
   assert.equal(finish.status,400);assert.match((await finish.json()).error,/C0 gates unmet/);
