@@ -1,10 +1,10 @@
 # C0 independent controller evaluation
 
-The first complete-procedure attempt ended without success after an external access-status request failed. **There are zero successful episodes out of one started attempt.** Seeds 29 and 83 have not started. The adult prototype has not met its release gate.
+**There are zero successful episodes across three started attempts.** Round1 seed11 was interrupted by an external access-status request failure; round1 seed29 failed synthetic gates; round2 seed11 stopped after an accepted command missed its rendered-feedback deadline. Seed83 has not started. The adult prototype has not met its release gate.
 
 The [source and instruction freeze](../evaluation-freeze.json) was published at `47488cc1ed2a593021d28d5099ae6c16a6b9d119` before evaluation began. Runtime digest: `d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b`. The declared seeds remain **11, 29 and 83**; all three complete case successes are required by [protocol C0](../docs/PROTOCOL.md). Every attempt, including infrastructure interruptions, remains in the [evaluation ledger](c0-evaluation-status.json). The historical two-translation connectivity check is excluded from this denominator.
 
-## Seed 11, attempt 01
+## Round1 seed 11, attempt 01
 
 | Measure | Result |
 | --- | --- |
@@ -47,3 +47,19 @@ The [public journal](c0-seed-11-attempt-01/agent.jsonl), [16 unchanged JPEGs](c0
 The [preflight record](c0-preflight.json) remains unchanged. Its scripted feasibility and renderer/workflow checks do not count as independent controller successes. Visual realism, mechanical fidelity and clinical validity remain separate, with the previously documented passive approximation, high strain, sampled contact and uncalibrated-material limitations.
 
 ![Actual Godot UI after the controller stopped](c0-seed-11-attempt-01-ui.jpg)
+
+## Subsequent failed attempts and targeted corrections
+
+Round1 seed29 completed its model turn after24 accepted moves and31 actual images, without accepted Finish. It recorded3 protected contacts,0.826% target detachment and12.5% edge coverage. The accepted states reproduce exactly. Counterfactual replay identifies translation as the mechanical contact trigger: the damaging move still contacts protected geometry with cutting disabled or rotation unchanged; a stationary control does not. The controller contract omitted the separate0.5mm instrument-contact threshold and shaft/jaw sampling semantics. Round2 disclosed those existing mechanics without changing thresholds or supplying a trajectory. This omission is a plausible contributor, not proof of the model's internal reasoning.
+
+Round2 seed11 accepted75 moves and received140 actual model image responses. Its final accepted action took4,273ms to compute and failed to obtain a fresh rendered observation by the unchanged5-second deadline. All accepted states, including the final one, reproduce exactly. Target detachment reached100% with zero protected contacts and zero off-target removal, but release and component collection remained incomplete. A later screenshot is not substituted for missing timely model feedback.
+
+CPU profiling identified allocation-heavy shell contact filtering. A candidate optimization removes temporary arrays and callbacks while retaining identical geometric checks, order and tolerances. All75 recorded observations and paired final full snapshots match exactly. Explicit scripted playback with actual Godot images completed75 actions with maximum4,010ms feedback, zero audited crossings and the same incomplete final assessment. This validates this path, not arbitrary-path performance or autonomous success. See [scripted performance evidence](evaluation-rounds/contact-performance.json). Every earlier failed attempt remains in the denominator; runtime changes require a new freeze and fresh independent cases.
+
+```sh
+node verify-controller.mjs evidence/c0-seed-29-attempt-01 --incomplete
+node verify-controller.mjs evidence/c0-round2-seed11-attempt01 --frame-failure
+node --test tests/controller-unsuccessful-record.test.mjs
+```
+
+Both failure-verification modes return `episodeSucceeded: false`; default successful-episode verification rejects these records. Historical source bundles bind replay to the exact executed runtime instead of replaying against changed mechanics.

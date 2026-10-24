@@ -1,0 +1,1570 @@
+{
+  "kind": "Scripted replay of failed model decisions; no inference or procedure success",
+  "sourceHashes": {
+    "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+    "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+    "contact.mjs": "71427b4d2fa1bf6d8ca13d70199338c58e25d8a038a11a126f113bfc5300da29",
+    "mesh-audit.mjs": "2708b75b995b37d3520ef5e762f3e0c23c3d8ea5989d7ff9385175779f8bf74f",
+    "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+    "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+    "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "probe-mechanics.mjs": "cdb94e96bc93aa61c82433fd138dd364aac1ae7be17ad80852e6ebbd7fd1e2c9",
+    "probe-trajectory.mjs": "9857060aa24bc57e4381b3c404f6c4eb56ab56fb5e10f09a48311b8506398920",
+    "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+    "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+    "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+    "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+    "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+    "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+    "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+    "controller-spec.mjs": "b022bafe41c838b617b04a5975c6062626cadac0873f3a7d7eefcbacc1e98716",
+    "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+    "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+    "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+    "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a"
+  },
+  "trajectoryHash": "c599ab239747d97060eb581f8c49496962919eccbe711e67699d18cd02bbf23b",
+  "steps": 75,
+  "maxCommandToFrameMs": 4010,
+  "passed": true,
+  "procedurePassed": false,
+  "failedProcedureGates": [
+    "releasedHold",
+    "resolvedTargetComponents"
+  ],
+  "meshChecks": [
+    {
+      "revision": 48,
+      "activeFaces": 4442,
+      "candidatePairs": 145365,
+      "properCrossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      },
+      "witnesses": []
+    },
+    {
+      "revision": 75,
+      "activeFaces": 4416,
+      "candidatePairs": 145869,
+      "properCrossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      },
+      "witnesses": []
+    }
+  ],
+  "frames": [
+    {
+      "step": 1,
+      "latencyMs": 1265,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0001.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "6cd31d04d4fb6876a06cea5e20c8139ca4842018adc155a1cebd8572f944c33d",
+        "revision": 2,
+        "mechanicsRevision": 1,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 2,
+      "latencyMs": 1198,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0002.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "21da8c70c9fdb1acc1bb591b009443021fcffb6e7a37e0fe3069a23721400ffd",
+        "revision": 3,
+        "mechanicsRevision": 2,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 3,
+      "latencyMs": 1187,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0003.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "20be50d35bcb921ec6fb665687b3442b5c64d59e3407146e2c9e00f9b6ae2cd7",
+        "revision": 4,
+        "mechanicsRevision": 3,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 4,
+      "latencyMs": 1188,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0004.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "1c8ecc5e237f345164376768e4d788074994b7961523addb5fafc7eba07cd776",
+        "revision": 5,
+        "mechanicsRevision": 4,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 5,
+      "latencyMs": 1199,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0005.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "e16761e96d1dd14c2220b12c3eb55361a4a07887c3d23252d4ea2ed5e1f66f04",
+        "revision": 6,
+        "mechanicsRevision": 5,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 6,
+      "latencyMs": 1216,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0006.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "8503c83879419b69fbcd1347a595b69f3e5d4404127847c6e3346513cd41febc",
+        "revision": 7,
+        "mechanicsRevision": 6,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 7,
+      "latencyMs": 1187,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0007.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "2671d36a1a90cec12a84d8a7e3cdbfd747a89c91f1659076516525749fb2ebe8",
+        "revision": 8,
+        "mechanicsRevision": 7,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 8,
+      "latencyMs": 1183,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0008.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "0faf510c49f204fe5b849217214f3c1bff96712ba2206ecb5da92ebd4d275b70",
+        "revision": 9,
+        "mechanicsRevision": 8,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 9,
+      "latencyMs": 1199,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0009.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "ec09eed5ec67ffb6aaa26ef4c57790bd8d5ca0148f9b4572f43c9871323df5ad",
+        "revision": 10,
+        "mechanicsRevision": 9,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 10,
+      "latencyMs": 1173,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0010.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "4df283f3e2c4753c6d8b29171e1741457bf7d8f0165efc4bb8f45d054ba2c47d",
+        "revision": 11,
+        "mechanicsRevision": 10,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 11,
+      "latencyMs": 1095,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aa7c007c6bea3dfa94863a182e57bb09d418f62a8f6d2583da7dc093a9d3f096",
+      "frame": {
+        "filename": "frame-0011.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "9b5be6fc7112eddf044daf66f5518984bdb355eb2dc57cc43a89b7c43c0e6890",
+        "revision": 12,
+        "mechanicsRevision": 11,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 0,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 12,
+      "latencyMs": 1099,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "c1c7f2eafc6772768762808f969f317561feb4829ab25ec551e46f834648423a",
+      "frame": {
+        "filename": "frame-0012.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "ea44a37acfd73fd18f042ef1795b5c0b8c3a4eb8fdb4d4af3626d90241ada82c",
+        "revision": 13,
+        "mechanicsRevision": 12,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 5,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 13,
+      "latencyMs": 1107,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "19365531eef5ac20a20adb6a44cfb7a4454d9fc4322b7972fdeb5cb003902d37",
+      "frame": {
+        "filename": "frame-0013.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "d74865c1aec1fe6573ebb23053c48c394be548843b69084a149ade7bc5ddc205",
+        "revision": 14,
+        "mechanicsRevision": 13,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 9,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 14,
+      "latencyMs": 1179,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "fb6a9d234a413d5c73c209b9d152c6a4273f7d2c4d9ecceee012ad4e8ce2367d",
+      "frame": {
+        "filename": "frame-0014.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "a9cf5dd9e3bd26a20f2513b7f3a09a8c0a9521b96b613ae5fedb195e7a74dd7b",
+        "revision": 15,
+        "mechanicsRevision": 14,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 13,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 15,
+      "latencyMs": 1185,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "4a7f2e9a63f7ca522870958e60b3dd41fa96a1ce0ce59d9466c91275d5583673",
+      "frame": {
+        "filename": "frame-0015.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "8922aa44f8d3523ea17a492b7919d34475383a70ffb1dae53939ec88aa7d3714",
+        "revision": 16,
+        "mechanicsRevision": 15,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 17,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 16,
+      "latencyMs": 1097,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "a35bded8c2d31d87197cb45d15a59f5f122f6821937623e64b6f7dfc241255fb",
+      "frame": {
+        "filename": "frame-0016.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "98373d5eb867a767dcf83bfdf0e0d2bd6ba9a72f1a9347e922439a504d1ac234",
+        "revision": 17,
+        "mechanicsRevision": 16,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 21,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 17,
+      "latencyMs": 1170,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "053b16793b9cd9f35f1364f5ee9ce16a7465af16242bf4d56d24348a123226a8",
+      "frame": {
+        "filename": "frame-0017.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "f26511067ddf019854690dd18dca180b367c4264851f3c271c3e967178a3fbf4",
+        "revision": 18,
+        "mechanicsRevision": 17,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 24,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 18,
+      "latencyMs": 1012,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "afd4e9a573b5c54e617cdd4bd76f018cb051e4e0c2c4e2e7d0fb3b4e36a2f92f",
+      "frame": {
+        "filename": "frame-0018.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "30176c15627a7a8ffeb835c6395cd7547f71a9313a9aef98c1812ff636eeb06c",
+        "revision": 19,
+        "mechanicsRevision": 18,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 29,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 19,
+      "latencyMs": 1161,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "afd4e9a573b5c54e617cdd4bd76f018cb051e4e0c2c4e2e7d0fb3b4e36a2f92f",
+      "frame": {
+        "filename": "frame-0019.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "1d5a434b1183cd8285c8a1073296d92498af81472243d3c8f8425a11832f1b22",
+        "revision": 20,
+        "mechanicsRevision": 19,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 29,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 20,
+      "latencyMs": 1107,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "f4dbeb25afefebbb8a1b90ec16d5179870bed86f3003eea71781495ae039c169",
+      "frame": {
+        "filename": "frame-0020.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "38dc28173f4161b20f29cab6d2997faa2c2789b2f9ea47c217a5bb7e537679e2",
+        "revision": 21,
+        "mechanicsRevision": 20,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 33,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 21,
+      "latencyMs": 1161,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "f4dbeb25afefebbb8a1b90ec16d5179870bed86f3003eea71781495ae039c169",
+      "frame": {
+        "filename": "frame-0021.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "0d8d62529ab8b39b120ae14c9da7dcbd65fc1be614762fb9b2939711d821c567",
+        "revision": 22,
+        "mechanicsRevision": 21,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 33,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 22,
+      "latencyMs": 1168,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "c330a09cd137707dbdbe312bfd9eb002fa07d1e1fb46cfb6ee56ed82a397159b",
+      "frame": {
+        "filename": "frame-0022.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "e83597685e3b2c9687ad2de09acd4ded3116e0791c6bb4b746d9f5fd60a27561",
+        "revision": 23,
+        "mechanicsRevision": 22,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 35,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 23,
+      "latencyMs": 1166,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "69d6a926f34be0caa2cfdb72660336edc3cd3f0145815c9a6a54d439c0d80cc5",
+      "frame": {
+        "filename": "frame-0023.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "8c15f474d850e12fad9ff36add88353adab676fc91b7ddc80872c604b05c3466",
+        "revision": 24,
+        "mechanicsRevision": 23,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 37,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 24,
+      "latencyMs": 1161,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "69d6a926f34be0caa2cfdb72660336edc3cd3f0145815c9a6a54d439c0d80cc5",
+      "frame": {
+        "filename": "frame-0024.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "ee0b03526d2bc63612c92346ad7198435e65e12e627fc701468a5fba5f7464b8",
+        "revision": 25,
+        "mechanicsRevision": 24,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 37,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 25,
+      "latencyMs": 1095,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "979b0f3cc78110eda8ffb4be7044bcbe7e0d38a3ff448da2effa2bd660dcbca6",
+      "frame": {
+        "filename": "frame-0025.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "22bcefb8a9d996d9eda17d89ddd113ee940bfdcbf9c5a2324bc1c21c170d6b01",
+        "revision": 26,
+        "mechanicsRevision": 25,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 41,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 26,
+      "latencyMs": 1157,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "979b0f3cc78110eda8ffb4be7044bcbe7e0d38a3ff448da2effa2bd660dcbca6",
+      "frame": {
+        "filename": "frame-0026.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "7ad303230716290d4043e321feda31a72da80a869075b41419e5807b7ae7e51d",
+        "revision": 27,
+        "mechanicsRevision": 26,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 41,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 27,
+      "latencyMs": 1169,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "ad26a54a0fbeaa6f19bdb4e355afd6c7bd13ece5d86a875768a647af6babb230",
+      "frame": {
+        "filename": "frame-0027.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "0a7bfb1db445c98254b88a645bf9c30f5f8e0d097cc315e23ea6073a311b61c6",
+        "revision": 28,
+        "mechanicsRevision": 27,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 45,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 28,
+      "latencyMs": 1177,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "33c414e67046abd5fa9c706400f7469861815cb830ce90a8e9c4ec235fe15ae8",
+      "frame": {
+        "filename": "frame-0028.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "f75d59ecc11d8e70ee3e33627ec6bf03742e9ea5dfcc771a182d80b6eb37ceca",
+        "revision": 29,
+        "mechanicsRevision": 28,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 49,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 29,
+      "latencyMs": 1101,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "8fa5a33bb9ff5f595e36eeb1a172d1f23168106a4e3fbcdc5ccfacd83f48a4ec",
+      "frame": {
+        "filename": "frame-0029.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "6a062746e339e8f4cba45bff0653e01d6fb63d787c87ac2968019682ecb81e98",
+        "revision": 30,
+        "mechanicsRevision": 29,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 53,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 30,
+      "latencyMs": 1176,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "a81f655d891217aa201fd07c8c1ba5be9b825e6f62cb827316857db5bdd28ced",
+      "frame": {
+        "filename": "frame-0030.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "47404cb7cb34e18f39114b4fdb38ba8fb7ea556368014dbf78cb0cc14835cb18",
+        "revision": 31,
+        "mechanicsRevision": 30,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 57,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 31,
+      "latencyMs": 1100,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "c30dc3d8b88211de293579ce248d11c4ced939e9ab5cf63e95fba245a85f5c17",
+      "frame": {
+        "filename": "frame-0031.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "5b8f5e9881ea6bb694be5b9e3770a189d07d2b6d2ddeb43ea22949af35a71bb2",
+        "revision": 32,
+        "mechanicsRevision": 31,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 61,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 32,
+      "latencyMs": 1119,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "d9c44e7eeaecc50f85943887abfd6b570313002a85e860ebe4411c1c35d4d498",
+      "frame": {
+        "filename": "frame-0032.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "725e86ae4acc1258c33d05dfd03fc8666d05e6d7cb4e3a54f3237fc21869bdee",
+        "revision": 33,
+        "mechanicsRevision": 32,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 69,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 33,
+      "latencyMs": 1193,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "9a1bb7d45226c4f2878c95be6825524c0c8995c116345c306db1038533b3b4fe",
+      "frame": {
+        "filename": "frame-0033.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "fe4b57e252091745f519b9f0ba4c3f98b51416950bf65b0861f37ecf523c7515",
+        "revision": 34,
+        "mechanicsRevision": 33,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 77,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 34,
+      "latencyMs": 1140,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "815845e6abc004bfcfce304e390290151acac9c05a5bcc44c7927c77620172e6",
+      "frame": {
+        "filename": "frame-0034.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "fca7f90bb2719fc09ac7e92735ed36eaae5fcb6b050f6eb2b4d13fb6257268ac",
+        "revision": 35,
+        "mechanicsRevision": 34,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 84,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 35,
+      "latencyMs": 1193,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "954c743cd06ff710bfe78797fe0f8b70e217254af1aca95d6ebde0f5c2dfd7d6",
+      "frame": {
+        "filename": "frame-0035.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "0185f771facf8c1a8221dab046c04bbb9e8bb0c658dd7de87c27230ea4fba889",
+        "revision": 36,
+        "mechanicsRevision": 35,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 92,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 36,
+      "latencyMs": 1130,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "c8d44dce733a8794eb6a93871973631645b1ba317398853679e3a645f2c4355b",
+      "frame": {
+        "filename": "frame-0036.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "e0fabe7c1efe97a0f6215ee12eab57579d6272f60bca0e45f989804fb673caad",
+        "revision": 37,
+        "mechanicsRevision": 36,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 101,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 37,
+      "latencyMs": 1105,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "de4e33a52daa8ea4aa70fe7e0428b139d428b5b7b9f88cc331dc0ee8c1296e64",
+      "frame": {
+        "filename": "frame-0037.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "42d2ff916068ed598d99f63e6543bcd4106da340c6235477ff4d8cb2c0971b8c",
+        "revision": 38,
+        "mechanicsRevision": 37,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 109,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 38,
+      "latencyMs": 1215,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "02c64a876bc01b275d4056aec56277e0197fc0e0e776075732807a7e9f08b691",
+      "frame": {
+        "filename": "frame-0038.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "3fb4739f6bcf57c8dab4d90fb1528e1d2c80c428499d4d2d365ce5969585b199",
+        "revision": 39,
+        "mechanicsRevision": 38,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 117,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 39,
+      "latencyMs": 1130,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "a514a1477649cfb058239b94ee14a477e6fc0571d0f5a85048c2a3dfc41cd7e6",
+      "frame": {
+        "filename": "frame-0039.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "bbcc16f63fef5ea22aa09a1203448e97fd0b60f09c82d5237766863a4292138e",
+        "revision": 40,
+        "mechanicsRevision": 39,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 125,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 40,
+      "latencyMs": 1156,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "cc0aedf9f9ac4d994ee337fe50c6eba752e6b360019e5fd33eee02fc85da67ce",
+      "frame": {
+        "filename": "frame-0040.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "86c811128714e41f5a5645481a492f3c2111962a61f566021e75629a488866b1",
+        "revision": 41,
+        "mechanicsRevision": 40,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 133,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 41,
+      "latencyMs": 1126,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "ce2ef8d2886f734be634a197047faa8539aa64fadf0c8f72e068a2fa2ddadb03",
+      "frame": {
+        "filename": "frame-0041.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "ea1a741c1002aa173dc9e682df9381f671bf9f993e62cc1c8791451e31879feb",
+        "revision": 42,
+        "mechanicsRevision": 41,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 141,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 42,
+      "latencyMs": 1116,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "cc106d7209ac0d41ee4f923c7418a3b8a5a111ed70000a9e26639d550bf946f7",
+      "frame": {
+        "filename": "frame-0042.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "8bdd08e6f66ca76a9eb21a88aa15e95524c1b468d3af1b63ab70112ea3cbb8fa",
+        "revision": 43,
+        "mechanicsRevision": 42,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 149,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 43,
+      "latencyMs": 1180,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "62b72019a031d2d649f37a7c5b4669e96fb7f6e3923f8205b61de03be1a9dab7",
+      "frame": {
+        "filename": "frame-0043.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "dda1faeeb74558c54262b1aedd47766efb4a2699ee4c6536b901d4efb5c23a61",
+        "revision": 44,
+        "mechanicsRevision": 43,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 153,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 44,
+      "latencyMs": 1102,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "67a437a496aef0df84966922cfbbde12ee6c721d1b92da98ddc6529dab3c0b90",
+      "frame": {
+        "filename": "frame-0044.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "5a323ef90cee8d7b6429dbf5bcfe29efb5a3e6c0c2f799542ae30362c737e789",
+        "revision": 45,
+        "mechanicsRevision": 44,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 157,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 45,
+      "latencyMs": 1174,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "8c77432406a4aa45ebfae5fe4aebac0f699f72907a5bc28f76cedb76adde0706",
+      "frame": {
+        "filename": "frame-0045.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "e9a71a61582c6e40ebe734a144ca2e5bdd3e9e52451dcd6ff79fa66da558986b",
+        "revision": 46,
+        "mechanicsRevision": 45,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 159,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 46,
+      "latencyMs": 988,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "4f2a7197c200d21ea722fe9e78ad3c944bd9271de5aafe185c7e569ccb1be1c2",
+      "frame": {
+        "filename": "frame-0046.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "22b2480ab0cb0571d830ec7cb1a73db0b4a482cadf17d7c1a4c2cbcac5aef25f",
+        "revision": 47,
+        "mechanicsRevision": 46,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 161,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 47,
+      "latencyMs": 1165,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "040408558b59febf6ebf2fe45641fe34c984e15036426f490f05a571a33f0cc1",
+      "frame": {
+        "filename": "frame-0047.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "c74e11db4c7622fd0c0ec9d6959bfed9ee4b57a4d44e70b2a37579088ae0b759",
+        "revision": 48,
+        "mechanicsRevision": 47,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 165,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 48,
+      "latencyMs": 1109,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "231ecff3f4212e8fb534e304064026661ba32959094d787ad086b9c95aacd74a",
+      "frame": {
+        "filename": "frame-0048.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "d850053051dfcf7fb92173792f31ed64d817881c67b24000134c64d6a906816d",
+        "revision": 49,
+        "mechanicsRevision": 48,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 166,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 49,
+      "latencyMs": 1013,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "ba132586c49415d970769869f4e0a3bde7ff2129a74deb10c2aef2a6723e181a",
+      "frame": {
+        "filename": "frame-0049.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "0388b1f6bc76f92553f6fc564ff0afd386da9a4760b7788e288ff05a27df3bdb",
+        "revision": 50,
+        "mechanicsRevision": 49,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 167,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 50,
+      "latencyMs": 1155,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "45059da1320c1f81d974acbc098b9a59f9f96186e4c6892a3db134ea4db00758",
+      "frame": {
+        "filename": "frame-0050.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "b034b80f6c09730ef67e0eeee6be0665566043bcbe9defa4f8b485eab59cc5f6",
+        "revision": 51,
+        "mechanicsRevision": 50,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 169,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 51,
+      "latencyMs": 1151,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "45059da1320c1f81d974acbc098b9a59f9f96186e4c6892a3db134ea4db00758",
+      "frame": {
+        "filename": "frame-0051.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "5b41623765b682e16fad0a54b843e790a5ef952130b0846877b81f21618be746",
+        "revision": 52,
+        "mechanicsRevision": 51,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 169,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 52,
+      "latencyMs": 1082,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "fd8169132717de54e63ccf8232942075f5956e2bd48ef1143c0166233582aa6b",
+      "frame": {
+        "filename": "frame-0052.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "0f0afc57f470fa7762ab0f5e534c400c8f706b241d4b31c69337bafc1801ec52",
+        "revision": 53,
+        "mechanicsRevision": 52,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 170,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 53,
+      "latencyMs": 1171,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "f92efabae8b9cd7c3701198a0e95d1d1031d54742d76de7df77b8bf2ac146c4b",
+      "frame": {
+        "filename": "frame-0053.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "38d76e7dc63988cb4c50e9fec8e99077a2040d20f4034ca09d6394492deb2997",
+        "revision": 54,
+        "mechanicsRevision": 53,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 171,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 54,
+      "latencyMs": 1163,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "3245501be903de1c6f70fd3fb9d338aeaa7f0204bc936124072e8be469bd4934",
+      "frame": {
+        "filename": "frame-0054.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "53ff7a329af239b7787d2e831ae9eef57f012e8bd74af27fa0bfc6d0c6d84de6",
+        "revision": 55,
+        "mechanicsRevision": 54,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 173,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 55,
+      "latencyMs": 1081,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "98f94f4b381f1c1ce8b309171e19cb01dad260c5e020ecea26f8fb340af41558",
+      "frame": {
+        "filename": "frame-0055.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "bef2934227c50e54be18c3b7f2aeb6c2ac3a3e98c28bf7f9df4f3da4e39c8dd0",
+        "revision": 56,
+        "mechanicsRevision": 55,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 175,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 56,
+      "latencyMs": 1166,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "d6207befb1736ec55f63b3c72c566438ae2165a35d56d5dce9a61b6a171fb316",
+      "frame": {
+        "filename": "frame-0056.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "e2394239bf06a7dd3614d27b65326361f784e93270da76b912f2e42202b20c75",
+        "revision": 57,
+        "mechanicsRevision": 56,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 177,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 57,
+      "latencyMs": 1085,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "5a7df6f0244490586de5c73b12b9ee8174e0eb1bb0f001f1c4bce528c294e0cc",
+      "frame": {
+        "filename": "frame-0057.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "88df5d8baf3d5687735f01e549a7ef49bff763bd38956f74c65f32305b7dc539",
+        "revision": 58,
+        "mechanicsRevision": 57,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 179,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 58,
+      "latencyMs": 1179,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "787deaaf4d2272e55e92c4783f9b5b948e78d4d4e6ef8013900ab56e9f13ae33",
+      "frame": {
+        "filename": "frame-0058.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "ed327fd4b7af4b954177cd3c63dfca65baf152629ab109a341bd603f948003ad",
+        "revision": 59,
+        "mechanicsRevision": 58,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 180,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 59,
+      "latencyMs": 1158,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0059.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "7c1435e7e4030b134807bc633a94df03f0f45084b0c9918773941b2decde9bb3",
+        "revision": 60,
+        "mechanicsRevision": 59,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 60,
+      "latencyMs": 1090,
+      "geometryHash": "e874948aefd84d7bc5723e47c470aeefe56bef2cdd6220f28df70a1965379bce",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0060.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "e7426e0ea7ad07e26d9e47bf52dd6f2c13052f5fb7bbf9e5bff56b154adb58dc",
+        "revision": 61,
+        "mechanicsRevision": 60,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 61,
+      "latencyMs": 1179,
+      "geometryHash": "42c8e0412b19ed5ec12a6a8e06943a20aff44ffdd48cd3269d576230e8fa4dd9",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0061.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "ea143bfd0986fa9ff527911eb65689c9f6a68eb02da3b02299a7d6164fdc50f9",
+        "revision": 62,
+        "mechanicsRevision": 61,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 62,
+      "latencyMs": 3194,
+      "geometryHash": "2183366555d9c527e7c568a77d2410ec2a6d9517a5e63432337ad21541f1aaaa",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0062.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "759071fcf0d98a0d9d288524f81703865fed28579a1c534fd3ca33229f00dccc",
+        "revision": 63,
+        "mechanicsRevision": 62,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 63,
+      "latencyMs": 2253,
+      "geometryHash": "06333231c11e36e019a3a2b00166b94c46b91bc2cb629539b2386ce7c783b411",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0063.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "8b1bcf74eb118303bc7085a1c4ed2f0edd366bfa43783e836d8deaab82859589",
+        "revision": 64,
+        "mechanicsRevision": 63,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 64,
+      "latencyMs": 1471,
+      "geometryHash": "c609754f3738ffcb6ea917d2dc01f74841424c983fbb60585a1e29a746fee8fc",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0064.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "004b0280d01f57008881bec0e4950aba0151cd34c0f9ee1027f5370708ee3768",
+        "revision": 65,
+        "mechanicsRevision": 64,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 65,
+      "latencyMs": 2326,
+      "geometryHash": "16f7d95445e50951224f4e1bd4dc822557e17c7ff96bbf639f3b6ea4e7e299cf",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0065.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "dd77b998abc9dd35204964122c4c5c680f15176aacf0c469375e6cf0e8e6e8a5",
+        "revision": 66,
+        "mechanicsRevision": 65,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 66,
+      "latencyMs": 2385,
+      "geometryHash": "113f7253c7f9974ebd857adf011571c33cc812980415f77f921faee4d8c0c0cf",
+      "topologyHash": "aef6637936ba5940bd33412add84dc2c40815c89c0990142b73dcff82f51a4bf",
+      "frame": {
+        "filename": "frame-0066.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "8a40da8f8705e5f722718aa3941b5eb93e8cb556c8466b9c8adc8c7ec8b47384",
+        "revision": 67,
+        "mechanicsRevision": 66,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 182,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 67,
+      "latencyMs": 1241,
+      "geometryHash": "7e8ec8d8a04874f33a46b7b79da1e45a0dd5da89534774c8b0efbb0efa0a530b",
+      "topologyHash": "a2e11d6fc8e6e132d38bf42c8c41f6404eaeb4e29e4347367cdf25c7063bf846",
+      "frame": {
+        "filename": "frame-0067.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "f80ce88eb514bf99a0a4bf4e00d8dfc5ef363332aeca6c887e6e3e9dd3ec9d86",
+        "revision": 68,
+        "mechanicsRevision": 67,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 184,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 68,
+      "latencyMs": 1215,
+      "geometryHash": "2ef55c6f239f11a998a6509dc521c836bc8474ffa5d46185826d63a4763a093c",
+      "topologyHash": "566144dd061b9d188ce647ec422756bf90a6a203e1229a976bc4c88c55aff0b7",
+      "frame": {
+        "filename": "frame-0068.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "b1e54f5d8c60eacb209a9a75b032c9d30317e698e8af1bd0ce8a795c382d4ae3",
+        "revision": 69,
+        "mechanicsRevision": 68,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 187,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 69,
+      "latencyMs": 1298,
+      "geometryHash": "d81fe3389980d30034504a3522c4d8144136905df400497a6fa9bcd024319568",
+      "topologyHash": "20a73313c53d103ba185ac1ef4d8bc107f98da3de90190c6efa2d73ccd64c2af",
+      "frame": {
+        "filename": "frame-0069.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "c810409524e6b0b8f74beb44cec950ec26bb38c996bbd0a7200f776815fce319",
+        "revision": 70,
+        "mechanicsRevision": 69,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 189,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 70,
+      "latencyMs": 1305,
+      "geometryHash": "babe1f631f04b7815927d79068fe21e87487702c803f594aab02bb6d2c79c59e",
+      "topologyHash": "20a73313c53d103ba185ac1ef4d8bc107f98da3de90190c6efa2d73ccd64c2af",
+      "frame": {
+        "filename": "frame-0070.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "74fd3a35b6976d0ddd7d58a13d440a3c47b99535bda9885bcf429c9d8efc6e1c",
+        "revision": 71,
+        "mechanicsRevision": 70,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 189,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 71,
+      "latencyMs": 1370,
+      "geometryHash": "38b94588b652c3cc4986d9ef629e76edd9f8f973eb878d667ef26f0fedcd43d7",
+      "topologyHash": "e28ca497b275466a62656a56f73700d9a46a995d02899f460b8a473b293dbd33",
+      "frame": {
+        "filename": "frame-0071.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "664b8a57401638a7cba7ebcfd9da33deb3d323fdaa94c33dc0389ad5629211af",
+        "revision": 72,
+        "mechanicsRevision": 71,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 192,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 72,
+      "latencyMs": 1303,
+      "geometryHash": "6844704f303af777318ac0ecd7c4c2ad37445dfa112e94e67c3b99c4890fdf60",
+      "topologyHash": "e28ca497b275466a62656a56f73700d9a46a995d02899f460b8a473b293dbd33",
+      "frame": {
+        "filename": "frame-0072.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "dff06674bb1677c0ef896748ba6b4362d12cfe5ef62f0f4d84789837df3241e0",
+        "revision": 73,
+        "mechanicsRevision": 72,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 192,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 73,
+      "latencyMs": 1273,
+      "geometryHash": "1ae625cacf54099967b8bebe93778aeb7f2705aa79ea9c9c3a9e9bd843c855f5",
+      "topologyHash": "e28ca497b275466a62656a56f73700d9a46a995d02899f460b8a473b293dbd33",
+      "frame": {
+        "filename": "frame-0073.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "8140551755e63b9cc1c5718a6d05d664466d2d9b546a6704acec1a0cee581158",
+        "revision": 74,
+        "mechanicsRevision": 73,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 192,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 74,
+      "latencyMs": 3487,
+      "geometryHash": "428c0ba279c2c0ae6114d5e30184f886996a306682aeb3e440ff33922c4feac3",
+      "topologyHash": "e28ca497b275466a62656a56f73700d9a46a995d02899f460b8a473b293dbd33",
+      "frame": {
+        "filename": "frame-0074.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "5956ae019c1806159c123e24da5a0b39fd6611c2c2e7f57b945c8e9ccd802017",
+        "revision": 75,
+        "mechanicsRevision": 74,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 192,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    },
+    {
+      "step": 75,
+      "latencyMs": 4010,
+      "geometryHash": "cc5b58176ec4ecad8571efb9c3c3909a5681f0358503f000f1b136bb83242df7",
+      "topologyHash": "e28ca497b275466a62656a56f73700d9a46a995d02899f460b8a473b293dbd33",
+      "frame": {
+        "filename": "frame-0075.jpg",
+        "controlSource": "scripted-mechanics-test",
+        "imageHash": "7b20d18985585d98f2ee538a55b6821c2df8f271b9ae306923b9226d60f0a597",
+        "revision": 76,
+        "mechanicsRevision": 75,
+        "seed": 11,
+        "anatomyScale": 0.920000016689301,
+        "cutFaceCount": 192,
+        "activeAttachments": 0,
+        "assessmentPassed": false,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      }
+    }
+  ],
+  "scope": "Actual rendered playback validates the unchanged five-second deadline on this recorded path. It does not establish arbitrary-path latency or autonomous completion.",
+  "imageDirectory": "contact-performance-frames"
+}

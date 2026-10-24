@@ -1,0 +1,68 @@
+{
+  "kind": "Round3 contact computation optimization; unchanged C0 criteria and controller contract",
+  "parentFreeze": {
+    "protocol": "C0",
+    "model": "gpt-6-astra",
+    "seeds": [
+      11,
+      29,
+      83
+    ],
+    "frozenAt": "2026-10-24T10:18:31.540Z",
+    "runtimeBaseCommit": "217558002bf275f6fe5cd00e567e148c1f22da79",
+    "sourceDigest": "80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320",
+    "protocolHash": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "instructionsHash": "19ba23debfebaed716282d778730c5473a5a5f34cb0ade134cf60815e9346eef",
+    "toolsHash": "ea598b9a8c1a495aced5e68a42cef51903ea803d4e481ed9c6509533bd3857ea",
+    "promptHash": "a13e13503eac893f1a7fff5c4c69acf45e46011a4dacbfe91e3d43194bac2849",
+    "preflightFile": "evidence/evaluation-rounds/round2-preflight.json",
+    "preflightHash": "c52d1a73f2c6325e1ded2182a6fd44bb5c988ab7e1ce4c17e9c4b441f72135eb",
+    "episodePolicy": "Fresh independent resets and model contexts for seeds11,29,83. No supplied trajectory or intervention. Preserve every prior and new attempt. Round1 ended without success.",
+    "round": 2
+  },
+  "source": {
+    "algorithm": "sha256",
+    "files": {
+      "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+      "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+      "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+      "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+      "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+      "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+      "controller-spec.mjs": "b022bafe41c838b617b04a5975c6062626cadac0873f3a7d7eefcbacc1e98716",
+      "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+      "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+      "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+      "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+      "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+      "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+      "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+      "contact.mjs": "71427b4d2fa1bf6d8ca13d70199338c58e25d8a038a11a126f113bfc5300da29",
+      "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+      "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+      "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+      "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+      "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+      "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+      "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a",
+      "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+      "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+      "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+    },
+    "digest": "b51db9fee0baa0223c905a8f4ed3b734dc8862c255e730079e327089474386ae"
+  },
+  "changedRuntimeFiles": [
+    "contact.mjs"
+  ],
+  "artifacts": {
+    "contact-performance.json": "2f3f90a3479fafeb9d6f4684afd462205f111b519f25cb70ed81ceaa8731886c",
+    "unsuccessful-record-tests.txt": "9081837af4d2b201567a152d2d979c87903360772a6cd0759ce04b7c0905d0b5",
+    "contact-optimization-tests.txt": "a2965e1278b870e0084e4ee3a8d12df71ba52ebd324b380a129c3a99513c558b",
+    "contract-freeze-tests.txt": "8b98a649f530b9f082535c00e61f2bc7fa9b857f7065263510b8f41cf3e208e3",
+    "contact-exact-prefix.json": "2d5bd92c8fddc1790a00e61b493228f0cac7fe5122370c569203de4716bc16ad"
+  },
+  "evidence": "75 accepted states match exactly; paired full final snapshots match; 75 actual scripted Godot frames satisfy the unchanged five-second deadline. 11 contact/mechanics checks, 3 contract/freeze checks and 10 unsuccessful-record checks pass.",
+  "limitations": "Scripted performance does not prove arbitrary-path latency or autonomous completion. Earlier failures remain in the denominator. Existing renderer, locked/background, Compatibility and clean-source evidence is retained because those sources and lifecycle are unchanged.",
+  "priorAttempts": 3,
+  "priorSuccesses": 0
+}

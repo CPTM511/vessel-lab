@@ -1,0 +1,18 @@
+✔ c0-seed-29-attempt-01 verifies failure without success (12401.837ms)
+✔ c0-seed-29-attempt-01 cannot pass default success verification (11413.225ms)
+✔ c0-seed-29-attempt-01 rejects source (61.93625ms)
+✔ c0-seed-29-attempt-01 rejects image (103.460167ms)
+✔ c0-seed-29-attempt-01 rejects missing result (11843.521333ms)
+✔ c0-round2-seed11-attempt01 verifies failure without success (33619.125208ms)
+✔ c0-round2-seed11-attempt01 cannot pass default success verification (66.839917ms)
+✔ c0-round2-seed11-attempt01 rejects source (135.499333ms)
+✔ c0-round2-seed11-attempt01 rejects image (164.1685ms)
+✔ c0-round2-seed11-attempt01 rejects missing result (32998.127291ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 102868.028833

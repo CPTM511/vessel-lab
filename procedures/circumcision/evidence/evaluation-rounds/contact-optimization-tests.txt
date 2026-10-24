@@ -1,0 +1,19 @@
+✔ 100 deterministic deforming face pairs retain separation along sampled accepted paths (61.620083ms)
+✔ parallel surface contact preserves sliding instead of globally freezing the stack (57.722333ms)
+✔ coupled contact keeps a fixed obstacle fixed when all parallel closest features are tied (0.330292ms)
+✔ near-band departing witnesses are not false time-zero impacts (20.269084ms)
+✔ near-band approach is still detected immediately (0.236542ms)
+✔ a departing closest vertex does not hide later approach by another vertex (0.097209ms)
+✔ invalid bilateral commands and stale revisions are atomic (70.877916ms)
+✔ rest state is stable, fixed boundaries do not drift, and grasp requires proximity (177.956334ms)
+✔ barycentric grasp moves actual tissue; releasing removes constraints without a visual morph (1944.161834ms)
+✔ protected anatomy uses independent geometry and swept instrument violations remain recorded (2132.603667ms)
+✔ the same seed and low-level sequence reproduce tissue positions (585.718917ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5009.616125

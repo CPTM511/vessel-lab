@@ -1,0 +1,27 @@
+{
+  "acceptedStatesReproduced": 75,
+  "episodeSucceeded": false,
+  "lastFiveTimings": [
+    {
+      "revision": 71,
+      "ms": 637.4155419999988
+    },
+    {
+      "revision": 72,
+      "ms": 495.851541
+    },
+    {
+      "revision": 73,
+      "ms": 445.60041700000147
+    },
+    {
+      "revision": 74,
+      "ms": 2792.2051250000004
+    },
+    {
+      "revision": 75,
+      "ms": 3311.4822910000003
+    }
+  ],
+  "scope": "Numerical replay includes the accepted final action; does not replace its missing timely model observation."
+}

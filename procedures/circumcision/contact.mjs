@@ -139,8 +139,9 @@ function candidates(faces,old,next){
     const pair=other*faces.length+id;if(seen.has(pair))continue;seen.add(pair);
     // Shared-node faces are topological neighbours. Interlayer distance
     // constraints are NOT adjacency and never suppress shell contact.
-    if(f.nodes.some(n=>faces[other].nodes.includes(n)))continue;
-    const box=boxes.get(other);if(lo.some((v,k)=>v>box.hi[k]||hi[k]<box.lo[k]))continue;
+    const adjacent=faces[other].nodes;
+    if(f.nodes[0]===adjacent[0]||f.nodes[0]===adjacent[1]||f.nodes[0]===adjacent[2]||f.nodes[1]===adjacent[0]||f.nodes[1]===adjacent[1]||f.nodes[1]===adjacent[2]||f.nodes[2]===adjacent[0]||f.nodes[2]===adjacent[1]||f.nodes[2]===adjacent[2])continue;
+    const box=boxes.get(other);if(lo[0]>box.hi[0]||hi[0]<box.lo[0]||lo[1]>box.hi[1]||hi[1]<box.lo[1]||lo[2]>box.hi[2]||hi[2]<box.lo[2])continue;
     pairs.push([other,id]);
    }
    list.push(id);grid.set(key,list);
@@ -213,18 +214,30 @@ export function filterShellMotion(nodes,faces,old,cache={},rigid=null){
  };
  for(let pass=0;pass<12;pass++){
   const contacts=[],rigidHits=rigidContacts(proposed);stats.passes++;
-  if(!broadphase||[...broadphase.boxes].some(([id,box])=>faces[id].active&&faces[id].nodes.some(n=>proposed[n].some((v,k)=>Math.min(v,old[n][k])<box.lo[k]+CONTACT_GAP_MM||Math.max(v,old[n][k])>box.hi[k]-CONTACT_GAP_MM))))cache.broadphase=broadphase=candidates(faces,old,proposed);
+  let rebuild=!broadphase;
+  if(broadphase){
+   checkBounds:for(const [id,box] of broadphase.boxes){
+    if(!faces[id].active)continue;
+    for(const n of faces[id].nodes)for(let k=0;k<3;k++){
+     const v=proposed[n][k];
+     if(Math.min(v,old[n][k])<box.lo[k]+CONTACT_GAP_MM||Math.max(v,old[n][k])>box.hi[k]-CONTACT_GAP_MM){rebuild=true;break checkBounds;}
+    }
+   }
+  }
+  if(rebuild)cache.broadphase=broadphase=candidates(faces,old,proposed);
   for(const [a,b] of broadphase.pairs){
    if(!faces[a].active||!faces[b].active)continue;
    const fa=faces[a].nodes,fb=faces[b].nodes;
-   const key=a*faces.length+b,ids=[...fa,...fb],previous=queries.get(key);
+   const key=a*faces.length+b,previous=queries.get(key);
+   let reusable=!!previous;
+   if(reusable)for(let k=0;k<6;k++)if(versions[k<3?fa[k]:fb[k-3]]!==previous.versions[k]){reusable=false;break;}
    let hit;
-   if(previous&&ids.every((id,k)=>versions[id]===previous.versions[k]))hit=previous.hit;
+   if(reusable)hit=previous.hit;
    else{
     const ba=boxFor(a),bb=boxFor(b);
-    const separated=[0,1,2].some(k=>ba[k]>bb[k+3]+CONTACT_GAP_MM+TOL||bb[k]>ba[k+3]+CONTACT_GAP_MM+TOL);
+    const separated=ba[0]>bb[3]+CONTACT_GAP_MM+TOL||bb[0]>ba[3]+CONTACT_GAP_MM+TOL||ba[1]>bb[4]+CONTACT_GAP_MM+TOL||bb[1]>ba[4]+CONTACT_GAP_MM+TOL||ba[2]>bb[5]+CONTACT_GAP_MM+TOL||bb[2]>ba[5]+CONTACT_GAP_MM+TOL;
     hit=separated?null:sweptTriangleContact(fa.map(i=>old[i]),fa.map(i=>proposed[i]),fb.map(i=>old[i]),fb.map(i=>proposed[i]));
-    queries.set(key,{versions:ids.map(id=>versions[id]),hit});
+    queries.set(key,{versions:[versions[fa[0]],versions[fa[1]],versions[fa[2]],versions[fb[0]],versions[fb[1]],versions[fb[2]]],hit});
    }
    if(hit)contacts.push({...hit,fa,fb,faceA:a,faceB:b});
   }

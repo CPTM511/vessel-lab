@@ -24,17 +24,47 @@
       "unexecutedRequests": 1,
       "finalAccessCheckAvailable": false,
       "record": "c0-seed-11-attempt-01/agent.jsonl",
-      "verification": "c0-seed-11-attempt-01-verification.json"
+      "verification": "c0-seed-11-attempt-01-verification.json",
+      "round": 1
+    },
+    {
+      "round": 1,
+      "seed": 29,
+      "attempt": 1,
+      "sourceDigest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b",
+      "startedAt": "2026-10-24T09:48:33.018Z",
+      "endedAt": "2026-10-24T09:53:03.188Z",
+      "outcome": "synthetic_gate_failure",
+      "episodeSucceeded": false,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "moves": 24,
+      "images": 31,
+      "record": "c0-seed-29-attempt-01/agent.jsonl"
+    },
+    {
+      "round": 2,
+      "seed": 11,
+      "attempt": 1,
+      "sourceDigest": "80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320",
+      "startedAt": "2026-10-24T10:19:05.302Z",
+      "endedAt": "2026-10-24T10:45:35.051Z",
+      "outcome": "rendered_feedback_deadline_failure",
+      "episodeSucceeded": false,
+      "model": "gpt-6-astra",
+      "reasoningEffort": "xhigh",
+      "moves": 75,
+      "images": 140,
+      "record": "c0-round2-seed11-attempt01/agent.jsonl"
     }
   ],
-  "startedAttempts": 1,
-  "endedAttempts": 1,
+  "startedAttempts": 3,
+  "endedAttempts": 3,
   "successfulAttempts": 0,
-  "unsuccessfulAttempts": 1,
+  "unsuccessfulAttempts": 3,
   "infrastructureAborts": 1,
   "successfulDeclaredCases": 0,
   "unstartedSeeds": [
-    29,
     83
   ],
   "releaseGateMet": false,

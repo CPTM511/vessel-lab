@@ -1,0 +1,70 @@
+{
+  "kind": "Round2 instruction-contract correction; no mechanics or evaluator change",
+  "parentFreeze": {
+    "protocol": "C0",
+    "model": "gpt-6-astra",
+    "seeds": [
+      11,
+      29,
+      83
+    ],
+    "frozenAt": "2026-10-24T09:16:46.416Z",
+    "runtimeBaseCommit": "217558002bf275f6fe5cd00e567e148c1f22da79",
+    "sourceDigest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b",
+    "protocolHash": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "instructionsHash": "f3e2ab19bdcc1d8c5eafdc3ae3fe4d0b9a0c14613ebf238571729c4d827d7a82",
+    "toolsHash": "ea598b9a8c1a495aced5e68a42cef51903ea803d4e481ed9c6509533bd3857ea",
+    "promptHash": "a13e13503eac893f1a7fff5c4c69acf45e46011a4dacbfe91e3d43194bac2849",
+    "preflightFile": "evidence/c0-preflight.json",
+    "preflightHash": "89787e5490f15aa13c8f08724afd4489b04a83d777cdb222ad38625367fce73e",
+    "episodePolicy": "Fresh reset and independent model context for each declared seed. No operator actions or supplied trajectory. Preserve every attempt, rejected action and actual rendered observation. No complete-procedure model episode precedes this freeze."
+  },
+  "source": {
+    "algorithm": "sha256",
+    "files": {
+      "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+      "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+      "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+      "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+      "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+      "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+      "controller-spec.mjs": "b022bafe41c838b617b04a5975c6062626cadac0873f3a7d7eefcbacc1e98716",
+      "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+      "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+      "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+      "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+      "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+      "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+      "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+      "contact.mjs": "0212a0c392efcd7af95fd4ae2089a2371980c1383bc36c07a3ef52c527b14431",
+      "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+      "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+      "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+      "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+      "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+      "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+      "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a",
+      "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+      "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+      "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+    },
+    "digest": "80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320"
+  },
+  "changedRuntimeFiles": [
+    "controller-spec.mjs"
+  ],
+  "checks": {
+    "contract": "43 instrument samples and recorded distance checked against existing implementation",
+    "unitAndFreeze": "passed",
+    "lifecycle": "7/7 passed"
+  },
+  "previousOutcomes": {
+    "successful": 0,
+    "infrastructureAborted": 1,
+    "syntheticFailure": 1,
+    "unstartedSeeds": [
+      83
+    ]
+  },
+  "scope": "The revised contract is not evidence of autonomous success. All prior failures remain preserved."
+}

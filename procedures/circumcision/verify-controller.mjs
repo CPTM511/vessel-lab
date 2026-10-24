@@ -1,10 +1,17 @@
 // Replay recorded controller decisions and verify their state/frame associations.
 // Pixels are hash checked, not reconstructed by this numerical verifier.
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
-import {TissueSim} from './mechanics.mjs';import {geometryQuery} from './instrumentation.mjs';
-import {sourceManifest,sha256} from './manifest.mjs';import {MODEL,instructions,toolsForTask,prompts} from './controller-spec.mjs';
+
+
 const dir=path.resolve(process.argv[2]),lines=fs.readFileSync(path.join(dir,'agent.jsonl'),'utf8').trim().split('\n'),rows=lines.map(JSON.parse),wire=x=>JSON.parse(JSON.stringify(x));
+const recordedDigest=rows.find(r=>r.type==='configuration')?.source?.digest;
+const runtime=recordedDigest==='d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b'?'./evidence/runtime-c0-round1/procedures/circumcision/':recordedDigest==='80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320'?'./evidence/runtime-c0-round2/procedures/circumcision/':'./';
+const {TissueSim}=await import(runtime+'mechanics.mjs'),{geometryQuery}=await import(runtime+'instrumentation.mjs');
+const {sourceManifest,sha256}=await import(runtime+'manifest.mjs'),{MODEL,instructions,toolsForTask,prompts}=await import(runtime+'controller-spec.mjs');
 const abortedAccess=process.argv.includes('--aborted-access');
+const incomplete=process.argv.includes('--incomplete');
+const frameFailure=process.argv.includes('--frame-failure');
+assert.ok([abortedAccess,incomplete,frameFailure].filter(Boolean).length<=1,'Select one record-verification mode');
 const configs=rows.filter(r=>r.type==='configuration');assert.equal(configs.length,1);const config=configs[0];
 assert.equal(config.kind,'live controller attempt','Protocol doubles are not live model evidence');assert.equal(config.model,MODEL);assert.deepEqual(config.source,sourceManifest(),'Executed source differs');
 assert.equal(config.instructionsHash,sha256(instructions));assert.equal(config.toolsHash,sha256(JSON.stringify(toolsForTask(config.task))));assert.equal(config.promptHash,sha256(prompts[config.task]));
@@ -18,6 +25,10 @@ if(abortedAccess){
  assert.equal(config.task,'procedure');assert.equal(errors.length,1,'Expected one explicit access-check interruption');
  accessFailure=errors[0].error;const parsed=JSON.parse(accessFailure);assert.equal(parsed.code,-32603);assert.match(parsed.message,/^failed to fetch codex rate limits: error sending request/);
  assert.ok(!rows.some(r=>r.type==='turn_completed'||r.type==='verification'),'An aborted record must not claim completion');
+}else if(frameFailure){
+ assert.equal(config.task,'procedure');assert.equal(errors.length,1);
+ assert.equal(errors[0].error,'Fresh actual Godot observation unavailable; controller stopped');
+ assert.ok(!rows.some(r=>r.type==='turn_completed'||r.type==='verification'));
 }else{
  assert.equal(rows.find(r=>r.type==='turn_completed')?.turn.status,'completed');
  assert.equal(errors.length,0,'Failed run is preserved but cannot pass completion verification');
@@ -47,6 +58,12 @@ for(const row of rows){
   if(accepted.has(row.callId)){assert.ok(row.commandToFrameMs>=0&&row.commandToFrameMs<=5000);maxFeedbackMs=Math.max(maxFeedbackMs,row.commandToFrameMs);}else assert.ok(['observe','geometry'].includes(row.tool));
  }
  if(row.type==='tool_error'){
+  if(frameFailure&&row.accepted){
+   assert.equal(row,rows.at(-2));assert.equal(row.error,errors[0].error);
+   const req=requests.get(row.callId);assert.ok(req);assert.deepEqual(row.args,req.args);assert.equal(row.tool,req.tool);
+   assert.ok(accepted.has(row.callId));assert.ok(!resolved.has(row.callId));
+   assert.equal(row.beforeRevision,worldRevision-1);continue;
+  }
   assert.ok(!row.accepted,'An accepted command lost its rendered result');const req=requests.get(row.callId);assert.ok(req);
   assert.equal(row.tool,req.tool);assert.deepEqual(row.args,req.args);
   if(abortedAccess&&row.error===accessFailure){assert.ok(!accepted.has(row.callId));assert.ok(!resolved.has(row.callId));accessAborts.push(row.callId);}
@@ -71,7 +88,21 @@ if(abortedAccess){
  console.log(JSON.stringify({recordVerified:true,episodeSucceeded:false,kind:'Actual controller access-check interruption; not a completed procedure',model:MODEL,reasoningEffort:model.reasoningEffort,seed:sim.seed,sourceDigest:config.source.digest,moves,toolRequests:requests.size,images:images.size,unexecutedRequests:accessAborts.length,rejectedMechanicalCommands:rejected,maxCommandToFrameMs:maxFeedbackMs,finalRevision:sim.revision,assessmentPassed:sim.assessment().passed,recordedPrivateChecksVerified:!publicRecord,finalAccessCheckAvailable:false,scope:'Exact replay of the accepted prefix and actual image associations. The final requested operation was not executed. No successful procedure or complete post-run access check is established.'},null,2));
  process.exit(0);
 }
+if(frameFailure){
+ const last=rows.at(-2);assert.equal(rows.at(-1).type,'error');assert.equal(last.type,'tool_error');assert.equal(last.accepted,true);
+ assert.equal(last.callId,[...requests.keys()].at(-1));assert.deepEqual([...requests.keys()].filter(id=>!resolved.has(id)),[last.callId]);
+ assert.equal(sim.terminal,null);assert.ok(!rows.some(r=>r.type==='accepted_command'&&r.tool==='finish'));
+ if(!publicRecord){const indices=rows.flatMap((r,i)=>r.type==='model_tool_request'?[i]:[]);for(let i=0;i<indices.length;i++)assert.equal(rows.slice(indices[i]+1,indices[i+1]??rows.length).filter(r=>r.type==='allowance_check').length,1);}
+ console.log(JSON.stringify({recordVerified:true,episodeSucceeded:false,kind:'Actual controller stopped after accepted command without timely rendered feedback',sourceDigest:config.source.digest,model:MODEL,seed:sim.seed,moves,images:images.size,toolRequests:requests.size,acceptedWithoutImage:1,maxCommandToFrameMs:maxFeedbackMs,finalRevision:sim.revision,failedGates:sim.assessment().failedGates,finalAccessCheckAvailable:false,scope:'All accepted states replay exactly; prior actual images are verified. The final accepted command has no timely model-delivered image. This is a failed episode.'},null,2));process.exit(0);
+}
 assert.equal(resolved.size,requests.size,'Unresolved model call');const end=rows.find(r=>r.type==='verification');assert.ok(end);assert.deepEqual(end.state,wire(sim.observe()));assert.equal(end.moves,moves);assert.equal(end.images,images.size);assert.equal(end.toolCount,requests.size);if(!publicRecord){assert.equal(end.allowance.ordinaryUsageAllowed,true);assert.equal(end.allowance.creditStateUnchanged,true);}
 if(config.task==='loop'){assert.equal(moves,2);assert.equal(sim.metrics().cutFaceCount,0);assert.equal(sim.metrics().activeAttachments,0);assert.equal(sim.metrics().protectedIntersections,0);assert.equal(sim.metrics().activeGrasps,0);assert.equal(sim.terminal,null);assert.ok(new Set(frameHashes).size>=3,'Expected distinct actual observations');}
+else if(incomplete){
+ assert.equal(config.task,'procedure');assert.equal(sim.assessment().passed,false,'Incomplete mode cannot relabel a successful episode');assert.equal(sim.terminal,null,'An incomplete record must not contain accepted Finish');
+ assert.ok(!rows.some(r=>r.type==='accepted_command'&&r.tool==='finish'));
+ const assessment=sim.assessment();
+ console.log(JSON.stringify({recordVerified:true,episodeSucceeded:false,kind:'Actual controller completed turn with unmet C0 gates',model:MODEL,reasoningEffort:model.reasoningEffort,seed:sim.seed,sourceDigest:config.source.digest,privateAccessChecksVerified:!publicRecord,moves,toolCalls:requests.size,images:images.size,rejected,maxCommandToFrameMs:maxFeedbackMs,finalRevision:sim.revision,assessmentPassed:false,failedGates:assessment.failedGates,metrics:{cutFaces:sim.metrics().cutFaceCount,targetDetachedFraction:assessment.area.targetDetachedFraction,offTargetRemovedFraction:assessment.area.offTargetRemovedFraction,protectedIntersections:sim.metrics().protectedIntersections,retainedEdgeCoverage:assessment.closure.coverage,releasedSeconds:assessment.release.seconds},scope:'Completed model turn and exact numerical/image-association verification, with an unsuccessful procedure outcome. Not clinical validation.'},null,2));
+ process.exit(0);
+}
 else {assert.equal(sim.assessment().passed,true);assert.ok(sim.terminal,'No accepted Finish');}
 console.log(JSON.stringify({verified:true,kind:config.task==='loop'?'Actual model connectivity check; not a procedure episode':'Actual model C0 episode',model:MODEL,reasoningEffort:model.reasoningEffort,seed:sim.seed,sourceDigest:config.source.digest,privateAccessChecksVerified:!publicRecord,moves,toolCalls:requests.size,images:images.size,rejected,maxCommandToFrameMs:maxFeedbackMs,finalRevision:sim.revision,assessmentPassed:sim.assessment().passed,scope:'Exact numerical replay and recorded JPEG integrity/association; not independent image reconstruction or clinical validation'},null,2));

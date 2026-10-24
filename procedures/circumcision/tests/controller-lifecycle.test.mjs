@@ -43,7 +43,7 @@ for(const [index,mode] of ['quota','api','wrong_model','wrong_provider','stop','
   if(mode==='missing_after_action'){assert.match(end.agent.error,/observation unavailable/);assert.equal(journal.filter(r=>r.type==='accepted_command').length,1);assert.equal(journal.filter(r=>r.type==='tool_result'&&r.tool==='step').length,0);}
   assert.equal((await api('/api/mechanics/reset',{session:s.session,revision:end.revision,source:'manual-mechanics',commandId:crypto.randomUUID(),seed:29})).status,200);
  }finally{
-  clearInterval(pump);child.kill('SIGTERM');await new Promise(resolve=>child.once('exit',resolve));if(mock&&alive(mock.pid))process.kill(mock.pid,'SIGKILL');fs.rmSync(dir,{recursive:true,force:true});fixture.cleanup();
+  clearInterval(pump);if(child.exitCode===null&&child.signalCode===null){const exited=new Promise(resolve=>child.once('exit',resolve));child.kill('SIGTERM');await exited;}if(mock&&alive(mock.pid))process.kill(mock.pid,'SIGKILL');fs.rmSync(dir,{recursive:true,force:true});fixture.cleanup();
  }
  assert.equal(errors,'');
 });
