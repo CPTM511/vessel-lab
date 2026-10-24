@@ -1,0 +1,10 @@
+{
+  "verified": true,
+  "kind": "Scripted bilateral collection continuation with accepted Finish; no inference or autonomous success",
+  "steps": 228,
+  "maxFeedbackMs": 1341,
+  "minimumRigidResidualMm": 0.12882983212553292,
+  "properCrossings": 0,
+  "crossingAuditCount": 24,
+  "failedGates": []
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "seed": 11,
+    "steps": 165,
+    "passed": false,
+    "error": "C0 gates unmet: releasedHold"
+  },
+  {
+    "seed": 29,
+    "steps": 96,
+    "passed": true,
+    "error": null
+  },
+  {
+    "seed": 83,
+    "steps": 1915,
+    "passed": false,
+    "error": "C0 gates unmet: resolvedTargetComponents"
+  }
+]

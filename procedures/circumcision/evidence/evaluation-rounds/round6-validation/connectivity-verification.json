@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "kind": "Actual model connectivity check; not a procedure episode",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "seed": 11,
+  "sourceDigest": "c0e923ee30e69b394f475258877a47e4c7c96f745413ff17aa667f8a16bab32f",
+  "privateAccessChecksVerified": false,
+  "moves": 2,
+  "toolCalls": 5,
+  "images": 5,
+  "rejected": 0,
+  "maxCommandToFrameMs": 620,
+  "finalRevision": 2,
+  "assessmentPassed": false,
+  "scope": "Exact numerical replay and recorded JPEG integrity/association; not independent image reconstruction or clinical validation"
+}

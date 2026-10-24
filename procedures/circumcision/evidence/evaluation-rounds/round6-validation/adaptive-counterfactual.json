@@ -1,0 +1,159 @@
+{
+  "kind": "Offline same-state same-command integration refinement comparison; not autonomy",
+  "results": [
+    {
+      "label": "baseline",
+      "revision": 133,
+      "elapsedMs": 1229.711333,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 0,
+      "contact": {
+        "contacts": 85021,
+        "rigidContacts": 96932,
+        "limitedSubsteps": 26,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 2.5611264904021443e-7
+        },
+        {
+          "arm": "right",
+          "error": 1.3500000000000014
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 133,
+      "elapsedMs": 2833.517834,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 1.8651943249886604,
+      "contact": {
+        "contacts": 85086,
+        "rigidContacts": 97051,
+        "limitedSubsteps": 14,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 3.2785848367416446e-7
+        },
+        {
+          "arm": "right",
+          "error": 9.155133597044475e-16
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "baseline",
+      "revision": 144,
+      "elapsedMs": 997.4821250000005,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 0,
+      "contact": {
+        "contacts": 86088,
+        "rigidContacts": 100112,
+        "limitedSubsteps": 132,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 144,
+      "elapsedMs": 1933.556708,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 1.312237238305406,
+      "contact": {
+        "contacts": 86246,
+        "rigidContacts": 100327,
+        "limitedSubsteps": 120,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "baseline",
+      "revision": 160,
+      "elapsedMs": 1004.7487499999997,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 0,
+      "contact": {
+        "contacts": 90267,
+        "rigidContacts": 116800,
+        "limitedSubsteps": 729,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 160,
+      "elapsedMs": 1838.9300000000003,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 1.3122371696268738,
+      "contact": {
+        "contacts": 90425,
+        "rigidContacts": 117014,
+        "limitedSubsteps": 717,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    }
+  ]
+}

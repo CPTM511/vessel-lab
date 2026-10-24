@@ -1,0 +1,25 @@
+✔ 100 deterministic deforming face pairs retain separation along sampled accepted paths (47.808833ms)
+✔ shell separation and a rigid support plane remain satisfied together while sliding (3.701334ms)
+✔ rigid support projection leaves fixed nodes and unconstrained tangential motion unchanged (1.196083ms)
+✔ continuous shell contact stops fast tunnelling through a fixed triangle (0.663208ms)
+✔ edge/edge contact is detected when every vertex projects outside the other triangle (0.8495ms)
+✔ coplanar sliding collision and a separating trajectory are distinguished (1.3775ms)
+✔ common rigid translation creates no contact and preserves separation (0.175541ms)
+✔ a recorded grazing path is certified without exhausting conservative advancement (0.591334ms)
+✔ collision response preserves fixed points and exposes conservative limiting (0.342292ms)
+✔ cut faces are absent from collision and shared vertices define adjacency (0.210292ms)
+✔ reused broad-phase bounds rebuild when a previously distant face moves into contact (0.306792ms)
+✔ sampled residual slope preserves frictionless tangent motion with coupled shell contact (0.72ms)
+✔ finite-difference contact handles a bounded query domain without nonfinite state (0.337375ms)
+✔ parallel surface contact preserves sliding instead of globally freezing the stack (46.580333ms)
+✔ coupled contact keeps a fixed obstacle fixed when all parallel closest features are tied (0.206917ms)
+✔ a rotating separating plane certifies separated layers throughout the linear sweep (2.244375ms)
+✔ endpoint separation cannot certify interior gap loss, tunnelling or coplanar crossing (0.815125ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.658708

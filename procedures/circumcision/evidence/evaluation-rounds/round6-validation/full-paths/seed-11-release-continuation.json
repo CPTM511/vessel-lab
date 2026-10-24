@@ -1,0 +1,1574 @@
+{
+  "kind": "New scripted stationary continuation after preserved failed replay; not autonomous evidence",
+  "action": {
+    "revision": 165,
+    "duration": 0.1
+  },
+  "before": {
+    "protocol": "C0",
+    "passed": false,
+    "gates": {
+      "targetDetached": true,
+      "offTargetPreserved": true,
+      "protectedVolumes": true,
+      "retainedEdgeApproximation": true,
+      "releasedHold": false,
+      "retainedIntegrity": true,
+      "resolvedTargetComponents": true
+    },
+    "failedGates": [
+      "releasedHold"
+    ],
+    "area": {
+      "targetMaskHash": "97f39ede2e71c69440b2b1854592299231ca24be94dc29e78376ea1ec95f656b",
+      "targetInitialAreaMm2": 3972.6170977376937,
+      "nonTargetInitialAreaMm2": 2254.6275568629844,
+      "targetDetachedAreaMm2": 3972.6170977376937,
+      "targetDetachedFraction": 1,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 303.12484693657973
+    },
+    "closure": {
+      "totalSamples": 48,
+      "validSamples": 48,
+      "coveredSamples": 48,
+      "coverage": 1,
+      "samples": [
+        {
+          "index": 0,
+          "nodes": [
+            576,
+            1392
+          ],
+          "valid": true,
+          "gapMm": 0.45002062066125553,
+          "withinTolerance": true
+        },
+        {
+          "index": 1,
+          "nodes": [
+            577,
+            1393
+          ],
+          "valid": true,
+          "gapMm": 0.38320504133530797,
+          "withinTolerance": true
+        },
+        {
+          "index": 2,
+          "nodes": [
+            578,
+            1394
+          ],
+          "valid": true,
+          "gapMm": 0.4583437980285352,
+          "withinTolerance": true
+        },
+        {
+          "index": 3,
+          "nodes": [
+            579,
+            1395
+          ],
+          "valid": true,
+          "gapMm": 0.47541024711745666,
+          "withinTolerance": true
+        },
+        {
+          "index": 4,
+          "nodes": [
+            580,
+            1396
+          ],
+          "valid": true,
+          "gapMm": 0.39193902785817114,
+          "withinTolerance": true
+        },
+        {
+          "index": 5,
+          "nodes": [
+            581,
+            1397
+          ],
+          "valid": true,
+          "gapMm": 0.4330975412941803,
+          "withinTolerance": true
+        },
+        {
+          "index": 6,
+          "nodes": [
+            582,
+            1398
+          ],
+          "valid": true,
+          "gapMm": 0.40280201680909705,
+          "withinTolerance": true
+        },
+        {
+          "index": 7,
+          "nodes": [
+            583,
+            1399
+          ],
+          "valid": true,
+          "gapMm": 0.3353078823389674,
+          "withinTolerance": true
+        },
+        {
+          "index": 8,
+          "nodes": [
+            584,
+            1400
+          ],
+          "valid": true,
+          "gapMm": 0.41128398540863115,
+          "withinTolerance": true
+        },
+        {
+          "index": 9,
+          "nodes": [
+            585,
+            1401
+          ],
+          "valid": true,
+          "gapMm": 0.3755004001882768,
+          "withinTolerance": true
+        },
+        {
+          "index": 10,
+          "nodes": [
+            586,
+            1402
+          ],
+          "valid": true,
+          "gapMm": 0.3499141663161947,
+          "withinTolerance": true
+        },
+        {
+          "index": 11,
+          "nodes": [
+            587,
+            1403
+          ],
+          "valid": true,
+          "gapMm": 0.4372972074785952,
+          "withinTolerance": true
+        },
+        {
+          "index": 12,
+          "nodes": [
+            588,
+            1404
+          ],
+          "valid": true,
+          "gapMm": 0.3760733625050092,
+          "withinTolerance": true
+        },
+        {
+          "index": 13,
+          "nodes": [
+            589,
+            1405
+          ],
+          "valid": true,
+          "gapMm": 0.37559848885996444,
+          "withinTolerance": true
+        },
+        {
+          "index": 14,
+          "nodes": [
+            590,
+            1406
+          ],
+          "valid": true,
+          "gapMm": 0.4422444788345464,
+          "withinTolerance": true
+        },
+        {
+          "index": 15,
+          "nodes": [
+            591,
+            1407
+          ],
+          "valid": true,
+          "gapMm": 0.36788327212445243,
+          "withinTolerance": true
+        },
+        {
+          "index": 16,
+          "nodes": [
+            592,
+            1408
+          ],
+          "valid": true,
+          "gapMm": 0.40625625601621546,
+          "withinTolerance": true
+        },
+        {
+          "index": 17,
+          "nodes": [
+            593,
+            1409
+          ],
+          "valid": true,
+          "gapMm": 0.4591196847310851,
+          "withinTolerance": true
+        },
+        {
+          "index": 18,
+          "nodes": [
+            594,
+            1410
+          ],
+          "valid": true,
+          "gapMm": 0.3968587204092782,
+          "withinTolerance": true
+        },
+        {
+          "index": 19,
+          "nodes": [
+            595,
+            1411
+          ],
+          "valid": true,
+          "gapMm": 0.45931865574437003,
+          "withinTolerance": true
+        },
+        {
+          "index": 20,
+          "nodes": [
+            596,
+            1412
+          ],
+          "valid": true,
+          "gapMm": 0.4668475196110249,
+          "withinTolerance": true
+        },
+        {
+          "index": 21,
+          "nodes": [
+            597,
+            1413
+          ],
+          "valid": true,
+          "gapMm": 0.3844271027537098,
+          "withinTolerance": true
+        },
+        {
+          "index": 22,
+          "nodes": [
+            598,
+            1414
+          ],
+          "valid": true,
+          "gapMm": 0.4241662183644008,
+          "withinTolerance": true
+        },
+        {
+          "index": 23,
+          "nodes": [
+            599,
+            1415
+          ],
+          "valid": true,
+          "gapMm": 0.3671663826584476,
+          "withinTolerance": true
+        },
+        {
+          "index": 24,
+          "nodes": [
+            600,
+            1416
+          ],
+          "valid": true,
+          "gapMm": 0.28286773100838153,
+          "withinTolerance": true
+        },
+        {
+          "index": 25,
+          "nodes": [
+            601,
+            1417
+          ],
+          "valid": true,
+          "gapMm": 0.33137234493928036,
+          "withinTolerance": true
+        },
+        {
+          "index": 26,
+          "nodes": [
+            602,
+            1418
+          ],
+          "valid": true,
+          "gapMm": 0.2742053464644564,
+          "withinTolerance": true
+        },
+        {
+          "index": 27,
+          "nodes": [
+            603,
+            1419
+          ],
+          "valid": true,
+          "gapMm": 0.2602526795573572,
+          "withinTolerance": true
+        },
+        {
+          "index": 28,
+          "nodes": [
+            604,
+            1420
+          ],
+          "valid": true,
+          "gapMm": 0.35403141663479043,
+          "withinTolerance": true
+        },
+        {
+          "index": 29,
+          "nodes": [
+            605,
+            1421
+          ],
+          "valid": true,
+          "gapMm": 0.31318883812401616,
+          "withinTolerance": true
+        },
+        {
+          "index": 30,
+          "nodes": [
+            606,
+            1422
+          ],
+          "valid": true,
+          "gapMm": 0.34826446798147204,
+          "withinTolerance": true
+        },
+        {
+          "index": 31,
+          "nodes": [
+            607,
+            1423
+          ],
+          "valid": true,
+          "gapMm": 0.4262507177586595,
+          "withinTolerance": true
+        },
+        {
+          "index": 32,
+          "nodes": [
+            608,
+            1424
+          ],
+          "valid": true,
+          "gapMm": 0.35666423394739316,
+          "withinTolerance": true
+        },
+        {
+          "index": 33,
+          "nodes": [
+            609,
+            1425
+          ],
+          "valid": true,
+          "gapMm": 0.40192221770495695,
+          "withinTolerance": true
+        },
+        {
+          "index": 34,
+          "nodes": [
+            610,
+            1426
+          ],
+          "valid": true,
+          "gapMm": 0.43085836117723336,
+          "withinTolerance": true
+        },
+        {
+          "index": 35,
+          "nodes": [
+            611,
+            1427
+          ],
+          "valid": true,
+          "gapMm": 0.3532803063945065,
+          "withinTolerance": true
+        },
+        {
+          "index": 36,
+          "nodes": [
+            612,
+            1428
+          ],
+          "valid": true,
+          "gapMm": 0.41754173785245774,
+          "withinTolerance": true
+        },
+        {
+          "index": 37,
+          "nodes": [
+            613,
+            1429
+          ],
+          "valid": true,
+          "gapMm": 0.4208646918376694,
+          "withinTolerance": true
+        },
+        {
+          "index": 38,
+          "nodes": [
+            614,
+            1430
+          ],
+          "valid": true,
+          "gapMm": 0.34636923261907415,
+          "withinTolerance": true
+        },
+        {
+          "index": 39,
+          "nodes": [
+            615,
+            1431
+          ],
+          "valid": true,
+          "gapMm": 0.43562894093606047,
+          "withinTolerance": true
+        },
+        {
+          "index": 40,
+          "nodes": [
+            616,
+            1432
+          ],
+          "valid": true,
+          "gapMm": 0.3871427842261323,
+          "withinTolerance": true
+        },
+        {
+          "index": 41,
+          "nodes": [
+            617,
+            1433
+          ],
+          "valid": true,
+          "gapMm": 0.361545786064409,
+          "withinTolerance": true
+        },
+        {
+          "index": 42,
+          "nodes": [
+            618,
+            1434
+          ],
+          "valid": true,
+          "gapMm": 0.39189070811060367,
+          "withinTolerance": true
+        },
+        {
+          "index": 43,
+          "nodes": [
+            619,
+            1435
+          ],
+          "valid": true,
+          "gapMm": 0.3251129409919465,
+          "withinTolerance": true
+        },
+        {
+          "index": 44,
+          "nodes": [
+            620,
+            1436
+          ],
+          "valid": true,
+          "gapMm": 0.3396536215241812,
+          "withinTolerance": true
+        },
+        {
+          "index": 45,
+          "nodes": [
+            621,
+            1437
+          ],
+          "valid": true,
+          "gapMm": 0.3700202269126429,
+          "withinTolerance": true
+        },
+        {
+          "index": 46,
+          "nodes": [
+            622,
+            1438
+          ],
+          "valid": true,
+          "gapMm": 0.33241572997855345,
+          "withinTolerance": true
+        },
+        {
+          "index": 47,
+          "nodes": [
+            623,
+            1439
+          ],
+          "valid": true,
+          "gapMm": 0.3585935437994402,
+          "withinTolerance": true
+        }
+      ]
+    },
+    "release": {
+      "seconds": 4.941666666666702,
+      "currentCondition": true,
+      "requiredSeconds": 5
+    },
+    "invalidRetainedFaces": [],
+    "unresolvedComponents": [],
+    "scope": "Independent synthetic geometry checks; no clinical validation"
+  },
+  "after": {
+    "protocol": "C0",
+    "passed": true,
+    "gates": {
+      "targetDetached": true,
+      "offTargetPreserved": true,
+      "protectedVolumes": true,
+      "retainedEdgeApproximation": true,
+      "releasedHold": true,
+      "retainedIntegrity": true,
+      "resolvedTargetComponents": true
+    },
+    "failedGates": [],
+    "area": {
+      "targetMaskHash": "97f39ede2e71c69440b2b1854592299231ca24be94dc29e78376ea1ec95f656b",
+      "targetInitialAreaMm2": 3972.6170977376937,
+      "nonTargetInitialAreaMm2": 2254.6275568629844,
+      "targetDetachedAreaMm2": 3972.6170977376937,
+      "targetDetachedFraction": 1,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 303.12484693657973
+    },
+    "closure": {
+      "totalSamples": 48,
+      "validSamples": 48,
+      "coveredSamples": 48,
+      "coverage": 1,
+      "samples": [
+        {
+          "index": 0,
+          "nodes": [
+            576,
+            1392
+          ],
+          "valid": true,
+          "gapMm": 0.4499854193473615,
+          "withinTolerance": true
+        },
+        {
+          "index": 1,
+          "nodes": [
+            577,
+            1393
+          ],
+          "valid": true,
+          "gapMm": 0.3832587670554403,
+          "withinTolerance": true
+        },
+        {
+          "index": 2,
+          "nodes": [
+            578,
+            1394
+          ],
+          "valid": true,
+          "gapMm": 0.45836808271247154,
+          "withinTolerance": true
+        },
+        {
+          "index": 3,
+          "nodes": [
+            579,
+            1395
+          ],
+          "valid": true,
+          "gapMm": 0.4753858371886278,
+          "withinTolerance": true
+        },
+        {
+          "index": 4,
+          "nodes": [
+            580,
+            1396
+          ],
+          "valid": true,
+          "gapMm": 0.3919397504266408,
+          "withinTolerance": true
+        },
+        {
+          "index": 5,
+          "nodes": [
+            581,
+            1397
+          ],
+          "valid": true,
+          "gapMm": 0.43308266740655077,
+          "withinTolerance": true
+        },
+        {
+          "index": 6,
+          "nodes": [
+            582,
+            1398
+          ],
+          "valid": true,
+          "gapMm": 0.4028018049632247,
+          "withinTolerance": true
+        },
+        {
+          "index": 7,
+          "nodes": [
+            583,
+            1399
+          ],
+          "valid": true,
+          "gapMm": 0.3353055580713845,
+          "withinTolerance": true
+        },
+        {
+          "index": 8,
+          "nodes": [
+            584,
+            1400
+          ],
+          "valid": true,
+          "gapMm": 0.4112817645625574,
+          "withinTolerance": true
+        },
+        {
+          "index": 9,
+          "nodes": [
+            585,
+            1401
+          ],
+          "valid": true,
+          "gapMm": 0.3755043716487948,
+          "withinTolerance": true
+        },
+        {
+          "index": 10,
+          "nodes": [
+            586,
+            1402
+          ],
+          "valid": true,
+          "gapMm": 0.34991301139558184,
+          "withinTolerance": true
+        },
+        {
+          "index": 11,
+          "nodes": [
+            587,
+            1403
+          ],
+          "valid": true,
+          "gapMm": 0.43729829192911074,
+          "withinTolerance": true
+        },
+        {
+          "index": 12,
+          "nodes": [
+            588,
+            1404
+          ],
+          "valid": true,
+          "gapMm": 0.37607365055041664,
+          "withinTolerance": true
+        },
+        {
+          "index": 13,
+          "nodes": [
+            589,
+            1405
+          ],
+          "valid": true,
+          "gapMm": 0.37560248731178086,
+          "withinTolerance": true
+        },
+        {
+          "index": 14,
+          "nodes": [
+            590,
+            1406
+          ],
+          "valid": true,
+          "gapMm": 0.4422435812605844,
+          "withinTolerance": true
+        },
+        {
+          "index": 15,
+          "nodes": [
+            591,
+            1407
+          ],
+          "valid": true,
+          "gapMm": 0.3678826191506177,
+          "withinTolerance": true
+        },
+        {
+          "index": 16,
+          "nodes": [
+            592,
+            1408
+          ],
+          "valid": true,
+          "gapMm": 0.4062575157604983,
+          "withinTolerance": true
+        },
+        {
+          "index": 17,
+          "nodes": [
+            593,
+            1409
+          ],
+          "valid": true,
+          "gapMm": 0.4591184804153031,
+          "withinTolerance": true
+        },
+        {
+          "index": 18,
+          "nodes": [
+            594,
+            1410
+          ],
+          "valid": true,
+          "gapMm": 0.3968593074872007,
+          "withinTolerance": true
+        },
+        {
+          "index": 19,
+          "nodes": [
+            595,
+            1411
+          ],
+          "valid": true,
+          "gapMm": 0.45931619792767686,
+          "withinTolerance": true
+        },
+        {
+          "index": 20,
+          "nodes": [
+            596,
+            1412
+          ],
+          "valid": true,
+          "gapMm": 0.4668470135335639,
+          "withinTolerance": true
+        },
+        {
+          "index": 21,
+          "nodes": [
+            597,
+            1413
+          ],
+          "valid": true,
+          "gapMm": 0.3844284999757961,
+          "withinTolerance": true
+        },
+        {
+          "index": 22,
+          "nodes": [
+            598,
+            1414
+          ],
+          "valid": true,
+          "gapMm": 0.4241642407727977,
+          "withinTolerance": true
+        },
+        {
+          "index": 23,
+          "nodes": [
+            599,
+            1415
+          ],
+          "valid": true,
+          "gapMm": 0.36716637272841246,
+          "withinTolerance": true
+        },
+        {
+          "index": 24,
+          "nodes": [
+            600,
+            1416
+          ],
+          "valid": true,
+          "gapMm": 0.2828703605905152,
+          "withinTolerance": true
+        },
+        {
+          "index": 25,
+          "nodes": [
+            601,
+            1417
+          ],
+          "valid": true,
+          "gapMm": 0.33137106375645564,
+          "withinTolerance": true
+        },
+        {
+          "index": 26,
+          "nodes": [
+            602,
+            1418
+          ],
+          "valid": true,
+          "gapMm": 0.2742062327784404,
+          "withinTolerance": true
+        },
+        {
+          "index": 27,
+          "nodes": [
+            603,
+            1419
+          ],
+          "valid": true,
+          "gapMm": 0.26025420742396793,
+          "withinTolerance": true
+        },
+        {
+          "index": 28,
+          "nodes": [
+            604,
+            1420
+          ],
+          "valid": true,
+          "gapMm": 0.35403133637099643,
+          "withinTolerance": true
+        },
+        {
+          "index": 29,
+          "nodes": [
+            605,
+            1421
+          ],
+          "valid": true,
+          "gapMm": 0.3131908902060165,
+          "withinTolerance": true
+        },
+        {
+          "index": 30,
+          "nodes": [
+            606,
+            1422
+          ],
+          "valid": true,
+          "gapMm": 0.34826477053890714,
+          "withinTolerance": true
+        },
+        {
+          "index": 31,
+          "nodes": [
+            607,
+            1423
+          ],
+          "valid": true,
+          "gapMm": 0.42625369637530097,
+          "withinTolerance": true
+        },
+        {
+          "index": 32,
+          "nodes": [
+            608,
+            1424
+          ],
+          "valid": true,
+          "gapMm": 0.3566603917139768,
+          "withinTolerance": true
+        },
+        {
+          "index": 33,
+          "nodes": [
+            609,
+            1425
+          ],
+          "valid": true,
+          "gapMm": 0.4019178384803505,
+          "withinTolerance": true
+        },
+        {
+          "index": 34,
+          "nodes": [
+            610,
+            1426
+          ],
+          "valid": true,
+          "gapMm": 0.43085888142591944,
+          "withinTolerance": true
+        },
+        {
+          "index": 35,
+          "nodes": [
+            611,
+            1427
+          ],
+          "valid": true,
+          "gapMm": 0.3532726309737348,
+          "withinTolerance": true
+        },
+        {
+          "index": 36,
+          "nodes": [
+            612,
+            1428
+          ],
+          "valid": true,
+          "gapMm": 0.4175252105859619,
+          "withinTolerance": true
+        },
+        {
+          "index": 37,
+          "nodes": [
+            613,
+            1429
+          ],
+          "valid": true,
+          "gapMm": 0.4208620510900088,
+          "withinTolerance": true
+        },
+        {
+          "index": 38,
+          "nodes": [
+            614,
+            1430
+          ],
+          "valid": true,
+          "gapMm": 0.34637565618597876,
+          "withinTolerance": true
+        },
+        {
+          "index": 39,
+          "nodes": [
+            615,
+            1431
+          ],
+          "valid": true,
+          "gapMm": 0.4356143384163678,
+          "withinTolerance": true
+        },
+        {
+          "index": 40,
+          "nodes": [
+            616,
+            1432
+          ],
+          "valid": true,
+          "gapMm": 0.3871671994293671,
+          "withinTolerance": true
+        },
+        {
+          "index": 41,
+          "nodes": [
+            617,
+            1433
+          ],
+          "valid": true,
+          "gapMm": 0.361521734170127,
+          "withinTolerance": true
+        },
+        {
+          "index": 42,
+          "nodes": [
+            618,
+            1434
+          ],
+          "valid": true,
+          "gapMm": 0.3919111289026135,
+          "withinTolerance": true
+        },
+        {
+          "index": 43,
+          "nodes": [
+            619,
+            1435
+          ],
+          "valid": true,
+          "gapMm": 0.32507243004512576,
+          "withinTolerance": true
+        },
+        {
+          "index": 44,
+          "nodes": [
+            620,
+            1436
+          ],
+          "valid": true,
+          "gapMm": 0.33958979022299873,
+          "withinTolerance": true
+        },
+        {
+          "index": 45,
+          "nodes": [
+            621,
+            1437
+          ],
+          "valid": true,
+          "gapMm": 0.3700178588250944,
+          "withinTolerance": true
+        },
+        {
+          "index": 46,
+          "nodes": [
+            622,
+            1438
+          ],
+          "valid": true,
+          "gapMm": 0.33237881844582035,
+          "withinTolerance": true
+        },
+        {
+          "index": 47,
+          "nodes": [
+            623,
+            1439
+          ],
+          "valid": true,
+          "gapMm": 0.35861674402172344,
+          "withinTolerance": true
+        }
+      ]
+    },
+    "release": {
+      "seconds": 5.041666666666707,
+      "currentCondition": true,
+      "requiredSeconds": 5
+    },
+    "invalidRetainedFaces": [],
+    "unresolvedComponents": [],
+    "scope": "Independent synthetic geometry checks; no clinical validation"
+  },
+  "crossings": {
+    "retained": 0,
+    "detached": 0,
+    "mixed": 0
+  },
+  "finish": {
+    "protocol": "C0",
+    "passed": true,
+    "gates": {
+      "targetDetached": true,
+      "offTargetPreserved": true,
+      "protectedVolumes": true,
+      "retainedEdgeApproximation": true,
+      "releasedHold": true,
+      "retainedIntegrity": true,
+      "resolvedTargetComponents": true
+    },
+    "failedGates": [],
+    "area": {
+      "targetMaskHash": "97f39ede2e71c69440b2b1854592299231ca24be94dc29e78376ea1ec95f656b",
+      "targetInitialAreaMm2": 3972.6170977376937,
+      "nonTargetInitialAreaMm2": 2254.6275568629844,
+      "targetDetachedAreaMm2": 3972.6170977376937,
+      "targetDetachedFraction": 1,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 303.12484693657973
+    },
+    "closure": {
+      "totalSamples": 48,
+      "validSamples": 48,
+      "coveredSamples": 48,
+      "coverage": 1,
+      "samples": [
+        {
+          "index": 0,
+          "nodes": [
+            576,
+            1392
+          ],
+          "valid": true,
+          "gapMm": 0.4499854193473615,
+          "withinTolerance": true
+        },
+        {
+          "index": 1,
+          "nodes": [
+            577,
+            1393
+          ],
+          "valid": true,
+          "gapMm": 0.3832587670554403,
+          "withinTolerance": true
+        },
+        {
+          "index": 2,
+          "nodes": [
+            578,
+            1394
+          ],
+          "valid": true,
+          "gapMm": 0.45836808271247154,
+          "withinTolerance": true
+        },
+        {
+          "index": 3,
+          "nodes": [
+            579,
+            1395
+          ],
+          "valid": true,
+          "gapMm": 0.4753858371886278,
+          "withinTolerance": true
+        },
+        {
+          "index": 4,
+          "nodes": [
+            580,
+            1396
+          ],
+          "valid": true,
+          "gapMm": 0.3919397504266408,
+          "withinTolerance": true
+        },
+        {
+          "index": 5,
+          "nodes": [
+            581,
+            1397
+          ],
+          "valid": true,
+          "gapMm": 0.43308266740655077,
+          "withinTolerance": true
+        },
+        {
+          "index": 6,
+          "nodes": [
+            582,
+            1398
+          ],
+          "valid": true,
+          "gapMm": 0.4028018049632247,
+          "withinTolerance": true
+        },
+        {
+          "index": 7,
+          "nodes": [
+            583,
+            1399
+          ],
+          "valid": true,
+          "gapMm": 0.3353055580713845,
+          "withinTolerance": true
+        },
+        {
+          "index": 8,
+          "nodes": [
+            584,
+            1400
+          ],
+          "valid": true,
+          "gapMm": 0.4112817645625574,
+          "withinTolerance": true
+        },
+        {
+          "index": 9,
+          "nodes": [
+            585,
+            1401
+          ],
+          "valid": true,
+          "gapMm": 0.3755043716487948,
+          "withinTolerance": true
+        },
+        {
+          "index": 10,
+          "nodes": [
+            586,
+            1402
+          ],
+          "valid": true,
+          "gapMm": 0.34991301139558184,
+          "withinTolerance": true
+        },
+        {
+          "index": 11,
+          "nodes": [
+            587,
+            1403
+          ],
+          "valid": true,
+          "gapMm": 0.43729829192911074,
+          "withinTolerance": true
+        },
+        {
+          "index": 12,
+          "nodes": [
+            588,
+            1404
+          ],
+          "valid": true,
+          "gapMm": 0.37607365055041664,
+          "withinTolerance": true
+        },
+        {
+          "index": 13,
+          "nodes": [
+            589,
+            1405
+          ],
+          "valid": true,
+          "gapMm": 0.37560248731178086,
+          "withinTolerance": true
+        },
+        {
+          "index": 14,
+          "nodes": [
+            590,
+            1406
+          ],
+          "valid": true,
+          "gapMm": 0.4422435812605844,
+          "withinTolerance": true
+        },
+        {
+          "index": 15,
+          "nodes": [
+            591,
+            1407
+          ],
+          "valid": true,
+          "gapMm": 0.3678826191506177,
+          "withinTolerance": true
+        },
+        {
+          "index": 16,
+          "nodes": [
+            592,
+            1408
+          ],
+          "valid": true,
+          "gapMm": 0.4062575157604983,
+          "withinTolerance": true
+        },
+        {
+          "index": 17,
+          "nodes": [
+            593,
+            1409
+          ],
+          "valid": true,
+          "gapMm": 0.4591184804153031,
+          "withinTolerance": true
+        },
+        {
+          "index": 18,
+          "nodes": [
+            594,
+            1410
+          ],
+          "valid": true,
+          "gapMm": 0.3968593074872007,
+          "withinTolerance": true
+        },
+        {
+          "index": 19,
+          "nodes": [
+            595,
+            1411
+          ],
+          "valid": true,
+          "gapMm": 0.45931619792767686,
+          "withinTolerance": true
+        },
+        {
+          "index": 20,
+          "nodes": [
+            596,
+            1412
+          ],
+          "valid": true,
+          "gapMm": 0.4668470135335639,
+          "withinTolerance": true
+        },
+        {
+          "index": 21,
+          "nodes": [
+            597,
+            1413
+          ],
+          "valid": true,
+          "gapMm": 0.3844284999757961,
+          "withinTolerance": true
+        },
+        {
+          "index": 22,
+          "nodes": [
+            598,
+            1414
+          ],
+          "valid": true,
+          "gapMm": 0.4241642407727977,
+          "withinTolerance": true
+        },
+        {
+          "index": 23,
+          "nodes": [
+            599,
+            1415
+          ],
+          "valid": true,
+          "gapMm": 0.36716637272841246,
+          "withinTolerance": true
+        },
+        {
+          "index": 24,
+          "nodes": [
+            600,
+            1416
+          ],
+          "valid": true,
+          "gapMm": 0.2828703605905152,
+          "withinTolerance": true
+        },
+        {
+          "index": 25,
+          "nodes": [
+            601,
+            1417
+          ],
+          "valid": true,
+          "gapMm": 0.33137106375645564,
+          "withinTolerance": true
+        },
+        {
+          "index": 26,
+          "nodes": [
+            602,
+            1418
+          ],
+          "valid": true,
+          "gapMm": 0.2742062327784404,
+          "withinTolerance": true
+        },
+        {
+          "index": 27,
+          "nodes": [
+            603,
+            1419
+          ],
+          "valid": true,
+          "gapMm": 0.26025420742396793,
+          "withinTolerance": true
+        },
+        {
+          "index": 28,
+          "nodes": [
+            604,
+            1420
+          ],
+          "valid": true,
+          "gapMm": 0.35403133637099643,
+          "withinTolerance": true
+        },
+        {
+          "index": 29,
+          "nodes": [
+            605,
+            1421
+          ],
+          "valid": true,
+          "gapMm": 0.3131908902060165,
+          "withinTolerance": true
+        },
+        {
+          "index": 30,
+          "nodes": [
+            606,
+            1422
+          ],
+          "valid": true,
+          "gapMm": 0.34826477053890714,
+          "withinTolerance": true
+        },
+        {
+          "index": 31,
+          "nodes": [
+            607,
+            1423
+          ],
+          "valid": true,
+          "gapMm": 0.42625369637530097,
+          "withinTolerance": true
+        },
+        {
+          "index": 32,
+          "nodes": [
+            608,
+            1424
+          ],
+          "valid": true,
+          "gapMm": 0.3566603917139768,
+          "withinTolerance": true
+        },
+        {
+          "index": 33,
+          "nodes": [
+            609,
+            1425
+          ],
+          "valid": true,
+          "gapMm": 0.4019178384803505,
+          "withinTolerance": true
+        },
+        {
+          "index": 34,
+          "nodes": [
+            610,
+            1426
+          ],
+          "valid": true,
+          "gapMm": 0.43085888142591944,
+          "withinTolerance": true
+        },
+        {
+          "index": 35,
+          "nodes": [
+            611,
+            1427
+          ],
+          "valid": true,
+          "gapMm": 0.3532726309737348,
+          "withinTolerance": true
+        },
+        {
+          "index": 36,
+          "nodes": [
+            612,
+            1428
+          ],
+          "valid": true,
+          "gapMm": 0.4175252105859619,
+          "withinTolerance": true
+        },
+        {
+          "index": 37,
+          "nodes": [
+            613,
+            1429
+          ],
+          "valid": true,
+          "gapMm": 0.4208620510900088,
+          "withinTolerance": true
+        },
+        {
+          "index": 38,
+          "nodes": [
+            614,
+            1430
+          ],
+          "valid": true,
+          "gapMm": 0.34637565618597876,
+          "withinTolerance": true
+        },
+        {
+          "index": 39,
+          "nodes": [
+            615,
+            1431
+          ],
+          "valid": true,
+          "gapMm": 0.4356143384163678,
+          "withinTolerance": true
+        },
+        {
+          "index": 40,
+          "nodes": [
+            616,
+            1432
+          ],
+          "valid": true,
+          "gapMm": 0.3871671994293671,
+          "withinTolerance": true
+        },
+        {
+          "index": 41,
+          "nodes": [
+            617,
+            1433
+          ],
+          "valid": true,
+          "gapMm": 0.361521734170127,
+          "withinTolerance": true
+        },
+        {
+          "index": 42,
+          "nodes": [
+            618,
+            1434
+          ],
+          "valid": true,
+          "gapMm": 0.3919111289026135,
+          "withinTolerance": true
+        },
+        {
+          "index": 43,
+          "nodes": [
+            619,
+            1435
+          ],
+          "valid": true,
+          "gapMm": 0.32507243004512576,
+          "withinTolerance": true
+        },
+        {
+          "index": 44,
+          "nodes": [
+            620,
+            1436
+          ],
+          "valid": true,
+          "gapMm": 0.33958979022299873,
+          "withinTolerance": true
+        },
+        {
+          "index": 45,
+          "nodes": [
+            621,
+            1437
+          ],
+          "valid": true,
+          "gapMm": 0.3700178588250944,
+          "withinTolerance": true
+        },
+        {
+          "index": 46,
+          "nodes": [
+            622,
+            1438
+          ],
+          "valid": true,
+          "gapMm": 0.33237881844582035,
+          "withinTolerance": true
+        },
+        {
+          "index": 47,
+          "nodes": [
+            623,
+            1439
+          ],
+          "valid": true,
+          "gapMm": 0.35861674402172344,
+          "withinTolerance": true
+        }
+      ]
+    },
+    "release": {
+      "seconds": 5.041666666666707,
+      "currentCondition": true,
+      "requiredSeconds": 5
+    },
+    "invalidRetainedFaces": [],
+    "unresolvedComponents": [],
+    "scope": "Independent synthetic geometry checks; no clinical validation"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "kind": "Offline same-state same-command fallback comparison; not model evidence",
+  "results": [
+    {
+      "label": "baseline",
+      "duration": 0.1,
+      "revision": 133,
+      "elapsedMs": 1378.859541,
+      "maxNodeDisplacement": 0,
+      "contact": {
+        "contacts": 85021,
+        "rigidContacts": 96932,
+        "limitedSubsteps": 26,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 2.5611264904021443e-7
+        },
+        {
+          "arm": "right",
+          "error": 1.3500000000000014
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "duration": 0.1,
+      "revision": 133,
+      "elapsedMs": 1476.4589579999997,
+      "maxNodeDisplacement": 0.020383198355214013,
+      "contact": {
+        "contacts": 85021,
+        "rigidContacts": 96932,
+        "limitedSubsteps": 26,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 2.5720179483841835e-7
+        },
+        {
+          "arm": "right",
+          "error": 1.332597626660089
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "baseline",
+      "duration": 0.16,
+      "revision": 133,
+      "elapsedMs": 1643.953583,
+      "maxNodeDisplacement": 0,
+      "contact": {
+        "contacts": 85085,
+        "rigidContacts": 97092,
+        "limitedSubsteps": 34,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 2.5611264904021443e-7
+        },
+        {
+          "arm": "right",
+          "error": 1.3500000000000014
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "duration": 0.16,
+      "revision": 133,
+      "elapsedMs": 1800.4017080000003,
+      "maxNodeDisplacement": 0.029026289502005184,
+      "contact": {
+        "contacts": 85085,
+        "rigidContacts": 97092,
+        "limitedSubsteps": 34,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 2.56121077740046e-7
+        },
+        {
+          "arm": "right",
+          "error": 1.325301551168483
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    }
+  ]
+}

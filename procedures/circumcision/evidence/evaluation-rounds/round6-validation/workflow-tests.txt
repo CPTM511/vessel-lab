@@ -1,0 +1,19 @@
+✔ freeze requires exact source, model, protocol, declared seeds and controller contract (26.195791ms)
+✔ playback complete preserves source labels, exclusivity and frame requirements (1294.074167ms)
+✔ playback missing preserves source labels, exclusivity and frame requirements (5685.762083ms)
+✔ playback stop preserves source labels, exclusivity and frame requirements (218.472584ms)
+✔ recorded actions replay exactly with matching mechanics, without new model inference (279.94925ms)
+✔ recording rejects mechanics corruption (6.8655ms)
+✔ recording rejects action corruption (55.976334ms)
+✔ recording rejects frame corruption (42.634959ms)
+✔ recording rejects incomplete corruption (5.509125ms)
+✔ timing feedback reports observed milliseconds and simulated work separately (0.757458ms)
+✔ timing cannot conceal late frames, invalid timestamps or unsupported durations (0.2015ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7257.9185

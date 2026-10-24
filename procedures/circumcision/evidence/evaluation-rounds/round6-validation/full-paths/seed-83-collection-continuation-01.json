@@ -1,0 +1,1445 @@
+{
+  "kind": "New scripted continuation from preserved failed full-path endpoint; no model inference",
+  "source": {
+    "algorithm": "sha256",
+    "files": {
+      "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+      "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+      "agent.mjs": "96eb63cfacc49961feec65da1e011951552b737f2c7fb41e668e1061da3fd46a",
+      "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+      "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+      "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+      "controller-spec.mjs": "2ff287823adc532198a9541cc9a25b8d12a068aeeb8ebf6972add209d7a320b0",
+      "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+      "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+      "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+      "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+      "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+      "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+      "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+      "contact.mjs": "85c27ab28eee4865b361080115693c41a366e19e40d80501239e1e9ef711eeb8",
+      "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+      "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+      "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+      "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+      "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+      "godot/anatomy.gd": "a2baf2fa8d2160de0b52049e117402197249bd98b535dac1ed70f3f7bc7f1ebf",
+      "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a",
+      "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+      "godot/data/tissue-rest.json": "64162d9945a4893347e46b581dff327260981ee8b4688f877501f172e721c893",
+      "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+    },
+    "digest": "c0e923ee30e69b394f475258877a47e4c7c96f745413ff17aa667f8a16bab32f"
+  },
+  "predecessorStateHash": "2f45b872162cb036482df610e31ae65e9645efdd0ec5eb1c3236f55143ca865a",
+  "stage": "release and hold",
+  "actions": [
+    {
+      "revision": 1915,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          43,
+          -5.2121686502092395,
+          22.434983484169404
+        ]
+      }
+    },
+    {
+      "revision": 1916,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          43,
+          -2.520457288514797,
+          23.759630586353623
+        ]
+      }
+    },
+    {
+      "revision": 1917,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          43,
+          0,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1918,
+      "duration": 0.02,
+      "left": {
+        "rotationDeg": [
+          90,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "revision": 1919,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          40.00342262853663,
+          0.14326219610806487,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1920,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          37.006845257073266,
+          0.2865243922161298,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1921,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          34.0102678856099,
+          0.4297865883241947,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1922,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          31.013690514146532,
+          0.5730487844322596,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1923,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          28.017113142683165,
+          0.7163109805403245,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1924,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          25.020535771219798,
+          0.8595731766483894,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1925,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.180853361849156,
+          0.9953344428483044,
+          25
+        ]
+      }
+    },
+    {
+      "revision": 1926,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.183206208490724,
+          0.9937456076674251,
+          22.000001343381058
+        ]
+      }
+    },
+    {
+      "revision": 1927,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.18555905513229,
+          0.9921567724865458,
+          19.000002686762116
+        ]
+      }
+    },
+    {
+      "revision": 1928,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.18791190177386,
+          0.9905679373056665,
+          16.000004030143174
+        ]
+      }
+    },
+    {
+      "revision": 1929,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.19026474841543,
+          0.9889791021247871,
+          13.000005373524232
+        ]
+      }
+    },
+    {
+      "revision": 1930,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.192617595056998,
+          0.9873902669439079,
+          10.00000671690529
+        ]
+      }
+    },
+    {
+      "revision": 1931,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.19497044169857,
+          0.9858014317630285,
+          7.000008060286349
+        ]
+      }
+    },
+    {
+      "revision": 1932,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.195591180247025,
+          0.9853822581430864,
+          6.208534966129241
+        ]
+      }
+    },
+    {
+      "revision": 1933,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.21000937698573,
+          0.9759975981668568,
+          6.197083340925871
+        ]
+      }
+    },
+    {
+      "revision": 1934,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.212047219695904,
+          0.9746740134678473,
+          6.195460023264878
+        ]
+      }
+    },
+    {
+      "revision": 1935,
+      "duration": 0.02,
+      "left": {
+        "jaw": 0
+      }
+    },
+    {
+      "revision": 1936,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.462047219695904,
+          0.9746740134678473,
+          6.695460023264878
+        ]
+      }
+    },
+    {
+      "revision": 1937,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.712047219695904,
+          0.9746740134678473,
+          7.195460023264878
+        ]
+      }
+    },
+    {
+      "revision": 1938,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          22.962047219695904,
+          0.9746740134678473,
+          7.695460023264878
+        ]
+      }
+    },
+    {
+      "revision": 1939,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          23.212047219695904,
+          0.9746740134678473,
+          8.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1940,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          23.462047219695904,
+          0.9746740134678473,
+          8.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1941,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          23.712047219695904,
+          0.9746740134678473,
+          9.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1942,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          23.962047219695904,
+          0.9746740134678473,
+          9.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1943,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          24.212047219695904,
+          0.9746740134678473,
+          10.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1944,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          24.462047219695904,
+          0.9746740134678473,
+          10.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1945,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          24.712047219695904,
+          0.9746740134678473,
+          11.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1946,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          24.962047219695904,
+          0.9746740134678473,
+          11.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1947,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          25.212047219695904,
+          0.9746740134678473,
+          12.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1948,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          25.462047219695904,
+          0.9746740134678473,
+          12.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1949,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          25.712047219695904,
+          0.9746740134678473,
+          13.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1950,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          25.962047219695904,
+          0.9746740134678473,
+          13.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1951,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          26.212047219695904,
+          0.9746740134678473,
+          14.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1952,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          26.462047219695904,
+          0.9746740134678473,
+          14.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1953,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          26.712047219695904,
+          0.9746740134678473,
+          15.195460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1954,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          26.962047219695904,
+          0.9746740134678473,
+          15.695460023264879
+        ]
+      }
+    },
+    {
+      "revision": 1955,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          27.212047219695904,
+          0.9746740134678473,
+          16.19546002326488
+        ]
+      }
+    },
+    {
+      "revision": 1956,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          27.462047219695904,
+          0.9746740134678473,
+          16.69546002326488
+        ]
+      }
+    },
+    {
+      "revision": 1957,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          27.712047219695904,
+          0.9746740134678473,
+          17.19546002326488
+        ]
+      }
+    },
+    {
+      "revision": 1958,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          27.962047219695904,
+          0.9746740134678473,
+          17.69546002326488
+        ]
+      }
+    },
+    {
+      "revision": 1959,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          28.212047219695904,
+          0.9746740134678473,
+          18.19546002326488
+        ]
+      }
+    },
+    {
+      "revision": 1960,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          28.462047219695904,
+          0.9746740134678473,
+          18.69546002326488
+        ]
+      }
+    },
+    {
+      "revision": 1961,
+      "duration": 0.02,
+      "left": {
+        "jaw": 1
+      }
+    },
+    {
+      "revision": 1962,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          30.93376356298574,
+          0.9746740134678473,
+          20.395641871866353
+        ]
+      }
+    },
+    {
+      "revision": 1963,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          33.40547990627557,
+          0.9746740134678473,
+          22.095823720467827
+        ]
+      }
+    },
+    {
+      "revision": 1964,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          35.87719624956541,
+          0.9746740134678473,
+          23.7960055690693
+        ]
+      }
+    },
+    {
+      "revision": 1965,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          38.34891259285524,
+          0.9746740134678473,
+          25.496187417670775
+        ]
+      }
+    },
+    {
+      "revision": 1966,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          40.82062893614508,
+          0.9746740134678473,
+          27.19636926627225
+        ]
+      }
+    },
+    {
+      "revision": 1967,
+      "duration": 0.02,
+      "left": {
+        "position": [
+          43,
+          0.9746740134678473,
+          28.69546002326488
+        ]
+      }
+    },
+    {
+      "revision": 1968,
+      "duration": 0.1
+    },
+    {
+      "revision": 1969,
+      "duration": 0.1
+    },
+    {
+      "revision": 1970,
+      "duration": 0.1
+    },
+    {
+      "revision": 1971,
+      "duration": 0.1
+    },
+    {
+      "revision": 1972,
+      "duration": 0.1
+    },
+    {
+      "revision": 1973,
+      "duration": 0.1
+    },
+    {
+      "revision": 1974,
+      "duration": 0.1
+    },
+    {
+      "revision": 1975,
+      "duration": 0.1
+    },
+    {
+      "revision": 1976,
+      "duration": 0.1
+    },
+    {
+      "revision": 1977,
+      "duration": 0.1
+    },
+    {
+      "revision": 1978,
+      "duration": 0.1
+    },
+    {
+      "revision": 1979,
+      "duration": 0.1
+    },
+    {
+      "revision": 1980,
+      "duration": 0.1
+    },
+    {
+      "revision": 1981,
+      "duration": 0.1
+    },
+    {
+      "revision": 1982,
+      "duration": 0.1
+    },
+    {
+      "revision": 1983,
+      "duration": 0.1
+    },
+    {
+      "revision": 1984,
+      "duration": 0.1
+    },
+    {
+      "revision": 1985,
+      "duration": 0.1
+    },
+    {
+      "revision": 1986,
+      "duration": 0.1
+    },
+    {
+      "revision": 1987,
+      "duration": 0.1
+    },
+    {
+      "revision": 1988,
+      "duration": 0.1
+    },
+    {
+      "revision": 1989,
+      "duration": 0.1
+    },
+    {
+      "revision": 1990,
+      "duration": 0.1
+    },
+    {
+      "revision": 1991,
+      "duration": 0.1
+    },
+    {
+      "revision": 1992,
+      "duration": 0.1
+    },
+    {
+      "revision": 1993,
+      "duration": 0.1
+    },
+    {
+      "revision": 1994,
+      "duration": 0.1
+    },
+    {
+      "revision": 1995,
+      "duration": 0.1
+    },
+    {
+      "revision": 1996,
+      "duration": 0.1
+    },
+    {
+      "revision": 1997,
+      "duration": 0.1
+    },
+    {
+      "revision": 1998,
+      "duration": 0.1
+    },
+    {
+      "revision": 1999,
+      "duration": 0.1
+    },
+    {
+      "revision": 2000,
+      "duration": 0.1
+    },
+    {
+      "revision": 2001,
+      "duration": 0.1
+    },
+    {
+      "revision": 2002,
+      "duration": 0.1
+    },
+    {
+      "revision": 2003,
+      "duration": 0.1
+    },
+    {
+      "revision": 2004,
+      "duration": 0.1
+    },
+    {
+      "revision": 2005,
+      "duration": 0.1
+    },
+    {
+      "revision": 2006,
+      "duration": 0.1
+    },
+    {
+      "revision": 2007,
+      "duration": 0.1
+    },
+    {
+      "revision": 2008,
+      "duration": 0.1
+    },
+    {
+      "revision": 2009,
+      "duration": 0.1
+    },
+    {
+      "revision": 2010,
+      "duration": 0.1
+    },
+    {
+      "revision": 2011,
+      "duration": 0.1
+    },
+    {
+      "revision": 2012,
+      "duration": 0.1
+    },
+    {
+      "revision": 2013,
+      "duration": 0.1
+    },
+    {
+      "revision": 2014,
+      "duration": 0.1
+    },
+    {
+      "revision": 2015,
+      "duration": 0.1
+    },
+    {
+      "revision": 2016,
+      "duration": 0.1
+    },
+    {
+      "revision": 2017,
+      "duration": 0.1
+    },
+    {
+      "revision": 2018,
+      "duration": 0.1
+    },
+    {
+      "revision": 2019,
+      "duration": 0.1
+    },
+    {
+      "revision": 2020,
+      "duration": 0.1
+    },
+    {
+      "revision": 2021,
+      "duration": 0.1
+    },
+    {
+      "revision": 2022,
+      "duration": 0.1
+    }
+  ],
+  "audits": [
+    {
+      "revision": 1925,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 1935,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 1945,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 1955,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 1965,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 1975,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 1985,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 1995,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 2005,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 2015,
+      "crossing": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    }
+  ],
+  "maxMs": 739.961124999998,
+  "error": "C0 gates unmet: resolvedTargetComponents",
+  "assessment": {
+    "protocol": "C0",
+    "passed": false,
+    "gates": {
+      "targetDetached": true,
+      "offTargetPreserved": true,
+      "protectedVolumes": true,
+      "retainedEdgeApproximation": true,
+      "releasedHold": true,
+      "retainedIntegrity": true,
+      "resolvedTargetComponents": false
+    },
+    "failedGates": [
+      "resolvedTargetComponents"
+    ],
+    "area": {
+      "targetMaskHash": "371e157e32754970304d27887a5d7b019d6bf3e4e735e6ccba049f6e94c9f9f1",
+      "targetInitialAreaMm2": 5474.55172826231,
+      "nonTargetInitialAreaMm2": 3107.038731480376,
+      "targetDetachedAreaMm2": 5474.55172826231,
+      "targetDetachedFraction": 1,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 419.35806609164996
+    },
+    "closure": {
+      "totalSamples": 48,
+      "validSamples": 48,
+      "coveredSamples": 48,
+      "coverage": 1,
+      "samples": [
+        {
+          "index": 0,
+          "nodes": [
+            576,
+            1392
+          ],
+          "valid": true,
+          "gapMm": 0.520566367313822,
+          "withinTolerance": true
+        },
+        {
+          "index": 1,
+          "nodes": [
+            577,
+            1393
+          ],
+          "valid": true,
+          "gapMm": 0.46005667433464087,
+          "withinTolerance": true
+        },
+        {
+          "index": 2,
+          "nodes": [
+            578,
+            1394
+          ],
+          "valid": true,
+          "gapMm": 0.5484948699710418,
+          "withinTolerance": true
+        },
+        {
+          "index": 3,
+          "nodes": [
+            579,
+            1395
+          ],
+          "valid": true,
+          "gapMm": 0.5381727106459723,
+          "withinTolerance": true
+        },
+        {
+          "index": 4,
+          "nodes": [
+            580,
+            1396
+          ],
+          "valid": true,
+          "gapMm": 0.39552754641620275,
+          "withinTolerance": true
+        },
+        {
+          "index": 5,
+          "nodes": [
+            581,
+            1397
+          ],
+          "valid": true,
+          "gapMm": 0.4771655470452564,
+          "withinTolerance": true
+        },
+        {
+          "index": 6,
+          "nodes": [
+            582,
+            1398
+          ],
+          "valid": true,
+          "gapMm": 0.4066001767139706,
+          "withinTolerance": true
+        },
+        {
+          "index": 7,
+          "nodes": [
+            583,
+            1399
+          ],
+          "valid": true,
+          "gapMm": 0.37597707260911156,
+          "withinTolerance": true
+        },
+        {
+          "index": 8,
+          "nodes": [
+            584,
+            1400
+          ],
+          "valid": true,
+          "gapMm": 0.3601165610744763,
+          "withinTolerance": true
+        },
+        {
+          "index": 9,
+          "nodes": [
+            585,
+            1401
+          ],
+          "valid": true,
+          "gapMm": 0.43380210285299275,
+          "withinTolerance": true
+        },
+        {
+          "index": 10,
+          "nodes": [
+            586,
+            1402
+          ],
+          "valid": true,
+          "gapMm": 0.23344263309725558,
+          "withinTolerance": true
+        },
+        {
+          "index": 11,
+          "nodes": [
+            587,
+            1403
+          ],
+          "valid": true,
+          "gapMm": 0.5059912799470826,
+          "withinTolerance": true
+        },
+        {
+          "index": 12,
+          "nodes": [
+            588,
+            1404
+          ],
+          "valid": true,
+          "gapMm": 0.4470558882896264,
+          "withinTolerance": true
+        },
+        {
+          "index": 13,
+          "nodes": [
+            589,
+            1405
+          ],
+          "valid": true,
+          "gapMm": 0.4423123507186702,
+          "withinTolerance": true
+        },
+        {
+          "index": 14,
+          "nodes": [
+            590,
+            1406
+          ],
+          "valid": true,
+          "gapMm": 0.5299121790678543,
+          "withinTolerance": true
+        },
+        {
+          "index": 15,
+          "nodes": [
+            591,
+            1407
+          ],
+          "valid": true,
+          "gapMm": 0.43603228356833346,
+          "withinTolerance": true
+        },
+        {
+          "index": 16,
+          "nodes": [
+            592,
+            1408
+          ],
+          "valid": true,
+          "gapMm": 0.39215109174568513,
+          "withinTolerance": true
+        },
+        {
+          "index": 17,
+          "nodes": [
+            593,
+            1409
+          ],
+          "valid": true,
+          "gapMm": 0.5469725532470131,
+          "withinTolerance": true
+        },
+        {
+          "index": 18,
+          "nodes": [
+            594,
+            1410
+          ],
+          "valid": true,
+          "gapMm": 0.46539109659223177,
+          "withinTolerance": true
+        },
+        {
+          "index": 19,
+          "nodes": [
+            595,
+            1411
+          ],
+          "valid": true,
+          "gapMm": 0.4693072767139114,
+          "withinTolerance": true
+        },
+        {
+          "index": 20,
+          "nodes": [
+            596,
+            1412
+          ],
+          "valid": true,
+          "gapMm": 0.5525180478673989,
+          "withinTolerance": true
+        },
+        {
+          "index": 21,
+          "nodes": [
+            597,
+            1413
+          ],
+          "valid": true,
+          "gapMm": 0.47095434071515757,
+          "withinTolerance": true
+        },
+        {
+          "index": 22,
+          "nodes": [
+            598,
+            1414
+          ],
+          "valid": true,
+          "gapMm": 0.5503574143784715,
+          "withinTolerance": true
+        },
+        {
+          "index": 23,
+          "nodes": [
+            599,
+            1415
+          ],
+          "valid": true,
+          "gapMm": 0.42979414125991316,
+          "withinTolerance": true
+        },
+        {
+          "index": 24,
+          "nodes": [
+            600,
+            1416
+          ],
+          "valid": true,
+          "gapMm": 0.3677856224924205,
+          "withinTolerance": true
+        },
+        {
+          "index": 25,
+          "nodes": [
+            601,
+            1417
+          ],
+          "valid": true,
+          "gapMm": 0.3908884699665252,
+          "withinTolerance": true
+        },
+        {
+          "index": 26,
+          "nodes": [
+            602,
+            1418
+          ],
+          "valid": true,
+          "gapMm": 0.3384085535650701,
+          "withinTolerance": true
+        },
+        {
+          "index": 27,
+          "nodes": [
+            603,
+            1419
+          ],
+          "valid": true,
+          "gapMm": 0.3075884725106918,
+          "withinTolerance": true
+        },
+        {
+          "index": 28,
+          "nodes": [
+            604,
+            1420
+          ],
+          "valid": true,
+          "gapMm": 0.43365286629180133,
+          "withinTolerance": true
+        },
+        {
+          "index": 29,
+          "nodes": [
+            605,
+            1421
+          ],
+          "valid": true,
+          "gapMm": 0.3454050233174706,
+          "withinTolerance": true
+        },
+        {
+          "index": 30,
+          "nodes": [
+            606,
+            1422
+          ],
+          "valid": true,
+          "gapMm": 0.26534282005338605,
+          "withinTolerance": true
+        },
+        {
+          "index": 31,
+          "nodes": [
+            607,
+            1423
+          ],
+          "valid": true,
+          "gapMm": 0.4947375377749446,
+          "withinTolerance": true
+        },
+        {
+          "index": 32,
+          "nodes": [
+            608,
+            1424
+          ],
+          "valid": true,
+          "gapMm": 0.41554072240071926,
+          "withinTolerance": true
+        },
+        {
+          "index": 33,
+          "nodes": [
+            609,
+            1425
+          ],
+          "valid": true,
+          "gapMm": 0.3956657981695975,
+          "withinTolerance": true
+        },
+        {
+          "index": 34,
+          "nodes": [
+            610,
+            1426
+          ],
+          "valid": true,
+          "gapMm": 0.502890747229816,
+          "withinTolerance": true
+        },
+        {
+          "index": 35,
+          "nodes": [
+            611,
+            1427
+          ],
+          "valid": true,
+          "gapMm": 0.43358077326270483,
+          "withinTolerance": true
+        },
+        {
+          "index": 36,
+          "nodes": [
+            612,
+            1428
+          ],
+          "valid": true,
+          "gapMm": 0.46954270848793594,
+          "withinTolerance": true
+        },
+        {
+          "index": 37,
+          "nodes": [
+            613,
+            1429
+          ],
+          "valid": true,
+          "gapMm": 0.5071920334457614,
+          "withinTolerance": true
+        },
+        {
+          "index": 38,
+          "nodes": [
+            614,
+            1430
+          ],
+          "valid": true,
+          "gapMm": 0.3924310798723809,
+          "withinTolerance": true
+        },
+        {
+          "index": 39,
+          "nodes": [
+            615,
+            1431
+          ],
+          "valid": true,
+          "gapMm": 0.23025026402189283,
+          "withinTolerance": true
+        },
+        {
+          "index": 40,
+          "nodes": [
+            616,
+            1432
+          ],
+          "valid": true,
+          "gapMm": 0.4744031783217047,
+          "withinTolerance": true
+        },
+        {
+          "index": 41,
+          "nodes": [
+            617,
+            1433
+          ],
+          "valid": true,
+          "gapMm": 0.41157013443870677,
+          "withinTolerance": true
+        },
+        {
+          "index": 42,
+          "nodes": [
+            618,
+            1434
+          ],
+          "valid": true,
+          "gapMm": 0.4707469698337219,
+          "withinTolerance": true
+        },
+        {
+          "index": 43,
+          "nodes": [
+            619,
+            1435
+          ],
+          "valid": true,
+          "gapMm": 0.38164930900434546,
+          "withinTolerance": true
+        },
+        {
+          "index": 44,
+          "nodes": [
+            620,
+            1436
+          ],
+          "valid": true,
+          "gapMm": 0.3942807465570493,
+          "withinTolerance": true
+        },
+        {
+          "index": 45,
+          "nodes": [
+            621,
+            1437
+          ],
+          "valid": true,
+          "gapMm": 0.43304239118527826,
+          "withinTolerance": true
+        },
+        {
+          "index": 46,
+          "nodes": [
+            622,
+            1438
+          ],
+          "valid": true,
+          "gapMm": 0.37673772450664,
+          "withinTolerance": true
+        },
+        {
+          "index": 47,
+          "nodes": [
+            623,
+            1439
+          ],
+          "valid": true,
+          "gapMm": 0.4351697093457732,
+          "withinTolerance": true
+        }
+      ]
+    },
+    "release": {
+      "seconds": 5.620000000000069,
+      "currentCondition": true,
+      "requiredSeconds": 5
+    },
+    "invalidRetainedFaces": [],
+    "unresolvedComponents": [
+      {
+        "component": 1,
+        "reason": "Component is within 3 mm of protected anatomy"
+      }
+    ],
+    "scope": "Independent synthetic geometry checks; no clinical validation"
+  },
+  "passed": false
+}

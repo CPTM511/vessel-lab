@@ -1,0 +1,39 @@
+✔ visible frenular-root witness is covered and records an instrument hit (176.603542ms)
+✔ coincident side and apical boundary queries retain usable outward normals (0.578958ms)
+✔ anatomical protection does not remove the pre-existing capsule exclusions (0.180125ms)
+✔ capsule sweep detects triangle interiors, edges and degenerate cases without endpoint tunneling (2.821666ms)
+✔ local cutting uses geometry, remains bounded, and cannot edit the independent target mask (1301.608ms)
+✔ invalid cutting commands and occupied instruments are rejected atomically (1019.374917ms)
+✔ topology includes both layers and bending support; detached tissue remains simulated (67.199333ms)
+✔ off-target loss is measured from immutable initial area; no-cut baseline is not a success (52.0725ms)
+✔ cutting reproducibly releases a grasp when its actual supporting face is removed (4298.980958ms)
+✔ near-band departing witnesses are not false time-zero impacts (35.6395ms)
+✔ near-band approach is still detected immediately (0.191875ms)
+✔ a departing closest vertex does not hide later approach by another vertex (0.152042ms)
+✔ nominally close intact surfaces never count as cut wound edges (180.318916ms)
+✔ a real two-layer cut exposes independent retained margins and releases hidden native ties (153.214792ms)
+✔ missing samples and widened edges cannot shrink the fixed scoring denominator (177.593459ms)
+✔ retained collapse or an observed substep orientation reversal is a persistent failure (207.584375ms)
+✔ five consecutive simulated seconds must be released; terminal success freezes further actions (15101.948792ms)
+✔ closed jaws, surface proximity, a grasp or cut pulse resets released hold (144.514208ms)
+✔ local synthetic attachments require physical held cut margins and survive release (334.550834ms)
+✔ protected hits and off-target removal independently fail an otherwise prepared fixture (222.270208ms)
+✔ invalid bilateral commands and stale revisions are atomic (156.718375ms)
+✔ rest state is stable, fixed boundaries do not drift, and grasp requires proximity (309.569709ms)
+✔ barycentric grasp moves actual tissue; releasing removes constraints without a visual morph (2213.548167ms)
+✔ protected anatomy uses independent geometry and swept instrument violations remain recorded (2873.989917ms)
+✔ the same seed and low-level sequence reproduce tissue positions (849.11625ms)
+✔ proper interior crossings are detected in either triangle order (0.79525ms)
+✔ coplanar overlap is explicitly outside the diagnostic (0.337375ms)
+✔ broad phase finds crossings between retained and detached faces (1.51675ms)
+✔ declared cases have distinct authored sizes and reproducible initial instruments (2.76075ms)
+✔ scaled cases preserve the target topology, area scaling and unchanged C0 gates (292.47125ms)
+✔ all declared initial cases are separated and instruments are clear before the first action (1583.903458ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16658.352958

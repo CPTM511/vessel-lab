@@ -1,0 +1,191 @@
+{
+  "kind": "Offline same-state same-command fallback comparison; not model evidence",
+  "results": [
+    {
+      "label": "baseline",
+      "revision": 132,
+      "elapsedMs": 668.123291,
+      "maxNodeDisplacement": 0.15680496477914682,
+      "contact": {
+        "contacts": 84755,
+        "rigidContacts": 96314,
+        "limitedSubsteps": 3,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 5.051653691172105e-8
+        },
+        {
+          "arm": "right",
+          "error": 0.003964220816398392
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 132,
+      "elapsedMs": 589.7870829999999,
+      "maxNodeDisplacement": 0.15680496477914682,
+      "contact": {
+        "contacts": 84755,
+        "rigidContacts": 96314,
+        "limitedSubsteps": 3,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 5.051653691172105e-8
+        },
+        {
+          "arm": "right",
+          "error": 0.003964220816398392
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "baseline",
+      "revision": 133,
+      "elapsedMs": 474.9232499999998,
+      "maxNodeDisplacement": 1.4427598660641956,
+      "contact": {
+        "contacts": 84949,
+        "rigidContacts": 96746,
+        "limitedSubsteps": 14,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 6.500873870884197e-8
+        },
+        {
+          "arm": "right",
+          "error": 9.155133597044475e-16
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 133,
+      "elapsedMs": 394.547333,
+      "maxNodeDisplacement": 1.4427598660641956,
+      "contact": {
+        "contacts": 84949,
+        "rigidContacts": 96746,
+        "limitedSubsteps": 14,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 6.500873870884197e-8
+        },
+        {
+          "arm": "right",
+          "error": 9.155133597044475e-16
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "baseline",
+      "revision": 134,
+      "elapsedMs": 394.696375,
+      "maxNodeDisplacement": 1.4427598659166503,
+      "contact": {
+        "contacts": 85045,
+        "rigidContacts": 96986,
+        "limitedSubsteps": 26,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 6.501331163351229e-8
+        },
+        {
+          "arm": "right",
+          "error": 2.220446049250313e-16
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 134,
+      "elapsedMs": 376.4609169999999,
+      "maxNodeDisplacement": 1.4427598659166503,
+      "contact": {
+        "contacts": 85045,
+        "rigidContacts": 96986,
+        "limitedSubsteps": 26,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "metrics": [
+        {
+          "arm": "left",
+          "error": 6.501331163351229e-8
+        },
+        {
+          "arm": "right",
+          "error": 2.220446049250313e-16
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    }
+  ]
+}

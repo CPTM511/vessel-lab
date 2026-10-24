@@ -1,0 +1,165 @@
+{
+  "kind": "Offline same-state same-command rigid residual gradient comparison; not autonomy",
+  "results": [
+    {
+      "label": "baseline",
+      "revision": 133,
+      "elapsedMs": 1589.017458,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 0,
+      "minimumRigidResidualMm": 0.09999999999999892,
+      "contact": {
+        "contacts": 85021,
+        "rigidContacts": 96932,
+        "limitedSubsteps": 26,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 2.5611264904021443e-7
+        },
+        {
+          "arm": "right",
+          "error": 1.3500000000000014
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 133,
+      "elapsedMs": 1379.8420840000003,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 2.1106179449977356,
+      "minimumRigidResidualMm": 0.09999999999999926,
+      "contact": {
+        "contacts": 85093,
+        "rigidContacts": 96779,
+        "limitedSubsteps": 14,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [
+        {
+          "arm": "left",
+          "error": 1.4413517138747694e-7
+        },
+        {
+          "arm": "right",
+          "error": 9.155133597044475e-16
+        }
+      ],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "baseline",
+      "revision": 144,
+      "elapsedMs": 1123.7683340000003,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 0,
+      "minimumRigidResidualMm": 0.0999999999999993,
+      "contact": {
+        "contacts": 86088,
+        "rigidContacts": 100112,
+        "limitedSubsteps": 132,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 144,
+      "elapsedMs": 1461.0861249999998,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 1.5489537372408795,
+      "minimumRigidResidualMm": 0.09999999999999858,
+      "contact": {
+        "contacts": 86298,
+        "rigidContacts": 99900,
+        "limitedSubsteps": 120,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "baseline",
+      "revision": 160,
+      "elapsedMs": 1172.9974999999995,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 0,
+      "minimumRigidResidualMm": 0.0999999999999993,
+      "contact": {
+        "contacts": 90267,
+        "rigidContacts": 116800,
+        "limitedSubsteps": 729,
+        "lastAdvance": 0
+      },
+      "assessment": [
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "label": "candidate",
+      "revision": 160,
+      "elapsedMs": 1085.4275839999991,
+      "advancedTime": 0.09999999999999432,
+      "maxNodeDisplacement": 1.5489535412500204,
+      "minimumRigidResidualMm": 0.09999999999999915,
+      "contact": {
+        "contacts": 90487,
+        "rigidContacts": 116586,
+        "limitedSubsteps": 717,
+        "lastAdvance": 1
+      },
+      "assessment": [
+        "resolvedTargetComponents"
+      ],
+      "graspErrors": [],
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    }
+  ]
+}

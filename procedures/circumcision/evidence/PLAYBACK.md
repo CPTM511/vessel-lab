@@ -31,3 +31,8 @@ node --test tests/*.test.mjs
 See [playback behavior](../docs/PLAYBACK.md), [Forward+ verification](playback-forward-verification.json), [Compatibility verification](playback-compatibility-verification.json), [locked inspection verification](playback-locked-verification.json), [fallback inspection verification](playback-views-verification.json), [negative checks](playback-verifier-negative.json) and [regression output](playback-tests.txt). Numerical replay validates recorded geometry and state; JPEG integrity checks do not reconstruct pixels or establish clinical validity.
 
 ![Recorded playback completed in Godot](playback-forward-ui.jpg)
+
+
+## Corrected contact runtime refresh
+
+The default two-move example was refreshed under runtime `c0e923ee30e69b394f475258877a47e4c7c96f745413ff17aa667f8a16bab32f` after the rigid projection correction. The new actual GPT-6 Astra / xhigh recording has five images, two accepted moves, zero rejections and620ms maximum feedback. The historical example remains in `controller-loop-original/`; its mechanical hashes intentionally differ. New actual Forward+ playback is preserved in `playback-round6-forward/`, with independent verification in `evaluation-rounds/round6-validation/playback-verification.json`. These connectivity and playback checks are not complete procedure episodes. Historical playback evidence above retains its original source scope.

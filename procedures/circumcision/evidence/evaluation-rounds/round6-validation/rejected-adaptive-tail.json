@@ -1,0 +1,215 @@
+{
+  "kind": "Rejected numerical integration-refinement experiment; not adopted",
+  "completedSteps": 13,
+  "steps": [
+    {
+      "revision": 133,
+      "ms": 4378.0706660000005,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 134,
+      "ms": 3321.6849999999995,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 135,
+      "ms": 3257.2272090000006,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 136,
+      "ms": 5105.884833,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 137,
+      "ms": 867.375458999999,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 138,
+      "ms": 1065.4504579999993,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 139,
+      "ms": 4964.540959000002,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 140,
+      "ms": 1126.1623330000002,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 141,
+      "ms": 1186.8190410000025,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 142,
+      "ms": 3509.561333999998,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 143,
+      "ms": 5680.655542,
+      "contact": 1,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 144,
+      "ms": 21449.0155,
+      "contact": 0,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "revision": 145,
+      "ms": 38970.24933399999,
+      "contact": 0,
+      "failedGates": [
+        "releasedHold",
+        "resolvedTargetComponents"
+      ],
+      "protected": 0,
+      "offTarget": 0,
+      "crossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      }
+    }
+  ],
+  "reason": "A recorded command exceeded the unchanged 5000ms budget in numerical computation alone. This diagnostic was stopped; no live model episode used this candidate."
+}

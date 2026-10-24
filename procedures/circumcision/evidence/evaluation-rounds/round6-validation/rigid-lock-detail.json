@@ -1,0 +1,48 @@
+{
+  "contacts": 0,
+  "rigidHits": [
+    {
+      "node": 1509,
+      "normal": [
+        0,
+        -0.5918505399867472,
+        0.8060477270716639
+      ],
+      "bound": 6.197368929038295,
+      "old": [
+        20.534121487055735,
+        -2.6728170238547038,
+        5.749397687744441
+      ],
+      "proposed": [
+        20.558905985756237,
+        -2.6653751975785758,
+        5.731489538747359
+      ],
+      "oldQuery": {
+        "distance": 0.1000021293812276,
+        "normal": [
+          0,
+          -0.5918505586671116,
+          0.8060477133553743
+        ],
+        "structure": "glans"
+      },
+      "proposedQuery": {
+        "distance": 0.09999893635819512,
+        "normal": [
+          0,
+          -0.5918505399867472,
+          0.8060477270716639
+        ],
+        "structure": "glans"
+      },
+      "residualGradient": [
+        0.7599943354766325,
+        -0.5918505399871155,
+        0.8060477270674382
+      ]
+    }
+  ],
+  "method": "Recorded revision133 final rigid conflict; central difference of unchanged query at seed83 scale1.08"
+}

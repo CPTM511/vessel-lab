@@ -77,3 +77,25 @@ test('reused broad-phase bounds rebuild when a previously distant face moves int
  assert.ok(filterShellMotion(nodes,faces,before,cache).contacts>0);
  assert.ok(nodes.slice(0,3).every(n=>n.p[2]>0));
 });
+
+test('sampled residual slope preserves frictionless tangent motion with coupled shell contact',()=>{
+ const slope=10,len=Math.hypot(slope,1),normal=[-slope/len,0,1/len];
+ const lower=[[0,0,.1],[1,0,slope+.1],[0,1,.1]];
+ const old=[...lower,...lower.map(p=>p.map((v,k)=>v+.03000009*normal[k]))];
+ const nodes=old.map((p,i)=>({p:p.map((v,k)=>v+(k===0?.02:0)-(i>=3?.025*normal[k]:0)),inv:1,alive:true}));
+ const stats=filterShellMotion(nodes,[{nodes:[0,1,2],active:true},{nodes:[3,4,5],active:true}],old,{},
+  {margin:.1,query:p=>({distance:p[2]-slope*p[0],normal:[0,0,1]})});
+ assert.equal(stats.limited,false);
+ assert.ok(nodes.every(n=>n.p[2]-slope*n.p[0]>=.1-1e-9));
+ assert.ok(triangleSeparation(nodes.slice(0,3).map(n=>n.p),nodes.slice(3).map(n=>n.p)).distance>=CONTACT_GAP_MM-1e-7);
+ for(let i=0;i<nodes.length;i++){
+  const d=nodes[i].p.map((v,k)=>v-old[i][k]);
+  assert.ok(Math.abs(d[0]+slope*d[2]-.02)<1e-8,'A frictionless normal correction must preserve tangential displacement');
+ }
+});
+
+test('finite-difference contact handles a bounded query domain without nonfinite state',()=>{
+ const old=[[0,0,.1]],nodes=[{p:[0,0,-.01],inv:1,alive:true}];
+ const stats=filterShellMotion(nodes,[],old,{}, {margin:.1,query:p=>p[0]<0?null:{distance:p[2],normal:[0,0,1]}});
+ assert.equal(stats.limited,false);assert.ok(nodes[0].p.every(Number.isFinite));assert.ok(nodes[0].p[2]>=.1);
+});

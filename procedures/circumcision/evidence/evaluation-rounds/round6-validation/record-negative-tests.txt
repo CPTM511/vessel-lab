@@ -1,0 +1,13 @@
+✔ c0-round5-seed83-attempt01 verifies failure without success (165923.322416ms)
+✔ c0-round5-seed83-attempt01 cannot pass default success verification (159096.536167ms)
+✔ c0-round5-seed83-attempt01 rejects source (204.727209ms)
+✔ c0-round5-seed83-attempt01 rejects image (208.657417ms)
+✔ c0-round5-seed83-attempt01 rejects missing result (159823.060041ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 485320.33875

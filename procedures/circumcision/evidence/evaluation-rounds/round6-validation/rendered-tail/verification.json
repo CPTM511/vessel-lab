@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "kind": "Scripted same-state counterfactual continuation; no inference or autonomous success",
+  "steps": 28,
+  "maxFeedbackMs": 3230,
+  "minimumRigidResidualMm": 0.0999999999999987,
+  "properCrossings": 0,
+  "failedGates": [
+    "resolvedTargetComponents"
+  ]
+}

@@ -199,7 +199,18 @@ export function filterShellMotion(nodes,faces,old,cache={},rigid=null){
   if(!rigid)return [];const found=[];
   for(let i=0;i<nodes.length;i++){if(!nodes[i].inv||nodes[i].alive===false)continue;const q=rigid.query(positions[i]);if(q&&q.distance<rigid.margin-1e-9){
    if(!q.normal.every(Number.isFinite)||Math.abs(Math.hypot(...q.normal)-1)>1e-6)throw Error('Rigid contact requires a finite unit normal');
-   found.push({node:i,normal:q.normal,bound:dot(positions[i],q.normal)+rigid.margin+1e-5-q.distance});
+   // The anatomical query is a sampled cross-section residual, whose
+   // gradient can include axial slope absent from its radial normal.
+   // Project this same residual; every proposal is still re-queried and
+   // checked against continuous shell contact before acceptance.
+   const h=1e-4,gradient=q.normal.map((v,axis)=>{
+    const minus=[...positions[i]],plus=[...positions[i]];minus[axis]-=h;plus[axis]+=h;
+    const a=rigid.query(minus),b=rigid.query(plus);
+    return Number.isFinite(a?.distance)&&Number.isFinite(b?.distance)?(b.distance-a.distance)/(2*h):v;
+   });
+   const norm=Math.hypot(...gradient),valid=Number.isFinite(norm)&&norm>1e-8;
+   const normal=valid?gradient.map(v=>v/norm):q.normal,scale=valid?norm:1;
+   found.push({node:i,normal,bound:dot(positions[i],normal)+(rigid.margin+1e-5-q.distance)/scale});
   }}return found;
  };
  const boxFor=id=>{
