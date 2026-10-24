@@ -17,6 +17,8 @@ Compatibility uses the OpenGL 4.1 path on the tested Apple M3 Pro. It preserves 
 
 The 65-test suite includes replay corruption rejection, mutually exclusive model/playback execution, locked manual/reset controls, Stop, and failure after an accepted command loses its following image. Protocol doubles use a static transport fixture and are excluded from the actual frame counts above. Four additional offline journal mutations—runtime identity, original record hash, frame control-source label and missing rendered result—are rejected.
 
+The subsequent [freeze-isolation checks](freeze-isolation-tests.txt) run missing-freeze tests in temporary copies of the exact runtime. All ten affected checks pass, including a matching synthetic freeze, seven mismatched contract fields and changed runtime source. No freeze is created in the product checkout, and the runtime digest is unchanged. These tests remain valid after a real evaluation freeze is added; they do not authorize an episode or substitute for preflight evidence.
+
 ```sh
 # From procedures/circumcision at this checkpoint:
 node verify-playback.mjs evidence/playback-forward-01

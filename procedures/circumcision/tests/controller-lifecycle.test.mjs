@@ -1,10 +1,12 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import crypto from 'node:crypto';import {spawn} from 'node:child_process';
+import {isolatedRuntime} from './fixtures/isolated-runtime.mjs';
 const root=path.resolve(import.meta.dirname,'..'),pause=ms=>new Promise(r=>setTimeout(r,ms));
 async function wait(check,ms=15000){const end=Date.now()+ms;while(Date.now()<end){if(await check())return;await pause(50);}throw Error('Timed out waiting for controller test condition');}
 const alive=pid=>{try{process.kill(pid,0);return true;}catch{return false;}};
 for(const [index,mode] of ['quota','api','wrong_model','wrong_provider','stop','loop','missing_after_action'].entries())test(`controller ${mode}: lease, access and rendered-feedback boundaries`,async()=>{
  const port=18800+index,base=`http://127.0.0.1:${port}`,dir=fs.mkdtempSync(path.join(os.tmpdir(),'adult-controller-test-')),record=path.join(dir,'mock.json');
- const child=spawn(process.execPath,['inspector.mjs'],{cwd:root,env:{...process.env,ANATOMY_PORT:String(port),CODEX_BIN:path.join(root,'tests/fixtures/mock-codex.mjs'),ANATOMY_TEST_MODE:mode,ANATOMY_TEST_RECORD:record,ANATOMY_PROTOCOL_TEST:'1'},stdio:['ignore','pipe','pipe']});let errors='';child.stderr.on('data',d=>errors+=d);let pump,busy=false,mock;
+ const fixture=isolatedRuntime();
+ const child=spawn(process.execPath,['inspector.mjs'],{cwd:fixture.root,env:{...process.env,ANATOMY_PORT:String(port),CODEX_BIN:path.join(root,'tests/fixtures/mock-codex.mjs'),ANATOMY_TEST_MODE:mode,ANATOMY_TEST_RECORD:record,ANATOMY_PROTOCOL_TEST:'1'},stdio:['ignore','pipe','pipe']});let errors='';child.stderr.on('data',d=>errors+=d);let pump,busy=false,mock;
  async function api(route,body,token){const r=await fetch(base+route,{signal:AbortSignal.timeout(1500),method:body?'POST':'GET',headers:{'content-type':'application/json',...(token?{'x-anatomy-controller-token':token}:{})},body:body?JSON.stringify(body):undefined});return {status:r.status,data:await r.json()};}
  const image='data:image/jpeg;base64,'+fs.readFileSync(path.join(root,'tests/fixtures/inspection.jpg')).toString('base64');
  // This prerecorded JPEG only tests transport. It is never real-render evidence.
@@ -36,12 +38,12 @@ for(const [index,mode] of ['quota','api','wrong_model','wrong_provider','stop','
   const data=JSON.parse(fs.readFileSync(record)),thread=data.requests.find(r=>r.method==='thread/start');
   if(thread){assert.deepEqual(thread.params.environments,[]);assert.deepEqual(thread.params.selectedCapabilityRoots,[]);assert.equal(thread.params.allowProviderModelFallback,false);assert.equal(thread.params.model,'gpt-6-astra');assert.equal(thread.params.reasoningEffort,undefined);}
   if(['quota','api','wrong_model','wrong_provider'].includes(mode))assert.ok(!data.requests.some(r=>r.method==='turn/start'));
-  const journal=fs.readFileSync(path.join(root,'sessions',end.agent.runId,'agent.jsonl'),'utf8').trim().split('\n').map(JSON.parse);assert.match(journal[0].kind,/test double/);
+  const journal=fs.readFileSync(path.join(fixture.root,'sessions',end.agent.runId,'agent.jsonl'),'utf8').trim().split('\n').map(JSON.parse);assert.match(journal[0].kind,/test double/);
   if(mode==='loop'){assert.equal(end.agent.phase,'done');assert.equal(data.responses.filter(r=>r.result?.contentItems.some(i=>i.type==='inputImage')).length,3);assert.equal(journal.filter(r=>r.type==='tool_result').length,3);assert.equal(journal.find(r=>r.type==='verification').moves,2);}
   if(mode==='missing_after_action'){assert.match(end.agent.error,/observation unavailable/);assert.equal(journal.filter(r=>r.type==='accepted_command').length,1);assert.equal(journal.filter(r=>r.type==='tool_result'&&r.tool==='step').length,0);}
   assert.equal((await api('/api/mechanics/reset',{session:s.session,revision:end.revision,source:'manual-mechanics',commandId:crypto.randomUUID(),seed:29})).status,200);
  }finally{
-  clearInterval(pump);child.kill('SIGTERM');await new Promise(resolve=>child.once('exit',resolve));if(mock&&alive(mock.pid))process.kill(mock.pid,'SIGKILL');fs.rmSync(dir,{recursive:true,force:true});
+  clearInterval(pump);child.kill('SIGTERM');await new Promise(resolve=>child.once('exit',resolve));if(mock&&alive(mock.pid))process.kill(mock.pid,'SIGKILL');fs.rmSync(dir,{recursive:true,force:true});fixture.cleanup();
  }
  assert.equal(errors,'');
 });

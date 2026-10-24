@@ -1,0 +1,29 @@
+Protocol doubles and temporary-source tests; no model inference or actual renderer evidence.
+
+✔ ordinary permission, usable windows and unchanged credits are all required (0.678292ms)
+✔ geometry sensors are bounded and cannot modify the specimen or propose actions (49.677375ms)
+✔ freeze requires exact source, model, protocol, declared seeds and controller contract (21.580333ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.58525
+
+✔ controller quota: lease, access and rendered-feedback boundaries (934.295291ms)
+✔ controller api: lease, access and rendered-feedback boundaries (387.045875ms)
+✔ controller wrong_model: lease, access and rendered-feedback boundaries (386.024208ms)
+✔ controller wrong_provider: lease, access and rendered-feedback boundaries (383.57775ms)
+✔ controller stop: lease, access and rendered-feedback boundaries (2453.330292ms)
+✔ controller loop: lease, access and rendered-feedback boundaries (932.893958ms)
+✔ controller missing_after_action: lease, access and rendered-feedback boundaries (5551.172958ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11084.009625

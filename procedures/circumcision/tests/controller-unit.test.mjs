@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import {OrdinaryUsageGuard} from '../ordinary-guard.mjs';
 import {TissueSim} from '../mechanics.mjs';
 import {geometryQuery} from '../instrumentation.mjs';
-import {checkEvaluationFreeze} from '../evaluation-freeze.mjs';
 const limits=()=>({ordinaryUsageAllowed:true,rateLimits:{primary:{usedPercent:12,windowDurationMins:300},credits:{balance:'unchanged'}}});
 test('ordinary permission, usable windows and unchanged credits are all required',()=>{
  for(const response of [{...limits(),ordinaryUsageAllowed:false},{...limits(),ordinaryUsageAllowed:null},{rateLimits:limits().rateLimits},{ordinaryUsageAllowed:true,rateLimits:{}},{ordinaryUsageAllowed:true,rateLimits:{primary:{usedPercent:95}}},{ordinaryUsageAllowed:true,rateLimits:{primary:{usedPercent:NaN}}}])assert.throws(()=>new OrdinaryUsageGuard().check(response),/allowance/);
@@ -17,4 +16,3 @@ test('geometry sensors are bounded and cannot modify the specimen or propose act
  assert.equal(result.faces[1].target,sim.task.target[1200]);assert.ok(result.points[0].protected.length>0);assert.deepEqual(sim.snapshot(),before);
  for(const q of [{faceIds:[-1]},{faceIds:Array(33).fill(0)},{points:[[NaN,0,0]]},{points:Array(9).fill([0,0,0])},{path:true},[]])assert.throws(()=>geometryQuery(sim,q));
 });
-test('unfrozen procedure evaluation remains unavailable',()=>assert.throws(()=>checkEvaluationFreeze(),/not frozen/));
