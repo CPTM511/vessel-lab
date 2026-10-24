@@ -1,6 +1,6 @@
 # Adult anatomy research preview
 
-An in-development Godot module for an adult circumcision tissue-manipulation benchmark. The current checkpoint provides original layered anatomy, bilateral low-level grippers, constraint-based tissue deformation, local swept cutting, component/area accounting and real rendered feedback. Local synthetic edge attachments and a C0 terminal evaluator are available. The refined anatomy/contact checkpoint at commit `3c87412` passes the C0 geometric evaluator in a complete 2,023-action scripted detachment/collection fixture. The current S1 candidate adds three distinct authored size cases and reproducible initial instrument offsets; its evidence is kept separate from that historical full trajectory. Independent model execution and the full prototype release remain **pending**. This is bounded fixture evidence, not general retraction or self-contact validation. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
+An in-development Godot module for an adult circumcision tissue-manipulation benchmark. The current checkpoint provides original layered anatomy, bilateral low-level grippers, constraint-based tissue deformation, local swept cutting, component/area accounting and real rendered feedback. Local synthetic edge attachments and a C0 terminal evaluator are available. The refined anatomy/contact checkpoint at commit `3c87412` passes the C0 geometric evaluator in a complete 2,023-action scripted detachment/collection fixture. The current S1 candidate adds three distinct authored size cases and reproducible initial instrument offsets; its evidence is kept separate from that historical full trajectory. A short actual GPT-6 Astra connectivity check now completes two model-selected translations with five real Godot image responses. Independent complete procedure episodes and the full prototype release remain **pending**. This is bounded fixture evidence, not general retraction or self-contact validation. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
 
 ## Run
 
@@ -19,6 +19,10 @@ node inspect.mjs --output evidence/local-inspection
 ```
 
 This command saves actual images and source hashes for eight views, including a dedicated meatal close-up. `--locked --samples 40` additionally requires affirmative macOS console and current-user lock flags throughout every sample. The probe is explicitly scripted and must not be reported as model evidence. It does not lock the computer or change power/security settings. Screen lock does not imply execution during system sleep.
+
+## Model connectivity
+
+After resetting the mechanics sandbox, choose **Verify Astra control loop**. The model independently selects two small translations and receives actual image/state feedback after each. **Stop controller** revokes authority and stops the process group. Full procedure execution remains disabled until the recorded preflight and source/instruction freeze are complete. See [controller setup and boundaries](docs/CONTROLLER.md) and [actual connectivity evidence](evidence/CONTROLLER.md).
 
 ## Mechanical development
 

@@ -1,3 +1,4 @@
+import {sourceManifest} from './manifest.mjs';
 // Render every bounded action from an explicit scripted fixture. Never model evidence.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -22,7 +23,7 @@ await fs.mkdir(out,{recursive:true});
 const journal=await fs.open(path.join(out,'steps.jsonl'),'wx');
 const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
 const sourceFiles=['mechanics.mjs','scenario.mjs','contact.mjs','mesh-audit.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','probe-trajectory.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
-const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,sha(await fs.readFile(path.join(import.meta.dirname,f)))])));
+const sourceHashes=Object.fromEntries(await Promise.all([...new Set([...sourceFiles,...Object.keys(sourceManifest().files)])].map(async f=>[f,sha(await fs.readFile(path.join(import.meta.dirname,f)))])));
 const trajectory={kind:'scripted low-level actions; not autonomous inference',seed,actions,auditRevisions,expectedAssessment};
 const trajectoryBytes=JSON.stringify(trajectory,null,2)+'\n';await fs.writeFile(path.join(out,'trajectory.json'),trajectoryBytes);
 const report={kind:'scripted instrument trajectory development fixture; no model inference',schema:'scripted-trajectory-v1',seed,startedAt:new Date().toISOString(),sourceHashes,trajectoryHash:sha(trajectoryBytes),steps:[],passed:false};

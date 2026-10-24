@@ -1,0 +1,45 @@
+// Replay recorded controller decisions and verify their state/frame associations.
+// Pixels are hash checked, not reconstructed by this numerical verifier.
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+import {TissueSim} from './mechanics.mjs';import {geometryQuery} from './instrumentation.mjs';
+import {sourceManifest,sha256} from './manifest.mjs';import {MODEL,instructions,toolsForTask,prompts} from './controller-spec.mjs';
+const dir=path.resolve(process.argv[2]),lines=fs.readFileSync(path.join(dir,'agent.jsonl'),'utf8').trim().split('\n'),rows=lines.map(JSON.parse),wire=x=>JSON.parse(JSON.stringify(x));
+const configs=rows.filter(r=>r.type==='configuration');assert.equal(configs.length,1);const config=configs[0];
+assert.equal(config.kind,'live controller attempt','Protocol doubles are not live model evidence');assert.equal(config.model,MODEL);assert.deepEqual(config.source,sourceManifest(),'Executed source differs');
+assert.equal(config.instructionsHash,sha256(instructions));assert.equal(config.toolsHash,sha256(JSON.stringify(toolsForTask(config.task))));assert.equal(config.promptHash,sha256(prompts[config.task]));
+const publicRecord=config.evidenceScope==='public-redacted';
+if(publicRecord)assert.deepEqual(config.redactions,['access checks','session identifiers']);
+const model=rows.find(r=>r.type==='model_session');assert.equal(model?.requestedModel,MODEL);assert.equal(model?.model,MODEL);assert.equal(model?.modelProvider,'openai');
+if(!publicRecord)assert.equal(rows.find(r=>r.type==='access_preflight')?.accountType,'chatgpt');
+assert.ok(rows.some(r=>r.type==='turn_started'));assert.equal(rows.find(r=>r.type==='turn_completed')?.turn.status,'completed');
+assert.equal(rows.filter(r=>r.type==='error').length,0,'Failed run is preserved but cannot pass completion verification');
+const allowance=rows.filter(r=>r.type==='allowance_check');if(!publicRecord)assert.ok(allowance.length>=3);
+for(const r of allowance){assert.equal(r.ordinaryUsageAllowed,true);assert.equal(r.creditStateUnchanged,true);assert.ok(r.windows.length);assert.ok(r.windows.every(w=>Number.isFinite(w.usedPercent)&&w.usedPercent<95));}
+const sim=new TissueSim(config.seed),requests=new Map(),accepted=new Set(),resolved=new Set(),images=new Set(),frameHashes=[];let moves=0,worldRevision=null,maxFeedbackMs=0,rejected=0;
+function image(frame){assert.match(frame.filename,/^(frame|error)-\d{5}\.jpg$/);assert.ok(!images.has(frame.filename));images.add(frame.filename);const bytes=fs.readFileSync(path.join(dir,frame.filename));assert.ok(bytes.length>1000&&bytes[0]===255&&bytes[1]===216&&bytes.at(-2)===255&&bytes.at(-1)===217);assert.equal(sha256('data:image/jpeg;base64,'+bytes.toString('base64')),frame.imageHash);assert.equal(frame.seed,sim.seed);assert.ok(Math.abs(frame.anatomyScale-sim.scale)<1e-6);assert.equal(frame.mechanicsRevision,sim.revision);frameHashes.push(frame.imageHash);}
+for(const row of rows){
+ if(row.type==='model_tool_request'){assert.equal(row.model,MODEL);assert.equal(row.namespace,'anatomy');assert.ok(!requests.has(row.callId));requests.set(row.callId,row);}
+ if(row.type==='accepted_command'){
+  const req=requests.get(row.callId);assert.ok(req);assert.deepEqual(row.args,req.args);assert.equal(row.tool,req.tool);assert.ok(!accepted.has(row.callId));accepted.add(row.callId);
+  if(worldRevision===null)worldRevision=row.beforeRevision;assert.equal(row.beforeRevision,worldRevision);
+  if(row.tool==='step'){if(config.task==='loop'){assert.ok(row.args.duration<=.05);for(const name of ['left','right'])if(row.args[name]){assert.deepEqual(Object.keys(row.args[name]),['position']);assert.ok(Math.hypot(...row.args[name].position.map((v,i)=>v-sim.arms[name].position[i]))<=1.000001);}}sim.step(row.args);moves++;}
+  else if(row.tool==='finish'){assert.equal(config.task,'procedure');sim.finish();}
+  else assert.equal(row.tool,'inspect');
+  worldRevision++;assert.equal(row.result.revision,worldRevision);assert.deepEqual(row.result.mechanics,wire(sim.observe()),'Accepted command state does not reproduce');
+ }
+ if(row.type==='tool_result'){
+  const req=requests.get(row.callId);assert.ok(req);assert.ok(!resolved.has(row.callId));resolved.add(row.callId);assert.deepEqual(row.args,req.args);assert.equal(row.tool,req.tool);assert.equal(row.success,true);
+  if(worldRevision===null)worldRevision=row.beforeRevision;assert.equal(row.afterRevision,worldRevision);assert.equal(row.frame.revision,worldRevision);
+  assert.deepEqual(row.output.observation,wire(sim.observe()),'Model observation does not reproduce');
+  if(row.tool==='geometry')assert.deepEqual(row.output.geometry,wire(geometryQuery(sim,row.args)));
+  assert.equal(row.geometryHash,sha256(JSON.stringify(sim.snapshot().positions)));assert.equal(row.topologyHash,sha256(JSON.stringify({faces:sim.snapshot().faces,componentOf:sim.snapshot().componentOf,targetMask:sim.snapshot().targetMask})));
+  assert.ok(['forward_plus','gl_compatibility'].includes(row.frame.renderer));image(row.frame);
+  if(accepted.has(row.callId)){assert.ok(row.commandToFrameMs>=0&&row.commandToFrameMs<=5000);maxFeedbackMs=Math.max(maxFeedbackMs,row.commandToFrameMs);}else assert.ok(['observe','geometry'].includes(row.tool));
+ }
+ if(row.type==='tool_error'){assert.ok(!row.accepted,'An accepted command lost its rendered result');const req=requests.get(row.callId);assert.ok(req);if(req.tool==='step')assert.throws(()=>sim.step(req.args),e=>e.message===row.error);else if(req.tool==='finish')assert.throws(()=>sim.finish(),e=>e.message===row.error);else throw Error('Unexpected rejected controller tool');rejected++;}
+ if(row.type==='rejected_observation'){assert.ok(requests.has(row.callId));assert.ok(!resolved.has(row.callId));resolved.add(row.callId);assert.deepEqual(row.output.observation,wire(sim.observe()));image(row.frame);}
+}
+assert.equal(resolved.size,requests.size,'Unresolved model call');const end=rows.find(r=>r.type==='verification');assert.ok(end);assert.deepEqual(end.state,wire(sim.observe()));assert.equal(end.moves,moves);assert.equal(end.images,images.size);assert.equal(end.toolCount,requests.size);if(!publicRecord){assert.equal(end.allowance.ordinaryUsageAllowed,true);assert.equal(end.allowance.creditStateUnchanged,true);}
+if(config.task==='loop'){assert.equal(moves,2);assert.equal(sim.metrics().cutFaceCount,0);assert.equal(sim.metrics().activeAttachments,0);assert.equal(sim.metrics().protectedIntersections,0);assert.equal(sim.metrics().activeGrasps,0);assert.equal(sim.terminal,null);assert.ok(new Set(frameHashes).size>=3,'Expected distinct actual observations');}
+else {assert.equal(sim.assessment().passed,true);assert.ok(sim.terminal,'No accepted Finish');}
+console.log(JSON.stringify({verified:true,kind:config.task==='loop'?'Actual model connectivity check; not a procedure episode':'Actual model C0 episode',model:MODEL,reasoningEffort:model.reasoningEffort,seed:sim.seed,sourceDigest:config.source.digest,privateAccessChecksVerified:!publicRecord,moves,toolCalls:requests.size,images:images.size,rejected,maxCommandToFrameMs:maxFeedbackMs,finalRevision:sim.revision,assessmentPassed:sim.assessment().passed,scope:'Exact numerical replay and recorded JPEG integrity/association; not independent image reconstruction or clinical validation'},null,2));

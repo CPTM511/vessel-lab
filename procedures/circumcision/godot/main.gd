@@ -42,6 +42,12 @@ var last_mode = ""
 var last_morph = -1.0
 var morph_slider: HSlider
 var slider_timer: Timer
+var manual_buttons: Array[Button] = []
+var loop_button: Button
+var procedure_button: Button
+var stop_button: Button
+var controller_status: Label
+var controller_active = false
 
 func _ready() -> void:
 	Engine.max_fps = 45
@@ -70,6 +76,7 @@ func add_button(value: String, parent: Node, callback: Callable) -> Button:
 	b.custom_minimum_size.y = 38
 	b.pressed.connect(callback)
 	parent.add_child(b)
+	manual_buttons.append(b)
 	return b
 
 func note(value: String, parent: Node, color: Color = MUTED) -> Label:
@@ -135,6 +142,11 @@ func build_ui() -> void:
 	panel.add_theme_constant_override("separation",11)
 	scroll.add_child(panel)
 	status = note("Connecting to inspection service…",panel,ACCENT)
+	loop_button = add_button("Verify Astra control loop",panel,func():send_request("/api/agent/start",{"task":"loop"}))
+	procedure_button = add_button("Start C0 procedure",panel,func():send_request("/api/agent/start",{"task":"procedure"}))
+	stop_button = add_button("Stop controller",panel,func():send_request("/api/agent/stop",{}))
+	controller_status = note("No controller is running.",panel,ACCENT)
+	note("Procedure runs require a matching source and instruction freeze.",panel)
 	note("Seed for next reset (11 / 29 / 83)",panel)
 	seed_input = SpinBox.new()
 	seed_input.min_value = 0
@@ -181,7 +193,7 @@ func build_ui() -> void:
 	add_button("Advance 0.5 simulated seconds",mechanics_panel,func():global_mechanical_step({"duration":.5}))
 	add_button("Finish C0 assessment",mechanics_panel,func():send_request("/api/finish",{"source":"manual-mechanics"}))
 	mechanics_label = note("",mechanics_panel,ACCENT)
-	note("Edge ties are synthetic constraints, not simulated stitches or knots. Model control remains disabled.",mechanics_panel)
+	note("Edge ties are synthetic constraints, not simulated stitches or knots.",mechanics_panel)
 	panel.add_child(text_label("Layer inspection",18))
 	add_button("Outer preputial skin",panel,func():preset("outer"))
 	add_button("Inner preputial mucosa",panel,func():preset("inner"))
@@ -334,6 +346,8 @@ func update_camera() -> void:
 	last_capture = 0
 
 func view_input(event: InputEvent) -> void:
+	if controller_active:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			dragging = event.pressed
@@ -448,12 +462,32 @@ func poll() -> void:
 			return
 		if data.session != session or data.revision != revision:
 			apply_state(data)
+		update_controller(data)
 		if not capture_busy and Time.get_ticks_msec()-last_capture>1800:
 			capture())
 	var error = request.request(base+"/api/state")
 	if error != OK:
 		poll_busy = false
 		request.queue_free()
+
+func update_controller(data: Dictionary) -> void:
+	var agent: Dictionary = data.get("agent",{})
+	scene_state["agent"] = agent
+	controller_active = agent.get("running",false)
+	for b in manual_buttons:
+		b.disabled = controller_active
+	var pristine = data.get("mechanicsEnabled",false) and data.get("mechanics",{}).get("revision",-1) == 0
+	loop_button.disabled = controller_active or not pristine
+	procedure_button.disabled = controller_active or not pristine or not agent.get("procedureReady",false)
+	stop_button.disabled = not controller_active
+	retraction_button.disabled = active_mechanics or controller_active
+	seed_input.editable = not controller_active
+	morph_slider.editable = not active_mechanics and not controller_active
+	controller_status.text = "Controller: %s\nTools: %s  ·  Images: %s" % [agent.get("phase","idle"),agent.get("toolCount",0),agent.get("images",0)]
+	if agent.get("error") != null:
+		controller_status.text += "\n" + str(agent.error)
+	if data.get("controlSource","") == "gpt-6-astra":
+		status.text = "BILATERAL MECHANICS · GPT-6 ASTRA" if controller_active else "LAST SOURCE · GPT-6 ASTRA"
 
 func apply_state(data: Dictionary) -> void:
 	scene_state = data
@@ -524,7 +558,13 @@ func capture() -> void:
 		request.queue_free()
 		if code==200:
 			frames+=1
-			feedback_label.text=("Actual Godot frames: %s\nScripted verification; no model inference." if str(body.controlSource).begins_with("scripted-") else "Actual Godot frames: %s\nNo model controller is running.") % frames)
+			feedback_label.text = "Actual Godot frames: %s\n" % frames
+			if str(body.controlSource).begins_with("scripted-"):
+				feedback_label.text += "Scripted verification; no model inference."
+			elif controller_active:
+				feedback_label.text += "Live model controller: GPT-6 Astra"
+			else:
+				feedback_label.text += "No model controller is running.")
 	var error = request.request(base+"/api/frame",["Content-Type: application/json"],HTTPClient.METHOD_POST,JSON.stringify(body))
 	if error != OK:
 		capture_busy = false

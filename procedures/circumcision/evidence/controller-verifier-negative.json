@@ -1,0 +1,30 @@
+{
+  "kind": "Offline evidence corruption checks; no model calls",
+  "passed": true,
+  "cases": [
+    {
+      "case": "model",
+      "rejected": true
+    },
+    {
+      "case": "action",
+      "rejected": true
+    },
+    {
+      "case": "source",
+      "rejected": true
+    },
+    {
+      "case": "observation",
+      "rejected": true
+    },
+    {
+      "case": "frame",
+      "rejected": true
+    },
+    {
+      "case": "missing_result",
+      "rejected": true
+    }
+  ]
+}

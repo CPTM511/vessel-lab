@@ -1,3 +1,4 @@
+import {sourceManifest} from './manifest.mjs';
 // Offline verification for scripted manipulation records, not model evaluation.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,6 +15,7 @@ const allowed=new Set(['mechanics.mjs','scenario.mjs','cutting.mjs','task-defini
 if(report.schema==='scripted-trajectory-v1')allowed.add('probe-trajectory.mjs');
 if(fs.readFileSync(path.join(root,'mechanics.mjs'),'utf8').includes("from './contact.mjs'"))allowed.add('contact.mjs');
 if(report.schema==='scripted-trajectory-v1'&&fs.readFileSync(path.join(root,'probe-trajectory.mjs'),'utf8').includes("from './mesh-audit.mjs'"))allowed.add('mesh-audit.mjs');
+for(const file of Object.keys(sourceManifest().files))allowed.add(file);
 assert.equal(Object.keys(report.sourceHashes).length,allowed.size,'Missing source fingerprints');
 for(const [f,hash] of Object.entries(report.sourceHashes)){assert.ok(allowed.has(f),'Unexpected source path');assert.equal(sha(fs.readFileSync(path.join(root,f))),hash,'Source changed: '+f);}
 assert.match(report.kind,/scripted/);assert.ok(report.steps.length>0);

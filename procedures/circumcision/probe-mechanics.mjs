@@ -1,3 +1,4 @@
+import {sourceManifest} from './manifest.mjs';
 // Scripted bilateral manipulation fixture. Never count this as model evidence.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -10,7 +11,7 @@ const base=option('--url','http://127.0.0.1:8785'),out=path.resolve(import.meta.
 await fs.mkdir(out,{recursive:true});
 const hash=v=>crypto.createHash('sha256').update(v).digest('hex');
 const sourceFiles=['mechanics.mjs','scenario.mjs','contact.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','inspector.mjs','launch.mjs','probe-mechanics.mjs','godot/main.gd','godot/anatomy.gd','godot/project.godot','godot/data/tissue-rest.json','docs/PROTOCOL.md'];
-const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,hash(await fs.readFile(path.join(import.meta.dirname,f)))])));
+const sourceHashes=Object.fromEntries(await Promise.all([...new Set([...sourceFiles,...Object.keys(sourceManifest().files)])].map(async f=>[f,hash(await fs.readFile(path.join(import.meta.dirname,f)))])));
 const seed=Number(option('--seed','11'));
 const report={kind:'scripted mechanical development fixture; no model inference or procedure completion',seed,startedAt:new Date().toISOString(),sourceHashes,cuttingFixture:args.includes('--cutting')||args.includes('--closure'),closureFixture:args.includes('--closure'),steps:[],passed:false};
 async function api(route,body){const r=await fetch(base+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(12000)});const j=await r.json();if(!r.ok)throw Error(j.error);return j;}
