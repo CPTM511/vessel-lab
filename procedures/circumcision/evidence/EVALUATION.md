@@ -1,8 +1,8 @@
 # C0 independent controller evaluation
 
-**There are zero successful episodes across three started attempts.** Round1 seed11 was interrupted by an external access-status request failure; round1 seed29 failed synthetic gates; round2 seed11 stopped after an accepted command missed its rendered-feedback deadline. Seed83 has not started. The adult prototype has not met its release gate.
+**There are zero successful episodes across four ended attempts.** Round1 seed11 was interrupted by an external access-status request failure; round1 seed29 failed synthetic gates; round2 seed11 stopped after an accepted command missed its rendered-feedback deadline. Seed83 has not started. The adult prototype has not met its release gate.
 
-The [source and instruction freeze](../evaluation-freeze.json) was published at `47488cc1ed2a593021d28d5099ae6c16a6b9d119` before evaluation began. Runtime digest: `d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b`. The declared seeds remain **11, 29 and 83**; all three complete case successes are required by [protocol C0](../docs/PROTOCOL.md). Every attempt, including infrastructure interruptions, remains in the [evaluation ledger](c0-evaluation-status.json). The historical two-translation connectivity check is excluded from this denominator.
+The [initial source and instruction freeze](evaluation-rounds/round1-freeze.json) was published at `47488cc1ed2a593021d28d5099ae6c16a6b9d119` before evaluation began. Runtime digest: `d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b`. The declared seeds remain **11, 29 and 83**; all three complete case successes are required by [protocol C0](../docs/PROTOCOL.md). Every attempt, including infrastructure interruptions, remains in the [evaluation ledger](c0-evaluation-status.json). The historical two-translation connectivity check is excluded from this denominator.
 
 ## Round1 seed 11, attempt 01
 
@@ -63,3 +63,9 @@ node --test tests/controller-unsuccessful-record.test.mjs
 ```
 
 Both failure-verification modes return `episodeSucceeded: false`; default successful-episode verification rejects these records. Historical source bundles bind replay to the exact executed runtime instead of replaying against changed mechanics.
+
+Round3 seed11 began at2026-10-24 10:56:23 UTC under published commit`4726d5df45a192912d784ca38dfdea572ad4d95a`, runtime`b51db9fee0baa0223c905a8f4ed3b734dc8862c255e730079e327089474386ae`. It ended unsuccessfully at 11:31:46 UTC after 100 accepted moves and 153 actual image responses. The final accepted collection action missed the unchanged five-second feedback deadline. Full detachment, protected integrity and edge proximity passed, but collection and released hold did not. No successful Finish was recorded.
+
+## Round 4 preparation
+
+The targeted contact and mesh-template optimizations passed the [recorded validation](evaluation-rounds/round4-validation/METHOD.md). The [new source freeze](../evaluation-freeze.json) preserves the same declared seeds, exact model, controller instructions and C0 thresholds. All four previous failed attempts remain reported. No round 4 outcome is implied by scripted validation.

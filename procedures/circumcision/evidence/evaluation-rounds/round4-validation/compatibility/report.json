@@ -1,0 +1,276 @@
+{
+  "kind": "scripted mechanical development fixture; no model inference or procedure completion",
+  "passed": true,
+  "sourceHashes": {
+    "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+    "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+    "contact.mjs": "e3055167091828140224402372959da9a3f913d9519fe535fbd2494945bc0c9a",
+    "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+    "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+    "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "probe-mechanics.mjs": "cdb94e96bc93aa61c82433fd138dd364aac1ae7be17ad80852e6ebbd7fd1e2c9",
+    "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+    "godot/anatomy.gd": "a2baf2fa8d2160de0b52049e117402197249bd98b535dac1ed70f3f7bc7f1ebf",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/data/tissue-rest.json": "64162d9945a4893347e46b581dff327260981ee8b4688f877501f172e721c893",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+    "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+    "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+    "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+    "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+    "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+    "controller-spec.mjs": "b022bafe41c838b617b04a5975c6062626cadac0873f3a7d7eefcbacc1e98716",
+    "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+    "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+    "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+    "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a"
+  },
+  "frames": [
+    {
+      "index": 1,
+      "frame": {
+        "filename": "frame-001.jpg",
+        "imageHash": "264a31dfebbab112345fc1f01c20371cf9e3342e7db0d51da2147f4ba1edc5e2",
+        "revision": 2,
+        "mechanicsRevision": 1,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 571
+    },
+    {
+      "index": 2,
+      "frame": {
+        "filename": "frame-002.jpg",
+        "imageHash": "c95406d8f512504c1d4287aeac5d7f201586e6f15ef9e9b080a1c9c132bf4ccf",
+        "revision": 3,
+        "mechanicsRevision": 2,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 659
+    },
+    {
+      "index": 3,
+      "frame": {
+        "filename": "frame-003.jpg",
+        "imageHash": "de285e40b560fc4f91f677903841d74117b815b1329debc6d996661c0d322210",
+        "revision": 4,
+        "mechanicsRevision": 3,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 644
+    },
+    {
+      "index": 4,
+      "frame": {
+        "filename": "frame-004.jpg",
+        "imageHash": "3acf3ff054d7db9cc2a63415fbf14b816bf1dcac975385e2fdec73a75d5e3f95",
+        "revision": 5,
+        "mechanicsRevision": 4,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 641
+    },
+    {
+      "index": 5,
+      "frame": {
+        "filename": "frame-005.jpg",
+        "imageHash": "2ad049f6f73e09eacb317dc853fb43089709e7a60ef6a551b79f55b30f1a9c45",
+        "revision": 6,
+        "mechanicsRevision": 5,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 640
+    },
+    {
+      "index": 6,
+      "frame": {
+        "filename": "frame-006.jpg",
+        "imageHash": "6bd3df5810e2270f69e1dbc8e09331eecb96f9237435e171fc2152149f3f2cba",
+        "revision": 7,
+        "mechanicsRevision": 6,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 630
+    },
+    {
+      "index": 7,
+      "frame": {
+        "filename": "frame-007.jpg",
+        "imageHash": "6168c62ae6737d64b708fd41663c75597632764295eac29bf8b48d178774aed3",
+        "revision": 8,
+        "mechanicsRevision": 7,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 622
+    },
+    {
+      "index": 8,
+      "frame": {
+        "filename": "frame-008.jpg",
+        "imageHash": "b9ce2e4d8aad0c86e924141aa82fc816d608fd3059173bf738f3f94d34349404",
+        "revision": 9,
+        "mechanicsRevision": 8,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 656
+    },
+    {
+      "index": 9,
+      "frame": {
+        "filename": "frame-009.jpg",
+        "imageHash": "b6f0769ec35abc888a2ee8762102404306205962bb9a6254610cd9575e95c0b2",
+        "revision": 10,
+        "mechanicsRevision": 9,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 620
+    },
+    {
+      "index": 10,
+      "frame": {
+        "filename": "frame-010.jpg",
+        "imageHash": "72d1e0c46aeb6219a09a22991a36bcad3af2df4c7874efc52e31b81ee2cd3f3a",
+        "revision": 11,
+        "mechanicsRevision": 10,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 713
+    },
+    {
+      "index": 11,
+      "frame": {
+        "filename": "frame-011.jpg",
+        "imageHash": "56160b663313aee49b17673d4ea306932ff4be5f290ad4e9e33405e3a8d0722b",
+        "revision": 12,
+        "mechanicsRevision": 11,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 611
+    },
+    {
+      "index": 12,
+      "frame": {
+        "filename": "frame-012.jpg",
+        "imageHash": "22ec0cf603ef923f39ce53daf1f53745b50e00ce73f5f449decd0b6d02927582",
+        "revision": 13,
+        "mechanicsRevision": 12,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 613
+    },
+    {
+      "index": 13,
+      "frame": {
+        "filename": "frame-013.jpg",
+        "imageHash": "e9bb991900c7e0b797d0dfb54ccd4faa04ba03037b54477eee5d63988cd7fef9",
+        "revision": 14,
+        "mechanicsRevision": 13,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 617
+    },
+    {
+      "index": 14,
+      "frame": {
+        "filename": "frame-014.jpg",
+        "imageHash": "046a56809a52e0f0dd88d1afa763eba965be9fed26c1f14aee1bbbb956ba7182",
+        "revision": 15,
+        "mechanicsRevision": 14,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 714
+    },
+    {
+      "index": 15,
+      "frame": {
+        "filename": "frame-015.jpg",
+        "imageHash": "96b00518f5a1595318a889a20c0128957a3733aad605a9cfba0f045cb530a213",
+        "revision": 16,
+        "mechanicsRevision": 15,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 613
+    },
+    {
+      "index": 16,
+      "frame": {
+        "filename": "frame-016.jpg",
+        "imageHash": "c62a09a07408b09e2deaaea1872d9979a95e1d60d2def750e919e4de14652aa7",
+        "revision": 17,
+        "mechanicsRevision": 16,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 615
+    },
+    {
+      "index": 17,
+      "frame": {
+        "filename": "frame-017.jpg",
+        "imageHash": "a8b1f1f351a8f546030da92e5afd8850c651fc52a8ff5e211588ecc86ef35dd7",
+        "revision": 18,
+        "mechanicsRevision": 17,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 705
+    },
+    {
+      "index": 18,
+      "frame": {
+        "filename": "frame-018.jpg",
+        "imageHash": "bae4e25fe501b5cd6b7551c8d172ffa57f72142f532dece36220bfe280d0fa8e",
+        "revision": 19,
+        "mechanicsRevision": 18,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 722
+    },
+    {
+      "index": 19,
+      "frame": {
+        "filename": "frame-019.jpg",
+        "imageHash": "fd4ccd83821194e806c0602e95d3381d402e11aff8f98dee1c694b1c5df8bac2",
+        "revision": 20,
+        "mechanicsRevision": 19,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 681
+    },
+    {
+      "index": 20,
+      "frame": {
+        "filename": "frame-020.jpg",
+        "imageHash": "468cb3cdff5cbfadcef44ac4f5ece935e31df638b8a151716dab5a57d4e3a952",
+        "revision": 21,
+        "mechanicsRevision": 20,
+        "renderer": "gl_compatibility",
+        "driver": "opengl3"
+      },
+      "latencyMs": 1189
+    }
+  ],
+  "maxLatencyMs": 1189,
+  "scope": "Actual scripted verification; not a live autonomous procedure."
+}

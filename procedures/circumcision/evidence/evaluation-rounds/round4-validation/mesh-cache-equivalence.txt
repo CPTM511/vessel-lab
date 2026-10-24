@@ -1,0 +1,7 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Exact mesh arrays match: fixture 0
+Exact mesh arrays match: fixture 1
+Exact mesh arrays match: fixture 2
+Exact mesh arrays match: fixture 3
+Exact mesh arrays match: fixture 4

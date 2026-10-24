@@ -1,0 +1,23 @@
+✔ c0-seed-29-attempt-01 verifies failure without success (12061.305416ms)
+✔ c0-seed-29-attempt-01 cannot pass default success verification (11897.034417ms)
+✔ c0-seed-29-attempt-01 rejects source (68.271334ms)
+✔ c0-seed-29-attempt-01 rejects image (108.409375ms)
+✔ c0-seed-29-attempt-01 rejects missing result (11626.456417ms)
+✔ c0-round2-seed11-attempt01 verifies failure without success (32095.079459ms)
+✔ c0-round2-seed11-attempt01 cannot pass default success verification (73.75425ms)
+✔ c0-round2-seed11-attempt01 rejects source (139.626583ms)
+✔ c0-round2-seed11-attempt01 rejects image (234.445625ms)
+✔ c0-round2-seed11-attempt01 rejects missing result (31717.562666ms)
+✔ c0-round3-seed11-attempt01 verifies failure without success (70972.265042ms)
+✔ c0-round3-seed11-attempt01 cannot pass default success verification (68.182041ms)
+✔ c0-round3-seed11-attempt01 rejects source (146.75375ms)
+✔ c0-round3-seed11-attempt01 rejects image (160.685708ms)
+✔ c0-round3-seed11-attempt01 rejects missing result (69685.077334ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 241113.368875

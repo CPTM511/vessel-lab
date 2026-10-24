@@ -12,6 +12,8 @@ var mechanical_positions: Array = []
 var mechanical_faces: Array = []
 var rest_cage: Dictionary = {}
 var mechanical_scale = 1.0
+var mechanical_templates: Dictionary = {}
+var template_retraction = -1.0
 var surface_count = 0
 var triangle_count = 0
 
@@ -149,40 +151,58 @@ func fold_cell_active(theta: float) -> bool:
 			return false
 	return true
 
+func mechanical_template(face: Dictionary, layer: int) -> Array:
+	var uv_points: Array = []
+	for id in face.nodes:
+		var node: Dictionary = rest_cage.nodes[int(id)]
+		var j = int(node.j)
+		if int(face.j) == int(rest_cage.angular)-1 and j == 0:
+			j = int(rest_cage.angular)
+		uv_points.append(Vector2(float(j)/rest_cage.angular,float(node.ring)/rest_cage.axial))
+	var uvs = PackedVector2Array()
+	var rest_points = PackedVector3Array()
+	var weights = PackedVector3Array()
+	var divisions = 4
+	for i in range(divisions):
+		for j in range(divisions-i):
+			var triangles = [[Vector2(i,j),Vector2(i+1,j),Vector2(i,j+1)]]
+			if i+j < divisions-1:
+				triangles.append([Vector2(i+1,j),Vector2(i+1,j+1),Vector2(i,j+1)])
+			for triangle in triangles:
+				if layer == 0:
+					triangle.reverse()
+				for v in triangle:
+					var w = Vector3(1.0-(v.x+v.y)/divisions,v.x/divisions,v.y/divisions)
+					var uv: Vector2 = uv_points[0]*w.x+uv_points[1]*w.y+uv_points[2]*w.z
+					uvs.append(uv)
+					rest_points.append(prepuce_point(uv.y,uv.x*TAU,layer==1))
+					weights.append(w)
+	return [uvs,rest_points,weights]
+
 func mechanical_surface(layer: int) -> void:
+	if template_retraction != retraction:
+		mechanical_templates.clear()
+		template_retraction = retraction
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var divisions = 4
 	var count = 0
-	for face in mechanical_faces:
+	for face_id in range(mechanical_faces.size()):
+		var face: Dictionary = mechanical_faces[face_id]
 		if not face.active or int(face.layer) != layer:
 			continue
-		var ids: Array = face.nodes
-		var uv_points: Array = []
+		if not mechanical_templates.has(face_id):
+			mechanical_templates[face_id] = mechanical_template(face,layer)
+		var template: Array = mechanical_templates[face_id]
 		var deltas: Array = []
-		for id in ids:
+		for id in face.nodes:
 			var node: Dictionary = rest_cage.nodes[int(id)]
-			var j = int(node.j)
-			if int(face.j) == int(rest_cage.angular)-1 and j == 0:
-				j = int(rest_cage.angular)
-			uv_points.append(Vector2(float(j)/rest_cage.angular,float(node.ring)/rest_cage.axial))
 			deltas.append(vector_array(mechanical_positions[int(id)])/mechanical_scale-vector_array(node.rest))
-		for i in range(divisions):
-			for j in range(divisions-i):
-				var triangles = [[Vector2(i,j),Vector2(i+1,j),Vector2(i,j+1)]]
-				if i+j < divisions-1:
-					triangles.append([Vector2(i+1,j),Vector2(i+1,j+1),Vector2(i,j+1)])
-				for triangle in triangles:
-					# The inner face reverses winding; both materials remain two-sided.
-					if layer == 0:
-						triangle.reverse()
-					for v in triangle:
-						var w = Vector3(1.0-(v.x+v.y)/divisions,v.x/divisions,v.y/divisions)
-						var uv: Vector2 = uv_points[0]*w.x+uv_points[1]*w.y+uv_points[2]*w.z
-						var delta: Vector3 = deltas[0]*w.x+deltas[1]*w.y+deltas[2]*w.z
-						st.set_uv(uv)
-						st.add_vertex(prepuce_point(uv.y,uv.x*TAU,layer==1)+delta)
-					count += 1
+		for index in range(template[0].size()):
+			var w: Vector3 = template[2][index]
+			var delta: Vector3 = deltas[0]*w.x+deltas[1]*w.y+deltas[2]*w.z
+			st.set_uv(template[0][index])
+			st.add_vertex(template[1][index]+delta)
+			count += 1
 	if count == 0:
 		return
 	st.index()

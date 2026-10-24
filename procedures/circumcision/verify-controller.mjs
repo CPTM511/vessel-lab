@@ -5,7 +5,8 @@ import fs from 'node:fs';import path from 'node:path';import assert from 'node:a
 
 const dir=path.resolve(process.argv[2]),lines=fs.readFileSync(path.join(dir,'agent.jsonl'),'utf8').trim().split('\n'),rows=lines.map(JSON.parse),wire=x=>JSON.parse(JSON.stringify(x));
 const recordedDigest=rows.find(r=>r.type==='configuration')?.source?.digest;
-const runtime=recordedDigest==='d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b'?'./evidence/runtime-c0-round1/procedures/circumcision/':recordedDigest==='80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320'?'./evidence/runtime-c0-round2/procedures/circumcision/':'./';
+const historicalRuntimes={'d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b':'round1','80eebb1d781e2070099d52036405363937cf8884b32cbebd7a8c886b91818320':'round2','b51db9fee0baa0223c905a8f4ed3b734dc8862c255e730079e327089474386ae':'round3'};
+const runtime=historicalRuntimes[recordedDigest]?'./evidence/runtime-c0-'+historicalRuntimes[recordedDigest]+'/procedures/circumcision/':'./';
 const {TissueSim}=await import(runtime+'mechanics.mjs'),{geometryQuery}=await import(runtime+'instrumentation.mjs');
 const {sourceManifest,sha256}=await import(runtime+'manifest.mjs'),{MODEL,instructions,toolsForTask,prompts}=await import(runtime+'controller-spec.mjs');
 const abortedAccess=process.argv.includes('--aborted-access');

@@ -1,0 +1,1801 @@
+{
+  "kind": "scripted instrument trajectory development fixture; no model inference",
+  "passed": true,
+  "sourceHashes": {
+    "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+    "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+    "contact.mjs": "e3055167091828140224402372959da9a3f913d9519fe535fbd2494945bc0c9a",
+    "mesh-audit.mjs": "2708b75b995b37d3520ef5e762f3e0c23c3d8ea5989d7ff9385175779f8bf74f",
+    "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+    "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+    "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "probe-mechanics.mjs": "cdb94e96bc93aa61c82433fd138dd364aac1ae7be17ad80852e6ebbd7fd1e2c9",
+    "probe-trajectory.mjs": "9857060aa24bc57e4381b3c404f6c4eb56ab56fb5e10f09a48311b8506398920",
+    "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+    "godot/anatomy.gd": "a2baf2fa8d2160de0b52049e117402197249bd98b535dac1ed70f3f7bc7f1ebf",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/data/tissue-rest.json": "64162d9945a4893347e46b581dff327260981ee8b4688f877501f172e721c893",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+    "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+    "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+    "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+    "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+    "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+    "controller-spec.mjs": "b022bafe41c838b617b04a5975c6062626cadac0873f3a7d7eefcbacc1e98716",
+    "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+    "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+    "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+    "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a"
+  },
+  "frames": [
+    {
+      "index": 1,
+      "frame": {
+        "filename": "frame-0001.jpg",
+        "imageHash": "ceebe8f8ec843ee68f60b3b59ddad462431cfc882abefe4cc8a0afc10030be72",
+        "revision": 2,
+        "mechanicsRevision": 1,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1560
+    },
+    {
+      "index": 2,
+      "frame": {
+        "filename": "frame-0002.jpg",
+        "imageHash": "84dde7c3d3d394a3ba4be77fdad557f419cacf45bad830936eb6dd9a4f82ec5e",
+        "revision": 3,
+        "mechanicsRevision": 2,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1375
+    },
+    {
+      "index": 3,
+      "frame": {
+        "filename": "frame-0003.jpg",
+        "imageHash": "d2eef96d962dc1ab6fd4f0fc61218e0c303866db7d18057a98c5bbd26f535faf",
+        "revision": 4,
+        "mechanicsRevision": 3,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1348
+    },
+    {
+      "index": 4,
+      "frame": {
+        "filename": "frame-0004.jpg",
+        "imageHash": "bab5a5bf6cb64163101f2693837ee7c1427f289e4843f624e8d79b8fd1828fa8",
+        "revision": 5,
+        "mechanicsRevision": 4,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1368
+    },
+    {
+      "index": 5,
+      "frame": {
+        "filename": "frame-0005.jpg",
+        "imageHash": "804417b42a2000290b8535853e3c5cd8d81fc50f012cdb192b5a787d3f1967e9",
+        "revision": 6,
+        "mechanicsRevision": 5,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1347
+    },
+    {
+      "index": 6,
+      "frame": {
+        "filename": "frame-0006.jpg",
+        "imageHash": "7dedaa3e7f1cda178c71785cea31c9b9097e16c1360f41baefe587284209383f",
+        "revision": 7,
+        "mechanicsRevision": 6,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1347
+    },
+    {
+      "index": 7,
+      "frame": {
+        "filename": "frame-0007.jpg",
+        "imageHash": "2eeece8b57710b2e1570cf8b0b30941e75984f4c072b500479faabb6db5be28e",
+        "revision": 8,
+        "mechanicsRevision": 7,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1266
+    },
+    {
+      "index": 8,
+      "frame": {
+        "filename": "frame-0008.jpg",
+        "imageHash": "42629edd6ceb086c72ca4142e302aacd916826a0dd7a7d4b049d7cd702dc2b7c",
+        "revision": 9,
+        "mechanicsRevision": 8,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1326
+    },
+    {
+      "index": 9,
+      "frame": {
+        "filename": "frame-0009.jpg",
+        "imageHash": "f7dd00b7f52f185a504c41e9a9eac15bb1e94862335a3a6ba5c84529a9eb01a4",
+        "revision": 10,
+        "mechanicsRevision": 9,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1316
+    },
+    {
+      "index": 10,
+      "frame": {
+        "filename": "frame-0010.jpg",
+        "imageHash": "e204a80662672899bdec919264516751a6d6e6d87b7a0f98215d1c05cdd243d1",
+        "revision": 11,
+        "mechanicsRevision": 10,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1337
+    },
+    {
+      "index": 11,
+      "frame": {
+        "filename": "frame-0011.jpg",
+        "imageHash": "cf964f616f45d656084f3cdb023e08ce2be547176983df47d129e818cca9e6cd",
+        "revision": 12,
+        "mechanicsRevision": 11,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1355
+    },
+    {
+      "index": 12,
+      "frame": {
+        "filename": "frame-0012.jpg",
+        "imageHash": "041c71f2a7484231fd6a0ebf4331b666799ff01dc0e3bd8ba859b0c4c690a8e9",
+        "revision": 13,
+        "mechanicsRevision": 12,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1176
+    },
+    {
+      "index": 13,
+      "frame": {
+        "filename": "frame-0013.jpg",
+        "imageHash": "cea26964df212ffd718537f33f0f2cc8bee12f796e7be4a541e2f144d9e8421b",
+        "revision": 14,
+        "mechanicsRevision": 13,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 797
+    },
+    {
+      "index": 14,
+      "frame": {
+        "filename": "frame-0014.jpg",
+        "imageHash": "819095e47320c43d68e909c203a52d16ef9847dffaba914a3d4248e4cee18fbb",
+        "revision": 15,
+        "mechanicsRevision": 14,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 783
+    },
+    {
+      "index": 15,
+      "frame": {
+        "filename": "frame-0015.jpg",
+        "imageHash": "451a9461c779568e8ff30a8615c492938d24de9374eb5f932fe7bee2671bf514",
+        "revision": 16,
+        "mechanicsRevision": 15,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 678
+    },
+    {
+      "index": 16,
+      "frame": {
+        "filename": "frame-0016.jpg",
+        "imageHash": "41d3d3c1bbd9d80b22d7b94bdcae6a9c06f466dd5f5e72ce3c233d036c70f9ad",
+        "revision": 17,
+        "mechanicsRevision": 16,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 762
+    },
+    {
+      "index": 17,
+      "frame": {
+        "filename": "frame-0017.jpg",
+        "imageHash": "b0f748a5a32f95b1d2b795d986e9985c4f8754f7678f75826b6cc4cdb7d4de9c",
+        "revision": 18,
+        "mechanicsRevision": 17,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 840
+    },
+    {
+      "index": 18,
+      "frame": {
+        "filename": "frame-0018.jpg",
+        "imageHash": "4fd90f6b2a1ad30b6ace6e18f922c82c51daa2f3ea26dae6b19fd2a0451db1e6",
+        "revision": 19,
+        "mechanicsRevision": 18,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 773
+    },
+    {
+      "index": 19,
+      "frame": {
+        "filename": "frame-0019.jpg",
+        "imageHash": "6b3624c97f886bb495fce8492217d967384a59741940eeeed2577794455f7695",
+        "revision": 20,
+        "mechanicsRevision": 19,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 756
+    },
+    {
+      "index": 20,
+      "frame": {
+        "filename": "frame-0020.jpg",
+        "imageHash": "8b9ad383def894ffed0f63df1cff845b8aa746d5ba74e03b75f96bd91ca0cd0f",
+        "revision": 21,
+        "mechanicsRevision": 20,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 750
+    },
+    {
+      "index": 21,
+      "frame": {
+        "filename": "frame-0021.jpg",
+        "imageHash": "0e48051c124cd1a7ef790e148a57e0dabd9cc5cf42ae26ae60c686ad3e0e47db",
+        "revision": 22,
+        "mechanicsRevision": 21,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 836
+    },
+    {
+      "index": 22,
+      "frame": {
+        "filename": "frame-0022.jpg",
+        "imageHash": "991b9969dac3fc0d61452243838dfbb6a56722a2522f060b888ae15c6ee4531e",
+        "revision": 23,
+        "mechanicsRevision": 22,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 764
+    },
+    {
+      "index": 23,
+      "frame": {
+        "filename": "frame-0023.jpg",
+        "imageHash": "51e326410b1de4ca0405bcc1b3f6b93d6735b0b9d9ca1a02700dbf3814206c70",
+        "revision": 24,
+        "mechanicsRevision": 23,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 826
+    },
+    {
+      "index": 24,
+      "frame": {
+        "filename": "frame-0024.jpg",
+        "imageHash": "bb1d88001e71ed9c9cc7467cb6bf8698d9fc36565b1540a4111e70434ca0bbea",
+        "revision": 25,
+        "mechanicsRevision": 24,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 765
+    },
+    {
+      "index": 25,
+      "frame": {
+        "filename": "frame-0025.jpg",
+        "imageHash": "3f07cf5e10f2dfe18706a12190b5ae66a405fc4de05edd16a98f451615140786",
+        "revision": 26,
+        "mechanicsRevision": 25,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 844
+    },
+    {
+      "index": 26,
+      "frame": {
+        "filename": "frame-0026.jpg",
+        "imageHash": "54f9c23e7f44033159237ee1af9e23cf6ed9ad892bb378ad050e3cdd448ffe6f",
+        "revision": 27,
+        "mechanicsRevision": 26,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 751
+    },
+    {
+      "index": 27,
+      "frame": {
+        "filename": "frame-0027.jpg",
+        "imageHash": "63b5013871453067eca9587692223f8b733c51b346831e3595f5dec06813aa96",
+        "revision": 28,
+        "mechanicsRevision": 27,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 841
+    },
+    {
+      "index": 28,
+      "frame": {
+        "filename": "frame-0028.jpg",
+        "imageHash": "a60de202f460f7f96c60a9e923a483644e2f02dbc52cb86031886e8d0708a617",
+        "revision": 29,
+        "mechanicsRevision": 28,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 753
+    },
+    {
+      "index": 29,
+      "frame": {
+        "filename": "frame-0029.jpg",
+        "imageHash": "15d76ed0a01fed195fbedc576e30974608baa6824fa04a66ae091ec282fac194",
+        "revision": 30,
+        "mechanicsRevision": 29,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 772
+    },
+    {
+      "index": 30,
+      "frame": {
+        "filename": "frame-0030.jpg",
+        "imageHash": "95f154b508fe1c43857b4bdc90624fe874218e760566b2af1e8a6619818f3c70",
+        "revision": 31,
+        "mechanicsRevision": 30,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 761
+    },
+    {
+      "index": 31,
+      "frame": {
+        "filename": "frame-0031.jpg",
+        "imageHash": "b6b1a53992b2174ad24bca2c2e83285ec93fce1141e7605204d41bff78703c60",
+        "revision": 32,
+        "mechanicsRevision": 31,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 751
+    },
+    {
+      "index": 32,
+      "frame": {
+        "filename": "frame-0032.jpg",
+        "imageHash": "05c7df3a84a4fd49194d84edfba8cfd48180f48e584eecbe0a6a197b9587c9bb",
+        "revision": 33,
+        "mechanicsRevision": 32,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 828
+    },
+    {
+      "index": 33,
+      "frame": {
+        "filename": "frame-0033.jpg",
+        "imageHash": "14d808c518ddc3a5bb902e22b25a4e80b0c35523d638124126a83ae5c35f6cf5",
+        "revision": 34,
+        "mechanicsRevision": 33,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 748
+    },
+    {
+      "index": 34,
+      "frame": {
+        "filename": "frame-0034.jpg",
+        "imageHash": "d3e5c208956c5991905ab7b3c1c495f2fc45a5292684b76f41655e9b7d807b31",
+        "revision": 35,
+        "mechanicsRevision": 34,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 748
+    },
+    {
+      "index": 35,
+      "frame": {
+        "filename": "frame-0035.jpg",
+        "imageHash": "2462dc2eef0bb4572fe0f7ff561e12b704a5fe4642a2a2cfcc5f233394d445c8",
+        "revision": 36,
+        "mechanicsRevision": 35,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 835
+    },
+    {
+      "index": 36,
+      "frame": {
+        "filename": "frame-0036.jpg",
+        "imageHash": "3bb68d91b7d16368fdeb2ada86ba373c0c61ca3d547df08717d644ac2b83a5a3",
+        "revision": 37,
+        "mechanicsRevision": 36,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 751
+    },
+    {
+      "index": 37,
+      "frame": {
+        "filename": "frame-0037.jpg",
+        "imageHash": "11295b7fb5aeb33a13eac6adbd408319ab4d5f101c8b8a9fd4b2ff82c4e2378b",
+        "revision": 38,
+        "mechanicsRevision": 37,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 830
+    },
+    {
+      "index": 38,
+      "frame": {
+        "filename": "frame-0038.jpg",
+        "imageHash": "4f29f84f3bb1f03d3aff450c5026fa172bef554a4419e14a88be843d057e8f3f",
+        "revision": 39,
+        "mechanicsRevision": 38,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 743
+    },
+    {
+      "index": 39,
+      "frame": {
+        "filename": "frame-0039.jpg",
+        "imageHash": "f81e48c668f6b208dc79bebb890ca886549bf83f05003a16867af03550e21b4c",
+        "revision": 40,
+        "mechanicsRevision": 39,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 837
+    },
+    {
+      "index": 40,
+      "frame": {
+        "filename": "frame-0040.jpg",
+        "imageHash": "fdddc055c2ca85939fb0ab8a41bdf5ce0bddcdb6a82e0d776da06cdf6583820f",
+        "revision": 41,
+        "mechanicsRevision": 40,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 754
+    },
+    {
+      "index": 41,
+      "frame": {
+        "filename": "frame-0041.jpg",
+        "imageHash": "2fc12cbafd6aad8f729f7cceb8bed031074f2f088a21c556e2f0a8f0fc491f55",
+        "revision": 42,
+        "mechanicsRevision": 41,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 831
+    },
+    {
+      "index": 42,
+      "frame": {
+        "filename": "frame-0042.jpg",
+        "imageHash": "179c085dccea041c2ffda64f242e1c8236722ab5377a34d9c2ee5dbd2db6f94f",
+        "revision": 43,
+        "mechanicsRevision": 42,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 753
+    },
+    {
+      "index": 43,
+      "frame": {
+        "filename": "frame-0043.jpg",
+        "imageHash": "42668ab52cd4bf08d4e74fee73153f76f3374f4e34368597281c4c14fd848e11",
+        "revision": 44,
+        "mechanicsRevision": 43,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 746
+    },
+    {
+      "index": 44,
+      "frame": {
+        "filename": "frame-0044.jpg",
+        "imageHash": "3f5947d93861de047ae5bc990ead88e0d513301e5aa350b215d473c42c03b8b3",
+        "revision": 45,
+        "mechanicsRevision": 44,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 831
+    },
+    {
+      "index": 45,
+      "frame": {
+        "filename": "frame-0045.jpg",
+        "imageHash": "05290248081ed7468456d907d6b273f6ee816aa1cdc1ea90ef46d54d3f6ff0b1",
+        "revision": 46,
+        "mechanicsRevision": 45,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 753
+    },
+    {
+      "index": 46,
+      "frame": {
+        "filename": "frame-0046.jpg",
+        "imageHash": "93b1af382a816edc98218cd47de58ec38fbcdbd21d1facdf4399119ad970a611",
+        "revision": 47,
+        "mechanicsRevision": 46,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 830
+    },
+    {
+      "index": 47,
+      "frame": {
+        "filename": "frame-0047.jpg",
+        "imageHash": "7933c32766a79a5e29f3bac91f9280a56b3515ee11c9a207725e8fedc9e8c60b",
+        "revision": 48,
+        "mechanicsRevision": 47,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 749
+    },
+    {
+      "index": 48,
+      "frame": {
+        "filename": "frame-0048.jpg",
+        "imageHash": "177688fb9128b9450751e7f046617704f7cfe726952ac50ea697c53cd179648a",
+        "revision": 49,
+        "mechanicsRevision": 48,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 753
+    },
+    {
+      "index": 49,
+      "frame": {
+        "filename": "frame-0049.jpg",
+        "imageHash": "7cd9ad2eec93f86d8bf3f3e4d064d4baef6b5bc6c902cca1ae5b8c71859dd617",
+        "revision": 50,
+        "mechanicsRevision": 49,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 660
+    },
+    {
+      "index": 50,
+      "frame": {
+        "filename": "frame-0050.jpg",
+        "imageHash": "e12ea9ad6367813bf430c0575f3b1df9a6666afbafb7137577ba5fbea6737cec",
+        "revision": 51,
+        "mechanicsRevision": 50,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 742
+    },
+    {
+      "index": 51,
+      "frame": {
+        "filename": "frame-0051.jpg",
+        "imageHash": "2f444ba7e71b898767e7ee681c114195820a445e3e0d67685b0191c4e9d7b270",
+        "revision": 52,
+        "mechanicsRevision": 51,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 832
+    },
+    {
+      "index": 52,
+      "frame": {
+        "filename": "frame-0052.jpg",
+        "imageHash": "f407fa766994118697f38e6d5f62a774640f6f189da6abba50dd3d2256525c26",
+        "revision": 53,
+        "mechanicsRevision": 52,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 823
+    },
+    {
+      "index": 53,
+      "frame": {
+        "filename": "frame-0053.jpg",
+        "imageHash": "2b91d2d483760da15711efd43f54770cac4c432e4c6c76ced3cf0678783ae9cb",
+        "revision": 54,
+        "mechanicsRevision": 53,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 753
+    },
+    {
+      "index": 54,
+      "frame": {
+        "filename": "frame-0054.jpg",
+        "imageHash": "4a4853ee97f3601345b62e5fdb43e24fbc5f1c5bd3da6d1f26fdb6f6cdfe5216",
+        "revision": 55,
+        "mechanicsRevision": 54,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 758
+    },
+    {
+      "index": 55,
+      "frame": {
+        "filename": "frame-0055.jpg",
+        "imageHash": "e1023046962f8c4de48246383b7eb79b36fcf5365e33acc58998398ce5e02274",
+        "revision": 56,
+        "mechanicsRevision": 55,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 760
+    },
+    {
+      "index": 56,
+      "frame": {
+        "filename": "frame-0056.jpg",
+        "imageHash": "a6bd52f405cfd0024c442f37a72d0896202e50e1b2bbc6181162f130014010f9",
+        "revision": 57,
+        "mechanicsRevision": 56,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 779
+    },
+    {
+      "index": 57,
+      "frame": {
+        "filename": "frame-0057.jpg",
+        "imageHash": "8669362522da04389c1e1b4669dc76547aa55cf1994814db1efd42f470a4502c",
+        "revision": 58,
+        "mechanicsRevision": 57,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1730
+    },
+    {
+      "index": 58,
+      "frame": {
+        "filename": "frame-0058.jpg",
+        "imageHash": "695429f04ebc164debcf1d3b995265c5caec02337fbcb63bbc6206ef7cf48142",
+        "revision": 59,
+        "mechanicsRevision": 58,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1595
+    },
+    {
+      "index": 59,
+      "frame": {
+        "filename": "frame-0059.jpg",
+        "imageHash": "1fedea134df7e6d2b6d5fee3ea5eb72dbaacc2abea7e41d0c0dbff500526513b",
+        "revision": 60,
+        "mechanicsRevision": 59,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1500
+    },
+    {
+      "index": 60,
+      "frame": {
+        "filename": "frame-0060.jpg",
+        "imageHash": "a919150e2d20f2c73331da1e810c606ecb7670f29bf8de7863ea9be7efad8f62",
+        "revision": 61,
+        "mechanicsRevision": 60,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1400
+    },
+    {
+      "index": 61,
+      "frame": {
+        "filename": "frame-0061.jpg",
+        "imageHash": "de820d5daef76513e4d5a2ad58d9226bbf4e06ec85e77e803777dd0cacba7aec",
+        "revision": 62,
+        "mechanicsRevision": 61,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1076
+    },
+    {
+      "index": 62,
+      "frame": {
+        "filename": "frame-0062.jpg",
+        "imageHash": "c08157fc49f9722fb9296281ec6996d078d8a842f89fad53e0d0a36d6ae34bba",
+        "revision": 63,
+        "mechanicsRevision": 62,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 862
+    },
+    {
+      "index": 63,
+      "frame": {
+        "filename": "frame-0063.jpg",
+        "imageHash": "7da7c5900e6cc78962d02813a97959bb99d245baf1b3a126372274a435d253e1",
+        "revision": 64,
+        "mechanicsRevision": 63,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 722
+    },
+    {
+      "index": 64,
+      "frame": {
+        "filename": "frame-0064.jpg",
+        "imageHash": "0a5d9cdfa117c600b4a79c569e0cb2e9da08ad62976fef8410e305ee25b624da",
+        "revision": 65,
+        "mechanicsRevision": 64,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 793
+    },
+    {
+      "index": 65,
+      "frame": {
+        "filename": "frame-0065.jpg",
+        "imageHash": "945c03d16fbd41323e2f53f97cd74f5353ebca6e908f21161bd4dfbbc1615132",
+        "revision": 66,
+        "mechanicsRevision": 65,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 842
+    },
+    {
+      "index": 66,
+      "frame": {
+        "filename": "frame-0066.jpg",
+        "imageHash": "8560e207a9c6db40dc9a494a7b94dfc2dc50d30991e9bb83aec640de85395eb6",
+        "revision": 67,
+        "mechanicsRevision": 66,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 893
+    },
+    {
+      "index": 67,
+      "frame": {
+        "filename": "frame-0067.jpg",
+        "imageHash": "305121e5218419592667963c70ad046e7bb472dc22f793db59d62598467f9e08",
+        "revision": 68,
+        "mechanicsRevision": 67,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 709
+    },
+    {
+      "index": 68,
+      "frame": {
+        "filename": "frame-0068.jpg",
+        "imageHash": "b79d91a3d94e32a3b1a5b274b76ad5eed030678bee3b2969b24baf55e59b0050",
+        "revision": 69,
+        "mechanicsRevision": 68,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1206
+    },
+    {
+      "index": 69,
+      "frame": {
+        "filename": "frame-0069.jpg",
+        "imageHash": "90fa9642415e63d9a80c9be476ae37fb55fbecaa6b4f47ba18d21705abba3359",
+        "revision": 70,
+        "mechanicsRevision": 69,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1075
+    },
+    {
+      "index": 70,
+      "frame": {
+        "filename": "frame-0070.jpg",
+        "imageHash": "85b58c41f83dcf73b61eff5404cb88a2b2a5fa4ded378795d7b9a563efdf8cdf",
+        "revision": 71,
+        "mechanicsRevision": 70,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 850
+    },
+    {
+      "index": 71,
+      "frame": {
+        "filename": "frame-0071.jpg",
+        "imageHash": "170178401d92c0f98ade0ab24dc6633fc3c182fd4b110e6554de492cd2c8448f",
+        "revision": 72,
+        "mechanicsRevision": 71,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1303
+    },
+    {
+      "index": 72,
+      "frame": {
+        "filename": "frame-0072.jpg",
+        "imageHash": "5db31cf7089e16c24677208329f62e0ff6b396192b1b73b5798bbb9a4ba662aa",
+        "revision": 73,
+        "mechanicsRevision": 72,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 646
+    },
+    {
+      "index": 73,
+      "frame": {
+        "filename": "frame-0073.jpg",
+        "imageHash": "036c1ba52ee4da5263ca7429186b06cceb8fd38eb01194a27e1c8563297a2421",
+        "revision": 74,
+        "mechanicsRevision": 73,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1182
+    },
+    {
+      "index": 74,
+      "frame": {
+        "filename": "frame-0074.jpg",
+        "imageHash": "bd1d655684bcdaa38bf51ab73e33a6ceedb2d1e6d89a0624195f4b6abf71b5bf",
+        "revision": 75,
+        "mechanicsRevision": 74,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1237
+    },
+    {
+      "index": 75,
+      "frame": {
+        "filename": "frame-0075.jpg",
+        "imageHash": "2f4f4870762fa5c86718d1e81e89bb1978186d9c6717198d2f7e7ff9a0cdf9f3",
+        "revision": 76,
+        "mechanicsRevision": 75,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1216
+    },
+    {
+      "index": 76,
+      "frame": {
+        "filename": "frame-0076.jpg",
+        "imageHash": "309979de11ae482dbcbab1daada0ae57fa569e107b274de4a10442b6c053fa2a",
+        "revision": 77,
+        "mechanicsRevision": 76,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1311
+    },
+    {
+      "index": 77,
+      "frame": {
+        "filename": "frame-0077.jpg",
+        "imageHash": "29c1aa9d2059ec57566b9ddca36c031118d5f579f9088654ddd592f87df40bb9",
+        "revision": 78,
+        "mechanicsRevision": 77,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1242
+    },
+    {
+      "index": 78,
+      "frame": {
+        "filename": "frame-0078.jpg",
+        "imageHash": "9644533446a1d31baad1d82a188c10a4c49cc715ecff79062af4544f923c00aa",
+        "revision": 79,
+        "mechanicsRevision": 78,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1249
+    },
+    {
+      "index": 79,
+      "frame": {
+        "filename": "frame-0079.jpg",
+        "imageHash": "837ccfead3e04db89acdf92af730f58abef70efdacddca7d422a7e9654cabf11",
+        "revision": 80,
+        "mechanicsRevision": 79,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1247
+    },
+    {
+      "index": 80,
+      "frame": {
+        "filename": "frame-0080.jpg",
+        "imageHash": "93645ede7ca2bbd486573026fdca9eb6e152c3944618d70867b24bab55102f30",
+        "revision": 81,
+        "mechanicsRevision": 80,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1270
+    },
+    {
+      "index": 81,
+      "frame": {
+        "filename": "frame-0081.jpg",
+        "imageHash": "fd35ee14be8f6f8c5170a3c6597651849ba5020dd07728e4b5b07ce2f67f9b9f",
+        "revision": 82,
+        "mechanicsRevision": 81,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1237
+    },
+    {
+      "index": 82,
+      "frame": {
+        "filename": "frame-0082.jpg",
+        "imageHash": "f76dd96836d5c0350ce6496f7a900649165492fc169aa23bb3b8fd11cd8d61d1",
+        "revision": 83,
+        "mechanicsRevision": 82,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1244
+    },
+    {
+      "index": 83,
+      "frame": {
+        "filename": "frame-0083.jpg",
+        "imageHash": "0f56aa1ded81266155baea82707d7011cea2d4c76b9ff5fd53b46671102cce44",
+        "revision": 84,
+        "mechanicsRevision": 83,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1190
+    },
+    {
+      "index": 84,
+      "frame": {
+        "filename": "frame-0084.jpg",
+        "imageHash": "6418c0112b09845ea31549155df317fec21f774d842a3d0c40bdc0c5f31a5102",
+        "revision": 85,
+        "mechanicsRevision": 84,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1217
+    },
+    {
+      "index": 85,
+      "frame": {
+        "filename": "frame-0085.jpg",
+        "imageHash": "df6720d332d24410724108618436829617dcc9d0d2f02bfe7e05b3a28f3ed2cf",
+        "revision": 86,
+        "mechanicsRevision": 85,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 768
+    },
+    {
+      "index": 86,
+      "frame": {
+        "filename": "frame-0086.jpg",
+        "imageHash": "570acc7045ccf7b8355192295059c5de040ead9cde6fc2c71e16473a07dc9f76",
+        "revision": 87,
+        "mechanicsRevision": 86,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1169
+    },
+    {
+      "index": 87,
+      "frame": {
+        "filename": "frame-0087.jpg",
+        "imageHash": "a010703839c0473447d7e4818d52a457d9405e98dff664c6ecfa349135d99459",
+        "revision": 88,
+        "mechanicsRevision": 87,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1147
+    },
+    {
+      "index": 88,
+      "frame": {
+        "filename": "frame-0088.jpg",
+        "imageHash": "0b6292b731ac8f595bcb5c26815413b085ce3adf769313671d94c0ec121f382f",
+        "revision": 89,
+        "mechanicsRevision": 88,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 628
+    },
+    {
+      "index": 89,
+      "frame": {
+        "filename": "frame-0089.jpg",
+        "imageHash": "740a8657c35e52e939f0d079186654cc2da7a504006c8a7c81ca12490af41d2b",
+        "revision": 90,
+        "mechanicsRevision": 89,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 785
+    },
+    {
+      "index": 90,
+      "frame": {
+        "filename": "frame-0090.jpg",
+        "imageHash": "2db38e0ccd959a9bf1b633c0ee88a04dd49f69715785ef2f0a572b3af8ec8a9f",
+        "revision": 91,
+        "mechanicsRevision": 90,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 810
+    },
+    {
+      "index": 91,
+      "frame": {
+        "filename": "frame-0091.jpg",
+        "imageHash": "2ce6b4728dc1b5aca465fd7604c764b877ebe1d3df4e3922c278e3f42a023cf1",
+        "revision": 92,
+        "mechanicsRevision": 91,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 728
+    },
+    {
+      "index": 92,
+      "frame": {
+        "filename": "frame-0092.jpg",
+        "imageHash": "ffda6f4b7165f1f3233aff568dc2893f152c1793ea7234e2d4c887aa42fbfae0",
+        "revision": 93,
+        "mechanicsRevision": 92,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 1098
+    },
+    {
+      "index": 93,
+      "frame": {
+        "filename": "frame-0093.jpg",
+        "imageHash": "9c37d0a06f9263f84cb1c378d87cc50902ea1bac04092fb43cfee3029a6f5fbd",
+        "revision": 94,
+        "mechanicsRevision": 93,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 758
+    },
+    {
+      "index": 94,
+      "frame": {
+        "filename": "frame-0094.jpg",
+        "imageHash": "22adf7927c0427c463b493fe693258ba330027172b2bff0b358fc76e553e0cb5",
+        "revision": 95,
+        "mechanicsRevision": 94,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 2181
+    },
+    {
+      "index": 95,
+      "frame": {
+        "filename": "frame-0095.jpg",
+        "imageHash": "8d37451de9022c4040b695e0c66cea719521c2e0b232db6cae7b121ce31b83ab",
+        "revision": 96,
+        "mechanicsRevision": 95,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 2862
+    },
+    {
+      "index": 96,
+      "frame": {
+        "filename": "frame-0096.jpg",
+        "imageHash": "e6af290ae52bf513c5b7abc5af48d4c931bfb9ba556dfa2ee4d7e02733c624b5",
+        "revision": 97,
+        "mechanicsRevision": 96,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 2938
+    },
+    {
+      "index": 97,
+      "frame": {
+        "filename": "frame-0097.jpg",
+        "imageHash": "044035d67a1bbcf37fb3c3e5d410da2b05d9d9b2019893cfba5d0a80c4e91efb",
+        "revision": 98,
+        "mechanicsRevision": 97,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 3210
+    },
+    {
+      "index": 98,
+      "frame": {
+        "filename": "frame-0098.jpg",
+        "imageHash": "c45f7305d1497d3fef43e5388472785c86b3999fd5f4a8eccd4e40a3ed8aad5b",
+        "revision": 99,
+        "mechanicsRevision": 98,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 3360
+    },
+    {
+      "index": 99,
+      "frame": {
+        "filename": "frame-0099.jpg",
+        "imageHash": "8b3e877fd25dc048d966a723dff612f2ee07c4f57bc07c13a5139206baa3000e",
+        "revision": 100,
+        "mechanicsRevision": 99,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 3092
+    },
+    {
+      "index": 100,
+      "frame": {
+        "filename": "frame-0100.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 101,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 3764
+    }
+  ],
+  "maxLatencyMs": 3764,
+  "scope": "Actual scripted verification; not a live autonomous procedure.",
+  "finalAssessment": {
+    "protocol": "C0",
+    "passed": false,
+    "gates": {
+      "targetDetached": true,
+      "offTargetPreserved": true,
+      "protectedVolumes": true,
+      "retainedEdgeApproximation": true,
+      "releasedHold": false,
+      "retainedIntegrity": true,
+      "resolvedTargetComponents": false
+    },
+    "failedGates": [
+      "releasedHold",
+      "resolvedTargetComponents"
+    ],
+    "area": {
+      "targetMaskHash": "97f39ede2e71c69440b2b1854592299231ca24be94dc29e78376ea1ec95f656b",
+      "targetInitialAreaMm2": 3972.6170977376937,
+      "nonTargetInitialAreaMm2": 2254.6275568629844,
+      "targetDetachedAreaMm2": 3972.6170977376937,
+      "targetDetachedFraction": 1,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 303.12484693657973
+    },
+    "closure": {
+      "totalSamples": 48,
+      "validSamples": 48,
+      "coveredSamples": 48,
+      "coverage": 1,
+      "samples": [
+        {
+          "index": 0,
+          "nodes": [
+            576,
+            1392
+          ],
+          "valid": true,
+          "gapMm": 0.44967489926025245,
+          "withinTolerance": true
+        },
+        {
+          "index": 1,
+          "nodes": [
+            577,
+            1393
+          ],
+          "valid": true,
+          "gapMm": 0.39235725769654417,
+          "withinTolerance": true
+        },
+        {
+          "index": 2,
+          "nodes": [
+            578,
+            1394
+          ],
+          "valid": true,
+          "gapMm": 0.4200344926088971,
+          "withinTolerance": true
+        },
+        {
+          "index": 3,
+          "nodes": [
+            579,
+            1395
+          ],
+          "valid": true,
+          "gapMm": 0.4647138147602376,
+          "withinTolerance": true
+        },
+        {
+          "index": 4,
+          "nodes": [
+            580,
+            1396
+          ],
+          "valid": true,
+          "gapMm": 0.479109252922521,
+          "withinTolerance": true
+        },
+        {
+          "index": 5,
+          "nodes": [
+            581,
+            1397
+          ],
+          "valid": true,
+          "gapMm": 0.40573564285068353,
+          "withinTolerance": true
+        },
+        {
+          "index": 6,
+          "nodes": [
+            582,
+            1398
+          ],
+          "valid": true,
+          "gapMm": 0.377421559029789,
+          "withinTolerance": true
+        },
+        {
+          "index": 7,
+          "nodes": [
+            583,
+            1399
+          ],
+          "valid": true,
+          "gapMm": 0.3917067174692661,
+          "withinTolerance": true
+        },
+        {
+          "index": 8,
+          "nodes": [
+            584,
+            1400
+          ],
+          "valid": true,
+          "gapMm": 0.4426099401178891,
+          "withinTolerance": true
+        },
+        {
+          "index": 9,
+          "nodes": [
+            585,
+            1401
+          ],
+          "valid": true,
+          "gapMm": 0.38227047592015073,
+          "withinTolerance": true
+        },
+        {
+          "index": 10,
+          "nodes": [
+            586,
+            1402
+          ],
+          "valid": true,
+          "gapMm": 0.33087378528412,
+          "withinTolerance": true
+        },
+        {
+          "index": 11,
+          "nodes": [
+            587,
+            1403
+          ],
+          "valid": true,
+          "gapMm": 0.4428275943080656,
+          "withinTolerance": true
+        },
+        {
+          "index": 12,
+          "nodes": [
+            588,
+            1404
+          ],
+          "valid": true,
+          "gapMm": 0.3676861464112482,
+          "withinTolerance": true
+        },
+        {
+          "index": 13,
+          "nodes": [
+            589,
+            1405
+          ],
+          "valid": true,
+          "gapMm": 0.37304111213048313,
+          "withinTolerance": true
+        },
+        {
+          "index": 14,
+          "nodes": [
+            590,
+            1406
+          ],
+          "valid": true,
+          "gapMm": 0.4377761634235732,
+          "withinTolerance": true
+        },
+        {
+          "index": 15,
+          "nodes": [
+            591,
+            1407
+          ],
+          "valid": true,
+          "gapMm": 0.36857356924974644,
+          "withinTolerance": true
+        },
+        {
+          "index": 16,
+          "nodes": [
+            592,
+            1408
+          ],
+          "valid": true,
+          "gapMm": 0.40500343745382233,
+          "withinTolerance": true
+        },
+        {
+          "index": 17,
+          "nodes": [
+            593,
+            1409
+          ],
+          "valid": true,
+          "gapMm": 0.4692744172258277,
+          "withinTolerance": true
+        },
+        {
+          "index": 18,
+          "nodes": [
+            594,
+            1410
+          ],
+          "valid": true,
+          "gapMm": 0.3897992041682763,
+          "withinTolerance": true
+        },
+        {
+          "index": 19,
+          "nodes": [
+            595,
+            1411
+          ],
+          "valid": true,
+          "gapMm": 0.46259526363470727,
+          "withinTolerance": true
+        },
+        {
+          "index": 20,
+          "nodes": [
+            596,
+            1412
+          ],
+          "valid": true,
+          "gapMm": 0.469098637243599,
+          "withinTolerance": true
+        },
+        {
+          "index": 21,
+          "nodes": [
+            597,
+            1413
+          ],
+          "valid": true,
+          "gapMm": 0.37794818084792864,
+          "withinTolerance": true
+        },
+        {
+          "index": 22,
+          "nodes": [
+            598,
+            1414
+          ],
+          "valid": true,
+          "gapMm": 0.4230646942032013,
+          "withinTolerance": true
+        },
+        {
+          "index": 23,
+          "nodes": [
+            599,
+            1415
+          ],
+          "valid": true,
+          "gapMm": 0.36486987350070016,
+          "withinTolerance": true
+        },
+        {
+          "index": 24,
+          "nodes": [
+            600,
+            1416
+          ],
+          "valid": true,
+          "gapMm": 0.27939931735372514,
+          "withinTolerance": true
+        },
+        {
+          "index": 25,
+          "nodes": [
+            601,
+            1417
+          ],
+          "valid": true,
+          "gapMm": 0.3258646122427663,
+          "withinTolerance": true
+        },
+        {
+          "index": 26,
+          "nodes": [
+            602,
+            1418
+          ],
+          "valid": true,
+          "gapMm": 0.2712112028088272,
+          "withinTolerance": true
+        },
+        {
+          "index": 27,
+          "nodes": [
+            603,
+            1419
+          ],
+          "valid": true,
+          "gapMm": 0.2583161507358538,
+          "withinTolerance": true
+        },
+        {
+          "index": 28,
+          "nodes": [
+            604,
+            1420
+          ],
+          "valid": true,
+          "gapMm": 0.34889803616993803,
+          "withinTolerance": true
+        },
+        {
+          "index": 29,
+          "nodes": [
+            605,
+            1421
+          ],
+          "valid": true,
+          "gapMm": 0.31269775472147376,
+          "withinTolerance": true
+        },
+        {
+          "index": 30,
+          "nodes": [
+            606,
+            1422
+          ],
+          "valid": true,
+          "gapMm": 0.347542941024548,
+          "withinTolerance": true
+        },
+        {
+          "index": 31,
+          "nodes": [
+            607,
+            1423
+          ],
+          "valid": true,
+          "gapMm": 0.4311690016449553,
+          "withinTolerance": true
+        },
+        {
+          "index": 32,
+          "nodes": [
+            608,
+            1424
+          ],
+          "valid": true,
+          "gapMm": 0.35699416104782455,
+          "withinTolerance": true
+        },
+        {
+          "index": 33,
+          "nodes": [
+            609,
+            1425
+          ],
+          "valid": true,
+          "gapMm": 0.41287631646096473,
+          "withinTolerance": true
+        },
+        {
+          "index": 34,
+          "nodes": [
+            610,
+            1426
+          ],
+          "valid": true,
+          "gapMm": 0.44193283180138276,
+          "withinTolerance": true
+        },
+        {
+          "index": 35,
+          "nodes": [
+            611,
+            1427
+          ],
+          "valid": true,
+          "gapMm": 0.3385005265016145,
+          "withinTolerance": true
+        },
+        {
+          "index": 36,
+          "nodes": [
+            612,
+            1428
+          ],
+          "valid": true,
+          "gapMm": 0.44033752538127274,
+          "withinTolerance": true
+        },
+        {
+          "index": 37,
+          "nodes": [
+            613,
+            1429
+          ],
+          "valid": true,
+          "gapMm": 0.3767551763932424,
+          "withinTolerance": true
+        },
+        {
+          "index": 38,
+          "nodes": [
+            614,
+            1430
+          ],
+          "valid": true,
+          "gapMm": 0.3642264977565504,
+          "withinTolerance": true
+        },
+        {
+          "index": 39,
+          "nodes": [
+            615,
+            1431
+          ],
+          "valid": true,
+          "gapMm": 0.4264870170871983,
+          "withinTolerance": true
+        },
+        {
+          "index": 40,
+          "nodes": [
+            616,
+            1432
+          ],
+          "valid": true,
+          "gapMm": 0.40086072163901276,
+          "withinTolerance": true
+        },
+        {
+          "index": 41,
+          "nodes": [
+            617,
+            1433
+          ],
+          "valid": true,
+          "gapMm": 0.391890514253717,
+          "withinTolerance": true
+        },
+        {
+          "index": 42,
+          "nodes": [
+            618,
+            1434
+          ],
+          "valid": true,
+          "gapMm": 0.38631896867949506,
+          "withinTolerance": true
+        },
+        {
+          "index": 43,
+          "nodes": [
+            619,
+            1435
+          ],
+          "valid": true,
+          "gapMm": 0.35372429186024257,
+          "withinTolerance": true
+        },
+        {
+          "index": 44,
+          "nodes": [
+            620,
+            1436
+          ],
+          "valid": true,
+          "gapMm": 0.34176371144117784,
+          "withinTolerance": true
+        },
+        {
+          "index": 45,
+          "nodes": [
+            621,
+            1437
+          ],
+          "valid": true,
+          "gapMm": 0.3697974975245634,
+          "withinTolerance": true
+        },
+        {
+          "index": 46,
+          "nodes": [
+            622,
+            1438
+          ],
+          "valid": true,
+          "gapMm": 0.22737407921771816,
+          "withinTolerance": true
+        },
+        {
+          "index": 47,
+          "nodes": [
+            623,
+            1439
+          ],
+          "valid": true,
+          "gapMm": 0.27299623436499976,
+          "withinTolerance": true
+        }
+      ]
+    },
+    "release": {
+      "seconds": 0,
+      "currentCondition": false,
+      "requiredSeconds": 5
+    },
+    "invalidRetainedFaces": [],
+    "unresolvedComponents": [
+      {
+        "component": 1,
+        "reason": "Component is still grasped"
+      }
+    ],
+    "scope": "Independent synthetic geometry checks; no clinical validation"
+  },
+  "meshChecks": [
+    {
+      "revision": 48,
+      "activeFaces": 4433,
+      "candidatePairs": 144602,
+      "properCrossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      },
+      "witnesses": []
+    },
+    {
+      "revision": 96,
+      "activeFaces": 4416,
+      "candidatePairs": 147920,
+      "properCrossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      },
+      "witnesses": []
+    },
+    {
+      "revision": 100,
+      "activeFaces": 4416,
+      "candidatePairs": 159463,
+      "properCrossings": {
+        "retained": 0,
+        "detached": 0,
+        "mixed": 0
+      },
+      "witnesses": []
+    }
+  ]
+}

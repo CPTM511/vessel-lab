@@ -1,0 +1,22 @@
+{
+  "exactFinalSnapshotsMatch": true,
+  "results": [
+    {
+      "label": "baseline",
+      "ms": 5362.524916
+    },
+    {
+      "label": "candidate",
+      "ms": 3940.7281249999996
+    },
+    {
+      "label": "baseline",
+      "ms": 5177.739791
+    },
+    {
+      "label": "candidate",
+      "ms": 3597.159916999999
+    }
+  ],
+  "scope": "Offline frozen-state comparison; not actual rendered deadline verification"
+}

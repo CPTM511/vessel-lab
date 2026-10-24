@@ -1,0 +1,24 @@
+✔ 100 deterministic deforming face pairs retain separation along sampled accepted paths (43.148792ms)
+✔ shell separation and a rigid support plane remain satisfied together while sliding (3.569375ms)
+✔ rigid support projection leaves fixed nodes and unconstrained tangential motion unchanged (0.472833ms)
+✔ continuous shell contact stops fast tunnelling through a fixed triangle (0.318375ms)
+✔ edge/edge contact is detected when every vertex projects outside the other triangle (0.233417ms)
+✔ coplanar sliding collision and a separating trajectory are distinguished (0.329333ms)
+✔ common rigid translation creates no contact and preserves separation (0.07825ms)
+✔ a recorded grazing path is certified without exhausting conservative advancement (0.330041ms)
+✔ collision response preserves fixed points and exposes conservative limiting (0.303167ms)
+✔ cut faces are absent from collision and shared vertices define adjacency (0.124666ms)
+✔ reused broad-phase bounds rebuild when a previously distant face moves into contact (0.409834ms)
+✔ invalid bilateral commands and stale revisions are atomic (50.243125ms)
+✔ rest state is stable, fixed boundaries do not drift, and grasp requires proximity (154.383041ms)
+✔ barycentric grasp moves actual tissue; releasing removes constraints without a visual morph (1514.735ms)
+✔ protected anatomy uses independent geometry and swept instrument violations remain recorded (1894.380875ms)
+✔ the same seed and low-level sequence reproduce tissue positions (551.960875ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4238.272417

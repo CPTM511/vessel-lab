@@ -2,7 +2,7 @@
 import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';import {test} from 'node:test';import assert from 'node:assert/strict';
 const root=path.resolve(import.meta.dirname,'..');
 function verify(dir,mode){return spawnSync(process.execPath,[path.join(root,'verify-controller.mjs'),dir,...(mode?[mode]:[])],{encoding:'utf8'});}
-for(const [folder,mode,moves,images] of [['c0-seed-29-attempt-01','--incomplete',24,31],['c0-round2-seed11-attempt01','--frame-failure',75,140]]){
+for(const [folder,mode,moves,images] of [['c0-seed-29-attempt-01','--incomplete',24,31],['c0-round2-seed11-attempt01','--frame-failure',75,140],['c0-round3-seed11-attempt01','--frame-failure',100,153]]){
  const source=path.join(root,'evidence',folder);
  test(folder+' verifies failure without success',()=>{const r=verify(source,mode);assert.equal(r.status,0,r.stderr);const v=JSON.parse(r.stdout);assert.equal(v.recordVerified,true);assert.equal(v.episodeSucceeded,false);assert.equal(v.moves,moves);assert.equal(v.images,images);});
  test(folder+' cannot pass default success verification',()=>assert.notEqual(verify(source).status,0));

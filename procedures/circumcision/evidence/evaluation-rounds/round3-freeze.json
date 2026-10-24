@@ -1,0 +1,20 @@
+{
+  "protocol": "C0",
+  "model": "gpt-6-astra",
+  "seeds": [
+    11,
+    29,
+    83
+  ],
+  "frozenAt": "2026-10-24T10:55:33.804Z",
+  "runtimeBaseCommit": "217558002bf275f6fe5cd00e567e148c1f22da79",
+  "sourceDigest": "b51db9fee0baa0223c905a8f4ed3b734dc8862c255e730079e327089474386ae",
+  "protocolHash": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+  "instructionsHash": "19ba23debfebaed716282d778730c5473a5a5f34cb0ade134cf60815e9346eef",
+  "toolsHash": "ea598b9a8c1a495aced5e68a42cef51903ea803d4e481ed9c6509533bd3857ea",
+  "promptHash": "a13e13503eac893f1a7fff5c4c69acf45e46011a4dacbfe91e3d43194bac2849",
+  "preflightFile": "evidence/evaluation-rounds/round3-preflight.json",
+  "preflightHash": "d75cc31be8746374a0c4956d4618dc391956ecd5191c656458418ad1471e4e88",
+  "episodePolicy": "Fresh independent resets and model contexts for seeds11,29,83. No supplied trajectory or intervention. Preserve every attempt from all rounds; three prior attempts were unsuccessful.",
+  "round": 3
+}

@@ -1,0 +1,22 @@
+{
+  "recordVerified": true,
+  "episodeSucceeded": false,
+  "kind": "Actual controller stopped after accepted command without timely rendered feedback",
+  "sourceDigest": "b51db9fee0baa0223c905a8f4ed3b734dc8862c255e730079e327089474386ae",
+  "model": "gpt-6-astra",
+  "seed": 11,
+  "moves": 100,
+  "images": 153,
+  "toolRequests": 154,
+  "acceptedWithoutImage": 1,
+  "maxCommandToFrameMs": 4583,
+  "finalRevision": 100,
+  "failedGates": [
+    "releasedHold",
+    "resolvedTargetComponents"
+  ],
+  "finalAccessCheckAvailable": false,
+  "scope": "All accepted states replay exactly; prior actual images are verified. The final accepted command has no timely model-delivered image. This is a failed episode.",
+  "evidenceScope": "public-redacted",
+  "privateAccessChecksVerifiableFromPublicRecord": false
+}

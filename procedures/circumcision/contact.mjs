@@ -71,7 +71,9 @@ export function rotatingPlane(a0,a1,b0,b1,gap=.03){
  if(s0.distance<=gap+1e-7||s1.distance<=gap+1e-7)return false;
  const n0=s0.delta.map(v=>v/s0.distance),n1=s1.delta.map(v=>v/s1.distance),dn=sub(n1,n0);
  for(let i=0;i<3;i++)for(let j=0;j<3;j++){
-  const d0=sub(a0[i],b0[j]),d1=sub(a1[i],b1[j]),dv=sub(d1,d0),c=dot(d0,n0),b=dot(dv,n0)+dot(d0,dn),a=dot(dv,dn);
+  const x=a0[i][0]-b0[j][0],y=a0[i][1]-b0[j][1],z=a0[i][2]-b0[j][2];
+  const vx=(a1[i][0]-b1[j][0])-x,vy=(a1[i][1]-b1[j][1])-y,vz=(a1[i][2]-b1[j][2])-z;
+  const c=x*n0[0]+y*n0[1]+z*n0[2],b=(vx*n0[0]+vy*n0[1]+vz*n0[2])+(x*dn[0]+y*dn[1]+z*dn[2]),a=vx*dn[0]+vy*dn[1]+vz*dn[2];
   let min=Math.min(c,c+b+a);
   if(a>0){const t=-b/(2*a);if(t>0&&t<1)min=Math.min(min,c+t*(b+t*a));}
   if(min<=gap+1e-7)return false;
@@ -86,8 +88,12 @@ export function sweptTriangleContact(a0,a1,b0,b1,gap=CONTACT_GAP_MM){
  for(const tri of [a0,b0]){
   let normal=cross(sub(tri[1],tri[0]),sub(tri[2],tri[0]));const len=Math.hypot(...normal);
   if(len<1e-12)continue;normal=normal.map(v=>v/len);
-  const pa=[...a0,...a1].map(p=>dot(p,normal)),pb=[...b0,...b1].map(p=>dot(p,normal));
-  if(Math.min(...pa)-Math.max(...pb)>gap+TOL||Math.min(...pb)-Math.max(...pa)>gap+TOL)return null;
+  let amin=Infinity,amax=-Infinity,bmin=Infinity,bmax=-Infinity;
+  for(let i=0;i<6;i++){
+   const pa=dot(i<3?a0[i]:a1[i-3],normal),pb=dot(i<3?b0[i]:b1[i-3],normal);
+   amin=Math.min(amin,pa);amax=Math.max(amax,pa);bmin=Math.min(bmin,pb);bmax=Math.max(bmax,pb);
+  }
+  if(amin-bmax>gap+TOL||bmin-amax>gap+TOL)return null;
  }
  const va=a0.map((p,i)=>sub(a1[i],p)),vb=b0.map((p,i)=>sub(b1[i],p));
  if(va.every(a=>vb.every(b=>a.every((v,i)=>Math.abs(v-b[i])<1e-12))))return null;
@@ -123,7 +129,7 @@ export function sweptTriangleContact(a0,a1,b0,b1,gap=CONTACT_GAP_MM){
 }
 
 function candidates(faces,old,next){
- const cell=4,grid=new Map(),boxes=new Map(),pairs=[],seen=new Set();
+ const cell=4,grid=new Map(),boxes=new Map(),pairs=[];
  for(let id=0;id<faces.length;id++){
   const f=faces[id];if(!f.active)continue;
   const lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];
@@ -131,12 +137,14 @@ function candidates(faces,old,next){
   // A small margin permits reuse during local projection. Every reuse below
   // checks that the entire updated sweep is still inside these bounds.
   for(let k=0;k<3;k++){lo[k]-=CONTACT_GAP_MM+.1;hi[k]+=CONTACT_GAP_MM+.1;}
-  boxes.set(id,{lo,hi});
   const a=lo.map(v=>Math.floor(v/cell)),b=hi.map(v=>Math.floor(v/cell));
+  boxes.set(id,{lo,hi,cellMin:a});
   for(let x=a[0];x<=b[0];x++)for(let y=a[1];y<=b[1];y++)for(let z=a[2];z<=b[2];z++){
    const key=x+':'+y+':'+z,list=grid.get(key)||[];
    for(const other of list){
-    const pair=other*faces.length+id;if(seen.has(pair))continue;seen.add(pair);
+    // Visit a pair only in its first shared grid cell, in the original order.
+    const otherMin=boxes.get(other).cellMin;
+    if(x!==Math.max(a[0],otherMin[0])||y!==Math.max(a[1],otherMin[1])||z!==Math.max(a[2],otherMin[2]))continue;
     // Shared-node faces are topological neighbours. Interlayer distance
     // constraints are NOT adjacency and never suppress shell contact.
     const adjacent=faces[other].nodes;
@@ -186,7 +194,7 @@ export function filterShellMotion(nodes,faces,old,cache={},rigid=null){
  let proposed=nodes.map(n=>[...n.p]);const stats={contacts:0,rigidContacts:0,passes:0,limited:false,advance:1};
  if(proposed.every((p,i)=>p.every((v,k)=>v===old[i][k])))return stats;
  let broadphase=cache.broadphase;
- const versions=new Uint32Array(nodes.length),queries=new Map(),bounds=new Map(),activeConstraints=new Map(),rigidConstraints=new Map();
+ const versions=new Uint32Array(nodes.length),queries=[],bounds=new Map(),activeConstraints=new Map(),rigidConstraints=new Map();
  const rigidContacts=positions=>{
   if(!rigid)return [];const found=[];
   for(let i=0;i<nodes.length;i++){if(!nodes[i].inv||nodes[i].alive===false)continue;const q=rigid.query(positions[i]);if(q&&q.distance<rigid.margin-1e-9){
@@ -224,11 +232,13 @@ export function filterShellMotion(nodes,faces,old,cache={},rigid=null){
     }
    }
   }
-  if(rebuild)cache.broadphase=broadphase=candidates(faces,old,proposed);
-  for(const [a,b] of broadphase.pairs){
+  if(rebuild){cache.broadphase=broadphase=candidates(faces,old,proposed);queries.length=0;}
+  // Pair order is unchanged. A rebuilt broadphase invalidates indexed queries.
+  for(let pairIndex=0;pairIndex<broadphase.pairs.length;pairIndex++){
+   const [a,b]=broadphase.pairs[pairIndex];
    if(!faces[a].active||!faces[b].active)continue;
    const fa=faces[a].nodes,fb=faces[b].nodes;
-   const key=a*faces.length+b,previous=queries.get(key);
+   const previous=queries[pairIndex];
    let reusable=!!previous;
    if(reusable)for(let k=0;k<6;k++)if(versions[k<3?fa[k]:fb[k-3]]!==previous.versions[k]){reusable=false;break;}
    let hit;
@@ -237,7 +247,7 @@ export function filterShellMotion(nodes,faces,old,cache={},rigid=null){
     const ba=boxFor(a),bb=boxFor(b);
     const separated=ba[0]>bb[3]+CONTACT_GAP_MM+TOL||bb[0]>ba[3]+CONTACT_GAP_MM+TOL||ba[1]>bb[4]+CONTACT_GAP_MM+TOL||bb[1]>ba[4]+CONTACT_GAP_MM+TOL||ba[2]>bb[5]+CONTACT_GAP_MM+TOL||bb[2]>ba[5]+CONTACT_GAP_MM+TOL;
     hit=separated?null:sweptTriangleContact(fa.map(i=>old[i]),fa.map(i=>proposed[i]),fb.map(i=>old[i]),fb.map(i=>proposed[i]));
-    queries.set(key,{versions:[versions[fa[0]],versions[fa[1]],versions[fa[2]],versions[fb[0]],versions[fb[1]],versions[fb[2]]],hit});
+    queries[pairIndex]={versions:[versions[fa[0]],versions[fa[1]],versions[fa[2]],versions[fb[0]],versions[fb[1]],versions[fb[2]]],hit};
    }
    if(hit)contacts.push({...hit,fa,fb,faceA:a,faceB:b});
   }

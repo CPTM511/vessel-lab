@@ -1,0 +1,281 @@
+{
+  "kind": "Scripted changing inspection views of a completed mechanical fixture; no model inference",
+  "passed": true,
+  "sourceHashes": {
+    "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+    "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+    "contact.mjs": "e3055167091828140224402372959da9a3f913d9519fe535fbd2494945bc0c9a",
+    "mesh-audit.mjs": "2708b75b995b37d3520ef5e762f3e0c23c3d8ea5989d7ff9385175779f8bf74f",
+    "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+    "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+    "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "probe-mechanics.mjs": "cdb94e96bc93aa61c82433fd138dd364aac1ae7be17ad80852e6ebbd7fd1e2c9",
+    "probe-trajectory.mjs": "9857060aa24bc57e4381b3c404f6c4eb56ab56fb5e10f09a48311b8506398920",
+    "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+    "godot/anatomy.gd": "a2baf2fa8d2160de0b52049e117402197249bd98b535dac1ed70f3f7bc7f1ebf",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/data/tissue-rest.json": "64162d9945a4893347e46b581dff327260981ee8b4688f877501f172e721c893",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+    "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+    "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+    "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+    "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+    "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+    "controller-spec.mjs": "b022bafe41c838b617b04a5975c6062626cadac0873f3a7d7eefcbacc1e98716",
+    "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+    "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+    "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+    "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a"
+  },
+  "frames": [
+    {
+      "index": 1,
+      "frame": {
+        "filename": "frame-001.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 102,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 758
+    },
+    {
+      "index": 2,
+      "frame": {
+        "filename": "frame-002.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 103,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 587
+    },
+    {
+      "index": 3,
+      "frame": {
+        "filename": "frame-003.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 104,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 503
+    },
+    {
+      "index": 4,
+      "frame": {
+        "filename": "frame-004.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 105,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 588
+    },
+    {
+      "index": 5,
+      "frame": {
+        "filename": "frame-005.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 106,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 586
+    },
+    {
+      "index": 6,
+      "frame": {
+        "filename": "frame-006.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 107,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 587
+    },
+    {
+      "index": 7,
+      "frame": {
+        "filename": "frame-007.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 108,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 586
+    },
+    {
+      "index": 8,
+      "frame": {
+        "filename": "frame-008.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 109,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 580
+    },
+    {
+      "index": 9,
+      "frame": {
+        "filename": "frame-009.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 110,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 584
+    },
+    {
+      "index": 10,
+      "frame": {
+        "filename": "frame-010.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 111,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 586
+    },
+    {
+      "index": 11,
+      "frame": {
+        "filename": "frame-011.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 112,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 586
+    },
+    {
+      "index": 12,
+      "frame": {
+        "filename": "frame-012.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 113,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 585
+    },
+    {
+      "index": 13,
+      "frame": {
+        "filename": "frame-013.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 114,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 584
+    },
+    {
+      "index": 14,
+      "frame": {
+        "filename": "frame-014.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 115,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 503
+    },
+    {
+      "index": 15,
+      "frame": {
+        "filename": "frame-015.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 116,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 584
+    },
+    {
+      "index": 16,
+      "frame": {
+        "filename": "frame-016.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 117,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 589
+    },
+    {
+      "index": 17,
+      "frame": {
+        "filename": "frame-017.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 118,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 589
+    },
+    {
+      "index": 18,
+      "frame": {
+        "filename": "frame-018.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 119,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 585
+    },
+    {
+      "index": 19,
+      "frame": {
+        "filename": "frame-019.jpg",
+        "imageHash": "69cfc4acdf97e5d51bae4bf26d8eb07daac9786df30820ddb3781ccf14ad8014",
+        "revision": 120,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 504
+    },
+    {
+      "index": 20,
+      "frame": {
+        "filename": "frame-020.jpg",
+        "imageHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+        "revision": 121,
+        "mechanicsRevision": 100,
+        "renderer": "forward_plus",
+        "driver": "metal"
+      },
+      "latencyMs": 585
+    }
+  ],
+  "maxLatencyMs": 758,
+  "scope": "Actual scripted verification; not a live autonomous procedure.",
+  "condition": "unlocked background",
+  "initialGeometryHash": "540d1cc690793a70a2024e15f1ca4138e5384451fbbafc549bbba93c3d184731",
+  "finalGeometryHash": "540d1cc690793a70a2024e15f1ca4138e5384451fbbafc549bbba93c3d184731"
+}

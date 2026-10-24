@@ -1,0 +1,13 @@
+{
+  "physicalObservationExact": true,
+  "identicalJpegHash": "85d24875ce88da6475ddd4b4463f47584ad9d0bf38ebace982028f15fa579a8a",
+  "expectedSourceMetadataChange": {
+    "oldCageHash": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+    "newCageHash": "64162d9945a4893347e46b581dff327260981ee8b4688f877501f172e721c893"
+  },
+  "baselineMs": 6099,
+  "candidateMs": 4419,
+  "deadlineMs": 5000,
+  "candidatePassed": true,
+  "scope": "Source hash changes because the mandatory export binds anatomy source. All other observation fields and actual JPEG bytes are identical."
+}

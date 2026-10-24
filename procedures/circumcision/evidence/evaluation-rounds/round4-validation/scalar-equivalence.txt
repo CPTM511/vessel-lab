@@ -1,0 +1,1 @@
+150 deterministic near-gap and moving-triangle cases match exactly
