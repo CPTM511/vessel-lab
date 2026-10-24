@@ -1,0 +1,1158 @@
+{
+  "kind": "scripted anatomy inspection; not model or procedure evidence",
+  "startedAt": "2026-10-24T07:58:48.059Z",
+  "requiresLockedHost": true,
+  "sourceHashes": {
+    "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+    "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+    "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+    "contact.mjs": "0212a0c392efcd7af95fd4ae2089a2371980c1383bc36c07a3ef52c527b14431",
+    "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+    "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+    "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+    "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+    "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+    "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+    "inspect.mjs": "bca2d3a35cce072d529380a03e379309f80155ec30cbdeb17a939118abb2d368",
+    "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+    "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+    "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a",
+    "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+    "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827",
+    "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+    "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+    "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+    "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+    "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+    "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+    "controller-spec.mjs": "2e73a38a69026d26ab2ec0ac3fa1b94405019b9fba4a34cf738f2a95ff7c4321",
+    "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+    "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+    "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0"
+  },
+  "sourceDigest": "cd10da8f5e2a3772b6d8b015d70dbcfc05720979025671da72ac4de1b7cf6eab",
+  "samples": [
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 5,
+      "latencyMs": 453,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-001.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:48.060Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:48.530Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 6,
+      "latencyMs": 864,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-002.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:50.861Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:51.729Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 7,
+      "latencyMs": 655,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-003.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:54.059Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:54.715Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 8,
+      "latencyMs": 653,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-004.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:57.047Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:58:57.702Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 9,
+      "latencyMs": 763,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-005.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:00.032Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:00.798Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 10,
+      "latencyMs": 652,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-006.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:03.128Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:03.784Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 11,
+      "latencyMs": 552,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-007.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:06.113Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:06.669Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 12,
+      "latencyMs": 447,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-008.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:09.000Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:09.450Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 13,
+      "latencyMs": 655,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-009.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:11.779Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:12.435Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 14,
+      "latencyMs": 968,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-010.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:14.768Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:15.736Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 15,
+      "latencyMs": 656,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-011.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:18.068Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:18.725Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 16,
+      "latencyMs": 763,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-012.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:21.056Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:21.819Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 17,
+      "latencyMs": 649,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-013.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:24.153Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:24.802Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 18,
+      "latencyMs": 654,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-014.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:27.132Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:27.790Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 19,
+      "latencyMs": 756,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-015.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:30.120Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:30.879Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 20,
+      "latencyMs": 656,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-016.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:33.209Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:33.865Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 21,
+      "latencyMs": 553,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-017.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:36.197Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:36.751Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 22,
+      "latencyMs": 856,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-018.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:39.082Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:39.939Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 23,
+      "latencyMs": 984,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-019.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:42.267Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:43.237Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 24,
+      "latencyMs": 758,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-020.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:45.584Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:46.341Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 25,
+      "latencyMs": 965,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-021.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:48.673Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:49.641Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 26,
+      "latencyMs": 655,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-022.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:51.971Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:52.627Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 27,
+      "latencyMs": 756,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-023.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:54.959Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:55.715Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 28,
+      "latencyMs": 654,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-024.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:58.046Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T07:59:58.702Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 29,
+      "latencyMs": 2532,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-025.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:01.032Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:03.554Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 30,
+      "latencyMs": 1299,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-026.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:05.899Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:07.195Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 31,
+      "latencyMs": 760,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-027.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:09.541Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:10.304Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 32,
+      "latencyMs": 447,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-028.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:12.638Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:13.087Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 33,
+      "latencyMs": 764,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-029.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:15.418Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:16.184Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 34,
+      "latencyMs": 655,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-030.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:18.518Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:19.174Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 35,
+      "latencyMs": 758,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-031.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:21.506Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:22.267Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 36,
+      "latencyMs": 758,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-032.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:24.599Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:25.358Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 37,
+      "latencyMs": 653,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-033.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:27.687Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:28.344Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 38,
+      "latencyMs": 654,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-034.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:30.672Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:31.328Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 39,
+      "latencyMs": 448,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-035.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:33.656Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:34.111Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 40,
+      "latencyMs": 863,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-036.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:36.441Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:37.306Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 41,
+      "latencyMs": 860,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-037.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:39.636Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:40.498Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 42,
+      "latencyMs": 862,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-038.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:42.828Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:43.690Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.15,
+      "revision": 43,
+      "latencyMs": 557,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "4e7124f2bd17a23b7cff37f0210b948a114932011b3e5a906c3491a77a45d797",
+      "filename": "frame-039.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:46.021Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:46.603Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "retraction": 0.25,
+      "revision": 44,
+      "latencyMs": 549,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "imageHash": "a5419c2ec4c86b9cf9d9f3d8aa44f7bf44605b72aa423d5dc28424e48a7fe707",
+      "filename": "frame-040.jpg",
+      "width": 1061,
+      "height": 679,
+      "surfaces": 8,
+      "triangles": 210688,
+      "before": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:48.939Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "platform": "darwin",
+        "at": "2026-10-24T08:00:49.501Z",
+        "screenLocked": true,
+        "userSessionLocked": true,
+        "source": "IORegistry console and current-user session flags"
+      }
+    }
+  ],
+  "passed": true,
+  "endedAt": "2026-10-24T08:00:51.830Z"
+}

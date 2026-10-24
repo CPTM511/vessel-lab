@@ -3,6 +3,8 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import {TissueSim} from './mechanics.mjs';
 import {ControllerLease} from './controller-lease.mjs';
+import path from 'node:path';
+import {recordingHeader} from './recording.mjs';
 import {geometryQuery} from './instrumentation.mjs';
 import {checkEvaluationFreeze} from './evaluation-freeze.mjs';
 
@@ -35,6 +37,14 @@ const server=http.createServer(async(req,res)=>{
    if(!lease.authorized(req))return respond(res,409,{error:'Controller lease is not active'});
    lease.update(body);return respond(res,200,{accepted:true});
   }
+  if(req.url==='/api/playback/start'){
+   if(lease.running)return respond(res,409,{error:'An execution is already running'});
+   if(body.revision!==state.revision)return respond(res,409,{error:'Stale revision'});
+   if(!frame||Date.now()-frame.receivedAt>5000)return respond(res,409,{error:'Fresh actual Godot frame required before playback'});
+   const recording=recordingHeader(path.join(import.meta.dirname,'evidence/controller-loop-01'));
+   mechanics=new TissueSim(recording.seed);state.episode=crypto.randomUUID();state.mechanicsEnabled=true;state.stage='mechanics-development';state.retraction=0;state.mode='covered';state.controlSource='recorded-playback';state.revision++;frame=null;
+   lease.start('playback',state.episode);return respond(res,200,current(false));
+  }
   if(req.url==='/api/agent/start'){
    if(lease.running)return respond(res,409,{error:'A controller is already running'});
    if(!mechanics||mechanics.revision!==0||mechanics.terminal)return respond(res,409,{error:'Reset mechanics before starting an independent controller run'});
@@ -47,8 +57,8 @@ const server=http.createServer(async(req,res)=>{
   }
   const mutations=['/api/inspect','/api/mechanics/reset','/api/inspection/reset','/api/step','/api/finish'];
   if(mutations.includes(req.url)||req.url==='/api/geometry'){
-   if(body.source==='gpt-6-astra'&&!lease.authorized(req))return respond(res,409,{error:'Controller lease is not active'});
-   if(lease.running&&body.source!=='gpt-6-astra')return respond(res,409,{error:'Manual controls locked during controller run'});
+   if(['gpt-6-astra','recorded-playback'].includes(body.source)&&(!lease.authorized(req)||(body.source==='recorded-playback')!==(lease.info.task==='playback')))return respond(res,409,{error:'Controller lease is not active'});
+   if(lease.running&&!['gpt-6-astra','recorded-playback'].includes(body.source))return respond(res,409,{error:'Manual controls locked during controller run'});
    if(lease.running&&req.url.endsWith('/reset'))return respond(res,409,{error:'Stop the controller before reset'});
   }
   if(req.url==='/api/geometry'){
@@ -71,7 +81,7 @@ const server=http.createServer(async(req,res)=>{
     mechanics=null;state.episode=null;state.mechanicsEnabled=false;state.stage='anatomy-inspection';state.retraction=0;state.mode='covered';
    }else if(req.url==='/api/step'||req.url==='/api/finish'){
     if(!mechanics)return respond(res,409,{error:'Enable the mechanics sandbox first'});
-    if(!['manual-mechanics','scripted-mechanics-test','gpt-6-astra'].includes(body.source))return respond(res,400,{error:'Explicit mechanical source required'});
+    if(!['manual-mechanics','scripted-mechanics-test','gpt-6-astra','recorded-playback'].includes(body.source))return respond(res,400,{error:'Explicit mechanical source required'});
     if(!frame||Date.now()-frame.receivedAt>5000)return respond(res,409,{error:'Fresh actual Godot frame required before mechanical action'});
     if(body.source==='gpt-6-astra'&&lease.info.task==='loop'){
      const action=body.action;
@@ -84,7 +94,7 @@ const server=http.createServer(async(req,res)=>{
    if(body.mode!==undefined&&!modes.has(body.mode))return respond(res,400,{error:'Unknown inspection mode'});
    if(body.retraction!==undefined&&(!Number.isFinite(body.retraction)||body.retraction<0||body.retraction>1))return respond(res,400,{error:'Retraction morph must be in [0,1]'});
    if(body.mode===undefined&&body.retraction===undefined)return respond(res,400,{error:'No inspection change'});
-   if(!['manual-inspection','scripted-inspection-test','gpt-6-astra'].includes(body.source))return respond(res,400,{error:'Inspection source must be explicitly labeled'});
+   if(!['manual-inspection','scripted-inspection-test','gpt-6-astra','recorded-playback'].includes(body.source))return respond(res,400,{error:'Inspection source must be explicitly labeled'});
    if(body.mode!==undefined)state.mode=body.mode;
    if(body.retraction!==undefined)state.retraction=body.retraction;
    }

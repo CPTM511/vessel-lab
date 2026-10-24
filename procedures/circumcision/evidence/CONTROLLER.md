@@ -1,5 +1,7 @@
 # Actual Astra connectivity checkpoint
 
+This evidence belongs to commit `621436e`; check out that revision for exact full-source verification. Later [recorded-playback checks](PLAYBACK.md) use identical mechanical definitions and do not constitute another live model run.
+
 This checkpoint demonstrates a short actual GPT-6 Astra / Godot feedback loop in the adult anatomy module. It does **not** demonstrate completion of the adult C0 procedure. The independent procedure evaluation set has not started.
 
 | Measure | Recorded result |

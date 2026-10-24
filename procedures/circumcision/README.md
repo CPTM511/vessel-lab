@@ -22,7 +22,11 @@ This command saves actual images and source hashes for eight views, including a 
 
 ## Model connectivity
 
-After resetting the mechanics sandbox, choose **Verify Astra control loop**. The model independently selects two small translations and receives actual image/state feedback after each. **Stop controller** revokes authority and stops the process group. Full procedure execution remains disabled until the recorded preflight and source/instruction freeze are complete. See [controller setup and boundaries](docs/CONTROLLER.md) and [actual connectivity evidence](evidence/CONTROLLER.md).
+After resetting the mechanics sandbox, choose **Verify Astra control loop**. The model independently selects two small translations and receives actual image/state feedback after each. **Stop execution** revokes authority and stops the process group. Full procedure execution remains disabled until the recorded preflight and source/instruction freeze are complete. See [controller setup and boundaries](docs/CONTROLLER.md) and [actual connectivity evidence](evidence/CONTROLLER.md).
+
+## Recorded playback
+
+**Replay recorded example** resets to the bundled seed and executes its recorded commands, requesting new actual Godot frames after each change. It performs no model inference. The example contains the two translations from the published connectivity check; it is not a complete procedure. The interface labels playback explicitly, and **Stop execution** revokes its action lease. Playback and live control cannot overlap. See [playback methods and verification](docs/PLAYBACK.md).
 
 ## Mechanical development
 

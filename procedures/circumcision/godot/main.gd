@@ -45,6 +45,7 @@ var slider_timer: Timer
 var manual_buttons: Array[Button] = []
 var loop_button: Button
 var procedure_button: Button
+var playback_button: Button
 var stop_button: Button
 var controller_status: Label
 var controller_active = false
@@ -144,7 +145,8 @@ func build_ui() -> void:
 	status = note("Connecting to inspection service…",panel,ACCENT)
 	loop_button = add_button("Verify Astra control loop",panel,func():send_request("/api/agent/start",{"task":"loop"}))
 	procedure_button = add_button("Start C0 procedure",panel,func():send_request("/api/agent/start",{"task":"procedure"}))
-	stop_button = add_button("Stop controller",panel,func():send_request("/api/agent/stop",{}))
+	playback_button = add_button("Replay recorded example",panel,func():send_request("/api/playback/start",{}))
+	stop_button = add_button("Stop execution",panel,func():send_request("/api/agent/stop",{}))
 	controller_status = note("No controller is running.",panel,ACCENT)
 	note("Procedure runs require a matching source and instruction freeze.",panel)
 	note("Seed for next reset (11 / 29 / 83)",panel)
@@ -479,14 +481,18 @@ func update_controller(data: Dictionary) -> void:
 	var pristine = data.get("mechanicsEnabled",false) and data.get("mechanics",{}).get("revision",-1) == 0
 	loop_button.disabled = controller_active or not pristine
 	procedure_button.disabled = controller_active or not pristine or not agent.get("procedureReady",false)
+	playback_button.disabled = controller_active
 	stop_button.disabled = not controller_active
 	retraction_button.disabled = active_mechanics or controller_active
 	seed_input.editable = not controller_active
 	morph_slider.editable = not active_mechanics and not controller_active
-	controller_status.text = "Controller: %s\nTools: %s  ·  Images: %s" % [agent.get("phase","idle"),agent.get("toolCount",0),agent.get("images",0)]
+	controller_status.text = ("Playback: %s" if agent.get("task","")=="playback" else "Controller: %s") + "\nTools: %s  ·  Images: %s"
+	controller_status.text = controller_status.text % [agent.get("phase","idle"),agent.get("toolCount",0),agent.get("images",0)]
 	if agent.get("error") != null:
 		controller_status.text += "\n" + str(agent.error)
-	if data.get("controlSource","") == "gpt-6-astra":
+	if data.get("controlSource","") == "recorded-playback":
+		status.text = "RECORDED PLAYBACK · NO INFERENCE"
+	elif data.get("controlSource","") == "gpt-6-astra":
 		status.text = "BILATERAL MECHANICS · GPT-6 ASTRA" if controller_active else "LAST SOURCE · GPT-6 ASTRA"
 
 func apply_state(data: Dictionary) -> void:
@@ -559,7 +565,9 @@ func capture() -> void:
 		if code==200:
 			frames+=1
 			feedback_label.text = "Actual Godot frames: %s\n" % frames
-			if str(body.controlSource).begins_with("scripted-"):
+			if str(body.controlSource) == "recorded-playback":
+				feedback_label.text += "Recorded playback; no model inference."
+			elif str(body.controlSource).begins_with("scripted-"):
 				feedback_label.text += "Scripted verification; no model inference."
 			elif controller_active:
 				feedback_label.text += "Live model controller: GPT-6 Astra"

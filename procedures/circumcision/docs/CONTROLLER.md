@@ -8,7 +8,7 @@ Start `node launch.mjs`, select a seed and choose **Reset mechanics sandbox**. W
 
 A locally authenticated Codex installation with access to `gpt-6-astra` is required. `CODEX_BIN` selects a custom executable. The bridge requests that exact model, disables provider fallback and inherits the configured reasoning effort. Environment tools are disabled; only the declared simulation tools are available. A failed access check stops before inference. The implementation does not provision credentials or services.
 
-**Stop controller** revokes authority immediately and terminates the process group. Manual controls and reset remain locked until the controller exits. Closing the launcher also stops its controller. After completion, the interface identifies the last control source and restores manual interaction. Reset before starting another independent run.
+**Stop execution** revokes authority immediately and terminates the process group. Manual controls and reset remain locked until the controller exits. Closing the launcher also stops its controller. After completion, the interface identifies the last control source and restores manual interaction. Reset before starting another independent run.
 
 **Start C0 procedure** remains disabled in this checkpoint. A full procedure run requires an `evaluation-freeze.json` matching the simulation, evaluator, Godot source, controller instructions, tool schemas and task prompt, after the documented preflight gates have passed. No such freeze is bundled yet. The short connectivity check is excluded from the three independent C0 procedure episodes.
 
@@ -21,11 +21,13 @@ The controller records requested actions before execution, accepted commands bef
 ```sh
 # Verify a private recorded run using its exact executed source:
 node verify-controller.mjs sessions/<run-directory>
-# Verify this checkpoint's sanitized live connectivity evidence:
+# Verify the historical sanitized live connectivity evidence at commit 621436e:
 node verify-controller.mjs evidence/controller-loop-01
 # Export a record without local access checks and session identifiers:
 node export-controller-evidence.mjs sessions/<run-directory> evidence/new-record
 ```
+
+The actual connectivity journal belongs to source621436e. Exact live-evidence verification requires that revision; later playback uses unchanged mechanical definitions and makes no new live-model claim.
 
 Verification replays each recorded low-level choice, checks the resulting observation and mesh hashes, and checks JPEG integrity and state association. It cannot reconstruct rendered pixels from mechanical state or independently prove the renderer's visual accuracy. Public records omit private access/session metadata; the verifier reports that those private checks were not independently verified from the public export.
 

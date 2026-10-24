@@ -1,3 +1,4 @@
+import {sourceManifest} from './manifest.mjs';
 // Actual Godot image capture for anatomy inspection. No model or surgical evaluation.
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
@@ -13,7 +14,7 @@ const out=path.resolve(import.meta.dirname,option('--output','evidence/inspectio
 await fs.mkdir(out,{recursive:true});
 const sourceFiles=['inspector.mjs','mechanics.mjs','scenario.mjs','contact.mjs','cutting.mjs','task-definition.mjs','evaluation.mjs','attachments.mjs','godot/data/tissue-rest.json','launch.mjs','inspect.mjs','godot/project.godot','godot/main.gd','godot/main.tscn','godot/anatomy.gd','docs/PROTOCOL.md'];
 const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
-const sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async f=>[f,sha(await fs.readFile(path.join(import.meta.dirname,f)))])));
+const sourceHashes=Object.fromEntries(await Promise.all([...new Set([...sourceFiles,...Object.keys(sourceManifest().files)])].map(async f=>[f,sha(await fs.readFile(path.join(import.meta.dirname,f)))])));
 const report={kind:'scripted anatomy inspection; not model or procedure evidence',startedAt:new Date().toISOString(),requiresLockedHost:locked,sourceHashes,sourceDigest:sha(JSON.stringify(sourceHashes)),samples:[],passed:false};
 async function api(route,body){const r=await fetch(base+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(4000)});const j=await r.json();if(!r.ok)throw Error(j.error);return j;}
 const checks=count?Array.from({length:count},(_,i)=>['covered',i%2===0?.15:.25]):[['covered',0],['retracted',1],['ventral',1],['inner',0],['protected',1],['glans',1],['meatus',1],['outer',0]];

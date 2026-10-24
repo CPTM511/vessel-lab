@@ -1,0 +1,22 @@
+{
+  "kind": "Offline playback corruption checks; no model inference",
+  "passed": true,
+  "cases": [
+    {
+      "case": "source",
+      "rejected": true
+    },
+    {
+      "case": "original",
+      "rejected": true
+    },
+    {
+      "case": "frame_source",
+      "rejected": true
+    },
+    {
+      "case": "missing_result",
+      "rejected": true
+    }
+  ]
+}

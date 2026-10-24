@@ -1,0 +1,12 @@
+{
+  "verified": true,
+  "kind": "scripted anatomy inspection; not model or procedure evidence",
+  "samples": 8,
+  "requiresLockedHost": false,
+  "maximumLatencyMs": 967,
+  "renderers": [
+    "gl_compatibility"
+  ],
+  "sourceDigest": "cd10da8f5e2a3772b6d8b015d70dbcfc05720979025671da72ac4de1b7cf6eab",
+  "scope": "Source and recorded JPEG integrity with state/lock/deadline checks; no model or procedure result"
+}

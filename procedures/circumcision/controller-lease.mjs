@@ -11,12 +11,12 @@ export class ControllerLease{
  authorized(req){return !!this.token&&req.headers['x-anatomy-controller-token']===this.token;}
  start(task,episode){
   if(this.running)throw Error('Stop the current controller first');
-  if(!['loop','procedure'].includes(task))throw Error('Unknown controller task');
+  if(!['loop','procedure','playback'].includes(task))throw Error('Unknown controller task');
   const runId=new Date().toISOString().replaceAll(':','-')+'-'+crypto.randomBytes(4).toString('hex');
   const dir=path.join(this.root,'sessions',runId);fs.mkdirSync(dir,{recursive:false});
-  this.token=crypto.randomBytes(32).toString('hex');this.info={running:true,phase:'starting',task,model:'gpt-6-astra',episode,runId};
+  this.token=crypto.randomBytes(32).toString('hex');this.info={running:true,phase:'starting',task,model:task==='playback'?null:'gpt-6-astra',episode,runId};
   const fd=fs.openSync(path.join(dir,'process.log'),'a');
-  const child=spawn(process.execPath,[path.join(this.root,'agent.mjs'),task],{cwd:this.root,detached:true,env:{...process.env,ANATOMY_URL:this.base,ANATOMY_CONTROLLER_TOKEN:this.token,ANATOMY_RUN_DIR:dir,ANATOMY_EPISODE:episode},stdio:['ignore',fd,fd]});
+  const child=spawn(process.execPath,[path.join(this.root,task==='playback'?'replay.mjs':'agent.mjs'),task],{cwd:this.root,detached:true,env:{...process.env,ANATOMY_URL:this.base,ANATOMY_CONTROLLER_TOKEN:this.token,ANATOMY_RUN_DIR:dir,ANATOMY_EPISODE:episode},stdio:['ignore',fd,fd]});
   fs.closeSync(fd);this.process=child;
   child.on('error',e=>{if(this.process===child){this.process=null;this.token=null;this.info={...this.info,phase:'error',error:e.message};}});
   child.on('exit',(code,signal)=>{if(this.process===child){this.process=null;this.token=null;this.info={...this.info,phase:this.info.phase==='stopping'?'stopped':this.info.phase==='done'?'done':'error',exitCode:code,signal};}});
