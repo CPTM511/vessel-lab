@@ -1,0 +1,26 @@
+{
+  "kind": "Deliberate numerical-evidence corruption; not model or renderer evidence",
+  "passed": true,
+  "cases": [
+    {
+      "case": "source-hash",
+      "rejected": true,
+      "verificationWritten": false
+    },
+    {
+      "case": "missing-source",
+      "rejected": true,
+      "verificationWritten": false
+    },
+    {
+      "case": "reordered-first-action",
+      "rejected": true,
+      "verificationWritten": false
+    },
+    {
+      "case": "duplicate-checkpoint",
+      "rejected": true,
+      "verificationWritten": false
+    }
+  ]
+}

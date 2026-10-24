@@ -1,0 +1,53 @@
+{
+  "verified": true,
+  "files": [
+    {
+      "file": "initial.jpg",
+      "sha256": "5f3df5ece50a1f63620208bd0fb684e6dc56b838025c852ebeeeb6aab2d1e9a1"
+    },
+    {
+      "file": "initial-ui.jpg",
+      "sha256": "f9a30f5ae66bba81c309d6c1a58f05c16613e6beacea272d419f266bcfa41f27"
+    },
+    {
+      "file": "manual-reset.jpg",
+      "sha256": "43c963241826ff8aac798dc32db366f25abf7fe1521ea9a54ec6347c8de50b0a"
+    },
+    {
+      "file": "manual-reset-ui.jpg",
+      "sha256": "ec3ff371d7f4142de9c7335a22de28f12f3001552aefe05297f37d08f1884f16"
+    },
+    {
+      "file": "manual-step.jpg",
+      "sha256": "91eb4cfc44d03d60d7e5786682742f3d75e96f398a8795d6b1665cea220ecf2f"
+    },
+    {
+      "file": "manual-step-ui.jpg",
+      "sha256": "89dc6e4a331e10f2792b332d1217e7b5fa03edc3bb27e92aa5004a91c1b35198"
+    },
+    {
+      "file": "stopped-playback.jpg",
+      "sha256": "e35204274e0f5c0649f4525f56f09b1a1db820eb6a3c758d879c0c396a6b7604"
+    },
+    {
+      "file": "stopped-playback-ui.jpg",
+      "sha256": "abfd244f0ab3d51137fa2e91afb8aff823e3b75920e98d8ad0a962767e00506b"
+    },
+    {
+      "file": "completed-playback.jpg",
+      "sha256": "8d58ca3de30381de0d2c97f9df3078f4878cd59c3720e8f3eb4e717390512691"
+    },
+    {
+      "file": "completed-playback-ui.jpg",
+      "sha256": "526f05200a0b3a0d53ed3b3c5f73049904ea91a2340e4cbb7f321c408788ca83"
+    },
+    {
+      "file": "reset-expanded.jpg",
+      "sha256": "d55bdb5b18428a7f0db0e7be6ced38399d86face75baa4bb00af96aa18ae34b4"
+    },
+    {
+      "file": "reset-expanded-ui.jpg",
+      "sha256": "3b263b81876ec171f3d26f8d2b9e105103d1650a8b39de3c9fd8f40cb55edbe8"
+    }
+  ]
+}

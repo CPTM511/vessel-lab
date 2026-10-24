@@ -1,0 +1,22 @@
+{
+  "kind": "Deliberate continuation-record corruption; no model or renderer inference",
+  "passed": true,
+  "cases": [
+    {
+      "case": "parent-hash",
+      "rejected": true
+    },
+    {
+      "case": "driver-hash",
+      "rejected": true
+    },
+    {
+      "case": "prefix",
+      "rejected": true
+    },
+    {
+      "case": "deadline",
+      "rejected": true
+    }
+  ]
+}

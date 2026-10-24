@@ -1,0 +1,588 @@
+{
+  "kind": "Segmented scripted Godot trajectory; not an independent model episode",
+  "sourceDigest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b",
+  "seed": 83,
+  "steps": 1915,
+  "originalSegmentSteps": 1453,
+  "continuationSteps": 462,
+  "distinctCommandImageHashes": 1915,
+  "maxCommandToFrameMs": 4816,
+  "crossingAuditCount": 80,
+  "allDeclaredCrossingsZero": true,
+  "finishLatencyMs": 1006,
+  "hostPairs": {
+    "locked": 1417,
+    "unlocked": 496,
+    "transitionOrUnknown": 2
+  },
+  "assessment": {
+    "protocol": "C0",
+    "passed": true,
+    "gates": {
+      "targetDetached": true,
+      "offTargetPreserved": true,
+      "protectedVolumes": true,
+      "retainedEdgeApproximation": true,
+      "releasedHold": true,
+      "retainedIntegrity": true,
+      "resolvedTargetComponents": true
+    },
+    "failedGates": [],
+    "area": {
+      "targetMaskHash": "371e157e32754970304d27887a5d7b019d6bf3e4e735e6ccba049f6e94c9f9f1",
+      "targetInitialAreaMm2": 5474.55172826231,
+      "nonTargetInitialAreaMm2": 3107.038731480376,
+      "targetDetachedAreaMm2": 5474.55172826231,
+      "targetDetachedFraction": 1,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 419.35806609164996
+    },
+    "closure": {
+      "totalSamples": 48,
+      "validSamples": 48,
+      "coveredSamples": 48,
+      "coverage": 1,
+      "samples": [
+        {
+          "index": 0,
+          "nodes": [
+            576,
+            1392
+          ],
+          "valid": true,
+          "gapMm": 0.5181091545336146,
+          "withinTolerance": true
+        },
+        {
+          "index": 1,
+          "nodes": [
+            577,
+            1393
+          ],
+          "valid": true,
+          "gapMm": 0.46428011247450124,
+          "withinTolerance": true
+        },
+        {
+          "index": 2,
+          "nodes": [
+            578,
+            1394
+          ],
+          "valid": true,
+          "gapMm": 0.5520594718487881,
+          "withinTolerance": true
+        },
+        {
+          "index": 3,
+          "nodes": [
+            579,
+            1395
+          ],
+          "valid": true,
+          "gapMm": 0.5386495027111387,
+          "withinTolerance": true
+        },
+        {
+          "index": 4,
+          "nodes": [
+            580,
+            1396
+          ],
+          "valid": true,
+          "gapMm": 0.3967121283358219,
+          "withinTolerance": true
+        },
+        {
+          "index": 5,
+          "nodes": [
+            581,
+            1397
+          ],
+          "valid": true,
+          "gapMm": 0.4696667812714555,
+          "withinTolerance": true
+        },
+        {
+          "index": 6,
+          "nodes": [
+            582,
+            1398
+          ],
+          "valid": true,
+          "gapMm": 0.3841068346341222,
+          "withinTolerance": true
+        },
+        {
+          "index": 7,
+          "nodes": [
+            583,
+            1399
+          ],
+          "valid": true,
+          "gapMm": 0.3679671101342046,
+          "withinTolerance": true
+        },
+        {
+          "index": 8,
+          "nodes": [
+            584,
+            1400
+          ],
+          "valid": true,
+          "gapMm": 0.3377751385712099,
+          "withinTolerance": true
+        },
+        {
+          "index": 9,
+          "nodes": [
+            585,
+            1401
+          ],
+          "valid": true,
+          "gapMm": 0.4283008484296651,
+          "withinTolerance": true
+        },
+        {
+          "index": 10,
+          "nodes": [
+            586,
+            1402
+          ],
+          "valid": true,
+          "gapMm": 0.21708030042375226,
+          "withinTolerance": true
+        },
+        {
+          "index": 11,
+          "nodes": [
+            587,
+            1403
+          ],
+          "valid": true,
+          "gapMm": 0.5163127312019977,
+          "withinTolerance": true
+        },
+        {
+          "index": 12,
+          "nodes": [
+            588,
+            1404
+          ],
+          "valid": true,
+          "gapMm": 0.4473940484945957,
+          "withinTolerance": true
+        },
+        {
+          "index": 13,
+          "nodes": [
+            589,
+            1405
+          ],
+          "valid": true,
+          "gapMm": 0.43354865856440955,
+          "withinTolerance": true
+        },
+        {
+          "index": 14,
+          "nodes": [
+            590,
+            1406
+          ],
+          "valid": true,
+          "gapMm": 0.5442400618191587,
+          "withinTolerance": true
+        },
+        {
+          "index": 15,
+          "nodes": [
+            591,
+            1407
+          ],
+          "valid": true,
+          "gapMm": 0.43304389427380185,
+          "withinTolerance": true
+        },
+        {
+          "index": 16,
+          "nodes": [
+            592,
+            1408
+          ],
+          "valid": true,
+          "gapMm": 0.3828185013657897,
+          "withinTolerance": true
+        },
+        {
+          "index": 17,
+          "nodes": [
+            593,
+            1409
+          ],
+          "valid": true,
+          "gapMm": 0.550199692755224,
+          "withinTolerance": true
+        },
+        {
+          "index": 18,
+          "nodes": [
+            594,
+            1410
+          ],
+          "valid": true,
+          "gapMm": 0.4627216882724171,
+          "withinTolerance": true
+        },
+        {
+          "index": 19,
+          "nodes": [
+            595,
+            1411
+          ],
+          "valid": true,
+          "gapMm": 0.46128592580107447,
+          "withinTolerance": true
+        },
+        {
+          "index": 20,
+          "nodes": [
+            596,
+            1412
+          ],
+          "valid": true,
+          "gapMm": 0.5514856878861601,
+          "withinTolerance": true
+        },
+        {
+          "index": 21,
+          "nodes": [
+            597,
+            1413
+          ],
+          "valid": true,
+          "gapMm": 0.4770400759409027,
+          "withinTolerance": true
+        },
+        {
+          "index": 22,
+          "nodes": [
+            598,
+            1414
+          ],
+          "valid": true,
+          "gapMm": 0.5550536944268848,
+          "withinTolerance": true
+        },
+        {
+          "index": 23,
+          "nodes": [
+            599,
+            1415
+          ],
+          "valid": true,
+          "gapMm": 0.4324945022911188,
+          "withinTolerance": true
+        },
+        {
+          "index": 24,
+          "nodes": [
+            600,
+            1416
+          ],
+          "valid": true,
+          "gapMm": 0.362007046348431,
+          "withinTolerance": true
+        },
+        {
+          "index": 25,
+          "nodes": [
+            601,
+            1417
+          ],
+          "valid": true,
+          "gapMm": 0.3727288708675112,
+          "withinTolerance": true
+        },
+        {
+          "index": 26,
+          "nodes": [
+            602,
+            1418
+          ],
+          "valid": true,
+          "gapMm": 0.3398010170320265,
+          "withinTolerance": true
+        },
+        {
+          "index": 27,
+          "nodes": [
+            603,
+            1419
+          ],
+          "valid": true,
+          "gapMm": 0.30256552380272117,
+          "withinTolerance": true
+        },
+        {
+          "index": 28,
+          "nodes": [
+            604,
+            1420
+          ],
+          "valid": true,
+          "gapMm": 0.44388702166267663,
+          "withinTolerance": true
+        },
+        {
+          "index": 29,
+          "nodes": [
+            605,
+            1421
+          ],
+          "valid": true,
+          "gapMm": 0.3414838307416548,
+          "withinTolerance": true
+        },
+        {
+          "index": 30,
+          "nodes": [
+            606,
+            1422
+          ],
+          "valid": true,
+          "gapMm": 0.2562072214605635,
+          "withinTolerance": true
+        },
+        {
+          "index": 31,
+          "nodes": [
+            607,
+            1423
+          ],
+          "valid": true,
+          "gapMm": 0.4945663080936921,
+          "withinTolerance": true
+        },
+        {
+          "index": 32,
+          "nodes": [
+            608,
+            1424
+          ],
+          "valid": true,
+          "gapMm": 0.4146329727725281,
+          "withinTolerance": true
+        },
+        {
+          "index": 33,
+          "nodes": [
+            609,
+            1425
+          ],
+          "valid": true,
+          "gapMm": 0.39486890918729156,
+          "withinTolerance": true
+        },
+        {
+          "index": 34,
+          "nodes": [
+            610,
+            1426
+          ],
+          "valid": true,
+          "gapMm": 0.5021365130777544,
+          "withinTolerance": true
+        },
+        {
+          "index": 35,
+          "nodes": [
+            611,
+            1427
+          ],
+          "valid": true,
+          "gapMm": 0.4345579150239558,
+          "withinTolerance": true
+        },
+        {
+          "index": 36,
+          "nodes": [
+            612,
+            1428
+          ],
+          "valid": true,
+          "gapMm": 0.4628981476926836,
+          "withinTolerance": true
+        },
+        {
+          "index": 37,
+          "nodes": [
+            613,
+            1429
+          ],
+          "valid": true,
+          "gapMm": 0.5081410220223785,
+          "withinTolerance": true
+        },
+        {
+          "index": 38,
+          "nodes": [
+            614,
+            1430
+          ],
+          "valid": true,
+          "gapMm": 0.3709620589152714,
+          "withinTolerance": true
+        },
+        {
+          "index": 39,
+          "nodes": [
+            615,
+            1431
+          ],
+          "valid": true,
+          "gapMm": 0.18969441805549553,
+          "withinTolerance": true
+        },
+        {
+          "index": 40,
+          "nodes": [
+            616,
+            1432
+          ],
+          "valid": true,
+          "gapMm": 0.4685103460698896,
+          "withinTolerance": true
+        },
+        {
+          "index": 41,
+          "nodes": [
+            617,
+            1433
+          ],
+          "valid": true,
+          "gapMm": 0.4097696835122652,
+          "withinTolerance": true
+        },
+        {
+          "index": 42,
+          "nodes": [
+            618,
+            1434
+          ],
+          "valid": true,
+          "gapMm": 0.47129706917072073,
+          "withinTolerance": true
+        },
+        {
+          "index": 43,
+          "nodes": [
+            619,
+            1435
+          ],
+          "valid": true,
+          "gapMm": 0.3836744003068866,
+          "withinTolerance": true
+        },
+        {
+          "index": 44,
+          "nodes": [
+            620,
+            1436
+          ],
+          "valid": true,
+          "gapMm": 0.39818870295635567,
+          "withinTolerance": true
+        },
+        {
+          "index": 45,
+          "nodes": [
+            621,
+            1437
+          ],
+          "valid": true,
+          "gapMm": 0.4315116623877098,
+          "withinTolerance": true
+        },
+        {
+          "index": 46,
+          "nodes": [
+            622,
+            1438
+          ],
+          "valid": true,
+          "gapMm": 0.3784019885681182,
+          "withinTolerance": true
+        },
+        {
+          "index": 47,
+          "nodes": [
+            623,
+            1439
+          ],
+          "valid": true,
+          "gapMm": 0.4367724212679525,
+          "withinTolerance": true
+        }
+      ]
+    },
+    "release": {
+      "seconds": 5.258333333333384,
+      "currentCondition": true,
+      "requiredSeconds": 5
+    },
+    "invalidRetainedFaces": [],
+    "unresolvedComponents": [],
+    "scope": "Independent synthetic geometry checks; no clinical validation"
+  },
+  "metrics": {
+    "activeAttachments": 0,
+    "releaseSeconds": 5.258333333333384,
+    "cutFaceCount": 193,
+    "activeConstraintCount": 12141,
+    "components": [
+      {
+        "id": 0,
+        "anchored": true,
+        "nodeCount": 864,
+        "faceCount": 1536
+      },
+      {
+        "id": 1,
+        "anchored": false,
+        "nodeCount": 1536,
+        "faceCount": 2879
+      }
+    ],
+    "area": {
+      "targetMaskHash": "371e157e32754970304d27887a5d7b019d6bf3e4e735e6ccba049f6e94c9f9f1",
+      "targetInitialAreaMm2": 5474.55172826231,
+      "nonTargetInitialAreaMm2": 3107.038731480376,
+      "targetDetachedAreaMm2": 5474.55172826231,
+      "targetDetachedFraction": 1,
+      "offTargetRemovedAreaMm2": 0,
+      "offTargetRemovedFraction": 0,
+      "ablatedAreaMm2": 419.35806609164996
+    },
+    "activeGrasps": 0,
+    "graspErrors": [],
+    "maxDisplacementMm": 39.83384649612421,
+    "meanDisplacementMm": 18.604593188867337,
+    "maxConstraintStrain": 1.7409835875113089,
+    "protectedIntersections": 0,
+    "simulationSeconds": 60.19999999999849,
+    "rigidGlansContact": {
+      "projectionMarginMm": 0.1,
+      "planeConstraints": 23949,
+      "scope": "Sampled node endpoint projection coupled with shell contact; not exact continuous tissue/glans collision"
+    },
+    "shellContact": {
+      "gapMm": 0.03,
+      "contactDetections": 133443,
+      "limitedSubsteps": 0,
+      "lastAdvanceFraction": 1
+    }
+  },
+  "originalInterruptionPreserved": true,
+  "independentModelEpisodes": 0
+}

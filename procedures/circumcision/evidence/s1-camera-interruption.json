@@ -1,0 +1,70 @@
+{
+  "kind": "Sanitized transport excerpt around a scripted camera interruption and explicit continuation",
+  "redactions": [
+    "session identifiers",
+    "command identifiers"
+  ],
+  "events": [
+    {
+      "at": "2026-10-24T08:43:51.248Z",
+      "route": "/api/inspect",
+      "status": 200,
+      "source": "manual-inspection",
+      "requestedWorldRevision": 1461,
+      "requestedMechanicalRevision": null,
+      "mode": "ventral",
+      "resultWorldRevision": 1462,
+      "resultMechanicalRevision": 1453,
+      "error": null
+    },
+    {
+      "at": "2026-10-24T08:43:51.263Z",
+      "route": "/api/step",
+      "status": 409,
+      "source": "scripted-mechanics-test",
+      "requestedWorldRevision": 1461,
+      "requestedMechanicalRevision": 1453,
+      "mode": null,
+      "resultWorldRevision": null,
+      "resultMechanicalRevision": null,
+      "error": "Stale revision"
+    },
+    {
+      "at": "2026-10-24T08:43:52.548Z",
+      "route": "/api/inspect",
+      "status": 200,
+      "source": "manual-inspection",
+      "requestedWorldRevision": 1462,
+      "requestedMechanicalRevision": null,
+      "mode": "ventral",
+      "resultWorldRevision": 1463,
+      "resultMechanicalRevision": 1453,
+      "error": null
+    },
+    {
+      "at": "2026-10-24T08:43:55.881Z",
+      "route": "/api/inspect",
+      "status": 200,
+      "source": "manual-inspection",
+      "requestedWorldRevision": 1463,
+      "requestedMechanicalRevision": null,
+      "mode": "covered",
+      "resultWorldRevision": 1464,
+      "resultMechanicalRevision": 1453,
+      "error": null
+    },
+    {
+      "at": "2026-10-24T08:48:43.727Z",
+      "route": "/api/step",
+      "status": 200,
+      "source": "scripted-mechanics-test",
+      "requestedWorldRevision": 1464,
+      "requestedMechanicalRevision": 1453,
+      "mode": null,
+      "resultWorldRevision": 1465,
+      "resultMechanicalRevision": 1454,
+      "error": null
+    }
+  ],
+  "scope": "Manual camera changes advanced only the world revision; the continuation independently checked the complete preserved mechanical state."
+}

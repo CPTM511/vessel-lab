@@ -1,0 +1,22 @@
+{
+  "kind": "Deliberate background-evidence corruption; not model evidence",
+  "passed": true,
+  "cases": [
+    {
+      "case": "source",
+      "rejected": true
+    },
+    {
+      "case": "foreground",
+      "rejected": true
+    },
+    {
+      "case": "locked",
+      "rejected": true
+    },
+    {
+      "case": "deadline",
+      "rejected": true
+    }
+  ]
+}

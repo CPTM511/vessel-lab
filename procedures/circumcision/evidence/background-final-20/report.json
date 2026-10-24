@@ -1,0 +1,617 @@
+{
+  "kind": "scripted anatomy inspection in unlocked background; no model inference",
+  "condition": "unlocked background",
+  "rendererPid": 72537,
+  "foregroundCriterion": "Known foreground process differs from the measured renderer process",
+  "startedAt": "2026-10-24T08:51:39.786Z",
+  "source": {
+    "algorithm": "sha256",
+    "files": {
+      "recording.mjs": "8e02bebf01068c8994da493182f1dc173c162a5138dbf4466e4b3abc574534a9",
+      "replay.mjs": "5add86f2ea484a75d4846844c01ba2a065482a59d745a67207ca0e8cea4120a5",
+      "agent.mjs": "b0d624e3cd34032be42e49e93cd9f57f7634ecab09154c8b132f6b5240fa348e",
+      "evaluation-freeze.mjs": "df102509a9098814ef8a966f17ba57756f07b9eacfe65ec6f9b752a8821739c2",
+      "../../host-state.mjs": "4ddab9853b4d11ccbfc351977b2035b038ac2d9822b9162b1402a339e30f15c1",
+      "controller-lease.mjs": "71e9fbbfabcd255432a297efdfb741815ecb799f587edbd9fec2368ebe5f1d74",
+      "controller-spec.mjs": "2e73a38a69026d26ab2ec0ac3fa1b94405019b9fba4a34cf738f2a95ff7c4321",
+      "ordinary-guard.mjs": "f22620517aa2bdf5261a8a7f6567aa51a06bae7987f5619dc8bdd859016426d7",
+      "instrumentation.mjs": "5fc9cfa0f65f77c2e791a0708b16f6d831bfd6c43b5540cc7eb85958ca768bb2",
+      "manifest.mjs": "1c3cec744379bb472c2816fc0bb4903a27365f43a0d7f7dc2b7992559a8a8fb0",
+      "inspector.mjs": "fe7b5fdd2f04695a3f1a076a8fb3902aaecbd93b79a835f60a5381a00e46131b",
+      "launch.mjs": "2f12c6b65f3ac32dc9b902e9f98faae3fb8d97194d5a5d33fdcb142951197d3c",
+      "mechanics.mjs": "ab3d5d292f502e45cb58ce6c3aa8dca48fcd73c348fa4e0c7809609b66545bd6",
+      "scenario.mjs": "a2ffec3c3dfad0751078cf07201ad22243a0022eb2f883fd32ecbe146ff115a3",
+      "contact.mjs": "0212a0c392efcd7af95fd4ae2089a2371980c1383bc36c07a3ef52c527b14431",
+      "cutting.mjs": "c303c0c9e7e3631c30d15a877b341689d64ff0c701b5f735658d2c4286ae2aff",
+      "task-definition.mjs": "97a3d7dbafdfe168260c8748042aee5cd1644f22ccd4a1f61e87114b19f0f78b",
+      "evaluation.mjs": "d1d193bdd76a46f8481e902b0be236e136f06d6ddaa7f7ee8264b5ed4bc8f1db",
+      "attachments.mjs": "65e8124a39637ba16c9f0e8012412ea36c80ced2667c5698f3c95e811b19337b",
+      "godot/main.gd": "82d5e058eb6873757a9e0f1c5026919e19ce2f8ee7a8ee5adfe53d10f4892cfa",
+      "godot/anatomy.gd": "fe4edcbf12a4ed7063157646532c4f44ecdc0665dc0de7b5d8fe9c481aa34d37",
+      "godot/main.tscn": "533a408864e137b203793a2526a981756735857d4d5284ac1563719105592b9a",
+      "godot/project.godot": "3f0e41f8cc023cdfbdab9969deaa7b09113bf63a7277bda8f40219cf103bc4a5",
+      "godot/data/tissue-rest.json": "88aa9f6f9f88eb1c99f79932e92a4f1ac411bb601a64cb244811aeda01931966",
+      "docs/PROTOCOL.md": "2f3206e06cf632508033d7b57736616805400241bb6e31cb160d0c9f73ab4827"
+    },
+    "digest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b"
+  },
+  "probeHash": "3fa20e3b92b6d6240cdb32852cb600b7c20d5ca9d3b493d60923bd760d7b9a12",
+  "hostProbeHashes": {
+    "host-process-state.swift": "62230776e895302cda75aec849eaed1ffedc8064aa9ae840062dcfeaea129b35",
+    "host-process-state": "35af69f619e7d0127d234965d98e97136bd9bc8354981636d8cb3966dedf29b6"
+  },
+  "samples": [
+    {
+      "mode": "ventral",
+      "revision": 1,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-001.jpg",
+      "latencyMs": 510,
+      "before": {
+        "at": "2026-10-24T08:51:39.857Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:40.407Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 2,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-002.jpg",
+      "latencyMs": 834,
+      "before": {
+        "at": "2026-10-24T08:51:41.450Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:42.325Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 3,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-003.jpg",
+      "latencyMs": 337,
+      "before": {
+        "at": "2026-10-24T08:51:43.378Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:43.760Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 4,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-004.jpg",
+      "latencyMs": 667,
+      "before": {
+        "at": "2026-10-24T08:51:44.800Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:45.507Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 5,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-005.jpg",
+      "latencyMs": 501,
+      "before": {
+        "at": "2026-10-24T08:51:46.547Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:47.088Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 6,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-006.jpg",
+      "latencyMs": 420,
+      "before": {
+        "at": "2026-10-24T08:51:48.129Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:48.593Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 7,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-007.jpg",
+      "latencyMs": 418,
+      "before": {
+        "at": "2026-10-24T08:51:49.637Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:50.096Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 8,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-008.jpg",
+      "latencyMs": 497,
+      "before": {
+        "at": "2026-10-24T08:51:51.136Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:51.672Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 9,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-009.jpg",
+      "latencyMs": 667,
+      "before": {
+        "at": "2026-10-24T08:51:52.712Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:53.422Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 10,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-010.jpg",
+      "latencyMs": 667,
+      "before": {
+        "at": "2026-10-24T08:51:54.464Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:55.171Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 11,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-011.jpg",
+      "latencyMs": 417,
+      "before": {
+        "at": "2026-10-24T08:51:56.211Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:56.668Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 12,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-012.jpg",
+      "latencyMs": 418,
+      "before": {
+        "at": "2026-10-24T08:51:57.707Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:58.166Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 13,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-013.jpg",
+      "latencyMs": 501,
+      "before": {
+        "at": "2026-10-24T08:51:59.207Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:51:59.752Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 14,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-014.jpg",
+      "latencyMs": 667,
+      "before": {
+        "at": "2026-10-24T08:52:00.795Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:52:01.501Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 15,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-015.jpg",
+      "latencyMs": 500,
+      "before": {
+        "at": "2026-10-24T08:52:02.540Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:52:03.079Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 16,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-016.jpg",
+      "latencyMs": 585,
+      "before": {
+        "at": "2026-10-24T08:52:04.120Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:52:04.747Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 17,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-017.jpg",
+      "latencyMs": 501,
+      "before": {
+        "at": "2026-10-24T08:52:05.788Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:52:06.331Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 18,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-018.jpg",
+      "latencyMs": 751,
+      "before": {
+        "at": "2026-10-24T08:52:07.370Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:52:08.160Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "ventral",
+      "revision": 19,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "bfc18ec6ef2936d174e3cd6fb68f2d473ffea9195e2d1a2c546fe5a05fbf069c",
+      "filename": "frame-019.jpg",
+      "latencyMs": 585,
+      "before": {
+        "at": "2026-10-24T08:52:09.200Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:52:09.827Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    },
+    {
+      "mode": "covered",
+      "revision": 20,
+      "renderer": "forward_plus",
+      "driver": "metal",
+      "controlSource": "scripted-inspection-test",
+      "imageHash": "18a2ba5c25a2e3fa9fe37411c22a1de177f17dbd45a372c7028f7d85e8264963",
+      "filename": "frame-020.jpg",
+      "latencyMs": 500,
+      "before": {
+        "at": "2026-10-24T08:52:10.869Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      },
+      "after": {
+        "at": "2026-10-24T08:52:11.413Z",
+        "frontmostBundle": "com.google.Chrome",
+        "frontmostPid": 2332,
+        "platform": "darwin",
+        "screenLocked": false,
+        "userSessionLocked": false,
+        "source": "IORegistry console and current-user session flags"
+      }
+    }
+  ],
+  "passed": true,
+  "initial": {
+    "mode": "covered",
+    "retraction": 0,
+    "revision": 0
+  },
+  "final": {
+    "mode": "covered",
+    "retraction": 0,
+    "revision": 20
+  },
+  "endedAt": "2026-10-24T08:52:12.445Z"
+}

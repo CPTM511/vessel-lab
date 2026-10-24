@@ -19,6 +19,20 @@ for(const file of Object.keys(sourceManifest().files))allowed.add(file);
 assert.equal(Object.keys(report.sourceHashes).length,allowed.size,'Missing source fingerprints');
 for(const [f,hash] of Object.entries(report.sourceHashes)){assert.ok(allowed.has(f),'Unexpected source path');assert.equal(sha(fs.readFileSync(path.join(root,f))),hash,'Source changed: '+f);}
 assert.match(report.kind,/scripted/);assert.ok(report.steps.length>0);
+if(report.continuation){
+ const c=report.continuation;
+ assert.equal(c.kind,'scripted continuation after camera-only interruption; not an independent episode');
+ assert.equal(c.parentReport,'interrupted-report.json');assert.equal(c.sourceFile,'continuation-driver.mjs');
+ const bytes=fs.readFileSync(path.join(dir,c.parentReport)),parent=JSON.parse(bytes);
+ assert.equal(sha(bytes),c.parentReportHash,'Interrupted record changed');
+ assert.equal(sha(fs.readFileSync(path.join(dir,c.sourceFile))),c.sourceHash,'Continuation driver changed');
+ assert.equal(parent.passed,false);assert.equal(parent.error,'Stale revision');
+ assert.deepEqual(parent.sourceHashes,report.sourceHashes);assert.equal(parent.trajectoryHash,report.trajectoryHash);
+ assert.equal(c.startingMechanicalRevision,parent.steps.length);
+ assert.equal(c.startingGeometryHash,parent.steps.at(-1).geometryHash);
+ assert.deepEqual(report.steps.slice(0,parent.steps.length),parent.steps,'Interrupted prefix changed');
+ assert.deepEqual(report.priorFailure,{error:parent.error,rejectedRequests:parent.rejectedRequests,endedAt:parent.endedAt});
+}
 if(report.schema==='scripted-trajectory-v1'){
  const bytes=fs.readFileSync(path.join(dir,'trajectory.json'));
  assert.equal(sha(bytes),report.trajectoryHash,'Scripted trajectory changed');
@@ -51,6 +65,9 @@ if(development){
 }
 for(const [index,row] of report.steps.entries()){
  assert.equal(row.action.revision,index,'Skipped or reordered action');
+ assert.ok(Number.isFinite(row.latencyMs)&&row.latencyMs>=0,'Missing feedback latency');
+ if(report.passed)assert.ok(row.latencyMs<5000,'Successful record exceeded five-second feedback deadline');
+ assert.ok(['forward_plus','gl_compatibility'].includes(row.frame.renderer),'Unknown recorded renderer');
  const result=sim.step(row.action);
  assert.deepEqual(wire(result),row.observation,'Observation does not reproduce at action '+index);
  assert.equal(sha(JSON.stringify(sim.snapshot().positions)),row.geometryHash,'Mechanical geometry mismatch');
@@ -63,7 +80,7 @@ for(const [index,row] of report.steps.entries()){
  assert.equal(row.frame.assessmentPassed,result.assessment.passed,'Frame assessment mismatch');
  assert.match(row.frame.filename,/^frame-\d{3,5}\.jpg$/);
  const bytes=fs.readFileSync(path.join(dir,row.frame.filename));
- assert.equal(bytes[0],255);assert.equal(bytes[1],216);
+ assert.equal(bytes[0],255);assert.equal(bytes[1],216);assert.equal(bytes.at(-2),255);assert.equal(bytes.at(-1),217);
  assert.equal(sha('data:image/jpeg;base64,'+bytes.toString('base64')),row.frame.imageHash,'Rendered frame hash mismatch');
  assert.equal(row.frame.mechanicsRevision,result.revision,'Frame mechanical revision mismatch');
  for(const audit of report.meshChecks??[])if(audit.revision===result.revision)assert.deepEqual(auditSelfIntersections(sim),audit,'Intermediate mesh audit differs');
@@ -85,6 +102,13 @@ if(report.finishRequest?.expectedRejection)assert.throws(()=>sim.finish(),e=>e.m
 if(report.finalAssessment)assert.deepEqual(sim.assessment(),report.finalAssessment,'Final assessment mismatch');
 if(report.meshAudit)assert.deepEqual(auditSelfIntersections(sim),report.meshAudit,'Actual endpoint mesh audit does not reproduce');
 if(report.finishRequest?.accepted){assert.equal(sim.assessment().passed,true);assert.deepEqual(wire(sim.finish()),report.finishRequest.observation);}
+if(report.finishRequest?.frame){
+ const request=report.finishRequest,f=request.frame;
+ assert.equal(request.accepted,true);assert.equal(f.filename,'terminal.jpg');assert.equal(f.controlSource,'scripted-mechanics-test');assert.equal(f.mechanicsRevision,sim.revision);
+ assert.ok(Number.isFinite(request.latencyMs)&&request.latencyMs>=0&&request.latencyMs<5000);
+ const bytes=fs.readFileSync(path.join(dir,f.filename));assert.equal(bytes[0],255);assert.equal(bytes[1],216);assert.equal(bytes.at(-2),255);assert.equal(bytes.at(-1),217);
+ assert.equal(sha('data:image/jpeg;base64,'+bytes.toString('base64')),f.imageHash);
+}
 if(development)for(const entry of development.experiments){
  let result;
  if(entry.canonicalTrajectoryPrefix){

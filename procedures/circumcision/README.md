@@ -1,6 +1,8 @@
 # Adult anatomy research preview
 
-An in-development Godot module for an adult circumcision tissue-manipulation benchmark. The current checkpoint provides original layered anatomy, bilateral low-level grippers, constraint-based tissue deformation, local swept cutting, component/area accounting and real rendered feedback. Local synthetic edge attachments and a C0 terminal evaluator are available. The refined anatomy/contact checkpoint at commit `3c87412` passes the C0 geometric evaluator in a complete 2,023-action scripted detachment/collection fixture. The current S1 candidate adds three distinct authored size cases and reproducible initial instrument offsets; its evidence is kept separate from that historical full trajectory. A short actual GPT-6 Astra connectivity check now completes two model-selected translations with five real Godot image responses. Independent complete procedure episodes and the full prototype release remain **pending**. This is bounded fixture evidence, not general retraction or self-contact validation. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
+An in-development Godot module for an adult circumcision tissue-manipulation benchmark. It provides original layered anatomy, bilateral low-level grippers, constrained tissue deformation, local swept cutting, component/area accounting, synthetic local attachments and actual rendered feedback. The current S1 checkpoint demonstrates numerical feasibility on three authored size cases and a 1,915-command expanded-case Godot trajectory with a preserved camera interruption and explicit scripted continuation. Independent complete-procedure model episodes and the final adult prototype release remain **pending**.
+
+A short actual GPT-6 Astra connectivity check separately completed two model-selected translations with five real Godot images. Neither the scripted paths nor recorded playback are independent autonomy results. The released vessel-suturing benchmark remains available at the repository root and tag `v0.1.2`.
 
 ## Run
 
@@ -22,7 +24,7 @@ This command saves actual images and source hashes for eight views, including a 
 
 ## Model connectivity
 
-After resetting the mechanics sandbox, choose **Verify Astra control loop**. The model independently selects two small translations and receives actual image/state feedback after each. **Stop execution** revokes authority and stops the process group. Full procedure execution remains disabled until the recorded preflight and source/instruction freeze are complete. See [controller setup and boundaries](docs/CONTROLLER.md) and [actual connectivity evidence](evidence/CONTROLLER.md).
+After resetting the mechanics sandbox, choose **Verify Astra control loop** for two independently selected translations with actual image/state feedback. The current checkout also includes the [C0 source and instruction freeze](evaluation-freeze.json); **Start C0 procedure** requests an independent complete task from the selected initial seed. **Stop execution** revokes authority and stops the process group. The freeze enables evaluation and does not imply a successful model result. See [controller setup and boundaries](docs/CONTROLLER.md), [preflight evidence](evidence/c0-preflight.json) and [historical connectivity evidence](evidence/CONTROLLER.md).
 
 ## Recorded playback
 
@@ -40,7 +42,7 @@ node probe-mechanics.mjs --closure --seed 11 --output evidence/local-mechanical-
 node verify-mechanics.mjs evidence/local-mechanical-probe/report.json
 ```
 
-The [S1 local evidence](evidence/SCENARIOS.md) records 237 actual actions across all three cases, exact replay and the expected rejection of incomplete procedures. See [S1 scenario definitions](docs/SCENARIOS.md) for size cases, initial offsets and scope. Full historical trajectories require their exact recorded source revision; they must not be interpreted as S1 results.
+The [S1 full-path and runtime evidence](evidence/S1_FULL_PATH.md) records the three numerical cases, failed development endpoints, segmented expanded-case rendering, final background verification and clean-source workflow. The earlier [S1 local evidence](evidence/SCENARIOS.md) preserves 237 actual actions across all three cases and the correct rejection of incomplete procedures. See [S1 scenario definitions](docs/SCENARIOS.md) for size cases, initial offsets and scope. Historical records require their exact source; no result is transferred silently to changed initial conditions.
 
 ## Research boundaries
 

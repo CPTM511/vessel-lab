@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "kind": "scripted anatomy inspection in unlocked background; no model inference",
+  "samples": 20,
+  "maximumLatencyMs": 834,
+  "renderer": "forward_plus",
+  "sourceDigest": "d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f59e325acc8b",
+  "condition": "unlocked background",
+  "foregroundCriterion": "Known foreground process differs from the measured renderer process",
+  "scope": "Recorded source, JPEG integrity, revision sequence, deadlines and host-state fields; no independent pixel reconstruction, model episode or system-sleep claim"
+}

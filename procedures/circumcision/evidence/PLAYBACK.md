@@ -11,7 +11,7 @@ Executed runtime digest: `d5dc3ac1de7d5f322460c8b5aaad7eed6a34a65474cd95c75fd9f5
 | Forward+ locked inspection changes | 40 | 2,532 ms | All adjacent rendered images changed; both lock flags affirmative throughout |
 | Compatibility anatomy inspection | 8 | 967 ms | All declared views rendered and verified |
 
-The four replayed movements have affirmative macOS console/current-user lock flags before and after every operation. All original/new image files are retained. Private session identifiers are removed from the public playback journals; image bytes are unchanged. Inspection changes are scripted visual morphs, not mechanical retraction or autonomous decisions. Neither screen lock nor these tests establish execution during system sleep. The final affected unlocked-background check remains outstanding.
+The four replayed movements have affirmative macOS console/current-user lock flags before and after every operation. All original/new image files are retained. Private session identifiers are removed from the public playback journals; image bytes are unchanged. Inspection changes are scripted visual morphs, not mechanical retraction or autonomous decisions. Neither screen lock nor these tests establish execution during system sleep. The subsequent [S1 preflight](S1_FULL_PATH.md) adds the final current-source unlocked-background check.
 
 Compatibility uses the OpenGL 4.1 path on the tested Apple M3 Pro. It preserves the interactive scene and frame-feedback contract but lacks Forward+ subsurface scattering; highlights and tissue appearance differ. The inspected fallback is functional, not visually equivalent or clinically validated.
 

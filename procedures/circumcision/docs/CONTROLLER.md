@@ -10,7 +10,9 @@ A locally authenticated Codex installation with access to `gpt-6-astra` is requi
 
 **Stop execution** revokes authority immediately and terminates the process group. Manual controls and reset remain locked until the controller exits. Closing the launcher also stops its controller. After completion, the interface identifies the last control source and restores manual interaction. Reset before starting another independent run.
 
-**Start C0 procedure** remains disabled in this checkpoint. A full procedure run requires an `evaluation-freeze.json` matching the simulation, evaluator, Godot source, controller instructions, tool schemas and task prompt, after the documented preflight gates have passed. No such freeze is bundled yet. The short connectivity check is excluded from the three independent C0 procedure episodes.
+**Start C0 procedure** is available after a fresh reset when `evaluation-freeze.json` matches the simulation, evaluator, Godot source, controller instructions, tool schemas and task prompt. The current checkout bundles the C0 freeze for seeds **11, 29 and 83**, backed by the [recorded preflight](../evidence/c0-preflight.json). Restart the launcher after installing a new freeze. The three independent procedure episodes remain pending; the short historical connectivity check is excluded from that denominator.
+
+The [65-check regression suite](../evidence/c0-frozen-tests.txt) passes with this freeze present. Protocol doubles remain distinct from actual model evidence.
 
 ## Observation and action contract
 
